@@ -6,7 +6,7 @@ Complex code hides connections, workflows, and business risks.
 
 **Unvibe it.**
 
-![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-demo.gif)
+![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
 Explore connected code in an interactive graph, give LLMs the right context, trace business workflows, and identify critical business risks.
 
@@ -35,7 +35,7 @@ The **Connected Code Map for LLMs** shows how files, symbols, imports, and calls
 
 Hover over a file to preview it. Click the file to trace its connected code and download the relevant code as one compact, LLM-ready package.
 
-![Interactive code dependency graph showing connected files and downloadable LLM context](docs/assets/connected-code-map.png)
+![Interactive code dependency graph showing connected files and downloadable LLM context](docs/assets/connected_code_map.png)
 
 ### 2. Give LLMs the right repository context
 
@@ -58,7 +58,7 @@ A file tree explains repository structure, but it does not explain how the softw
 
 The **Business Workflow Map** connects entry points, decisions, state changes, external calls, and business outcomes into understandable workflows.
 
-![Business workflow analysis connecting code paths to operational outcomes](docs/assets/business-workflow-map.png)
+![Business workflow analysis connecting code paths to operational outcomes](docs/assets/business_workflow_map.png)
 
 ### 4. Identify critical business workflow risks
 
@@ -76,7 +76,7 @@ Each finding explains:
 
 If no finding passes the evidence threshold, the report clearly records a no-findings outcome for the completed review scope.
 
-![Business risk finding with impact, remediation, acceptance check, and code evidence](docs/assets/business-risk-findings.png)
+![Business risk finding with impact, remediation, acceptance check, and code evidence](docs/assets/business_risk_findings.png)
 
 ## How UnvibeCode works
 
