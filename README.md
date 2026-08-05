@@ -1,13 +1,9 @@
 # UnvibeCode
-
 **Unvibe complex code. Trace business workflows.**
 
-Complex code hides connections, workflows, and business risks.
-
-**Unvibe it.**
+Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
-
 **PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
