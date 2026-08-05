@@ -6,9 +6,39 @@ Complex code hides connections, workflows, and business risks.
 
 **Unvibe it.**
 
+[![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
+
+**PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
+
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
 Explore connected code in an interactive graph, give LLMs the right context, trace business workflows, and identify critical business risks.
+
+## Who UnvibeCode is for
+
+UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.
+
+| Audience | Their concern | What UnvibeCode gives them |
+| --- | --- | --- |
+| Product managers | Missing states, edge cases, requirements, and failure paths | Business workflow maps showing decisions, state changes, material effects, and scenarios that require validation |
+| Developers | Understanding where a workflow exists across unfamiliar or complex code | Connected entry points, functions, calls, dependencies, effects, and downloadable LLM-ready context |
+| Engineering leaders | Prioritizing critical code paths and understanding the consequences of change | Connected workflow paths, affected components, supporting evidence, and risk-focused review priorities |
+| Founders | Revenue, customer, operational, permission, and data-integrity risks | Business-risk summaries explaining the trigger, current behaviour, affected workflow, and potential impact |
+| QA and test engineers | Determining what should be validated beyond the happy path | Evidence-backed failure paths and structured scenarios that can be converted into test cases |
+| LLM users | Giving an LLM enough connected repository context without sending unrelated files | Complete repository context, smaller connected-code packages, and verified relationships |
+
+## When to use UnvibeCode
+
+Use UnvibeCode when you need to:
+
+- Understand an unfamiliar, inherited, legacy, or LLM-generated codebase.
+- Trace a business operation that crosses routes, services, state, databases, queues, and external APIs.
+- Give an LLM connected repository context without manually selecting files.
+- Review registration, payment, booking, subscription, approval, notification, or other multi-step workflows.
+- Investigate failure paths involving retries, partial completion, authorization, concurrency, or external dependencies.
+- Understand the potential business consequence of a code-level problem.
+- Prepare for a significant change to a business-critical workflow.
+- Produce a reusable repository-context package for later LLM analysis.
 
 ## Review your codebase in two commands
 
@@ -110,6 +140,20 @@ shipready_results/
         └── 03_business_risk_findings.html
 ```
 
+## What UnvibeCode does not replace
+
+UnvibeCode supports code understanding, workflow review, and evidence-based engineering investigation.
+
+It does not replace:
+
+- Unit, integration, end-to-end, load, or penetration testing.
+- Manual code review by engineers familiar with the system.
+- Security, privacy, legal, or regulatory assessment.
+- Production monitoring and incident investigation.
+- Validation of business requirements with the responsible product owner.
+
+A reported scenario should be validated against the application's intended behaviour and runtime environment before being treated as a confirmed production defect.
+
 ## Repository-size behaviour
 
 Supported repositories receive the complete code, workflow, and risk review.
@@ -133,6 +177,39 @@ Read the complete [data-processing explanation](docs/DATA_PROCESSING.md).
 - Python 3.11 or newer
 - Internet access for hosted business analysis
 - Read access to the repository being reviewed
+
+## Support and feedback
+
+For installation problems, failed reviews, report-interpretation questions, public-repository review requests, collaboration enquiries, or general feedback:
+
+- Open a [GitHub issue](https://github.com/FinanceFlash/unvibecode/issues) for reproducible package problems.
+- Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) for product questions, public-repository review requests, or collaboration enquiries.
+- Report security vulnerabilities through the process described in [SECURITY.md](SECURITY.md).
+
+When requesting technical support, include:
+
+- UnvibeCode version
+- Python version
+- Operating system
+- Repository language and framework
+- Command used
+- Sanitized error message
+- The report stage that failed
+
+Do not email proprietary source code, credentials, access tokens, secrets, or unsanitized logs.
+
+## Request a public-repository review
+
+Maintaining or evaluating a public repository?
+
+Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) with:
+
+- The public GitHub repository URL
+- The workflow or code area you want to understand
+- The question you want the analysis to answer
+- Permission to publish the resulting maps or findings, if applicable
+
+Only submit repositories that you are authorized to analyse.
 
 ## Documentation
 
