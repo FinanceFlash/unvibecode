@@ -1,5 +1,7 @@
 # UnvibeCode
 
+![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
+
 **Unvibe complex code. Trace business workflows.**
 
 Complex code hides connections, workflows, and business risks. **Unvibe it.**
@@ -10,8 +12,6 @@ Complex code hides connections, workflows, and business risks. **Unvibe it.**
 [![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
 
 **PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
-
-![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
 Explore connected code in an interactive graph, give LLMs the right context, trace business workflows, and identify critical business risks.
 
