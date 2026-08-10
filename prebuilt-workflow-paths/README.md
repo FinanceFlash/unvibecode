@@ -11,14 +11,14 @@ These packs help teams answer four practical questions:
 
 ## Add this collection to a repository
 
-Copy this entire `workflow-packs` directory into the root of your repository:
+Copy the entire `prebuilt-workflow-paths` directory into the root of your repository:
 
 ```text
 your-repository/
-├── workflow-packs/
+├── prebuilt-workflow-paths/
 │   ├── README.md
-│   ├── wf-013-multi-step-approval/
-│   ├── wf-017-support-ticket-lifecycle/
+│   ├── multi-step-approval-and-rejection/
+│   ├── customer-support-ticket-management/
 │   └── ...
 └── your existing project files
 ```
@@ -31,46 +31,44 @@ No installation, generator, schema, or build step is required. Every workflow is
 
 | Workflow | Use it when your application… |
 |---|---|
-| [Multi-step Approval and Rejection](wf-013-multi-step-approval/) | routes a request through one or more approvers and may approve, reject, return, escalate, or expire it |
-| [Customer Support Ticket Lifecycle](wf-017-support-ticket-lifecycle/) | creates, assigns, updates, escalates, resolves, reopens, or closes support cases |
-| [Transactional Email, SMS, Push, or In-app Delivery](wf-023-transactional-notification-delivery/) | sends business-critical messages after customer or system events |
-| [Failed Notification Retry and Channel Fallback](wf-025-notification-retry-channel-fallback/) | retries failed delivery or switches communication channels without duplicating or misrouting messages |
+| [Multi-step Approval and Rejection](multi-step-approval-and-rejection/) | routes a request through one or more approvers and may approve, reject, return, escalate, or expire it |
+| [Customer Support Ticket Lifecycle](customer-support-ticket-management/) | creates, assigns, updates, escalates, resolves, reopens, or closes support cases |
+| [Transactional Email, SMS, Push, or In-app Delivery](transactional-notification-delivery/) | sends business-critical messages after customer or system events |
+| [Failed Notification Retry and Channel Fallback](failed-notification-retry-and-channel-fallback/) | retries failed delivery or switches communication channels without duplicating or misrouting messages |
 
 ### Payments, subscriptions, orders, and inventory
 
 | Workflow | Use it when your application… |
 |---|---|
-| [Checkout Payment Authorization and Capture](wf-028-checkout-payment-authorization-capture/) | authorizes and captures payment while coordinating checkout and order state |
-| [Subscription Renewal, Cancellation, and Entitlement Release](wf-036-subscription-renewal-cancellation/) | renews subscriptions, handles cancellation, and grants or removes access |
-| [Order Placement and Confirmation](wf-041-order-placement-confirmation/) | validates a cart, creates an order, and confirms acceptance to the customer |
-| [Inventory Reservation, Release, and Expiry](wf-043-inventory-reservation-release-expiry/) | temporarily reserves scarce inventory and later commits, releases, or expires it |
+| [Checkout Payment Authorization and Capture](checkout-payment-authorization-and-capture/) | authorizes and captures payment while coordinating checkout and order state |
+| [Subscription Renewal, Cancellation, and Entitlement Release](subscription-renewal-cancellation-and-access-removal/) | renews subscriptions, handles cancellation, and grants or removes access |
+| [Order Placement and Confirmation](order-placement-and-confirmation/) | validates a cart, creates an order, and confirms acceptance to the customer |
+| [Inventory Reservation, Release, and Expiry](inventory-reservation-release-and-expiry/) | temporarily reserves scarce inventory and later commits, releases, or expires it |
 
 ### Booking and marketplace operations
 
 | Workflow | Use it when your application… |
 |---|---|
-| [Booking Confirmation and Capacity Commitment](wf-051-booking-confirmation-capacity/) | converts availability into a confirmed reservation without overselling capacity |
-| [Booking Cancellation, Capacity Release, and Refund Request](wf-054-booking-cancellation-release-refund/) | cancels a booking and coordinates released capacity and any refund request |
-| [Seller or Service-provider Onboarding and Eligibility](wf-057-provider-onboarding-eligibility/) | verifies and activates providers before allowing them to sell or deliver services |
-| [Commission, Fee, Split Payout, and Seller Settlement](wf-063-marketplace-split-payout-settlement/) | calculates platform fees and settles funds among sellers or service providers |
+| [Booking Confirmation and Capacity Commitment](booking-confirmation-and-capacity-reservation/) | converts availability into a confirmed reservation without overselling capacity |
+| [Booking Cancellation, Capacity Release, and Refund Request](booking-cancellation-capacity-release-and-refund/) | cancels a booking and coordinates released capacity and any refund request |
+| [Seller or Service-provider Onboarding and Eligibility](seller-and-service-provider-onboarding/) | verifies and activates providers before allowing them to sell or deliver services |
+| [Commission, Fee, Split Payout, and Seller Settlement](marketplace-fees-split-payouts-and-settlement/) | calculates platform fees and settles funds among sellers or service providers |
 
-### LLM, retrieval, webhooks, and external systems
-
-| Workflow | Use it when your application… |
-|---|---|
-| [LLM Content Generation and Structured-output Validation](wf-071-llm-generation-structured-output/) | generates content or structured results and must validate them before use |
-| [RAG Question Answering with Evidence and Citations](wf-072-rag-question-answering/) | retrieves sources and produces answers that must remain grounded in evidence |
-| [Inbound Webhook Verification and Acceptance](wf-079-inbound-webhook-verification/) | receives provider callbacks and must verify, deduplicate, and safely accept them |
-| [External-system Synchronization and Checkpointing](wf-081-external-system-sync-checkpoint/) | synchronizes records with an external system while tracking progress and recovery |
-
-### Risk, privacy, inference, and background execution
+### LLM, retrieval, and external systems
 
 | Workflow | Use it when your application… |
 |---|---|
-| [Fraud-risk Scoring, Step-up, Block, and Case Creation](wf-087-fraud-risk-step-up-block/) | evaluates protected actions and may allow, challenge, hold, block, or investigate them |
-| [Right-to-erasure and Account-data Deletion](wf-091-account-data-erasure/) | verifies and executes deletion or anonymization requests across data stores and processors |
-| [Batch or Real-time Model Inference and Threshold Decision](wf-096-model-inference-threshold-decision/) | converts validated features into a versioned model result and business decision |
-| [Scheduled Job Execution, Checkpoint, Retry, and Recovery](wf-097-scheduled-job-checkpoint-recovery/) | runs scheduled work with leases, bounded input windows, checkpoints, retries, and repair |
+| [LLM Content Generation and Structured-output Validation](llm-content-generation-and-output-validation/) | generates content or structured results and must validate them before use |
+| [RAG Question Answering with Evidence and Citations](rag-question-answering-with-evidence-and-citations/) | retrieves sources and produces answers that must remain grounded in evidence |
+| [External-system Synchronization and Checkpointing](external-system-data-sync-and-checkpointing/) | synchronizes records with an external system while tracking progress and recovery |
+
+### Risk, privacy, and background execution
+
+| Workflow | Use it when your application… |
+|---|---|
+| [Fraud-risk Scoring, Step-up, Block, and Case Creation](fraud-risk-check-step-up-block-and-investigation/) | evaluates protected actions and may allow, challenge, hold, block, or investigate them |
+| [Right-to-erasure and Account-data Deletion](account-data-deletion-and-right-to-erasure/) | verifies and executes deletion or anonymization requests across data stores and processors |
+| [Scheduled Job Execution, Checkpoint, Retry, and Recovery](scheduled-job-execution-retry-and-recovery/) | runs scheduled work with leases, bounded input windows, checkpoints, retries, and repair |
 
 The navigation categories are only for discovery. Each workflow has its own clear start, end, state, effects, permissions, and recovery boundary.
 
@@ -114,21 +112,25 @@ Every workflow folder uses the same flat structure:
 
 1. Start with `CORE_20_SCENARIOS.md` as the coverage checklist.
 2. Use the complete scenarios in `TESTING_GUIDE.md` to design test cases.
-3. Add application-specific values, roles, time limits, provider behavior, and expected state changes.
+3. Add application-specific values, roles, time limits, provider behaviour, and expected state changes.
 4. Use the permission and retry guides for security, concurrency, partial-failure, and operational testing.
 
 ## Using the task skills
 
 The five `*_SKILL.md` files in each workflow are portable and self-contained. Select the file matching the task and provide it to the LLM together with the relevant product specification, codebase, or test context.
 
-Do not treat a workflow pack as proof that a control exists in your application. Verify actual routes, permissions, state transitions, data writes, external calls, retries, tests, and production behavior.
+Do not treat a workflow pack as proof that a control exists in your application. Verify actual routes, permissions, state transitions, data writes, external calls, retries, tests, and production behaviour.
+
+## Contributing a workflow
+
+Read the [repository contribution guide](../CONTRIBUTING.md) before proposing a pack. It defines the required 13-file structure, MECE workflow boundaries, scenario-coverage rules, and pull-request checklist.
 
 ## Collection summary
 
-- 20 independently usable business workflow packs
-- 260 workflow-specific Markdown files
-- 400 compact core scenarios
-- 400 complete Given/When/Expect scenario descriptions
-- 100 portable task skills
+- 18 independently usable business workflow packs
+- 234 workflow-specific Markdown files
+- 360 compact core scenarios
+- 360 complete Given/When/Expect scenario descriptions
+- 90 portable task skills
 
 These packs are starting points for application-specific analysis. Product rules, laws, provider contracts, data-retention requirements, and operational limits still need to be adapted to the repository being reviewed.
