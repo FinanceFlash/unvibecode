@@ -408,7 +408,7 @@ Complete one Google Form after finishing:
 2. Prebuilt Workflow Feedback
 3. GitHub Contribution
 
-👉 **[SUBMIT THROUGH THE GOOGLE FORM](PASTE_STUDENT_RESPONSE_LINK_HERE)**
+👉 **[SUBMIT THROUGH THE GOOGLE FORM](https://docs.google.com/forms/d/e/1FAIpQLSfUUzk9zxbmrERW_ymxdV0ViyCGYaHmF4dFo5VAEiXvXSA1dQ/viewform?usp=sharing&ouid=106408874025328506622)**
 
 The form will ask for:
 
