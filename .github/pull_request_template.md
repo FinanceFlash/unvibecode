@@ -25,7 +25,7 @@ Complete these items only when adding or changing a pre-built workflow pack.
 - [ ] The pack owns one primary business outcome and does not duplicate an existing pack.
 - [ ] The 20 core scenarios are distinct and collectively cover the declared boundary.
 - [ ] Every core scenario states what must not happen.
-- [ ] All 13 required files use consistent actors, objects, states, and outcome names.
+- [ ] All 13 required files use consistent `People and systems`, `Things created or changed`, `Stages`, and outcome names.
 
 ## Remaining limitations
 

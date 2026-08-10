@@ -68,7 +68,7 @@ The review is not required for wording-only documentation changes. Do not attach
 
 ## Contributing a pre-built workflow pack
 
-Add the workflow as one clearly named folder under `prebuilt-workflow-paths/`. Copy an existing complete pack as the structural starting point and replace its content; do not leave copied actors, states, risks, or examples from the source pack.
+Add the workflow as one clearly named folder under `prebuilt-workflow-paths/`. Copy an existing complete pack as the structural starting point and replace its content; do not leave copied people, systems, things, stages, risks, or examples from the source pack.
 
 Every pack must contain:
 
@@ -86,6 +86,15 @@ Every pack must contain:
 - `IMPLEMENT_WORKFLOW_SKILL.md`
 - `TEST_WORKFLOW_SKILL.md`
 
+Use the same terms that appear inside every workflow pack:
+
+| Workflow-pack heading | What it covers |
+| --- | --- |
+| `People and systems` | The people, teams, services, providers, and other systems involved |
+| `Things created or changed` | The important records, requests, payments, orders, messages, or other items affected |
+| `Stages` | The meaningful points that those things move through during the workflow |
+| `Must not happen` | The harmful or incorrect result that each scenario must prevent |
+
 ### MECE rules for workflow packs
 
 MECE means the pack's scenarios should be mutually exclusive enough to avoid duplicates and collectively broad enough to cover the important business paths within its stated boundary.
@@ -93,10 +102,10 @@ MECE means the pack's scenarios should be mutually exclusive enough to avoid dup
 1. **Define one business boundary.** State the exact event that starts the workflow and the authoritative outcomes that end it.
 2. **Declare included and excluded scope.** Excluded adjacent workflows must be named explicitly. Reference their packs instead of duplicating them.
 3. **Own one primary business outcome.** A pack may coordinate related effects, but it must not combine separate lifecycles such as payment, fulfilment, refund, and dispute into one oversized workflow.
-4. **Keep scenarios distinct.** Each core scenario needs a different trigger, state, permission boundary, timing condition, or failure mechanism. Rewording the same failure is not a new scenario.
-5. **Cover the whole boundary.** The 20 scenarios together must include normal completion, invalid input, denied action, state boundaries, concurrency, permission or abuse, dependency failure, partial completion, retry, and recovery where applicable.
-6. **State the forbidden outcome.** Every core scenario must say what must not happen, such as a duplicate charge, stale state transition, cross-tenant access, silent data loss, or contradictory customer outcome.
-7. **Use one vocabulary everywhere.** Actors, business objects, states, start and end events, and outcome names must match across all guides, scenarios, and skills.
+4. **Keep scenarios distinct.** Each core scenario needs a different trigger, stage, permission boundary, timing condition, or failure mechanism. Rewording the same failure is not a new scenario.
+5. **Cover the whole boundary.** The 20 scenarios together must include normal completion, invalid input, denied action, stage boundaries, concurrency, permission or abuse, dependency failure, partial completion, retry, and recovery where applicable.
+6. **Say what must not happen.** Every core scenario must name the harmful or incorrect result to prevent, such as a duplicate charge, stale stage change, cross-tenant access, silent data loss, or contradictory customer outcome.
+7. **Use one vocabulary everywhere.** `People and systems`, `Things created or changed`, `Stages`, start and end events, and outcome names must match across all guides, scenarios, and skills.
 8. **Separate generic rules from code evidence.** A reusable pack may describe expected controls. It must not claim that a repository implements a control unless file, symbol, path, or runtime evidence supports that claim.
 9. **Keep the five LLM skills task-specific.** Product specification, business-risk review, code understanding, implementation, and testing must have distinct instructions and outputs.
 10. **Make the pack self-contained.** A reader must understand a scenario without decoding internal IDs or opening several files to learn its trigger and expected result.
@@ -106,10 +115,10 @@ Before submitting, compare every proposed scenario with the other 19. Merge dupl
 ### Workflow-pack pull request checklist
 
 - [ ] The folder name is descriptive and has no numeric prefix.
-- [ ] `README.md` states start, end, included scope, and excluded scope.
+- [ ] `README.md` gives the start, end, included scope, and excluded scope.
 - [ ] The pack does not duplicate the primary outcome of an existing pack.
 - [ ] Exactly 20 distinct core scenarios are present.
-- [ ] Every core scenario includes a forbidden outcome.
+- [ ] Every core scenario says what `Must not happen`.
 - [ ] Testing scenarios cover happy, negative, boundary, concurrency, permission, partial-failure, retry, and recovery paths where applicable.
 - [ ] All 13 required files are present and use consistent terminology.
 - [ ] All five LLM skill files include valid `name` and `description` frontmatter.
