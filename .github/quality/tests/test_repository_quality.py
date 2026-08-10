@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 PACKS_ROOT = ROOT / "prebuilt-workflow-paths"
 
 REQUIRED_PACK_FILES = {
@@ -73,8 +73,16 @@ def test_pack_index_links_every_workflow_pack():
 def test_github_automation_files_are_in_discoverable_locations():
     assert (ROOT / ".github/workflows/test.yml").is_file()
     assert (ROOT / ".github/pull_request_template.md").is_file()
+    assert (ROOT / ".github/CONTRIBUTING.md").is_file()
+    assert (ROOT / ".github/quality/requirements.txt").is_file()
+    assert (ROOT / ".github/quality/pyproject.toml").is_file()
+    assert (ROOT / ".github/quality/tests/test_repository_quality.py").is_file()
     assert not (ROOT / "test.yml").exists()
     assert not (ROOT / "pull_request_template.md").exists()
+    assert not (ROOT / "CONTRIBUTING.md").exists()
+    assert not (ROOT / "requirements-dev.txt").exists()
+    assert not (ROOT / "pyproject.toml").exists()
+    assert not (ROOT / "tests/test_repository_quality.py").exists()
 
 
 @pytest.mark.parametrize("markdown_file", sorted(ROOT.rglob("*.md")))

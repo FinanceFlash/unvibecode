@@ -28,7 +28,7 @@ This public repository currently contains documentation, workflow packs, and the
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements-dev.txt
+python -m pip install -r .github/quality/requirements.txt
 ```
 
 On Windows PowerShell, activate the environment with:
@@ -40,9 +40,9 @@ On Windows PowerShell, activate the environment with:
 Run the same checks used in pull requests:
 
 ```bash
-python -m black --check tests
-python -m flake8 tests
-python -m pytest
+python -m black --config .github/quality/pyproject.toml --check .github/quality/tests
+python -m flake8 --config .github/quality/.flake8 .github/quality/tests
+python -m pytest -c .github/quality/pyproject.toml .github/quality/tests
 ```
 
 The test suite verifies local Markdown links, workflow-pack structure, core scenario counts, workflow boundaries, and LLM skill metadata.

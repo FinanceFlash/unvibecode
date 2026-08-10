@@ -10,9 +10,9 @@ Summarize the implementation or content change.
 
 List the commands, fixtures, public repositories, and outputs used to verify the change.
 
-- [ ] `python -m black --check tests`
-- [ ] `python -m flake8 tests`
-- [ ] `python -m pytest`
+- [ ] `python -m black --config .github/quality/pyproject.toml --check .github/quality/tests`
+- [ ] `python -m flake8 --config .github/quality/.flake8 .github/quality/tests`
+- [ ] `python -m pytest -c .github/quality/pyproject.toml .github/quality/tests`
 - [ ] I used UnvibeCode on a representative repository when the change affects code analysis, CLI behaviour, engineering guidance, or code-specific claims.
 - [ ] I updated documentation for changed user-facing behaviour.
 - [ ] I included no credentials, proprietary source, customer data, generated customer reports, or unsanitized logs.

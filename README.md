@@ -238,7 +238,7 @@ Only submit repositories that you are authorized to analyse.
 
 ## Contributing and license
 
-- Read the [contribution guidelines](CONTRIBUTING.md) before proposing a change.
+- Read the [contribution guidelines](.github/CONTRIBUTING.md) before proposing a change.
 - Explore the [pre-built business workflow packs](prebuilt-workflow-paths/README.md) or contribute a new one using the MECE rules.
 - Look for a focused starting point in [good first issues](https://github.com/FinanceFlash/unvibecode/labels/good%20first%20issue).
 - Reuse and distribution are governed by the repository's [license](LICENSE).
