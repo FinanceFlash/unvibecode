@@ -70,7 +70,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [Right-to-erasure and Account-data Deletion](account-data-deletion-and-right-to-erasure/) | verifies and executes deletion or anonymization requests across data stores and processors |
 | [Scheduled Job Execution, Checkpoint, Retry, and Recovery](scheduled-job-execution-retry-and-recovery/) | runs scheduled work with leases, bounded input windows, checkpoints, retries, and repair |
 
-The navigation categories are only for discovery. Each workflow has its own clear start, end, state, effects, permissions, and recovery boundary.
+The navigation categories are only for discovery. Each workflow has its own clear start, end, stages, effects, permissions, and recovery boundary.
 
 ## What each workflow contains
 
@@ -79,9 +79,9 @@ Every workflow folder uses the same flat structure:
 | File | Best for | Purpose |
 |---|---|---|
 | `README.md` | Everyone | Workflow boundary, included scope, excluded scope, and file navigation |
-| `PRODUCT_AND_BUSINESS_GUIDE.md` | PMs and founders | Actors, business objects, states, decisions, paths, edge cases, acceptance criteria, and consequences |
+| `PRODUCT_AND_BUSINESS_GUIDE.md` | PMs and founders | People and systems, things created or changed, stages, decisions, paths, edge cases, acceptance criteria, and consequences |
 | `ENGINEERING_GUIDE.md` | Developers and engineering managers | Code-tracing sequence, implementation safeguards, effects, state, and recovery concerns |
-| `CORE_20_SCENARIOS.md` | Everyone | Compact checklist of the 20 essential scenarios and forbidden outcomes |
+| `CORE_20_SCENARIOS.md` | Everyone | Compact checklist of the 20 essential scenarios and what must not happen |
 | `TESTING_GUIDE.md` | QA and developers | All 20 scenarios written with Given, When, Expect, Must not happen, and suggested test levels |
 | `PATHS_AND_EDGE_CASES.md` | PMs, QA, and developers | Supported, denied, timing, boundary, concurrency, and unusual paths |
 | `PERMISSION_AND_ABUSE_GUIDE.md` | Security, PMs, and engineers | Authorization boundaries, misuse paths, tenant isolation, and protected data |
@@ -91,6 +91,8 @@ Every workflow folder uses the same flat structure:
 | `UNDERSTAND_CODE_SKILL.md` | Developers using an LLM | Traces the workflow through an existing codebase with file and symbol evidence |
 | `IMPLEMENT_WORKFLOW_SKILL.md` | Developers using an LLM | Implements or modifies the workflow while preserving its key safeguards |
 | `TEST_WORKFLOW_SKILL.md` | Testers and developers using an LLM | Designs or reviews the complete workflow-specific test set |
+
+Every `PRODUCT_AND_BUSINESS_GUIDE.md` uses the exact headings `People and systems`, `Things created or changed`, and `Stages`. Every core scenario uses `Must not happen` for the outcome that the workflow must prevent.
 
 ## Recommended reading paths
 
