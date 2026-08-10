@@ -123,7 +123,7 @@ Do not treat a workflow pack as proof that a control exists in your application.
 
 ## Contributing a workflow
 
-Read the [repository contribution guide](../CONTRIBUTING.md) before proposing a pack. It defines the required 13-file structure, MECE workflow boundaries, scenario-coverage rules, and pull-request checklist.
+Read the [repository contribution guide](../.github/CONTRIBUTING.md) before proposing a pack. It defines the required 13-file structure, MECE workflow boundaries, scenario-coverage rules, and pull-request checklist.
 
 ## Collection summary
 
