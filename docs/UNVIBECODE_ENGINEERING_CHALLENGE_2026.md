@@ -476,12 +476,12 @@ Large repositories do not automatically receive more points. We care more about 
 
 ---
 
-# 🏢 About Alphashots.ai
+# 🏢 About Us
 
-Alphashots.ai is a pre-seed funded AI startup building tools for developer productivity, code understanding and advanced analytics.
+Alphashots.ai is a pre-seed funded AI Fintech startup building opensource tools for developer productivity, code understanding and advanced analytics.
 
-- **Divya — IIM Lucknow Alumna:** Leading strategy, product and growth.
-- **Rajendran S:** Leading technical architecture, engineering pipelines and LLM infrastructure.
+- **Divya — IIM L** Leading strategy, product architecture and growth.
+- **Suresh Rajendran -IIT G** Leading technical architecture, engineering pipelines and LLM infrastructure.
 
 Ready to unvibe some code?
 
