@@ -220,5 +220,4 @@ Only submit repositories that you are authorized to analyse.
 ## Contributing, security, and license
 
 - Read the [contribution guidelines](CONTRIBUTING.md) before proposing a change.
-- Report vulnerabilities through the process described in [SECURITY.md](SECURITY.md).
 - Reuse and distribution are governed by the repository's [license](LICENSE).
