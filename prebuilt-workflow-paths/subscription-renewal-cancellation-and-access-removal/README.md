@@ -1,6 +1,6 @@
 # Subscription Renewal, Cancellation, and Entitlement Release
 
-Starts at an automatic renewal boundary or an authorized cancellation request. Ends when the subscription is renewed, enters an explicit past-due or grace state, is scheduled to cancel, terminates, or is restored with billing and product access reconciled.
+Starts when an automatic renewal boundary arrives or an authorized cancellation is requested. Ends when the subscription is renewed, enters an explicit past-due or grace state, is scheduled to cancel, terminates, or is restored with billing and product access reconciled.
 
 | Task | File |
 |---|---|
@@ -25,4 +25,3 @@ Starts at an automatic renewal boundary or an authorized cancellation request. E
 - refund and dispute processing
 
 The five `*_SKILL.md` files are self-contained.
-

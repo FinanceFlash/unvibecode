@@ -6,7 +6,7 @@ Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
 [![Quality checks](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg)](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml)
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
-[![Python versions](https://img.shields.io/pypi/pyversions/unvibecode.svg)](https://pypi.org/project/unvibecode/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://pypi.org/project/unvibecode/)
 [![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
 
 **PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
@@ -76,11 +76,11 @@ The **Complete Repository Context** organizes code into reusable chunks with fil
 
 ```text
 complete_repository_context_for_llm.zip
-â”œâ”€â”€ manifest.json
-â”œâ”€â”€ chunks.jsonl
-â”œâ”€â”€ connections.jsonl
-â”œâ”€â”€ selections.jsonl
-â””â”€â”€ README.md
+|-- manifest.json
+|-- chunks.jsonl
+|-- connections.jsonl
+|-- selections.jsonl
+`-- README.md
 ```
 
 ### 3. Trace code as business workflows
@@ -133,12 +133,12 @@ For a supported repository, the automatically created results folder contains:
 
 ```text
 shipready_results/
-â””â”€â”€ analysis_<timestamp>/
-    â””â”€â”€ customer_results/
-        â”œâ”€â”€ 01_connected_code_map_for_llm.html
-        â”œâ”€â”€ complete_repository_context_for_llm.zip
-        â”œâ”€â”€ 02_business_workflow_map.html
-        â””â”€â”€ 03_business_risk_findings.html
+`-- analysis_<timestamp>/
+    `-- customer_results/
+        |-- 01_connected_code_map_for_llm.html
+        |-- complete_repository_context_for_llm.zip
+        |-- 02_business_workflow_map.html
+        `-- 03_business_risk_findings.html
 ```
 
 ## What UnvibeCode does not replace
@@ -179,13 +179,28 @@ Read the complete [data-processing explanation](docs/DATA_PROCESSING.md).
 - Internet access for hosted business analysis
 - Read access to the repository being reviewed
 
+## Supported languages
+
+UnvibeCode 0.3.3 supports connected code mapping and LLM-context preparation for:
+
+| Language | Recognized file types |
+| --- | --- |
+| Python | `.py` |
+| JavaScript | `.js`, `.jsx`, `.mjs`, `.cjs` |
+| TypeScript | `.ts`, `.tsx` |
+| Rust | `.rs` |
+| PHP | `.php` |
+| Ruby | `.rb` |
+| Web assets | `.html`, `.htm`, `.css` |
+
+C, C++, Java, Go, C#, Kotlin, and Swift files are detected but are not yet included in full connected-code analysis. Follow [the C and C++ language-support issue](https://github.com/FinanceFlash/unvibecode/issues/1) for the first planned extension.
+
 ## Support and feedback
 
 For installation problems, failed reviews, report-interpretation questions, public-repository review requests, collaboration enquiries, or general feedback:
 
 - Open a [GitHub issue](https://github.com/FinanceFlash/unvibecode/issues) for reproducible package problems.
 - Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) for product questions, public-repository review requests, or collaboration enquiries.
-- Report security vulnerabilities through the process described in [SECURITY.md](SECURITY.md).
 
 When requesting technical support, include:
 
@@ -220,9 +235,8 @@ Only submit repositories that you are authorized to analyse.
 - [Data processing and privacy](docs/DATA_PROCESSING.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Public preview policy](docs/PUBLIC_PREVIEW.md)
-- [Version history](CHANGELOG.md)
 
-## Contributing, security, and license
+## Contributing and license
 
 - Read the [contribution guidelines](CONTRIBUTING.md) before proposing a change.
 - Explore the [pre-built business workflow packs](prebuilt-workflow-paths/README.md) or contribute a new one using the MECE rules.
