@@ -16,7 +16,7 @@ Install UnvibeCode, run it on a real open-source repository, explore how the cod
 
 ## Who can participate?
 
-- Final-year engineering students
+- Engineering students
 - Techie searching for job
 - Software engineers
 - Participate individually or as a team
