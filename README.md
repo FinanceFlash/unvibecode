@@ -1,9 +1,14 @@
 # UnvibeCode
+
 **Unvibe complex code. Trace business workflows.**
 
 Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
+[![Quality checks](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg)](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml)
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
+[![Python versions](https://img.shields.io/pypi/pyversions/unvibecode.svg)](https://pypi.org/project/unvibecode/)
+[![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
+
 **PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
@@ -71,11 +76,11 @@ The **Complete Repository Context** organizes code into reusable chunks with fil
 
 ```text
 complete_repository_context_for_llm.zip
-├── manifest.json
-├── chunks.jsonl
-├── connections.jsonl
-├── selections.jsonl
-└── README.md
+â”œâ”€â”€ manifest.json
+â”œâ”€â”€ chunks.jsonl
+â”œâ”€â”€ connections.jsonl
+â”œâ”€â”€ selections.jsonl
+â””â”€â”€ README.md
 ```
 
 ### 3. Trace code as business workflows
@@ -128,12 +133,12 @@ For a supported repository, the automatically created results folder contains:
 
 ```text
 shipready_results/
-└── analysis_<timestamp>/
-    └── customer_results/
-        ├── 01_connected_code_map_for_llm.html
-        ├── complete_repository_context_for_llm.zip
-        ├── 02_business_workflow_map.html
-        └── 03_business_risk_findings.html
+â””â”€â”€ analysis_<timestamp>/
+    â””â”€â”€ customer_results/
+        â”œâ”€â”€ 01_connected_code_map_for_llm.html
+        â”œâ”€â”€ complete_repository_context_for_llm.zip
+        â”œâ”€â”€ 02_business_workflow_map.html
+        â””â”€â”€ 03_business_risk_findings.html
 ```
 
 ## What UnvibeCode does not replace
@@ -220,4 +225,6 @@ Only submit repositories that you are authorized to analyse.
 ## Contributing, security, and license
 
 - Read the [contribution guidelines](CONTRIBUTING.md) before proposing a change.
+- Explore the [pre-built business workflow packs](prebuilt-workflow-paths/README.md) or contribute a new one using the MECE rules.
+- Look for a focused starting point in [good first issues](https://github.com/FinanceFlash/unvibecode/labels/good%20first%20issue).
 - Reuse and distribution are governed by the repository's [license](LICENSE).
