@@ -11,7 +11,7 @@ Install UnvibeCode, run it on a real open-source repository, explore how the cod
 ⭐ Like the project? Click **Star** in the top-right corner of the GitHub repository to support UnvibeCode and follow future updates. Starring is optional and does not affect judging.
 
 - **Registration opens:** 10 August 2026 
-- ** Registration close** 28 August 2026 
+- **Registration close** 28 August 2026 
 - **Submission deadline:** 31 August 2026
 - **Results announced:** 7 September 2026
 
