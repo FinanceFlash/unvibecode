@@ -177,14 +177,13 @@ Choose at least one of the following tracks. You may submit a second contributio
 
 ## Track A: Suggest a New Business Risk
 
-Open a GitHub Issue suggesting a business risk or workflow problem that UnvibeCode should detect.
+Open a GitHub Issue suggesting a problem when using unvibecode
 
 Examples:
 
-- A payment is processed twice after a retry
-- A user receives access before payment is confirmed
-- A cancelled booking does not release capacity
-- Browser information is trusted without checking it on the server
+•	A user did not receive outputs when browser is chrome  
+•	Browser information is trusted without checking it on the server
+
 
 ### How to submit Track A
 
@@ -392,11 +391,6 @@ Open the Pull Request from your branch to:
 FinanceFlash/unvibecode → main
 ```
 
-## Step 6: Wait for Quality Checks
-
-GitHub automatically checks the files, links and workflow structure.
-
-If a check fails, open it, read the reported problem, update your branch, and wait for the check to run again.
 
 ---
 
@@ -458,7 +452,7 @@ You do not need to create a `submissions/your-name/` folder in the repository.
 
 - 🚀 **Top 10 Ranks:** Personalized **LinkedIn Recommendations** from our founding team to boost your profile visibility to top-tier recruiters.
 - 📈 **Top 50 Ranks:** Official **Certificate of Open-Source Contribution** signed by the Alphashots.ai founding team, plus your code permanently merged into the main production repository.
-- ⚡ **Scale-Up Bonus:** If student participation crosses milestone thresholds, we will unlock **exclusive resume review sessions** and **mock technical interview slots** with industry veterans for top participants.
+
 
 ---
 
