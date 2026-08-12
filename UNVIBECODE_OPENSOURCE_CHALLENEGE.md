@@ -4,59 +4,78 @@
 
 **Unvibe complex code. Trace business workflows.**
 
-Install UnvibeCode, run it on a real open-source repository, explore how the code connects, review a prebuilt business workflow, and make a useful GitHub contribution.
+Are you a fresher who wants your GitHub profile to stand out during internships, placements and job applications?
+
+Build real open-source experience with us by trying UnvibeCode and making one focused contribution to the project.
+
+Compete for a **₹10,000 cash prize pool**, LinkedIn recommendations, contribution certificates and GitHub contributor recognition.
+
+The full challenge takes around **25–40 minutes**:
+
+- **5–15 minutes:** Run UnvibeCode on a small or medium public repository
+- **Around 15 minutes:** Complete one small contribution or submit one useful suggestion
+- **5–10 minutes:** Open your Issue or Pull Request and complete the short Google Form
 
 👉 **[VIEW UNVIBECODE ON GITHUB](https://github.com/FinanceFlash/unvibecode)**
 
-⭐ Like the project? Click **Star** in the top-right corner of the GitHub repository to support UnvibeCode and follow future updates. Starring is optional and does not affect judging.
+⭐ **Start here:** Open the repository and click **Star** to bookmark UnvibeCode and support the project. If you submit a Pull Request, click **Fork** to create your contribution copy.
 
-- **Registration opens:** 10 August 2026 
-- **Submission deadline:** 31 August 2026 (No registartion, you can submit directly)
+- **Challenge opens:** 10 August 2026
+- **Submission deadline:** 31 August 2026
 - **Results announced:** 7 September 2026
+- **Registration:** No separate registration. Submit directly through the Google Form.
+
+# 🎁 Rewards and Career Incentives
+
+- 🥇 **1st Place:** **₹5,000 / cash equivalent** + named as a **Core Project Maintainer** on GitHub
+- 🥈 **2nd Place:** **₹3,000 / cash equivalent** + Featured Open-Source Contributor recognition
+- 🥉 **3rd Place:** **₹2,000 / cash equivalent** + Featured Open-Source Contributor recognition
+- **Top 10:** Personalized LinkedIn recommendations from the founding team
+- **Top 50:** Certificate of Open-Source Contribution signed by the Alphashots.ai founding team
+- **First 100 eligible completers:** **AI System Design Interview Preparation Pack**, including architecture frameworks, scalability checklists, LLM and agentic-AI design questions, and practice case prompts
+
+The first 100 are selected using the Google Form submission timestamp after checking that the submission is complete, original and valid. Duplicate, incomplete, copied or unrelated entries do not reserve a place.
 
 ## Who can participate?
 
-- Engineering students
-- Techie searching for job
+- Engineering students, including final-year students
+- Job seekers and early-career developers
 - Software engineers
-- Participate individually or as a team
+- Individuals or teams
 
 ---
 
 # ✅ What You Must Submit
 
-Every participant or team must complete **three submissions**:
+Only **two short parts** are required:
 
-| Submission | What you do | Where you submit it |
+| Part | What you do | Where you submit it |
 | --- | --- | --- |
-| **1. Repository Analysis** | Run UnvibeCode on an open-source repository and review the results | Google Form |
-| **2. Prebuilt Workflow Feedback** | Review one prebuilt workflow and share what was useful, unclear, or missing | The same Google Form |
-| **3. GitHub Contribution** | Choose Track A, B, or C and submit a GitHub Issue or Pull Request | GitHub first, then add its link to the same Google Form |
+| **1. Quick Repository Trial** | Run UnvibeCode on one public repository and share brief technical feedback | Google Form |
+| **2. GitHub Contribution** | Choose Track A or Track B and submit one Issue or Pull Request | GitHub, then paste the link in the Google Form |
 
-Only **one Google Form** is required. It collects all three submissions.
-
-For Submission 3, you must submit at least one contribution. You may submit a second contribution if you want. Each contribution must use a separate GitHub Issue or Pull Request.
+One contribution is enough.
 
 ---
 
-# 🔍 Submission 1: Analyze an Open-Source Repository
+# 🔍 Part 1: Quick Repository Trial
 
-## Step 1: Install UnvibeCode
+## 1. Install UnvibeCode
 
 ```bash
 pip install unvibecode
 ```
 
-## Step 2: Choose a repository
+## 2. Choose a repository
 
-You can:
+Choose either:
 
-- Use your own open GitHub repository, or
-- Download any publicly available open-source repository from GitHub
+- Your own repository, or
+- Any public open-source repository downloaded from GitHub
 
-UnvibeCode currently works best with Python, JavaScript, TypeScript, Rust, PHP, Ruby, HTML and CSS repositories.
+Example: download the public [Flask repository](https://github.com/pallets/flask), extract it to `D:\flask`, and analyze that folder.
 
-## Step 3: Run UnvibeCode
+## 3. Run the analysis
 
 ```bash
 python -m unvibecode review --repository "/path/to/repository"
@@ -65,400 +84,101 @@ python -m unvibecode review --repository "/path/to/repository"
 Windows example:
 
 ```powershell
-python -m unvibecode review --repository "D:\your-repository"
+python -m unvibecode review --repository "D:\flask"
 ```
 
-No activation key or OpenAI API key is required.
+No activation key or OpenAI API key is required. For help, read the [UnvibeCode README](https://github.com/FinanceFlash/unvibecode).
 
-For installation help and examples, read the [UnvibeCode README](https://github.com/FinanceFlash/unvibecode).
+## 4. Share brief feedback
 
-## Step 4: Explore the results
-
-### Small and medium repositories
-
-You normally receive four outputs:
-
-1. **Connected Code Map**
-
-   See how files, functions, imports and calls connect. Click a file to explore and download its connected code for an LLM.
-
-2. **Complete Repository Context**
-
-   Get a ZIP containing organized code chunks and connections that can be used with an LLM.
-
-3. **Business Workflow Map**
-
-   See how the code performs workflows such as registration, payments, booking, approvals or notifications.
-
-4. **Business Risk Findings**
-
-   Review important workflow risks, supporting code evidence, possible business impact and suggested improvements.
-
-### Very large repositories
-
-Repositories above approximately two million source-code tokens receive:
-
-- Connected Code Map
-- Complete Repository Context
-
-The Business Workflow Map and Business Risk Findings may not be generated for very large repositories.
-
-Receiving these two outputs for a very large repository is still a valid submission.
-
-## Step 5: Submit your analysis feedback
-
-The Google Form will ask:
-
-- Which repository and programming language you analyzed
-- Which UnvibeCode version you used
-- Whether installation and analysis completed
-- How long the analysis took
-- Which outputs were generated
-- How useful each output was
-- Which output was most useful
-- Whether UnvibeCode helped you understand something you had missed
-- Whether you would use or recommend UnvibeCode again
-
-Positive and negative feedback are treated equally while judging.
-
-⭐ Did UnvibeCode help you understand the repository? Consider giving the [GitHub project a Star](https://github.com/FinanceFlash/unvibecode) and sharing it with another developer who may find it useful.
+Share brief feedback through the Google Form.
 
 ---
 
-# 🧭 Submission 2: Review One Prebuilt Workflow
+# 🛠️ Part 2: Choose One GitHub Track
 
-Visit the [UnvibeCode Prebuilt Workflow Collection](https://github.com/FinanceFlash/unvibecode/tree/main/prebuilt-workflow-paths).
+Choose **one** track. Both are eligible for the same prizes.
 
-## Step 1: Choose a workflow
+## Track A: Submit a Useful Issue
 
-Choose one workflow that is related to the repository you analyzed or to a software product you understand.
+Suggest one clear improvement. **No Pull Request is required.**
 
-You can use the [Checkout Payment Workflow](https://github.com/FinanceFlash/unvibecode/tree/main/prebuilt-workflow-paths/checkout-payment-authorization-and-capture) as a complete example.
-
-## Step 2: Open the workflow files
-
-Inside the workflow folder:
-
-1. Open `README.md` to understand where the workflow starts, where it ends, and what is included or excluded.
-2. Open `PRODUCT_AND_BUSINESS_GUIDE.md` and review these exact sections:
-
-   - `People and systems`
-   - `Things created or changed`
-   - `Stages`
-   - `Happy paths`
-   - `Negative paths`
-   - `Edge cases`
-   - `Acceptance criteria`
-   - `Business risks`
-
-3. Open `CORE_20_SCENARIOS.md` to review its 20 important scenarios and what `Must not happen`.
-4. Open `TESTING_GUIDE.md` if you want the complete Given, When, Expect, and Must not happen details.
-5. You may also review the permission, abuse, retry and recovery guides.
-
-## Step 3: Submit your workflow feedback
-
-The Google Form will ask:
-
-- Which workflow you reviewed
-- Whether `People and systems` were clear
-- Whether `Things created or changed` were clear
-- Whether the workflow `Stages` were clear
-- Whether the 20 core scenarios were useful
-- Whether testing, retry, recovery and permission guidance was useful
-- Whether an important scenario was missing
-- Whether you would use the workflow while developing or testing software
-- What was unclear or could be improved
-
----
-
-# 🛠️ Submission 3: Make a GitHub Contribution
-
-Choose at least one of the following tracks. You may submit a second contribution under the same or a different track.
-
-## Track A: Suggest a New Business Risk
-
-Open a GitHub Issue suggesting a business risk or workflow problem that UnvibeCode should detect.
-
-Examples:
-
-- A payment is processed twice after a retry
-- A user receives access before payment is confirmed
-- A cancelled booking does not release capacity
-- Browser information is trusted without checking it on the server
-
-### How to submit Track A
-
-Open a [new GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new).
-
-Use this title format:
-
-```text
-[Challenge 2026][Track A] Short name of your idea
-```
-
-Example:
-
-```text
-[Challenge 2026][Track A] Detect duplicate payment after a lost response
-```
-
-Include:
+Open a [GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new) with:
 
 ```markdown
+Title: [Challenge 2026][Issue] Short description
+
 ## Problem
+What is missing, broken or confusing?
 
-What can go wrong?
-
-## Where it happens
-
-What type of code or workflow may contain this problem?
-
-## Why it matters
-
-How could it affect users, developers or the business?
-
-## Suggested check
-
-What should UnvibeCode look for?
+## Suggestion
+What should we add or change?
 
 ## Example
-
-Add a simple example or public repository if available.
+Add a command, link or screenshot if available.
 ```
 
-Track A requires a GitHub Issue. It does not require a Pull Request.
+**Example:**
 
----
+```text
+[Challenge 2026][Issue] Add clearer Windows installation help
 
-## Track B: Improve a Prebuilt Workflow
+The README does not explain what to do when the python command is unavailable.
+Please add a py -m pip example and a short Python PATH troubleshooting note.
+```
+
+## Track B: Make a Small Improvement
+
+Change one small thing in the repository. **A Pull Request is required for this track.**
 
 You can:
 
-- Improve an unclear scenario
-- Replace a repeated or weak scenario
-- Add a missing failure, permission, retry or recovery situation
-- Improve a workflow guide
-- Create a new workflow that is not already available
-
-Every workflow must contain exactly **20 core scenarios**.
-
-If you add a missing scenario to an existing workflow, replace or combine another scenario so that the total remains 20.
-
-Read the [workflow contribution rules](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md#contributing-a-pre-built-workflow-pack) before making your change.
-
-### MECE made simple
-
-MECE means:
-
-- Do not repeat the same situation using different words.
-- Cover the important ways the workflow can succeed, fail or recover.
-
-For a new workflow:
-
-1. Define where the workflow starts and ends in `README.md`.
-2. State what is included and excluded.
-3. List the `People and systems`.
-4. List the `Things created or changed`.
-5. Define the possible `Stages`.
-6. Write exactly 20 different core scenarios.
-7. State what `Must not happen` for every scenario.
-8. Cover success, invalid input, denied actions, timing, simultaneous actions, permissions, external failures, partial completion, retry and recovery where relevant.
-9. Use the same names in every file.
-10. Check that another workflow pack does not already cover the same workflow.
-
-Use an existing complete workflow pack as your starting structure. A new pack must contain all 13 files listed in the [contribution guide](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md#contributing-a-pre-built-workflow-pack).
-
-### Track B Pull Request example
-
-```text
-[Challenge 2026][Track B] Improve payment lost-response recovery
-```
-
-Example description:
-
-```markdown
-## Problem
-
-The checkout payment workflow did not clearly explain recovery when payment succeeds but the provider response is lost.
-
-## What I changed
-
-- Improved the lost-response scenario
-- Added a reconciliation step
-- Updated retry guidance
-- Kept exactly 20 core scenarios
-
-## Files changed
-
-- CORE_20_SCENARIOS.md
-- TESTING_GUIDE.md
-- RETRY_AND_RECOVERY_GUIDE.md
-
-## Checked
-
-- People and systems use the same names
-- Things created or changed use the same names
-- Stages use the same names
-- Every scenario says what Must not happen
-- GitHub Quality Checks passed
-```
-
----
-
-## Track C: Improve the Repository
-
-Make a real improvement that helps developers use or understand UnvibeCode.
-
-Examples:
-
 - Improve installation instructions
 - Fix broken or confusing documentation
-- Add a useful example
-- Improve automated tests
-- Improve GitHub Actions
-- Improve accessibility or navigation
-- Improve explanations of the reports
+- Add one useful example or test
 
-The public repository currently contains documentation, prebuilt workflows and repository-quality tests. Do not submit analyzer or CLI source changes because that source is not part of this repository.
-
-An idea without a repository change should be submitted under Track A. Track C must contain an actual improvement.
-
-### Track C Pull Request example
+Fork the repository, make the change and open a Pull Request titled:
 
 ```text
-[Challenge 2026][Track C] Add clearer Windows installation help
+[Challenge 2026][Improvement] Short description
 ```
 
-Example description:
+In the description, briefly state what you changed and how you checked it.
 
-```markdown
-## Problem
+**Example:**
 
-Windows users may not know what to do when the `python` command is unavailable.
+```text
+[Challenge 2026][Improvement] Add Windows py -m pip example
 
-## What I changed
-
-- Added a `py -m pip` example
-- Added a short Python PATH explanation
-- Added a troubleshooting link
-
-## Files changed
-
-- docs/QUICKSTART.md
-- docs/TROUBLESHOOTING.md
-
-## Checked
-
-- Commands are correct
-- Markdown links work
-- GitHub Quality Checks passed
+Added a Windows installation command and checked that the Markdown renders correctly.
 ```
 
 ---
 
-# 🔀 How to Submit a Track B or Track C Pull Request
+# 📤 Submit the Short Google Form
 
-## Step 1: Fork the repository
+After completing your contribution, submit this short form with your details, repository link, brief feedback and GitHub Issue or Pull Request link:
 
-Open [FinanceFlash/unvibecode](https://github.com/FinanceFlash/unvibecode) and click **Fork**.
+👉 **[SUBMIT THROUGH THE GOOGLE FORM](https://forms.gle/P1RCcihui9SqhXVb9)**
 
-## Step 2: Create a branch in your fork
+The form takes around 5 minutes. No screenshots or generated source-code reports need to be uploaded.
 
-Track B example:
-
-```text
-challenge/your-name-track-b
-```
-
-Track C example:
-
-```text
-challenge/your-name-track-c
-```
-
-## Step 3: Make one focused change
-
-Do not combine unrelated changes in one Pull Request.
-
-## Step 4: Commit the change to your branch
-
-Use a short message explaining what you changed.
-
-## Step 5: Open the Pull Request
-
-Open the Pull Request from your branch to:
-
-```text
-FinanceFlash/unvibecode → main
-```
-
-## Step 6: Wait for Quality Checks
-
-GitHub automatically checks the files, links and workflow structure.
-
-If a check fails, open it, read the reported problem, update your branch, and wait for the check to run again.
-
----
-
-# 📤 Submit All Three Parts
-
-Complete one Google Form after finishing:
-
-1. Repository Analysis
-2. Prebuilt Workflow Feedback
-3. GitHub Contribution
-
-👉 **[SUBMIT THROUGH THE GOOGLE FORM](https://docs.google.com/forms/d/e/1FAIpQLSfUUzk9zxbmrERW_ymxdV0ViyCGYaHmF4dFo5VAEiXvXSA1dQ/viewform?usp=sharing&ouid=106408874025328506622)**
-
-The form will ask for:
-
-- Your name or team name
-- Email address
-- GitHub profile
-- Repository analyzed
-- UnvibeCode analysis feedback
-- Prebuilt workflow feedback
-- Your first GitHub Issue or Pull Request link
-- Your optional second contribution link
-- One final open-ended improvement comment
-
-You do not need to create a `submissions/your-name/` folder in the repository.
+⭐ Finished your trial? If UnvibeCode was useful, [Star the repository](https://github.com/FinanceFlash/unvibecode) before submitting and share it with another developer.
 
 ---
 
 # ✅ Submission Rules
 
-- All three submissions are required.
-- Submission 1 and Submission 2 are completed inside the Google Form.
-- Submission 3 requires at least one GitHub Issue or Pull Request.
-- Track A must be submitted as a GitHub Issue.
-- Tracks B and C must be submitted as Pull Requests.
-- Submit only one contribution in each Issue or Pull Request.
-- You may submit one optional second contribution using a separate Issue or Pull Request.
-- Use the required title format.
-- Keep every contribution focused on one problem.
-- For Track B, keep exactly 20 core scenarios.
-- Wait for GitHub Quality Checks to pass.
+- Complete the Quick Repository Trial and one GitHub contribution.
+- Choose either Track A or Track B.
+- Track A requires one useful GitHub Issue. No Pull Request is required.
+- Track B requires one small improvement submitted through a Pull Request.
+- Submit one focused change or suggestion per Issue or Pull Request.
+- Pull Requests must come from a fork and pass the relevant GitHub checks.
 - Do not upload passwords, API keys, access tokens, private source code, customer information or generated reports containing source code.
-- Pull Request contributions will use the repository's [Apache License 2.0](https://github.com/FinanceFlash/unvibecode/blob/main/LICENSE).
-- Incomplete, copied or unrelated submissions may be rejected.
-- The organizers' decision on the final rankings will be final.
-
----
-
-# 🎁 Prizes and Career Rewards
-
-## 💰 Cash Prizes
-
-- 🥇 **1st Place:** **₹5,000 / Cash Equivalent** + Named as a **Core Project Maintainer** on GitHub.
-- 🥈 **2nd Place:** **₹3,000 / Cash Equivalent** + Featured Open-Source Contributor badge.
-- 🥉 **3rd Place:** **₹2,000 / Cash Equivalent** + Featured Open-Source Contributor badge.
-
-## 💼 Career and CV-Boosting Rewards
-
-- 🚀 **Top 10 Ranks:** Personalized **LinkedIn Recommendations** from our founding team to boost your profile visibility to top-tier recruiters.
-- 📈 **Top 50 Ranks:** Official **Certificate of Open-Source Contribution** signed by the Alphashots.ai founding team, plus your code permanently merged into the main production repository.
-- ⚡ **Scale-Up Bonus:** If student participation crosses milestone thresholds, we will unlock **exclusive resume review sessions** and **mock technical interview slots** with industry veterans for top participants.
+- Pull Request contributions use the repository's [Apache License 2.0](https://github.com/FinanceFlash/unvibecode/blob/main/LICENSE).
+- Copied, unrelated, spam or incomplete submissions may be rejected.
+- The organizers' decision on final rankings is final.
 
 ---
 
@@ -466,24 +186,24 @@ You do not need to create a `submissions/your-name/` folder in the repository.
 
 | Area | Points |
 | --- | ---: |
-| Repository analysis and understanding | 25 |
-| Quality and honesty of UnvibeCode feedback | 15 |
-| Prebuilt workflow review | 20 |
-| Usefulness of the GitHub contribution | 30 |
-| Clarity and completeness | 10 |
+| Usefulness of the contribution or suggestion | 40 |
+| Technical correctness and evidence | 25 |
+| Clarity and completeness | 20 |
+| Quick repository trial feedback | 15 |
 | **Total** | **100** |
 
-Large repositories do not automatically receive more points. We care more about what you understood, what you observed and what you contributed.
+Stars, follower counts and repository size do not affect judging. A focused documentation fix or well-supported suggestion can score as highly as a code change.
 
 ---
 
 # 🏢 About Us
 
-Alphashots.ai is a pre-seed funded AI Fintech startup building opensource tools for developer productivity, code understanding and advanced analytics.
+Alphashots.ai is a pre-seed-funded AI technology startup building open-source tools for developer productivity, code understanding and advanced analytics.
 
-- **Divya — IIM L** Leading strategy, product architecture and growth.
-- **Suresh Rajendran -IIT G** Leading technical architecture, engineering pipelines and LLM infrastructure.
+- **Divya — IIM Lucknow:** Strategy, product architecture and growth
+- **Suresh Rajendran — IIT Guwahati:** Technical architecture, engineering pipelines and LLM infrastructure
 
-Ready to unvibe some code?
+Ready to make your first useful open-source contribution?
 
 👉 **[VISIT UNVIBECODE ON GITHUB](https://github.com/FinanceFlash/unvibecode)**
+
