@@ -32,6 +32,10 @@ Eight practical principles for building coding agents, repository analyzers, dev
 
 Twenty-six production failure patterns with symptoms, failure mechanisms, safer replacements, and ship checks. Includes a production launch gate for model behaviour, retrieval, agent actions, and operations.
 
+### [40 AI and LLM Production Trade-Offs](./40_AI_LLM_PRODUCTION_TRADE_OFFS.md)
+
+Forty recurring production decisions across model behaviour, RAG, agents, reliability, safety, evaluation, and operations. Each comparison includes the advantages, disadvantages, and a practical decision rule.
+
 ## How to use the cheatsheet
 
 1. Open the guide or series relevant to your change.
