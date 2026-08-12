@@ -14,4 +14,4 @@
 - Never repeat capacity release or refund handoff solely because a response was lost.
 - Make provider disagreement and incomplete customer outcomes visible.
 - Reconcile booking, capacity, provider, waitlist, payment, refund, and communication.
-
+- When the cancellation response is lost, first check whether capacity was already released and whether a refund request already exists as two independent facts -  do not assume both succeeded or both failed together, since one can complete while the other is still pending.
