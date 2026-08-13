@@ -92,6 +92,12 @@ No activation key or OpenAI API key is required. For help, read the [UnvibeCode 
 ## 4. Share brief feedback
 
 Share brief feedback through the Google Form.
+The feedback can be highlighting good or bad or on any features or any improvements 
+Examples
+ - Suggesting changes/Improvements, such as including "Skills" in the business risk output, to help resolve risks more effectively.
+ - Highlighting any output that helped you (business risk, business workflow or connected code map) to understand the repo  
+ - Noting anything that does not work well or needs better accuracy (for example, if a business workflow output feels hallucinated)
+Note: This is an open-text field. Any ideas or thoughts on your experience using Unvibecode are welcome. Our mission is to transform projects from vibe-coding mess-ups into verified engineering
 
 ---
 
