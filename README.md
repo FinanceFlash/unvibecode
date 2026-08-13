@@ -55,7 +55,7 @@ python -m unvibecode review --repository "D:\upstox"
 
 No activation key. No OpenAI API key. The repository path is the only required input.
 
-UnvibeCode displays live progress, opens the completed reports, and saves the results automatically under `./shipready_results`.
+UnvibeCode displays live progress, opens the completed reports, and saves the results automatically under `./unvibecode_results`.
 
 ## One review. Four practical outputs.
 
@@ -131,7 +131,7 @@ Completed workflows are checked for failures that may affect customers, payments
 For a supported repository, the automatically created results folder contains:
 
 ```text
-shipready_results/
+unvibecode_results/
 `-- analysis_<timestamp>/
     `-- customer_results/
         |-- 01_connected_code_map_for_llm.html
