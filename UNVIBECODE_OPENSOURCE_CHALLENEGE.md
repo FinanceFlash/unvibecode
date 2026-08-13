@@ -106,7 +106,7 @@ Suggest one clear improvement. **No Pull Request is required.**
 Open a [GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new) with:
 
 ```markdown
-Title: [Challenge 2026][Issue] Short description
+Title: [Issue] Short description
 
 ## Problem
 What is missing, broken or confusing?
@@ -127,7 +127,10 @@ The README does not explain what to do when the python command is unavailable.
 Please add a py -m pip example and a short Python PATH troubleshooting note.
 ```
 
-## Track B: Make a Small Improvement
+## Track B: Make a Small Improvement 
+
+Please look at contribution guide before making suggestions:([https://github.com/FinanceFlash/unvibecode/.github/CONTRIBUTING.md](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md))
+
 
 Change one small thing in the repository. **A Pull Request is required for this track.**
 
@@ -136,6 +139,8 @@ You can:
 - Improve installation instructions
 - Suggestios on pre-built workflows-paths 
 - Add one useful example or test on pre-built workflows-paths
+- Add relavent material (no AI written or AI slop) on AI Engineering Cheatsheet 
+  
 
 Fork the repository, make the change and open a Pull Request titled:
 
