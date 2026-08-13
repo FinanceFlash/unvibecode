@@ -36,6 +36,11 @@ On Windows PowerShell, activate the environment with:
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
+On Windows Command Prompt (CMD), activate the environment with:
+
+```cmd
+.venv\Scripts\activate.bat
+```
 
 Run the same checks used in pull requests:
 
