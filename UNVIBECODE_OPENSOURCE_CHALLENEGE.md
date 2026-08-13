@@ -54,7 +54,7 @@ Only **two short parts** are required:
 | **1. Quick Repository Trial** | Run UnvibeCode on one public repository and share brief technical feedback | Google Form |
 | **2. GitHub Contribution** | Choose Track A or Track B and submit one Issue or Pull Request | GitHub, then paste the link in the Google Form |
 
-One contribution is enough.
+**One contribution is enough. Please do not forget to fill the google form at end of the submission**
 
 ---
 
@@ -134,8 +134,8 @@ Change one small thing in the repository. **A Pull Request is required for this 
 You can:
 
 - Improve installation instructions
-- Fix broken or confusing documentation
-- Add one useful example or test
+- Suggestios on pre-built workflows-paths 
+- Add one useful example or test on pre-built workflows-paths
 
 Fork the repository, make the change and open a Pull Request titled:
 
