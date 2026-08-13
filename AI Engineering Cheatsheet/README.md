@@ -1,6 +1,6 @@
 # AI Engineering Cheatsheet
 
-Practical, pre-build guides for engineers working with teammates, reviewers, and LLMs.
+Practical, pre-build guides for engineers working with teammates, reviewers, and LLMs on Production environment.
 
 Use each series before implementation to surface unclear requirements, missing business paths, architectural risks, failure scenarios, and operational gaps.
 
