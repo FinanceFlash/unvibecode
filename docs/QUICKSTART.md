@@ -44,6 +44,8 @@ UnvibeCode displays live progress in the terminal. Completed HTML reports open a
 ./shipready_results/analysis_<timestamp>/customer_results/
 ```
 
+> `shipready_results` is UnvibeCode's internal report-folder name — this is expected and not an error.
+
 No activation key, customer OpenAI key, or `.env` file is required.
 
 ## Continue reading
