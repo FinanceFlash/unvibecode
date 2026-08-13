@@ -127,18 +127,18 @@ Add a command, link or screenshot if available.
 **Example:**
 
 ```text
-[Challenge 2026][Issue] Add clearer Windows installation help
+[Issue] Add clearer Windows installation help
 
 The README does not explain what to do when the python command is unavailable.
 Please add a py -m pip example and a short Python PATH troubleshooting note.
 ```
 
-## Track B: Make a Small Improvement 
+## Track B: Make a Improvement 
 
 Please look at contribution guide before making suggestions:([https://github.com/FinanceFlash/unvibecode/.github/CONTRIBUTING.md](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md))
 
 
-Change one small thing in the repository. **A Pull Request is required for this track.**
+**A Pull Request is required for this track.**
 
 You can:
 
@@ -148,18 +148,21 @@ You can:
 - Add relavent material (no AI written or AI slop) on AI Engineering Cheatsheet 
   
 
-Fork the repository, make the change and open a Pull Request titled:
+Fork the repository, make the change and open a Pull Request titled: 
+
 
 ```text
-[Challenge 2026][Improvement] Short description
+[Improvement] Short description
 ```
 
 In the description, briefly state what you changed and how you checked it.
 
+Please go through the template guidance: https://github.com/FinanceFlash/unvibecode/blob/main/.github/pull_request_template.md
+
 **Example:**
 
 ```text
-[Challenge 2026][Improvement] Add Windows py -m pip example
+[Improvement] Add Windows py -m pip example
 
 Added a Windows installation command and checked that the Markdown renders correctly.
 ```
