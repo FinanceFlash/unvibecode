@@ -42,6 +42,14 @@ python3 -m unvibecode review --repository "/Users/example/My Repository"
 
 Confirm that the computer has internet access and that organizational firewall rules allow HTTPS access to the hosted UnvibeCode service.
 
+If the terminal shows `403 Client Error` for `openaipublic.blob.core.windows.net`, or `Host not in allowlist` for `shipready-api.alphashots.ai`, your network is blocking specific hosts UnvibeCode needs rather than blocking all outbound traffic. Ask your network administrator to allow HTTPS access to:
+
+- `openaipublic.blob.core.windows.net` (tokenizer data)
+- `shipready-api.alphashots.ai` (business workflow and risk review)
+
+Re-run the same command after access is allowed;
+UnvibeCode does not need to be reinstalled.
+
 ## Only the Connected Code Map was produced
 
 Repositories above approximately two million estimated source tokens intentionally receive the Connected Code Map and Complete Repository Context without the deeper Business Workflow and Risk Review.
