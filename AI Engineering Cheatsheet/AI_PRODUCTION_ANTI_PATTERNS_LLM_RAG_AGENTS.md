@@ -191,7 +191,19 @@ flowchart TD
 
 **Primary risk:** Quality · Cost · Latency
 
-### RAG-6. The Index Never Forgets
+### RAG-6. Generated Artifacts Become Context
+
+Production symptom: A repository analysis or retrieval pipeline uses its own generated reports, caches, logs, or temporary files as input when it runs again.
+
+Why it fails: Generated artifacts usually contain less useful information than the original source data. Including them can greatly increase context size, consume token budgets, slow processing, and eventually hit system limits.
+
+Use instead: Keep generated output separate from source input. Exclude generated-artifact directories when scanning repositories, and make the input/output boundary explicit.
+
+Ship check: Run the analysis twice. After the first run creates its output, verify that the second run analyzes the original source scope rather than treating the previous output as new input.
+
+Primary risk: Context quality · Cost · Reliability
+
+### RAG-7. The Index Never Forgets
 
 **Production symptom:** Updates arrive slowly, deletions do not propagate, expired documents remain searchable, and caches outlive source permissions.
 
@@ -203,7 +215,7 @@ flowchart TD
 
 **Primary risk:** Freshness · Compliance
 
-### RAG-7. Silent Embedding Drift
+### RAG-8. Silent Embedding Drift
 
 **Production symptom:** Embedding models, preprocessing, distance metrics, or vector dimensions change while old and new representations coexist without explicit compatibility rules.
 
@@ -215,7 +227,7 @@ flowchart TD
 
 **Primary risk:** Recall · Change safety
 
-### RAG-8. Evaluating Only the Final Answer
+### RAG-9. Evaluating Only the Final Answer
 
 **Production symptom:** End-to-end answers are judged, but no one knows whether failures originated in query understanding, retrieval, reranking, context assembly, or generation.
 
@@ -227,7 +239,7 @@ flowchart TD
 
 **Primary risk:** Diagnosability · Quality
 
-### RAG-9. Citation-Shaped Decoration
+### RAG-10. Citation-Shaped Decoration
 
 **Production symptom:** Answers contain document names or links that look credible but do not point to the exact evidence supporting each claim.
 
