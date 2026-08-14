@@ -155,10 +155,11 @@ flowchart TD
 - Ask for missing files or runtime evidence instead of inventing behaviour.
 - Show conflicting evidence rather than silently choosing the most convenient interpretation.
 - Re-check evidence after edits because line numbers, dependencies, and behaviour may have changed.
+- State the review coverage and evidence boundaries alongside conclusions; never present a partial analysis as a repository-wide guarantee.
 
 **Avoid:** Reporting a vulnerability, architecture, or completed fix based only on filenames, conventions, or plausible model reasoning.
 
-**Architecture check:** Can a reviewer independently reproduce every high-impact conclusion from the cited repository or runtime evidence?
+**Architecture check:** Can a reviewer independently reproduce every high-impact conclusion from the cited repository or runtime evidence, and can they tell exactly what was and was not reviewed?
 
 ---
 
