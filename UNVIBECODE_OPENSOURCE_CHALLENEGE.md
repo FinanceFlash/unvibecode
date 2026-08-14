@@ -107,7 +107,6 @@ Note: This is an open-text field. Any ideas or thoughts on your experience using
 
 Choose **one** track. Both are eligible for the same prizes.
 
-
 ## Track A: Submit a Useful Issue
 
 Suggest one clear improvement that focus on achieving the objective of transforming vibecoding to verified engineering. **No Pull Request is required.**
@@ -145,8 +144,10 @@ Please add a py -m pip example and a short Python PATH troubleshooting note.
 
 ## Track B: Make a Improvement 
 
-Note: Create pull request only when there is significant additions(such as adding entire pre-built workflow paths or adding .md files to AI engineering sheet) else put them under issues track
+Important note for Track B
 
+Create a pull request only if your contribution makes a significant and useful improvement to the workflow pack. Minor edits, few lines of additions should not be submitted as pull requests. 
+You can report these smaller suggestions by creating a GitHub Issue(Track A)  instead
 Both track A & B will be given equal importance
 
 Please look at contribution guide before making suggestions:([https://github.com/FinanceFlash/unvibecode/.github/CONTRIBUTING.md](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md))
