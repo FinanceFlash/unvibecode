@@ -3,6 +3,12 @@
 ## Boundary
 Starts when an authenticated or eligibility-checked actor initiates sign-in with, connection to, or account linking for a supported external identity or data provider. Ends when the request is denied, cancelled, linked once with the approved scopes and subject bound to the correct local account, or remains explicitly uncertain with tokens, identity, permissions, and local account state reconciled.
 
+## Primary business outcome
+
+Establish or maintain exactly one authorized external-identity-to-local-account relationship with trustworthy identity, approved permissions, and recoverable state.
+
+Sign-in, account linking, sessions, tokens, revocation, and support repair are supporting lifecycle effects of this outcome; they are not separate primary workflows.
+
 ## People and systems
 - End user, administrator, or support-approved actor
 - Local application, session service, and account service

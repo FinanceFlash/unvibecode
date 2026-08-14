@@ -52,15 +52,21 @@ Check account identity, tenant binding, consent scope, token safety, session out
 
 ## 5. Callback code is replayed
 
-**Given:** A valid authorization code or callback payload is submitted more than once
+**Given:** A valid authorization code and callback context have been accepted once, and the same callback payload is submitted again
 
-**When:** Exchange or callback handling runs again
+**When:** Callback handling or token exchange runs for the replayed request
 
-**Expect:** The replay is recognized and no duplicate side effect occurs
+**Expect:** The replay is detected using the request/code state, and the existing outcome is returned or the replay is rejected without a new side effect
 
-**Must not happen:** A second session or duplicate link is created
+**Must not happen:** A second session, provider link, token set, or account-linking side effect is created
 
-**Best test levels:** Security and integration.
+**Fixtures:** Persist one valid authorization request, provider subject, local account, and completed callback outcome
+
+**Controlled provider behavior:** Return the same authorization code or replayable callback payload on the second submission
+
+**Best test levels:** Security and integration
+
+**Cleanup:** Remove the authorization request, provider-link state, session, and test provider state
 
 ## 6. Redirect target is unapproved
 
@@ -112,15 +118,21 @@ Check account identity, tenant binding, consent scope, token safety, session out
 
 ## 10. Two link attempts run concurrently
 
-**Given:** The same user or provider subject starts two link flows at nearly the same time
+**Given:** The same local account and provider subject have two valid link requests started at nearly the same time
 
-**When:** Both callbacks complete
+**When:** Both callbacks reach account resolution and provider-link persistence concurrently
 
-**Expect:** Uniqueness and idempotency allow one consistent link outcome
+**Expect:** Transactional and uniqueness controls converge both requests on one consistent provider-link outcome
 
-**Must not happen:** Both succeed and create conflicting provider-link state
+**Must not happen:** Both requests create conflicting provider-link records, reassign ownership, or create duplicate sessions
 
-**Best test levels:** Concurrency integration.
+**Fixtures:** Create one local account and provider subject with two independent authorization requests
+
+**Controlled concurrency:** Release both callback handlers at the same synchronization point before persistence
+
+**Best test levels:** Concurrency integration and database integration
+
+**Cleanup:** Remove the authorization requests, provider link, sessions, and test provider state.
 
 ## 11. Callback arrives after cancellation or expiry
 
@@ -136,15 +148,21 @@ Check account identity, tenant binding, consent scope, token safety, session out
 
 ## 12. Token exchange succeeds but local write fails
 
-**Given:** The provider returned tokens successfully but the database update fails
+**Given:** The provider successfully exchanges the authorization code and returns valid tokens, but the local persistence operation fails before the link is durably recorded
 
-**When:** Recovery or retry runs
+**When:** Recovery or retry runs after the partial failure
 
-**Expect:** The same exchange is reconciled safely without duplicating the link
+**Expect:** The application reconciles the provider result with the existing request and local state without repeating an unsafe exchange or creating a duplicate link
 
-**Must not happen:** Retrying creates a second link or loses the successful exchange
+**Must not happen:** Retrying creates a second provider link, loses the successful exchange permanently, or creates a session without a valid local link
 
-**Best test levels:** Integration and operations.
+**Fixtures:** Create a valid authorization request and configure the persistence layer to fail once after successful provider exchange
+
+**Controlled provider behavior:** Return a deterministic successful token exchange without issuing a different provider subject on retry
+
+**Best test levels:** Integration and failure-injection testing
+
+**Cleanup:** Remove the authorization request, provider-link state, tokens, sessions, and injected failure configuration
 
 ## 13. Local write succeeds but response is lost
 
@@ -160,15 +178,21 @@ Check account identity, tenant binding, consent scope, token safety, session out
 
 ## 14. Refresh token rotates
 
-**Given:** The provider issues a new refresh token and invalidates the previous one
+**Given:** An active provider connection has a current refresh token and the provider rotates it during a refresh operation
 
-**When:** Token update handling runs
+**When:** The application receives a new refresh token and persists the rotated token
 
-**Expect:** The new token replaces the old one atomically and future refresh still works
+**Expect:** The new token becomes authoritative atomically, the previous token is no longer accepted for future refreshes, and the provider link remains active
 
-**Must not happen:** The old token remains active and breaks future recovery
+**Must not happen:** The old token remains authoritative, concurrent refreshes overwrite the newest token incorrectly, or a failed rotation leaves the connection falsely active
 
-**Best test levels:** Provider contract and integration.
+**Fixtures:** Create an active provider link with a known current refresh token and persisted rotation state
+
+**Controlled provider behavior:** Return a replacement refresh token and invalidate the previous token
+
+**Best test levels:** Provider contract, integration, and concurrency testing
+
+**Cleanup:** Revoke or delete test tokens and remove the provider link and session state
 
 ## 15. Provider revokes access later
 
@@ -232,12 +256,18 @@ Check account identity, tenant binding, consent scope, token safety, session out
 
 ## 20. Reconciliation runs after uncertain exchange status
 
-**Given:** The application cannot tell whether the provider code exchange completed and whether a link already exists
+**Given:** The application cannot determine whether a provider code exchange completed because the response was lost or the local operation timed out
 
-**When:** Manual or automated reconciliation runs
+**When:** Automated or manual reconciliation examines the authorization request, provider identity, audit trail, and current local state
 
-**Expect:** Repair uses provider subject, request record, audit, and current local state to converge safely
+**Expect:** Reconciliation determines whether the exchange and link already succeeded and converges the request to one authoritative outcome
 
-**Must not happen:** Manual repair changes the wrong account or provider link
+**Must not happen:** Reconciliation creates a duplicate link, assigns the provider identity to the wrong local account, exchanges the same one-time code unsafely, or overwrites a valid newer state
 
-**Best test levels:** Operations and integration.
+**Fixtures:** Create an authorization request with an uncertain exchange status and optionally persist evidence of a completed provider exchange
+
+**Controlled provider behavior:** Simulate a successful exchange whose response is lost, followed by a reconciliation lookup
+
+**Best test levels:** Integration and operations testing
+
+**Cleanup:** Remove the authorization request, reconciliation records, provider-link state, audit entries, tokens, and test provider state
