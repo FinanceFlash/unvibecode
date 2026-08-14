@@ -18,7 +18,9 @@ The full challenge takes around **25–40 minutes**:
 
 👉 **[VIEW UNVIBECODE ON GITHUB](https://github.com/FinanceFlash/unvibecode)**
 
-⭐ **Start here:** Open the repository and click **Star** to bookmark UnvibeCode and support the project. If you submit a Pull Request, click **Fork** to create your contribution copy.
+Our mission is to transform every engineering project from a vibe-coded mess into verified engineering through the open-source contribution
+
+⭐ **Start here:** Click **Star** to bookmark UnvibeCode and support the project if you find it useful or want to be part of the mission
 
 - **Challenge opens:** 10 August 2026
 - **Submission deadline:** 31 August 2026
@@ -105,9 +107,17 @@ Note: This is an open-text field. Any ideas or thoughts on your experience using
 
 Choose **one** track. Both are eligible for the same prizes.
 
+
 ## Track A: Submit a Useful Issue
 
-Suggest one clear improvement. **No Pull Request is required.**
+Suggest one clear improvement that focus on achieving the objective of transforming vibecoding to verified engineering. **No Pull Request is required.**
+
+Note: Please look at the existing issues/improvements before creating a new issue to avoid duplicates 
+
+Example: 
+- Improve installation instructions
+- Suggestios on pre-built workflows-paths
+- Broken, Missing or confusing portion?
 
 Open a [GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new) with:
 
@@ -135,17 +145,18 @@ Please add a py -m pip example and a short Python PATH troubleshooting note.
 
 ## Track B: Make a Improvement 
 
+Note: Create pull request only when there is significant additions(such as adding entire pre-built workflow paths or adding .md files to AI engineering sheet) else put them under issues track
+
+Both track A & B will be given equal importance
+
 Please look at contribution guide before making suggestions:([https://github.com/FinanceFlash/unvibecode/.github/CONTRIBUTING.md](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md))
 
 
 **A Pull Request is required for this track.**
 
 You can:
-
-- Improve installation instructions
-- Suggestios on pre-built workflows-paths 
-- Add one useful example or test on pre-built workflows-paths
-- Add relavent material (no AI written or AI slop) on AI Engineering Cheatsheet 
+- Add one workflow on pre-built workflows-paths
+- Add relavent complete material (no AI written or AI slop) on AI Engineering Cheatsheet 
   
 
 Fork the repository, make the change and open a Pull Request titled: 
