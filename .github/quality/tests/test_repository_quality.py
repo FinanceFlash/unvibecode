@@ -26,7 +26,9 @@ REQUIRED_PACK_FILES = {
 SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
-CORE_SCENARIO_MUST_NOT = re.compile(r"^\|\s*\d+\s*\|[^|]+\|\s*(\S[^|]*?)\s*\|", re.MULTILINE)
+CORE_SCENARIO_MUST_NOT = re.compile(
+    r"^\|\s*\d+\s*\|[^|]+\|\s*(\S[^|]*?)\s*\|", re.MULTILINE
+)
 
 
 def workflow_packs():
@@ -59,7 +61,9 @@ def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
 def test_core_scenarios_must_not_happen_column_is_populated(pack):
     content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
     constraints = CORE_SCENARIO_MUST_NOT.findall(content)
-    assert len(constraints) == 20, f"Expected 20 'Must not happen' entries, found {len(constraints)}"
+    assert (
+        len(constraints) == 20
+    ), f"Expected 20 'Must not happen' entries, found {len(constraints)}"
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
