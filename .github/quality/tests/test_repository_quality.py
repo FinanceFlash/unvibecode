@@ -26,6 +26,9 @@ REQUIRED_PACK_FILES = {
 SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
+CORE_SCENARIO_WITH_OUTCOME = re.compile(
+    r"^\|\s*(\d+)\s*\|[^|]+\|\s*\S[^|]*\|\s*$", re.MULTILINE
+)
 
 
 def workflow_packs():
@@ -52,6 +55,15 @@ def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
     content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
     scenario_numbers = [int(value) for value in CORE_SCENARIO_ROW.findall(content)]
     assert scenario_numbers == list(range(1, 21))
+
+
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_every_core_scenario_states_an_outcome_to_prevent(pack):
+    content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
+    scenarios_with_outcomes = [
+        int(value) for value in CORE_SCENARIO_WITH_OUTCOME.findall(content)
+    ]
+    assert scenarios_with_outcomes == list(range(1, 21))
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
