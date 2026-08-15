@@ -15,5 +15,5 @@ Review entry, amount or access, authorization, state, timing, concurrency, exter
 - Card-testing or cost abuse — Automated attempts create fraud, provider fees, or customer harm
 - Secret or personal-data exposure — Payment data, tokens, provider responses, or credentials reach unsafe logs
 
-For each material risk, explain trigger, behavior, business consequence, protection, decision or test, and acceptance condition.
+For each material risk, explain trigger, behavior, business consequence, protection, decision or test, and acceptance condition. Also state Required Skills: the specific developer expertise (for example, programming language, framework or library, database technology, authentication/authorization, concurrency, idempotency, transaction management, webhook handling, queue processing, caching, external integration, API design, or infrastructure/deployment concern) needed to understand and fix the risk. Derive Required Skills only from the trigger, behavior, and affected code or workflow already identified for that risk; do not invent technologies or expertise the evidence does not support, and keep the list concise. If no specialised expertise beyond general application development is evident, say so instead of guessing.
 
