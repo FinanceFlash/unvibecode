@@ -50,5 +50,15 @@ Repositories above approximately two million estimated source tokens intentional
 
 The terminal prints the customer-facing reason and the technical-log location. Preserve the analysis folder when reporting a reproducible problem.
 
-When opening an issue, remove source code, credentials, customer information, and other sensitive data from logs.
+If some customer results were produced successfully, check the `customer_results` directory before reporting the failure. A partial review can still provide useful outputs even when the deeper Business Workflow and Risk Review needs attention.
 
+For a reproducible hosted-analysis failure:
+
+1. Record the UnvibeCode version with `python -m unvibecode --version`.
+2. Record the repository size shown by the review command.
+3. Note which customer results were produced successfully.
+4. Open the referenced technical log and record the final error message.
+5. Confirm that the repository path is correct and that the computer can reach the internet, then retry the review.
+6. If the same failure occurs, preserve the analysis folder and include the sanitized error details when reporting the problem.
+
+Do not upload generated reports containing source code, credentials, customer information, or other sensitive data.
