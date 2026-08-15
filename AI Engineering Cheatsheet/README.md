@@ -45,3 +45,12 @@ Forty recurring production decisions across model behaviour, RAG, agents, reliab
 5. Record important decisions, risks, and evidence beside the implementation plan or pull request.
 
 The goal is not to add process. The goal is to discover expensive mistakes while they are still cheap to fix.
+
+## Quick guide selection
+
+Not sure where to start? Use this quick guide:
+
+- **Planning a new feature:** Start with Smart Questions Before You Build.
+- **Designing an AI coding system:** Start with AI Coding Design and Architecture Principles.
+- **Reviewing an existing AI system:** Start with Production Anti-Patterns for LLMs, RAG, and AI Agents.
+- **Comparing implementation approaches:** Start with 40 AI and LLM Production Trade-Offs.
