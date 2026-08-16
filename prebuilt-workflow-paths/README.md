@@ -69,6 +69,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [Fraud-risk Scoring, Step-up, Block, and Case Creation](fraud-risk-check-step-up-block-and-investigation/) | evaluates protected actions and may allow, challenge, hold, block, or investigate them |
 | [Right-to-erasure and Account-data Deletion](account-data-deletion-and-right-to-erasure/) | verifies and executes deletion or anonymization requests across data stores and processors |
 | [Scheduled Job Execution, Checkpoint, Retry, and Recovery](scheduled-job-execution-retry-and-recovery/) | runs scheduled work with leases, bounded input windows, checkpoints, retries, and repair |
+| [Idempotent Request Processing and Concurrency Control](idempotent-request-processing-and-concurrency-control/) | processes state-mutating requests exactly once using idempotency keys, distributed locks, and optimistic concurrency controls |
 
 The navigation categories are only for discovery. Each workflow has its own clear start, end, stages, effects, permissions, and recovery boundary.
 
@@ -129,10 +130,10 @@ Read the [repository contribution guide](../.github/CONTRIBUTING.md) before prop
 
 ## Collection summary
 
-- 18 independently usable business workflow packs
-- 234 workflow-specific Markdown files
-- 360 compact core scenarios
-- 360 complete Given/When/Expect scenario descriptions
-- 90 portable task skills
+- 19 independently usable business workflow packs
+- 247 workflow-specific Markdown files
+- 380 compact core scenarios
+- 380 complete Given/When/Expect scenario descriptions
+- 95 portable task skills
 
 These packs are starting points for application-specific analysis. Product rules, laws, provider contracts, data-retention requirements, and operational limits still need to be adapted to the repository being reviewed.
