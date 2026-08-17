@@ -10,17 +10,17 @@ Use each series before implementation to surface unclear requirements, missing b
 
 Eleven focused guides covering:
 
-- Requirements
-- Backend
-- Frontend
-- Data
-- Events
-- Business workflows
-- System design
-- DevOps
-- Security
-- Testing
-- Observability
+* Requirements
+* Backend
+* Frontend
+* Data
+* Events
+* Business workflows
+* System design
+* DevOps
+* Security
+* Testing
+* Observability
 
 Each guide includes a compact visual, ten critical questions, warning signs, evidence to collect, and a prompt for challenging the design with an LLM or reviewer.
 
@@ -45,3 +45,30 @@ Forty recurring production decisions across model behaviour, RAG, agents, reliab
 5. Record important decisions, risks, and evidence beside the implementation plan or pull request.
 
 The goal is not to add process. The goal is to discover expensive mistakes while they are still cheap to fix.
+
+\## Recommended review order
+
+
+
+For a new AI-powered feature, use the guides in this order:
+
+
+
+1\. \*\*Requirements\*\* — define the user outcome, constraints, failure states, and acceptance criteria.
+
+2\. \*\*Backend and Data\*\* — identify APIs, data ownership, persistence, authorization, and validation boundaries.
+
+3\. \*\*System Design\*\* — decide where deterministic code, LLMs, retrieval, agents, and external services belong.
+
+4\. \*\*Security\*\* — review permissions, sensitive data, prompt injection, tool access, and abuse paths.
+
+5\. \*\*Testing\*\* — define deterministic tests, AI evaluation cases, edge cases, and degraded-dependency scenarios.
+
+6\. \*\*Observability\*\* — define the logs, traces, metrics, evidence, and alerts needed to explain production behaviour.
+
+7\. \*\*AI Production Guides\*\* — use the anti-patterns and trade-offs to challenge the final architecture before shipping.
+
+
+
+The goal is to make the AI component one controlled part of the system rather than treating the model as the system itself.
+
