@@ -62,6 +62,12 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [RAG Question Answering with Evidence and Citations](rag-question-answering-with-evidence-and-citations/) | retrieves sources and produces answers that must remain grounded in evidence |
 | [External-system Synchronization and Checkpointing](external-system-data-sync-and-checkpointing/) | synchronizes records with an external system while tracking progress and recovery |
 
+### Identity and account lifecycle
+
+| Workflow | Use it when your application… |
+|---|---|
+| [User Registration, Email Verification, and Account Activation](user-registration-email-verification-and-activation/) | registers new users, verifies email ownership, and activates accounts before granting access |
+
 ### Risk, privacy, and background execution
 
 | Workflow | Use it when your application… |
@@ -129,10 +135,10 @@ Read the [repository contribution guide](../.github/CONTRIBUTING.md) before prop
 
 ## Collection summary
 
-- 18 independently usable business workflow packs
-- 234 workflow-specific Markdown files
-- 360 compact core scenarios
-- 360 complete Given/When/Expect scenario descriptions
-- 90 portable task skills
+- 19 independently usable business workflow packs
+- 247 workflow-specific Markdown files
+- 380 compact core scenarios
+- 380 complete Given/When/Expect scenario descriptions
+- 95 portable task skills
 
 These packs are starting points for application-specific analysis. Product rules, laws, provider contracts, data-retention requirements, and operational limits still need to be adapted to the repository being reviewed.
