@@ -45,7 +45,7 @@ Use UnvibeCode when you need to:
 ## Review your codebase in two commands
 
 ```bash
-pip install unvibecode
+python -m pip install --upgrade unvibecode
 python -m unvibecode review --repository "/path/to/repository"
 ```
 
