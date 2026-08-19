@@ -109,13 +109,13 @@ Choose **one** track. Both are eligible for the same prizes.
 
 ## Track A: Submit a Useful Issue
 
-Suggest one clear improvement that focus on achieving the objective of transforming vibecoding to verified engineering. **No Pull Request is required.**
+Suggest one clear improvement/conceringbug that focus on achieving the objective of transforming vibecoding to verified engineering. **No Pull Request is required.**
 
 Note: Please look at the existing issues/improvements before creating a new issue to avoid duplicates 
 
 Example: 
 - Improve installation instructions
-- Suggestios on pre-built workflows-paths
+- Different run time environment issues 
 - Broken, Missing or confusing portion?
 
 Open a [GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new) with:
@@ -136,7 +136,7 @@ Add a command, link or screenshot if available.
 **Example:**
 
 ```text
-[Issue] Add clearer Windows installation help
+[Issue] Add clearer MACOS installation help
 
 The README does not explain what to do when the python command is unavailable.
 Please add a py -m pip example and a short Python PATH troubleshooting note.
