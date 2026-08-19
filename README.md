@@ -59,6 +59,8 @@ No activation key. No OpenAI API key. The repository path is the only required i
 
 UnvibeCode displays live progress, opens the completed reports, and saves the results automatically under `./shipready_results`.
 
+> **Note:** `shipready_results` is UnvibeCode's internal report-folder name — this is expected and not an error.
+
 ## One review. Four practical outputs.
 
 ### 1. Understand complex code connections

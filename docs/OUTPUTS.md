@@ -66,6 +66,7 @@ If no candidate passes the evidence threshold, the report records a clear no-fin
 
 ## Results directory
 
+UnvibeCode's reports are generated under the `shipready_results/` folder — this is expected, not an error:
 ```text
 shipready_results/
 └── analysis_<timestamp>/
