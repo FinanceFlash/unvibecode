@@ -105,7 +105,7 @@ Note: This is an open-text field. Any ideas or thoughts on your experience using
 
 # 🛠️ Step 2: Submit One Useful GitHub Issue
 
-Suggest one clear improvement, concern or bug that supports the objective of transforming vibe coding into verified engineering. **No Pull Request is required.**
+Suggest one clear improvement, concern or bug that supports the objective of transforming vibe coding into verified engineering. **Do not create a Pull Request for this challenge. Only GitHub Issues are accepted.**
 
 Before creating a new Issue, check the [existing Issues](https://github.com/FinanceFlash/unvibecode/issues) to avoid duplicates.
 
@@ -159,7 +159,7 @@ The form takes around 5 minutes. No screenshots or generated source-code reports
 - Complete the Quick Repository Trial and submit one useful GitHub Issue.
 - Check existing Issues first and do not submit a duplicate.
 - Submit one focused improvement, concern or bug per Issue.
-- A Pull Request is not required for this challenge.
+- Do not create a Pull Request for this challenge. Only GitHub Issues are accepted.
 - Do not upload passwords, API keys, access tokens, private source code, customer information or generated reports containing source code.
 - Copied, unrelated, spam or incomplete submissions may be rejected.
 - The organizers' decision on final rankings is final.
