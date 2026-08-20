@@ -41,6 +41,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 | Workflow | Use it when your application… |
 |---|---|
 | [Checkout Payment Authorization and Capture](checkout-payment-authorization-and-capture/) | authorizes and captures payment while coordinating checkout and order state |
+| [Payment Dispute and Chargeback Resolution](payment-dispute-and-chargeback-resolution/) | handles cardholder or network disputes raised against a previously captured payment through evidence, representment, and final settlement |
 | [Subscription Renewal, Cancellation, and Entitlement Release](subscription-renewal-cancellation-and-access-removal/) | renews subscriptions, handles cancellation, and grants or removes access |
 | [Order Placement and Confirmation](order-placement-and-confirmation/) | validates a cart, creates an order, and confirms acceptance to the customer |
 | [Inventory Reservation, Release, and Expiry](inventory-reservation-release-and-expiry/) | temporarily reserves scarce inventory and later commits, releases, or expires it |
@@ -129,10 +130,10 @@ Read the [repository contribution guide](../.github/CONTRIBUTING.md) before prop
 
 ## Collection summary
 
-- 18 independently usable business workflow packs
-- 234 workflow-specific Markdown files
-- 360 compact core scenarios
-- 360 complete Given/When/Expect scenario descriptions
-- 90 portable task skills
+- 19 independently usable business workflow packs
+- 247 workflow-specific Markdown files
+- 380 compact core scenarios
+- 380 complete Given/When/Expect scenario descriptions
+- 95 portable task skills
 
 These packs are starting points for application-specific analysis. Product rules, laws, provider contracts, data-retention requirements, and operational limits still need to be adapted to the repository being reviewed.
