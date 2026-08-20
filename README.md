@@ -3,7 +3,7 @@
 
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
-![UnvibeCode AI codebase analysis demo](https://raw.githubusercontent.com/FinanceFlash/unvibecode/main/docs/assets/unvibecode-codebase-analysis-demo.gif)
+
 
 Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
