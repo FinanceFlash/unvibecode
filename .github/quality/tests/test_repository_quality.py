@@ -26,6 +26,11 @@ REQUIRED_PACK_FILES = {
 SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
+REQUIRED_PRODUCT_HEADINGS = (
+    "## People and systems",
+    "## Things created or changed",
+    "## Stages",
+)
 
 
 def workflow_packs():
@@ -52,6 +57,13 @@ def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
     content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
     scenario_numbers = [int(value) for value in CORE_SCENARIO_ROW.findall(content)]
     assert scenario_numbers == list(range(1, 21))
+
+
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_workflow_pack_product_guide_has_required_headings(pack):
+    content = (pack / "PRODUCT_AND_BUSINESS_GUIDE.md").read_text(encoding="utf-8")
+    missing = [heading for heading in REQUIRED_PRODUCT_HEADINGS if heading not in content]
+    assert not missing, missing
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
