@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: unvibecode
+Version: 0.1.0
+Summary: UnvibeCode CLI tool
+Author: Pradeep Vishvakarma
+License-File: LICENSE
+Dynamic: license-file

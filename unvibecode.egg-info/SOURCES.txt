@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+unvibecode.egg-info/PKG-INFO
+unvibecode.egg-info/SOURCES.txt
+unvibecode.egg-info/dependency_links.txt
+unvibecode.egg-info/top_level.txt
