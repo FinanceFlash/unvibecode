@@ -57,6 +57,8 @@ python -m unvibecode review --repository "D:\upstox"
 
 No activation key. No OpenAI API key. The repository path is the only required input.
 
+**Windows users:** run `$env:PYTHONIOENCODING="utf-8"` in PowerShell before the review command, and use a short working path to avoid the Windows 260-character path limit. See [Troubleshooting](docs/TROUBLESHOOTING.md) for details.
+
 UnvibeCode displays live progress, opens the completed reports, and saves the results automatically under `./shipready_results`.
 
 ## One review. Four practical outputs.

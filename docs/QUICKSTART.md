@@ -16,11 +16,19 @@ Install UnvibeCode:
 python -m pip install --upgrade unvibecode
 ```
 
+Set UTF-8 encoding to prevent a `UnicodeEncodeError` crash ([issue #53](https://github.com/FinanceFlash/unvibecode/issues/53)):
+
+```powershell
+$env:PYTHONIOENCODING="utf-8"
+```
+
 Review a repository:
 
 ```powershell
 python -m unvibecode review --repository "D:\path\to\repository"
 ```
+
+If the analysis produces zero results despite showing progress, move the repository to a short path such as `C:\Users\YourName\uv` to avoid the Windows 260-character path limit. See [Troubleshooting](TROUBLESHOOTING.md#analysis-produces-zero-results-on-windows-despite-progress-reaching-6070) for details.
 
 ## macOS or Linux
 
