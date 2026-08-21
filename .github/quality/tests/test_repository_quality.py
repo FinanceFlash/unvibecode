@@ -55,6 +55,30 @@ def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_workflow_pack_core_scenarios_have_required_content(pack):
+    content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
+
+    rows = []
+    for line in content.splitlines():
+        if not re.match(r"^\|\s*\d+\s*\|", line):
+            continue
+
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        rows.append(cells)
+
+    assert len(rows) == 20
+
+    for row in rows:
+        assert len(row) == 3
+        number, scenario, must_not_happen = row
+        assert number.isdigit()
+        assert scenario, f"Scenario {number} has no scenario description"
+        assert (
+            must_not_happen
+        ), f"Scenario {number} has no 'Must not happen' description"
+
+
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
 def test_workflow_skills_have_frontmatter(pack):
     for filename in SKILL_FILES:
         content = (pack / filename).read_text(encoding="utf-8")
