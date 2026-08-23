@@ -20,6 +20,16 @@ Contributions are welcome from Python developers, static-analysis enthusiasts, p
 
 Keep proprietary repositories, credentials, customer data, generated customer reports, and unsanitized logs out of commits, issues, and pull requests.
 
+## Documentation-only changes
+
+Before opening a pull request for documentation changes:
+
+- Check Markdown formatting.
+- Confirm that all referenced file paths exist.
+- Verify that examples match the current project structure.
+- Run the relevant documentation and quality checks.
+- Make sure no credentials, proprietary data, or unsanitized logs are included.
+
 ## Local quality setup
 
 This public repository currently contains documentation, workflow packs, and their validation tests. Create and activate a Python 3.11-or-newer virtual environment from the repository root:
