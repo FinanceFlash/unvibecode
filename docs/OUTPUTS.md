@@ -67,7 +67,7 @@ If no candidate passes the evidence threshold, the report records a clear no-fin
 ## Results directory
 
 ```text
-shipready_results/
+unvibecode_results/
 └── analysis_<timestamp>/
     └── customer_results/
         ├── 01_connected_code_map_for_llm.html
