@@ -36,6 +36,10 @@ Twenty-six production failure patterns with symptoms, failure mechanisms, safer 
 
 Forty recurring production decisions across model behaviour, RAG, agents, reliability, safety, evaluation, and operations. Each comparison includes the advantages, disadvantages, and a practical decision rule.
 
+### [From Vibecoding to Verified Engineering](./VIBECODING_TO_VERIFIED_ENGINEERING_GUIDE.md)
+
+Eight practical steps to transition a fragile vibe-coded project into a predictable, resilient, and observable software system. Covers system dependencies, explicit business workflows, security boundaries, error recovery, defensive validation, and observability.
+
 ## How to use the cheatsheet
 
 1. Open the guide or series relevant to your change.
