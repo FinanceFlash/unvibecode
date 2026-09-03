@@ -1,17 +1,15 @@
-# UnvibeCode Open Source Contributor Credentials
+# UnvibeCode Contributor and Challenge Credentials
 
-This directory contains public verification records for recognized **Open Source Contributors to UnvibeCode**.
+This directory contains public verification records issued by **Alphashots.ai** for recognized contributors and selected challenge participants.
 
-Each credential is issued by **Alphashots.ai** and may be referenced from LinkedIn under **Licenses & Certifications**, or included on a resume or portfolio as a public verification record.
+These records may be referenced from LinkedIn under **Licenses & Certifications**, or included on a resume or portfolio as public verification records.
 
-## Credential format
+## Open Source Contributor credentials
 
 - **Credential name:** Open Source Contributor — UnvibeCode
 - **Issuing organization:** Alphashots.ai
 - **Issue date:** September 2026
 - **Repository:** https://github.com/FinanceFlash/unvibecode
-
-## Issued credentials
 
 | Credential ID | Contributor |
 | --- | --- |
@@ -21,5 +19,19 @@ Each credential is issued by **Alphashots.ai** and may be referenced from Linked
 | UVC26-OSC-004 | Shruti Thakur |
 | UVC26-OSC-005 | Dhanush M |
 | UVC26-OSC-006 | Subhankar Nath |
+
+## Top 10 — UnvibeCode Engineering Challenge 2026
+
+- **Credential name:** Top 10 — UnvibeCode Engineering Challenge 2026
+- **Issuing organization:** Alphashots.ai
+- **Issue date:** September 2026
+- **Repository:** https://github.com/FinanceFlash/unvibecode
+
+| Credential ID | Recipient |
+| --- | --- |
+| UVC26-TOP10-007 | Lahari |
+| UVC26-TOP10-008 | K. Vishal Kumar |
+| UVC26-TOP10-009 | Muhammad Fahaz Khan |
+| UVC26-TOP10-010 | Amarnath Sharma |
 
 Each credential ID has an individual public verification record in this directory.
