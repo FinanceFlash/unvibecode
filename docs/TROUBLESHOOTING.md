@@ -52,3 +52,35 @@ The terminal prints the customer-facing reason and the technical-log location. P
 
 When opening an issue, remove source code, credentials, customer information, and other sensitive data from logs.
 
+## Business Workflow & Risk Review fails with `ResultValidationError: unknown connected_node_ids`
+
+The terminal may report something like:
+
+```text
+Business Workflow & Risk Review needs attention.
+Reason: Step 03 produced no usable results: completion=FAILED, successful=0, failed=1;
+last request error=ResultValidationError: path_2_..._: unknown connected_node_ids ['chunk_xxxxxxxxxxxxxxx']
+```
+
+This does not necessarily mean the referenced code is missing from your repository. In an
+observed case, the flagged chunk ID differed from a real chunk ID already present in the same
+run's `shipreadyv2_semantic_packs.jsonl` by a single trailing character (for example
+`chunk_8b348a2b7f8896c` vs. the actual `chunk_8b348a2b7f8896c2`). The same chunk was cited
+correctly elsewhere in the same generated result, so the underlying code was not missing or
+unresolved -- one field in the structured output did not match.
+
+Before assuming a repository or connectivity problem, check whether this is the cause:
+
+1. Open `<run_folder>/shipreadyv2_pass1_full_artifacts/<request_id>/attempt_1/error.json` to get
+   the exact unknown chunk ID.
+2. Search `shipreadyv2_semantic_packs.jsonl` (or `shipreadyv2_llm_feed.jsonl`) in the same run
+   folder for that ID.
+   - If it is genuinely absent everywhere, this may point to a different underlying issue --
+     preserve the run folder and see "A review needs attention" above for what to include when
+     reporting it.
+   - If a near-identical ID exists (differing by one or a few trailing characters), compare it
+     against `attempt_1/raw_response.json` or `attempt_1/normalized_result.json` in the same
+     folder -- the same ID is often used correctly elsewhere in that file, confirming the
+     underlying code was understood correctly and only one field diverged.
+
+Re-running the review will generate a fresh request and may not reproduce the same mismatch.
