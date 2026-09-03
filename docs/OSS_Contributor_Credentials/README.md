@@ -1,8 +1,8 @@
 # UnvibeCode Open Source Contributor Credentials
 
-This directory contains public credential records for selected contributors to the **UnvibeCode Engineering Challenge 2026**.
+This directory contains public verification records for recognized **Open Source Contributors to UnvibeCode**.
 
-Each credential is issued by **Alphashots.ai** and can be referenced from LinkedIn under **Licenses & Certifications**.
+Each credential is issued by **Alphashots.ai** and may be referenced from LinkedIn under **Licenses & Certifications**, or included on a resume or portfolio as a public verification record.
 
 ## Credential format
 
@@ -22,4 +22,4 @@ Each credential is issued by **Alphashots.ai** and can be referenced from Linked
 | UVC26-OSC-005 | Dhanush M |
 | UVC26-OSC-006 | Subhankar Nath |
 
-Each credential ID links to an individual Markdown record in this directory.
+Each credential ID has an individual public verification record in this directory.
