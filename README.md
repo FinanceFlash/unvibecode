@@ -49,6 +49,11 @@ pip install unvibecode
 python -m unvibecode review --repository "/path/to/repository"
 ```
 
+
+Running into an error? Check [Troubleshooting](docs/TROUBLESHOOTING.md) — it covers
+missing-module errors, `python` vs `python3`, and repository path issues.
+
+
 Windows example:
 
 ```powershell
