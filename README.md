@@ -17,7 +17,7 @@ Explore connected code in an interactive graph, give LLMs the right context, tra
 
 ## Who UnvibeCode is for
 
-UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.
+UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.  
 
 | Audience | Their concern | What UnvibeCode gives them |
 | --- | --- | --- |
