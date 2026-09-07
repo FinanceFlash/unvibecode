@@ -5,7 +5,11 @@
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
 
+Complex code hides connections, workflows, and business risks. **Unvibe it .**
+ 
+
 Complex code hides connections, workflows, and business risks. **Unvibe it.**
+
 
 [![Quality checks](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg)](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml)
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
@@ -18,7 +22,7 @@ Explore connected code in an interactive graph, give LLMs the right context, tra
 
 ## Who UnvibeCode is for
 
-UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.
+UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.  
 
 | Audience | Their concern | What UnvibeCode gives them |
 | --- | --- | --- |
@@ -30,7 +34,7 @@ UnvibeCode is useful when an important business workflow is distributed across m
 | LLM users | Giving an LLM enough connected repository context without sending unrelated files | Complete repository context, smaller connected-code packages, and verified relationships |
 
 ## When to use UnvibeCode
-
+ 
 Use UnvibeCode when you need to:
 
 - Understand an unfamiliar, inherited, legacy, or LLM-generated codebase.
@@ -42,6 +46,7 @@ Use UnvibeCode when you need to:
 - Prepare for a significant change to a business-critical workflow.
 - Produce a reusable repository-context package for later LLM analysis.
 
+ 
 ## Review your codebase in two commands
 
 ```bash
@@ -73,7 +78,7 @@ Hover over a file to preview it. Click the file to trace its connected code and 
 
 Stop manually selecting files or pasting unrelated code into an LLM.
 
-The **Complete Repository Context** organizes code into reusable chunks with filenames, line references, verified connections, and contextual selections. Use the complete ZIP later, or download a smaller connected-code package directly from the graph.
+The **Complete Repository Context** organizes code into reusable chunks with filenames, line references, verified connections, and contextual selections. Use the complete ZIP later, or download a smaller connected-code package directly from the graph. 
 
 ```text
 complete_repository_context_for_llm.zip
@@ -92,7 +97,7 @@ The **Business Workflow Map** connects entry points, decisions, state changes, e
 
 ![Business workflow analysis connecting code paths to operational outcomes](docs/assets/business_workflow_map.png)
 
-### 4. Identify critical business workflow risks
+### 4. Identify critical business workflow risks 
 
 The **Business Risk Findings** report identifies critical workflow risks in the code and shows the supporting evidence.
 
