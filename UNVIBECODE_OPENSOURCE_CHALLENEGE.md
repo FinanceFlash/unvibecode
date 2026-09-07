@@ -6,34 +6,39 @@
 
 Are you a fresher who wants your GitHub profile to stand out during internships, placements and job applications?
 
-Build real open-source experience with us by trying UnvibeCode and making one focused contribution to the project.
+Build real open-source experience by trying UnvibeCode, submitting one focused GitHub Issue and explaining the product creatively in five words.
 
-Compete for a **₹10,000 cash prize pool**, LinkedIn recommendations, contribution certificates and GitHub contributor recognition.
+Compete for an **internship opportunity with Alphashots.ai**, a **₹10,000 cash prize pool**, LinkedIn recommendations, contribution certificates and an AI System Design Interview Preparation Pack.
 
 The full challenge takes around **25–40 minutes**:
 
 - **5–15 minutes:** Run UnvibeCode on a small or medium public repository
-- **Around 15 minutes:** Complete one small contribution or submit one useful suggestion
-- **5–10 minutes:** Open your Issue or Pull Request and complete the short Google Form
+- **Around 15 minutes:** Identify one useful improvement, concern or bug and open a GitHub Issue
+- **1–2 minutes:** Explain UnvibeCode creatively in exactly five words
+- **Around 5 minutes:** Complete the Google Form
 
 👉 **[VIEW UNVIBECODE ON GITHUB](https://github.com/FinanceFlash/unvibecode)**
 
-Our mission is to transform every engineering project from a vibe-coded mess into verified engineering through the open-source contribution
+Our mission is to transform every engineering project from a vibe-coded mess into verified engineering through open-source collaboration.
 
-⭐ **Start here:** Click **Star** to bookmark UnvibeCode and support the project if you find it useful or want to be part of the mission
+⭐ **Start here:** Click **Star** to bookmark UnvibeCode and support the project if you find it useful or want to be part of the mission.
 
 - **Challenge opens:** 10 August 2026
 - **Submission deadline:** 31 August 2026
 - **Results announced:** 7 September 2026
-- **Registration:** No separate registration. Submit directly through the Google Form.
+- **Registration:** No separate registration. Submit directly through the [Google Form](https://docs.google.com/forms/d/1tJVwWDPHEoJ60URONJWFLfF6-i7dg5r_LZDwdJ2SMFs/preview).
 
-# 🎁 Rewards and Career Incentives
+# 🎁 Rewards and Incentives
 
-- 🥇 **1st Place:** **₹5,000 / cash equivalent** + named as a **Core Project Maintainer** on GitHub
-- 🥈 **2nd Place:** **₹3,000 / cash equivalent** + Featured Open-Source Contributor recognition
-- 🥉 **3rd Place:** **₹2,000 / cash equivalent** + Featured Open-Source Contributor recognition
-- **Top 10:** Personalized LinkedIn recommendations from the founding team
-- **Top 50:** Certificate of Open-Source Contribution signed by the Alphashots.ai founding team
+## 🚀 Secure an Internship from Alphashots.ai
+
+Outstanding participants may be selected for an internship opportunity with Alphashots.ai.
+
+**Or earn the following challenge rewards:**
+
+- **₹10,000 cash prize pool**
+- **Top 10:** Personalized LinkedIn recommendations from the Alphashots.ai founding team
+- **Top 50:** Certificate of Open-Source Contribution
 - **First 100 eligible completers:** **AI System Design Interview Preparation Pack**, including architecture frameworks, scalability checklists, LLM and agentic-AI design questions, and practice case prompts
 
 The first 100 are selected using the Google Form submission timestamp after checking that the submission is complete, original and valid. Duplicate, incomplete, copied or unrelated entries do not reserve a place.
@@ -49,18 +54,18 @@ The first 100 are selected using the Google Form submission timestamp after chec
 
 # ✅ What You Must Submit
 
-Only **two short parts** are required:
+Only **two short submissions** are required:
 
-| Part | What you do | Where you submit it |
+| Submission | What you do | Where you submit it |
 | --- | --- | --- |
-| **1. Quick Repository Trial** | Run UnvibeCode on one public repository and share brief technical feedback | Google Form |
-| **2. GitHub Contribution** | Choose Track A or Track B and submit one Issue or Pull Request | GitHub, then paste the link in the Google Form |
+| **1. Repository Trial and GitHub Issue** | Run UnvibeCode, share brief technical feedback and submit one useful, non-duplicate improvement, concern or bug as a GitHub Issue | Create the Issue on GitHub, then paste its link and your feedback in the Google Form |
+| **2. Five-Word Creative Challenge** | Explain UnvibeCode creatively and clearly in exactly five words | Enter the five words directly in the Google Form |
 
-**One contribution is enough. Please do not forget to fill the google form at end of the submission**
+After opening your GitHub Issue, complete both submission fields through the **[same Google Form](https://docs.google.com/forms/d/1tJVwWDPHEoJ60URONJWFLfF6-i7dg5r_LZDwdJ2SMFs/preview)**.
 
 ---
 
-# 🔍 Part 1: Quick Repository Trial
+# 🔍 Submission 1: Repository Trial and GitHub Issue
 
 ## 1. Install UnvibeCode
 
@@ -93,30 +98,28 @@ No activation key or OpenAI API key is required. For help, read the [UnvibeCode 
 
 ## 4. Share brief feedback
 
-Share brief feedback through the Google Form.
-The feedback can be highlighting good or bad or on any features or any improvements 
-Examples
- - Suggesting changes/Improvements, such as including "Skills" in the business risk output, to help resolve risks more effectively.
- - Highlighting any output that helped you (business risk, business workflow or connected code map) to understand the repo  
- - Noting anything that does not work well or needs better accuracy (for example, if a business workflow output feels hallucinated)
-Note: This is an open-text field. Any ideas or thoughts on your experience using Unvibecode are welcome. Our mission is to transform projects from vibe-coding mess-ups into verified engineering
+Your feedback can highlight what worked well, what was confusing or what should be improved.
 
----
+Examples:
 
-# 🛠️ Part 2: Choose One GitHub Track
+- Suggest an improvement, such as including relevant skills in the business-risk output to help users resolve risks more effectively.
+- Highlight an output—Business Risk Findings, Business Workflow Map or Connected Code Map—that helped you understand the repository.
+- Report anything that did not work well or needs better accuracy, such as a business workflow that appears hallucinated.
 
-Choose **one** track. Both are eligible for the same prizes.
+Any clear and original feedback based on your experience using UnvibeCode is welcome.
 
-## Track A: Submit a Useful Issue
+## 5. Submit one useful GitHub Issue
 
-Suggest one clear improvement that focus on achieving the objective of transforming vibecoding to verified engineering. **No Pull Request is required.**
+Suggest one clear improvement, concern or bug that supports the objective of transforming vibe coding into verified engineering. **Do not create a Pull Request for this challenge. Only GitHub Issues are accepted.**
 
-Note: Please look at the existing issues/improvements before creating a new issue to avoid duplicates 
+Before creating a new Issue, check the [existing Issues](https://github.com/FinanceFlash/unvibecode/issues) to avoid duplicates.
 
-Example: 
+Examples:
+
 - Improve installation instructions
-- Suggestios on pre-built workflows-paths
-- Broken, Missing or confusing portion?
+- Report a runtime-environment issue
+- Identify a broken, missing or confusing section
+- Suggest an improvement to the code analysis or generated outputs
 
 Open a [GitHub Issue](https://github.com/FinanceFlash/unvibecode/issues/new) with:
 
@@ -133,59 +136,32 @@ What should we add or change?
 Add a command, link or screenshot if available.
 ```
 
-**Example:**
+---
 
-```text
-[Issue] Add clearer Windows installation help
+# 🎨 Submission 2: Five-Word Creative Challenge
 
-The README does not explain what to do when the python command is unavailable.
-Please add a py -m pip example and a short Python PATH troubleshooting note.
-```
+After trying UnvibeCode, explain what it does in **exactly five words**.
 
-## Track B: Make a Improvement 
+Your line must be:
 
-Important note for Track B
+- Creative and original
+- Easy to understand immediately
+- Relevant to what UnvibeCode actually does
+- Written using exactly five space-separated words
 
-Create a pull request only if your contribution makes a significant and useful improvement to the workflow pack. Minor edits, few lines of additions should not be submitted as pull requests. 
-You can report these smaller suggestions by creating a GitHub Issue(Track A)  instead
-Both track A & B will be given equal importance
+Enter your five-word explanation directly in the **[Google Form](https://docs.google.com/forms/d/1tJVwWDPHEoJ60URONJWFLfF6-i7dg5r_LZDwdJ2SMFs/preview)**. Do not open another GitHub Issue for this submission.
 
-Please look at contribution guide before making suggestions:([https://github.com/FinanceFlash/unvibecode/.github/CONTRIBUTING.md](https://github.com/FinanceFlash/unvibecode/blob/main/.github/CONTRIBUTING.md))
+The most creative and easily understandable entries may be featured in the UnvibeCode README or on social media, with credit to the participant.
 
-
-**A Pull Request is required for this track.**
-
-You can:
-- Add one workflow on pre-built workflows-paths
-- Add relavent complete material (no AI written or AI slop) on AI Engineering Cheatsheet 
-  
-
-Fork the repository, make the change and open a Pull Request titled: 
-
-
-```text
-[Improvement] Short description
-```
-
-In the description, briefly state what you changed and how you checked it.
-
-Please go through the template guidance: https://github.com/FinanceFlash/unvibecode/blob/main/.github/pull_request_template.md
-
-**Example:**
-
-```text
-[Improvement] Add Windows py -m pip example
-
-Added a Windows installation command and checked that the Markdown renders correctly.
-```
+Copied taglines, unrelated entries and lines containing more or fewer than five words will not be considered.
 
 ---
 
-# 📤 Submit the Short Google Form
+# 📤 Complete the Google Form
 
-After completing your contribution, submit this short form with your details, repository link, brief feedback and GitHub Issue or Pull Request link:
+After completing both submissions, provide your details, repository link, brief feedback, GitHub Issue link and five-word explanation in the same form:
 
-👉 **[SUBMIT THROUGH THE GOOGLE FORM](https://forms.gle/P1RCcihui9SqhXVb9)**
+👉 **[SUBMIT THROUGH THE GOOGLE FORM](https://docs.google.com/forms/d/1tJVwWDPHEoJ60URONJWFLfF6-i7dg5r_LZDwdJ2SMFs/preview)**
 
 The form takes around 5 minutes. No screenshots or generated source-code reports need to be uploaded.
 
@@ -195,14 +171,12 @@ The form takes around 5 minutes. No screenshots or generated source-code reports
 
 # ✅ Submission Rules
 
-- Complete the Quick Repository Trial and one GitHub contribution.
-- Choose either Track A or Track B.
-- Track A requires one useful GitHub Issue. No Pull Request is required.
-- Track B requires one small improvement submitted through a Pull Request.
-- Submit one focused change or suggestion per Issue or Pull Request.
-- Pull Requests must come from a fork and pass the relevant GitHub checks.
+- Complete Submission 1 and Submission 2.
+- Submit one useful, non-duplicate GitHub Issue.
+- Submit one focused improvement, concern or bug per Issue.
+- Enter one original explanation containing exactly five space-separated words in the Google Form.
+- Do not create a Pull Request for this challenge. Only GitHub Issues are accepted.
 - Do not upload passwords, API keys, access tokens, private source code, customer information or generated reports containing source code.
-- Pull Request contributions use the repository's [Apache License 2.0](https://github.com/FinanceFlash/unvibecode/blob/main/LICENSE).
 - Copied, unrelated, spam or incomplete submissions may be rejected.
 - The organizers' decision on final rankings is final.
 
@@ -212,13 +186,14 @@ The form takes around 5 minutes. No screenshots or generated source-code reports
 
 | Area | Points |
 | --- | ---: |
-| Usefulness of the contribution or suggestion | 40 |
+| Usefulness of the GitHub Issue or suggestion | 35 |
 | Technical correctness and evidence | 25 |
-| Clarity and completeness | 20 |
-| Quick repository trial feedback | 15 |
+| Clarity and completeness | 15 |
+| Repository trial feedback | 15 |
+| Five-word explanation: creativity and instant clarity | 10 |
 | **Total** | **100** |
 
-Stars, follower counts and repository size do not affect judging. A focused documentation fix or well-supported suggestion can score as highly as a code change.
+Stars, follower counts and repository size do not affect judging. A focused, well-supported Issue can score highly; an implemented code change is not required.
 
 ---
 
@@ -229,7 +204,6 @@ Alphashots.ai is a pre-seed-funded AI technology startup building open-source to
 - **Divya — IIM Lucknow:** Strategy, product architecture and growth
 - **Suresh Rajendran — IIT Guwahati:** Technical architecture, engineering pipelines and LLM infrastructure
 
-Ready to make your first useful open-source contribution?
+Ready to submit your first useful open-source improvement?
 
 👉 **[VISIT UNVIBECODE ON GITHUB](https://github.com/FinanceFlash/unvibecode)**
-
