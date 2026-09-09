@@ -39,3 +39,9 @@ UnvibeCode traces **business workflows and business logic** across the codebase 
 [**Understand a complex codebase with UnvibeCode**](https://github.com/FinanceFlash/unvibecode) — trace business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
 
 [**AI Engineering Cheatsheet**](https://github.com/FinanceFlash/unvibecode/tree/main/AI%20Engineering%20Cheatsheet) — practical guides for AI Agents, LLMs, RAG, reliability, observability, production failures, and AI deployment.
+
+---
+
+<p align="center">
+  <img src="top-10-unvibecode-challenge-2026.svg" alt="Top 10 — UnvibeCode Engineering Challenge 2026" width="720">
+</p>
