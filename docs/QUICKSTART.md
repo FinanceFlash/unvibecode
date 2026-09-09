@@ -16,6 +16,14 @@ Install UnvibeCode:
 python -m pip install --upgrade unvibecode
 ```
 
+Verify the installation:
+
+```powershell
+python -m unvibecode --help
+```
+
+You should see the list of available commands. If you see `No module named unvibecode`, see [Troubleshooting](TROUBLESHOOTING.md).
+
 Review a repository:
 
 ```powershell
@@ -29,6 +37,14 @@ Install UnvibeCode:
 ```bash
 python3 -m pip install --upgrade unvibecode
 ```
+
+Verify the installation:
+
+```bash
+python3 -m unvibecode --help
+```
+
+You should see the list of available commands. If you see `No module named unvibecode`, see [Troubleshooting](TROUBLESHOOTING.md).
 
 Review a repository:
 
