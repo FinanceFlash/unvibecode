@@ -16,18 +16,25 @@ Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
 Explore connected code in an interactive graph, give LLMs the right context, trace business workflows, and identify critical business risks.
 
-## Who UnvibeCode is for
+## What is UnvibeCode?
 
-UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.
+UnvibeCode is an open-source codebase analysis tool that helps developers **understand complex codebases** by tracing business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
 
-| Audience | Their concern | What UnvibeCode gives them |
-| --- | --- | --- |
-| Product managers | Missing states, edge cases, requirements, and failure paths | Business workflow maps showing decisions, state changes, material effects, and scenarios that require validation |
-| Developers | Understanding where a workflow exists across unfamiliar or complex code | Connected entry points, functions, calls, dependencies, effects, and downloadable LLM-ready context |
-| Engineering leaders | Prioritizing critical code paths and understanding the consequences of change | Connected workflow paths, affected components, supporting evidence, and risk-focused review priorities |
-| Founders | Revenue, customer, operational, permission, and data-integrity risks | Business-risk summaries explaining the trigger, current behaviour, affected workflow, and potential impact |
-| QA and test engineers | Determining what should be validated beyond the happy path | Evidence-backed failure paths and structured scenarios that can be converted into test cases |
-| LLM users | Giving an LLM enough connected repository context without sending unrelated files | Complete repository context, smaller connected-code packages, and verified relationships |
+### How do you understand a complex codebase?
+
+Start with **business workflows, not individual files**. UnvibeCode traces each workflow to the connected code, entry points, dependencies, state changes, and edge cases so developers can understand how the system actually works.
+
+### How do you trace business workflows in a codebase?
+
+UnvibeCode traces **business workflows and business logic** across the codebase and connects them to the relevant files, functions, dependencies, entry points, and supporting code evidence.
+
+### How do you find edge cases and failure paths in a codebase?
+
+UnvibeCode follows workflow decisions, state changes, permissions, retries, external dependencies, and material effects to surface **edge cases and failure paths that require validation**.
+
+### How do you give an LLM the right codebase context?
+
+UnvibeCode builds **connected repository context** around the workflow or code being reviewed, so an LLM can receive the relevant files, functions, relationships, and supporting evidence without manually selecting unrelated files.
 
 ## When to use UnvibeCode
 
