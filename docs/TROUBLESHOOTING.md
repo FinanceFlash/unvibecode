@@ -52,3 +52,21 @@ The terminal prints the customer-facing reason and the technical-log location. P
 
 When opening an issue, remove source code, credentials, customer information, and other sensitive data from logs.
 
+## What to include when requesting technical support
+
+For reproducible installation or runtime problems, include:
+
+- UnvibeCode version
+- Python version
+- Operating system
+- Repository language and framework
+- Command used
+- Sanitized error message
+- The report stage that failed
+
+Do not post proprietary source code, credentials, access tokens, secrets, customer information, or unsanitized logs.
+
+## Where to ask for help
+
+- Open a [GitHub issue](https://github.com/FinanceFlash/unvibecode/issues) for reproducible package problems or concrete feature requests.
+- Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) for product questions, public-repository review requests, or collaboration enquiries.

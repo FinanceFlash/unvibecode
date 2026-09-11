@@ -1,188 +1,105 @@
-# UnvibeCode 
-**Unvibe complex code. Trace business workflows.**
+# UnvibeCode
 
+## Understand complex codebases by tracing business workflows, business logic, connected code, edge cases, and evidence-backed risks.
+
+*Unvibe complex code. Trace what the business actually does.*
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
-
-
-Complex code hides connections, workflows, and business risks. **Unvibe it.**
 
 [![Quality checks](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg)](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml)
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://pypi.org/project/unvibecode/)
 [![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
 
-**PyPI project:** [pypi.org/project/unvibecode](https://pypi.org/project/unvibecode/)
+### Your LLM helped write 100,000 lines of code. Now how do you understand what it actually built?
 
-Explore connected code in an interactive graph, give LLMs the right context, trace business workflows, and identify critical business risks.
+Reading files one by one does not show the complete business workflow. Pasting a large repository into an LLM can also lose the connections between entry points, state changes, dependencies, edge cases, and business outcomes.
 
-## Who UnvibeCode is for
+**UnvibeCode reverse-engineers the codebase into connected code, business workflows, business logic, and evidence-backed risks.**
 
-UnvibeCode is useful when an important business workflow is distributed across multiple files and reviewers need more than isolated file summaries.
+## Try UnvibeCode
 
-| Audience | Their concern | What UnvibeCode gives them |
-| --- | --- | --- |
-| Product managers | Missing states, edge cases, requirements, and failure paths | Business workflow maps showing decisions, state changes, material effects, and scenarios that require validation |
-| Developers | Understanding where a workflow exists across unfamiliar or complex code | Connected entry points, functions, calls, dependencies, effects, and downloadable LLM-ready context |
-| Engineering leaders | Prioritizing critical code paths and understanding the consequences of change | Connected workflow paths, affected components, supporting evidence, and risk-focused review priorities |
-| Founders | Revenue, customer, operational, permission, and data-integrity risks | Business-risk summaries explaining the trigger, current behaviour, affected workflow, and potential impact |
-| QA and test engineers | Determining what should be validated beyond the happy path | Evidence-backed failure paths and structured scenarios that can be converted into test cases |
-| LLM users | Giving an LLM enough connected repository context without sending unrelated files | Complete repository context, smaller connected-code packages, and verified relationships |
-
-## When to use UnvibeCode
-
-Use UnvibeCode when you need to:
-
-- Understand an unfamiliar, inherited, legacy, or LLM-generated codebase.
-- Trace a business operation that crosses routes, services, state, databases, queues, and external APIs.
-- Give an LLM connected repository context without manually selecting files.
-- Review registration, payment, booking, subscription, approval, notification, or other multi-step workflows.
-- Investigate failure paths involving retries, partial completion, authorization, concurrency, or external dependencies.
-- Understand the potential business consequence of a code-level problem.
-- Prepare for a significant change to a business-critical workflow.
-- Produce a reusable repository-context package for later LLM analysis.
-
-## Review your codebase in two commands
-
-```bash
-pip install unvibecode
-python -m unvibecode review --repository "/path/to/repository"
-```
-
-Windows example:
+### Windows
 
 ```powershell
-python -m unvibecode review --repository "D:\upstox"
+python -m pip install --upgrade unvibecode
+python -m unvibecode review --repository "D:\path\to\repository"
 ```
 
-No activation key. No OpenAI API key. The repository path is the only required input.
+### macOS / Linux
 
-UnvibeCode displays live progress, opens the completed reports, and saves the results automatically under `./shipready_results`.
+```bash
+python3 -m pip install --upgrade unvibecode
+python3 -m unvibecode review --repository "/path/to/repository"
+```
+
+No activation key. No customer OpenAI API key. The repository path is the only required input.
+
+If UnvibeCode is useful for a codebase you need to understand, **star the repository to save it for later**.
 
 ## One review. Four practical outputs.
 
-### 1. Understand complex code connections
+### 1. Connected Code Map
 
-The **Connected Code Map for LLMs** shows how files, symbols, imports, and calls work together.
-
-Hover over a file to preview it. Click the file to trace its connected code and download the relevant code as one compact, LLM-ready package.
+See how files, symbols, imports, and calls work together. Select a file to trace its connected code and download a compact package for deeper LLM analysis.
 
 ![Interactive code dependency graph showing connected files and downloadable LLM context](docs/assets/connected_code_map.png)
 
-### 2. Give LLMs the right repository context
+### 2. LLM-ready repository context
 
-Stop manually selecting files or pasting unrelated code into an LLM.
+Stop manually selecting files or pasting unrelated code into an LLM. UnvibeCode prepares complete and connected repository context with filenames, line references, verified relationships, and reusable selections.
 
-The **Complete Repository Context** organizes code into reusable chunks with filenames, line references, verified connections, and contextual selections. Use the complete ZIP later, or download a smaller connected-code package directly from the graph.
+### 3. Business Workflow Map
 
-```text
-complete_repository_context_for_llm.zip
-|-- manifest.json
-|-- chunks.jsonl
-|-- connections.jsonl
-|-- selections.jsonl
-`-- README.md
-```
+A file tree explains repository structure. It does not explain how the software performs a business operation.
 
-### 3. Trace code as business workflows
-
-A file tree explains repository structure, but it does not explain how the software performs business operations.
-
-The **Business Workflow Map** connects entry points, decisions, state changes, external calls, and business outcomes into understandable workflows.
+UnvibeCode reconstructs entry points, decisions, state changes, external calls, and business outcomes into understandable workflows.
 
 ![Business workflow analysis connecting code paths to operational outcomes](docs/assets/business_workflow_map.png)
 
-### 4. Identify critical business workflow risks
+### 4. Evidence-backed Business Risk Findings
 
-The **Business Risk Findings** report identifies critical workflow risks in the code and shows the supporting evidence.
+UnvibeCode reviews completed workflows for failures that may materially affect customers, money, permissions, data integrity, operations, or other important business outcomes.
 
-Each finding explains:
-
-- What triggers the risk
-- What the code currently does
-- The affected business workflow
-- The potential business impact
-- What should change
-- How to verify the correction
-- The exact supporting code evidence
-
-If no finding passes the evidence threshold, the report clearly records a no-findings outcome for the completed review scope.
+Each published finding includes the affected workflow and supporting code evidence.
 
 ![Business risk finding with impact, remediation, acceptance check, and code evidence](docs/assets/business_risk_findings.png)
 
-## How UnvibeCode works
+## Why another codebase tool?
 
-### 1. Map the repository locally
+Most codebase tools help you find, connect, summarize, or review code. UnvibeCode is built around a different unit of understanding: **the business workflow implemented across the codebase**.
 
-UnvibeCode scans supported source files and resolves meaningful file, symbol, import, and call relationships.
+| Approach | What it helps you understand | What can still be missing |
+| --- | --- | --- |
+| File tree / grep / semantic search | Where relevant code is | The end-to-end business workflow |
+| Code graph / knowledge graph | How files, functions, and concepts connect | Why those connections matter to the business operation |
+| PR / diff review | What changed in a specific change set | Existing workflows and risks outside the diff |
+| LLM repository context | What source to give the model | A structured, evidence-backed reconstruction of the business workflow |
+| **UnvibeCode** | **Connected code + business workflows + business logic + edge cases + evidence-backed business risks** | — |
 
-### 2. Build connected LLM context
+**The core unit in UnvibeCode is not a file or a diff. It is the business workflow implemented across the codebase.**
 
-Code is organized into reusable chunks and connected packages. Selecting a file retrieves the surrounding code needed to understand it without sending the entire repository to an LLM.
+## What developer trials have surfaced
 
-### 3. Reconstruct business workflows
+- **A reproducible business-risk finding:** during a review of the Rich Python library, a tester independently reproduced a Business Risk Finding generated by UnvibeCode. [See the feedback](https://github.com/FinanceFlash/unvibecode/issues/98).
+- **Useful workflow reconstruction:** in a Django project, a tester reported that the Business Workflow Map identified four workflows across two areas, including student records, API operations, registration, and authentication/dashboard delivery. [See the feedback](https://github.com/FinanceFlash/unvibecode/issues/78).
+- **Useful large-repository fallback:** on a repository with about 12.6M estimated source tokens across 3,914 source files, UnvibeCode skipped the deeper workflow review but still produced the Connected Code Map and downloadable repository context. [See the feedback](https://github.com/FinanceFlash/unvibecode/issues/136).
 
-Related code paths are interpreted as workflows containing triggers, decisions, state changes, external effects, and business outcomes.
+## What is UnvibeCode?
 
-### 4. Review critical business risks
+UnvibeCode is an open-source codebase analysis tool that helps developers **understand complex codebases** by tracing business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
 
-Completed workflows are checked for failures that may affect customers, payments, permissions, data integrity, operations, or other important business outcomes.
+### How do you understand a complex codebase?
 
-### 5. Produce customer-ready results
+Start with **business workflows, not individual files**. UnvibeCode traces each workflow to its connected code, entry points, dependencies, state changes, and edge cases so developers can understand how the system actually works.
 
-For a supported repository, the automatically created results folder contains:
+### How do you trace business workflows in a codebase?
 
-```text
-shipready_results/
-`-- analysis_<timestamp>/
-    `-- customer_results/
-        |-- 01_connected_code_map_for_llm.html
-        |-- complete_repository_context_for_llm.zip
-        |-- 02_business_workflow_map.html
-        `-- 03_business_risk_findings.html
-```
-
-## What UnvibeCode does not replace
-
-UnvibeCode supports code understanding, workflow review, and evidence-based engineering investigation.
-
-It does not replace:
-
-- Unit, integration, end-to-end, load, or penetration testing.
-- Manual code review by engineers familiar with the system.
-- Security, privacy, legal, or regulatory assessment.
-- Production monitoring and incident investigation.
-- Validation of business requirements with the responsible product owner.
-
-A reported scenario should be validated against the application's intended behaviour and runtime environment before being treated as a confirmed production defect.
-
-## Repository-size behaviour
-
-Supported repositories receive the complete code, workflow, and risk review.
-
-Repositories above approximately two million estimated source tokens receive the Connected Code Map and Complete Repository Context. The deeper Business Workflow and Risk Review does not run above that threshold.
-
-Read [How UnvibeCode works](docs/HOW_IT_WORKS.md) for details.
-
-## Data processing
-
-Repository parsing, dependency mapping, connected-context preparation, and report rendering run locally.
-
-Structured context required for business workflow and risk analysis is securely sent to the hosted UnvibeCode service. Provider credentials remain server-side.
-
-Review only repositories you are authorized to process.
-
-Read the complete [data-processing explanation](docs/DATA_PROCESSING.md).
-
-## Requirements
-
-- Python 3.11 or newer
-- Internet access for hosted business analysis
-- Read access to the repository being reviewed
+UnvibeCode reconstructs **business workflows and business logic** across files and functions and connects each workflow to its entry points, decisions, dependencies, state changes, and supporting code evidence.
 
 ## Supported languages
 
-UnvibeCode 0.3.3 supports connected code mapping and LLM-context preparation for:
+UnvibeCode 0.3.3 supports connected-code mapping and LLM-context preparation for:
 
 | Language | Recognized file types |
 | --- | --- |
@@ -196,46 +113,23 @@ UnvibeCode 0.3.3 supports connected code mapping and LLM-context preparation for
 
 C, C++, Java, Go, C#, Kotlin, and Swift files are detected but are not yet included in full connected-code analysis. Follow [the C and C++ language-support issue](https://github.com/FinanceFlash/unvibecode/issues/1) for the first planned extension.
 
-## Support and feedback
-
-For installation problems, failed reviews, report-interpretation questions, public-repository review requests, collaboration enquiries, or general feedback:
-
-- Open a [GitHub issue](https://github.com/FinanceFlash/unvibecode/issues) for reproducible package problems.
-- Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) for product questions, public-repository review requests, or collaboration enquiries.
-
-When requesting technical support, include:
-
-- UnvibeCode version
-- Python version
-- Operating system
-- Repository language and framework
-- Command used
-- Sanitized error message
-- The report stage that failed
-
-Do not email proprietary source code, credentials, access tokens, secrets, or unsanitized logs.
-
-## Request a public-repository review
-
-Maintaining or evaluating a public repository?
-
-Email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org) with:
-
-- The public GitHub repository URL
-- The workflow or code area you want to understand
-- The question you want the analysis to answer
-- Permission to publish the resulting maps or findings, if applicable
-
-Only submit repositories that you are authorized to analyse.
-
 ## Documentation
 
 - [Quick start for Windows, macOS, and Linux](docs/QUICKSTART.md)
 - [Understanding the four outputs](docs/OUTPUTS.md)
 - [How UnvibeCode works](docs/HOW_IT_WORKS.md)
+- [Repository limits and responsible-use boundaries](docs/LIMITATIONS.md)
 - [Data processing and privacy](docs/DATA_PROCESSING.md)
-- [Troubleshooting](docs/TROUBLESHOOTING.md)
-- [Public preview policy](docs/PUBLIC_PREVIEW.md)
+- [Troubleshooting and support](docs/TROUBLESHOOTING.md)
+- [Public preview and public-repository reviews](docs/PUBLIC_PREVIEW.md)
+- [UnvibeCode Engineering Challenge 2026](docs/UNVIBECODE_ENGINEERING_CHALLENGE_2026.md)
+- [Contributor and challenge credentials](docs/OSS_Contributor_Credentials/README.md)
+
+## Support and feedback
+
+For reproducible package problems or feature requests, open a [GitHub issue](https://github.com/FinanceFlash/unvibecode/issues).
+
+For product questions, public-repository review requests, or collaboration enquiries, email [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org).
 
 ## Contributing and license
 
