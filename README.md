@@ -1,6 +1,6 @@
 # UnvibeCode
 
-## Understand complex codebases by tracing business workflows, business logic, connected code, edge cases, and evidence-backed risks.
+## Reverse engineer a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
 *Unvibe complex code. Trace what the business actually does.*
 
@@ -15,7 +15,7 @@
 
 Reading files one by one does not show the complete business workflow. Pasting a large repository into an LLM can also lose the connections between entry points, state changes, dependencies, edge cases, and business outcomes.
 
-**UnvibeCode reverse-engineers the codebase into connected code, business workflows, business logic, and evidence-backed risks.**
+**UnvibeCode reverse-engineers a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.**
 
 ## Try UnvibeCode
 
@@ -89,7 +89,7 @@ Developer trials across public and personal repositories repeatedly highlighted 
 
 ## What is UnvibeCode?
 
-UnvibeCode is an open-source codebase analysis tool that helps developers **understand complex codebases** by tracing business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
+UnvibeCode reverse-engineers a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
 ### How do you understand a complex codebase?
 

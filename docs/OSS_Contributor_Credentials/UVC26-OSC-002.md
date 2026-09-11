@@ -22,7 +22,7 @@ His contribution helped strengthen UnvibeCode’s approach to **practical risk r
 
 ### What is UnvibeCode?
 
-UnvibeCode is an open-source codebase analysis tool that helps developers **understand complex codebases** by tracing business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
+UnvibeCode reverse-engineers a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
 #### How do you understand a complex codebase?
 
@@ -43,7 +43,5 @@ UnvibeCode traces **business workflows and business logic** across the codebase 
 ---
 
 <p align="center">
-  <img src="top-10-unvibecode-challenge-2026.svg"
-       alt="Top 10 — UnvibeCode Engineering Challenge 2026"
-       width="420">
+  <img src="top-10-unvibecode-challenge-2026.svg" alt="Top 10 — UnvibeCode Engineering Challenge 2026" width="420">
 </p>
