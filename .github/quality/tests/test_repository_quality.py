@@ -64,6 +64,27 @@ def test_workflow_skills_have_frontmatter(pack):
         assert re.search(r"^description:\s*\S+", frontmatter, re.MULTILINE), filename
 
 
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_review_business_risk_skill_requires_developer_skills(pack):
+    content = (pack / "REVIEW_BUSINESS_RISK_SKILL.md").read_text(encoding="utf-8")
+    lowered = content.lower()
+
+    # The skill must instruct the reviewer to name required developer skills
+    # for each material risk, not just leave it as a documentation aside.
+    assert "required skills:" in lowered
+    assert "for each material risk" in lowered
+    assert "required skills" in lowered.split("for each material risk", 1)[1]
+
+    # The instruction must ground skills in the risk evidence rather than
+    # allowing invented or generic technologies.
+    assert "derive required skills" in lowered
+    assert "do not invent" in lowered
+
+    # It must define a fallback instead of guessing when no specialised
+    # expertise can be inferred from the evidence.
+    assert "instead of guessing" in lowered
+
+
 def test_pack_index_links_every_workflow_pack():
     index = (PACKS_ROOT / "README.md").read_text(encoding="utf-8")
     for pack in workflow_packs():
