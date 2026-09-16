@@ -19,12 +19,20 @@ Reading files one by one does not show the complete business workflow. Pasting a
 
 ## Try UnvibeCode
 
+Requires Python 3.11 or newer.
+
 ### Windows
 
 ```powershell
-python -m pip install --upgrade unvibecode
-python -m unvibecode review --repository "D:\path\to\repository"
-```
+py --version
+py -m pip install --upgrade unvibecode
+py -m unvibecode --help
+
+### to review a repository
+py -m unvibecode review --repository "D:\path\to\repository"
+Example, if your project is located at: D:\Projects\customer-support-agent
+Then run:
+py -m unvibecode review --repository "D:\Projects\customer-support-agent"
 
 ### macOS / Linux
 
