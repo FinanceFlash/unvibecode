@@ -27,18 +27,43 @@ Requires Python 3.11 or newer.
 py --version
 py -m pip install --upgrade unvibecode
 py -m unvibecode --help
-
-### to review a repository
 py -m unvibecode review --repository "D:\path\to\repository"
-Example, if your project is located at: D:\Projects\customer-support-agent
-Then run:
-py -m unvibecode review --repository "D:\Projects\customer-support-agent"
+```
 
-### macOS / Linux
+Example:
+
+```powershell
+py -m unvibecode review --repository "D:\Projects\customer-support-agent"
+```
+
+### macOS
 
 ```bash
+python3 --version
 python3 -m pip install --upgrade unvibecode
+python3 -m unvibecode --help
 python3 -m unvibecode review --repository "/path/to/repository"
+```
+
+Example:
+
+```bash
+python3 -m unvibecode review --repository "/Users/yourname/Projects/customer-support-agent"
+```
+
+### Linux
+
+```bash
+python3 --version
+python3 -m pip install --upgrade unvibecode
+python3 -m unvibecode --help
+python3 -m unvibecode review --repository "/path/to/repository"
+```
+
+Example:
+
+```bash
+python3 -m unvibecode review --repository "/home/yourname/projects/customer-support-agent"
 ```
 
 No activation key. No customer OpenAI API key. The repository path is the only required input.
