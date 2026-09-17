@@ -2,6 +2,8 @@
 
 ## Reverse engineer a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
+**⭐ Hit Star to help increase UnvibeCode's visibility among developers.**
+
 *Unvibe complex code. Trace what the business actually does.*
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
@@ -67,8 +69,6 @@ python3 -m unvibecode review --repository "/home/yourname/projects/customer-supp
 ```
 
 No activation key. No customer OpenAI API key. The repository path is the only required input.
-
-If UnvibeCode is useful for a codebase you need to understand, **star the repository to save it for later**.
 
 ## One review. Four practical outputs.
 
