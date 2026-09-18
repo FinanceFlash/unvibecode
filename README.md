@@ -150,6 +150,7 @@ C, C++, Java, Go, C#, Kotlin, and Swift files are detected but are not yet inclu
 
 ## Documentation
 
+- [RAG review skill, practical guide, checklist, and Python example](skills/unvibecode-rag-review/README.md)
 - [Quick start for Windows, macOS, and Linux](docs/QUICKSTART.md)
 - [Understanding the four outputs](docs/OUTPUTS.md)
 - [How UnvibeCode works](docs/HOW_IT_WORKS.md)

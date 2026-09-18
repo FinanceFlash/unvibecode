@@ -26,3 +26,7 @@ Starts when an authorized user asks a question against approved knowledge source
 
 The five `*_SKILL.md` files are self-contained.
 
+## Companion RAG review resources
+
+The [UnvibeCode RAG review skill and practical examples](../../skills/unvibecode-rag-review/README.md) cover parser selection, hybrid parsing, deterministic retrieval, connected evidence, metadata, DB numbers, Python calculations, and RAGChecker. These companion resources include ingestion and evaluation guidance beyond this workflow pack's boundary.
+
