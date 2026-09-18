@@ -148,9 +148,21 @@ UnvibeCode 0.3.3 supports connected-code mapping and LLM-context preparation for
 
 C, C++, Java, Go, C#, Kotlin, and Swift files are detected but are not yet included in full connected-code analysis.
 
+## Production RAG reliability research and guide
+
+UnvibeCode also includes a research-backed RAG reliability guide for teams working with mixed PDFs, changing policies, live structured data, multi-hop relationships, and repository code.
+
+- **[Production RAG Reliability Guide](skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md)** — parser routing, deterministic factual realization, knowledge graphs, version metadata, DB/Python routing, structured code retrieval, and RAG evaluation.
+- **[Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers](https://www.preprints.org/manuscript/202609.0490)** — related controlled preprint separating semantic evidence localization from deterministic factual realization. The paper is a preprint and is not yet peer reviewed.
+- **[UnvibeCode RAG Review skill](skills/unvibecode-rag-review/README.md)** — reusable review instructions, checklist, and runnable synthetic regression example.
+
+The guide distinguishes experimental findings from related literature and from engineering recommendations so implementation advice is not presented as stronger evidence than the sources support.
+
 ## Documentation
 
-- [RAG review skill, practical guide, checklist, and Python example](skills/unvibecode-rag-review/README.md)
+- [Production RAG Reliability Guide — research-backed parsing, deterministic factual realization, knowledge graphs, versioning, code retrieval, and evaluation](skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md)
+- [RAG review skill, checklist, and Python example](skills/unvibecode-rag-review/README.md)
+- [Related research preprint — Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers](https://www.preprints.org/manuscript/202609.0490)
 - [Quick start for Windows, macOS, and Linux](docs/QUICKSTART.md)
 - [Understanding the four outputs](docs/OUTPUTS.md)
 - [How UnvibeCode works](docs/HOW_IT_WORKS.md)
