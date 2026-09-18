@@ -1,10 +1,12 @@
 # UnvibeCode RAG Review
 
-A reusable review skill, practical guide, checklist, and runnable example for developers building RAG systems.
+A reusable review skill, research-backed practical guide, checklist, and runnable example for developers building RAG systems.
+
+The [Production RAG Reliability Guide](references/RAG_PRACTICAL_GUIDE.md) separates three things explicitly: findings directly evaluated in our controlled preprint, related independent research, and practical engineering recommendations. Quantitative deterministic-repair claims point to the [related preprint](https://www.preprints.org/manuscript/202609.0490), rather than to practitioner discussion.
 
 | Start here | Purpose |
 | --- | --- |
-| [Practical guide](references/RAG_PRACTICAL_GUIDE.md) | Parser choices, hybrid parsing, deterministic retrieval, knowledge graphs, metadata, DB lookups, Python arithmetic, and RAGChecker |
+| [Production RAG Reliability Guide](references/RAG_PRACTICAL_GUIDE.md) | Research-backed parser choices, deterministic factual realization, knowledge graphs, metadata/versioning, DB lookups, Python arithmetic, code retrieval, and RAG evaluation |
 | [Review checklist](references/RAG_REVIEW_CHECKLIST.md) | Evidence-based checks and regression scenarios |
 | [Review skill](SKILL.md) | Instructions for an AI assistant reviewing an accessible design or implementation |
 | [Python example](scripts/rag_review_example.py) | Reproducible synthetic demonstration with 21 regression tests |
