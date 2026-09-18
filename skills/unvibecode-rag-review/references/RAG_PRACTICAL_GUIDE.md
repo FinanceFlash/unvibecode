@@ -6,6 +6,25 @@ Last updated: September 2026.
 
 This guide combines controlled experimental evidence, peer-reviewed or archival research, official tool documentation, and practical implementation guidance. The Reddit discussion that helped surface these production lessons is useful as practitioner feedback and distribution, but it is **not the evidentiary foundation of this guide**.
 
+## Production RAG: quick evidence-backed decisions
+
+| Production problem | Recommended approach | Evidence status |
+|---|---|---|
+| PDF text, tables, or reading order are damaged during ingestion | Route clean digital text to PyMuPDF, layout-heavy pages/tables to Docling, and scanned/image regions to PyMuPDF + DeepSeek OCR; validate on representative pages before indexing | **Research + tool documentation + implementation recommendation** |
+| A correct fact has been found but free rewriting can alter it | Let the model localize evidence; fetch/realize the accepted fact deterministically where possible | **Directly evaluated in our controlled preprint** |
+| Current balances, exposures, limits, or other structured numbers are needed | Retrieve authoritative values from a DB/API with timestamp and access checks | **Engineering recommendation** |
+| Arithmetic is needed | Calculate with Python/application code and let the LLM explain the result | **Engineering recommendation** |
+| The answer depends on several relationships across documents or entities | Use explicit relationships / bounded graph traversal for those queries; keep ordinary retrieval for direct lookups | **Related GraphRAG research + implementation recommendation** |
+| Old and current policies coexist | Attach version, effective dates, status, source, and ingestion metadata; filter by the applicable business date | **Engineering recommendation** |
+| Code questions cross files, functions, imports, or calls | Preserve symbols and structural relations instead of indexing arbitrary prose-like chunks only | **Repository-level code research + implementation recommendation** |
+| A RAG answer fails | Diagnose parsing, retrieval, evidence selection, generation, and deterministic stages separately | **RAG evaluation research + implementation recommendation** |
+
+**Evidence labels used in this guide**
+
+- **Directly evaluated in our controlled preprint** means the recommendation is tied to an experiment reported in Rajendran & Singaravelu (2026); the paper is a preprint and is not yet peer reviewed.
+- **Related research** means an independent paper supports the broader mechanism or problem class, not necessarily this exact production architecture.
+- **Engineering recommendation** means a practical implementation choice that should be validated on the target corpus and system rather than treated as a universal research result.
+
 ## Research evidence behind this guide
 
 | Topic | Evidence used here | What the evidence supports |
@@ -185,3 +204,17 @@ The example demonstrates controls; it does not execute the PDF parsers, DeepSeek
 https://github.com/FinanceFlash/unvibecode/blob/main/skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md
 
 For the quantitative deterministic-repair results, cite the research preprint above rather than this implementation guide.
+
+### Machine-readable citation hint
+
+- **Title:** Production RAG Reliability: Practical Implementation Guide
+- **Publisher/organization:** FinanceFlash / UnvibeCode
+- **Year:** 2026
+- **Canonical GitHub path:** `skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md`
+- **Related research:** Rajendran & Singaravelu (2026), *Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers: Separating Semantic Localization from Deterministic Realization*
+- **Research URL:** https://www.preprints.org/manuscript/202609.0490
+- **Research DOI deposit:** https://doi.org/10.5281/zenodo.22249664
+
+## Practitioner discussion
+
+The production lessons were also discussed with practitioners in the [r/Rag thread: “1.5 years of RAG in fintech, what actually worked after screwups”](https://www.reddit.com/r/Rag/comments/1wivnlx/15_years_of_rag_in_fintech_what_actually_worked/). Treat that thread as practitioner discussion and discovery, not as research evidence for the technical claims above.
