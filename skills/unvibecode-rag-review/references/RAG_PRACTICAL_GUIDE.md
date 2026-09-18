@@ -1,6 +1,26 @@
-# UnvibeCode: Practical RAG Implementation Guide
+# Production RAG Reliability: Practical Implementation Guide
 
-This guide develops the six lessons from the [RAG forum discussion](https://www.reddit.com/r/Rag/comments/1wivnlx/15_years_of_rag_in_fintech_what_actually_worked/): parse correctly, retrieve facts with minimal rewriting, follow connected evidence, track source versions, preserve code structure, and separate documents, memory, live data, and calculations. The implementation details below turn those lessons into a practical starting plan.
+**UnvibeCode research-backed guide for PDF parsing, deterministic factual realization, connected evidence, source versioning, code retrieval, routing, and evaluation.**
+
+Last updated: September 2026.
+
+This guide combines controlled experimental evidence, peer-reviewed or archival research, official tool documentation, and practical implementation guidance. The Reddit discussion that helped surface these production lessons is useful as practitioner feedback and distribution, but it is **not the evidentiary foundation of this guide**.
+
+## Research evidence behind this guide
+
+| Topic | Evidence used here | What the evidence supports |
+|---|---|---|
+| Evidence-bound deterministic factual realization | [Rajendran & Singaravelu (2026), *Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers*](https://www.preprints.org/manuscript/202609.0490) — preprint, not yet peer reviewed; [Zenodo deposit](https://doi.org/10.5281/zenodo.22249664) | Separating semantic localization from deterministic factual realization reduced the evaluated error endpoints without allowing the model to author accepted replacement facts. |
+| RAG hallucination / grounding evaluation | [RAGTruth](https://aclanthology.org/2024.acl-long.585/) and [RAGChecker, NeurIPS 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract.html) | Human-annotated hallucination data and fine-grained diagnosis of retrieval and generation failures. |
+| Graph-based retrieval | [Edge et al., GraphRAG](https://arxiv.org/abs/2404.16130) | Graph-based indexing can improve global sensemaking over conventional RAG for the evaluated corpora; it does **not** establish that graphs are best for every lookup. |
+| PDF structure extraction | [Docling Technical Report](https://arxiv.org/abs/2408.09869) plus official parser documentation | Layout-aware and table-structure-aware parsing is useful for complex PDFs; parser choice still needs validation on the actual corpus. |
+| Repository-level / structured code context | [RepoCoder, EMNLP 2023](https://aclanthology.org/2023.emnlp-main.151/) and [CodeMEM, Findings of ACL 2026](https://aclanthology.org/2026.findings-acl.834/) | Repository-level context and AST-guided code structure can improve code-oriented retrieval/generation tasks; the exact retrieval design remains task dependent. |
+
+### What our controlled study found
+
+The related preprint evaluates a pipeline in which the LLM localizes evidence but deterministic code performs the accepted factual replacement. On **889 held-out RAGTruth responses**, the conservative net reduction was **12/32 human-labelled hallucinated responses (37.50%; exact paired p = 0.0042; 95% CI [18.3%, 56.7%])**. On **731 ExpertQA responses**, **26/110 reviewed grounding failures (23.64%)** were repaired under the separate ExpertQA grounding endpoint. The paper also reports a matched RAGTruth ablation in which unconstrained regeneration introduced new unsupported content at roughly **4.5×** the rate of the constrained design at a comparable removal rate. These results support the deterministic-realization recommendation in this guide; they do not prove that every RAG system should use the same architecture.
+
+The rest of this document translates that evidence and related research into implementation choices: parse correctly, preserve exact facts where possible, use graphs only for relationship-heavy questions, track versions, preserve code structure, keep live data and calculations deterministic, and evaluate retrieval and generation separately.
 
 ## Which PDF parser should I use?
 
@@ -10,7 +30,7 @@ This guide develops the six lessons from the [RAG forum discussion](https://www.
 | Layout-heavy PDF with tables or multiple columns | **Docling** | Rows, column headers, merged cells, units, footnotes |
 | Scanned PDF or image-based content | **PyMuPDF + DeepSeek OCR** | Render pages or image regions with PyMuPDF, then send those images to DeepSeek OCR; verify the extracted text and numbers |
 
-In the third approach, PyMuPDF opens/renders the PDF and DeepSeek OCR reads the resulting images. This is an integration you assemble; DeepSeek OCR is not PyMuPDF's built-in OCR backend. Use DeepSeek's documented model setup and image inference path. A PyMuPDF installation alone does not install or run the model. Sources: [PyMuPDF page rendering](https://pymupdf.readthedocs.io/en/latest/recipes-images.html), [Docling](https://docling-project.github.io/docling/), [DeepSeek OCR](https://github.com/deepseek-ai/DeepSeek-OCR).
+In the third approach, PyMuPDF opens/renders the PDF and DeepSeek OCR reads the resulting images. This is an integration you assemble; DeepSeek OCR is not PyMuPDF's built-in OCR backend. Use DeepSeek's documented model setup and image inference path. A PyMuPDF installation alone does not install or run the model. Sources: [PyMuPDF page rendering](https://pymupdf.readthedocs.io/en/latest/recipes-images.html), [Docling](https://docling-project.github.io/docling/), [Docling Technical Report](https://arxiv.org/abs/2408.09869), and [DeepSeek OCR](https://github.com/deepseek-ai/DeepSeek-OCR). The Docling paper supports the use of specialized layout-analysis and table-structure models; it should not be read as proof that one parser is universally best for every PDF corpus.
 
 ## How do I use a hybrid parser?
 
@@ -30,7 +50,9 @@ ML-based OCR helps recover text from page images. It does not guarantee correct 
 
 ## When should I use knowledge graphs?
 
-Use them when answering requires following **multiple connected facts** across documents or code, as described in the forum. For example, explaining why a strategy was disabled may require connecting the strategy, eligibility rule, liquidity threshold, exchange restriction, and current instrument state. Retrieving a few similar passages may miss a necessary relationship.
+Use them when answering requires following **multiple connected facts** across documents or code. For example, explaining why a strategy was disabled may require connecting the strategy, eligibility rule, liquidity threshold, exchange restriction, and current instrument state. Retrieving a few similar passages may miss a necessary relationship.
+
+Research basis: GraphRAG shows that graph-based indexing can outperform conventional RAG for the evaluated class of global sensemaking questions over large corpora. That result does not imply that a knowledge graph is automatically better for direct factual lookup. In this guide, the graph is a routing choice for relationship-heavy questions, not a default replacement for ordinary retrieval.
 
 They are also useful for questions such as: which strategies are affected if this risk rule changes? Represent the dependencies explicitly and follow the relevant links. For business logic spread across several code files, preserve connections between the relevant functions, rules, and workflows.
 
@@ -42,9 +64,11 @@ Implementation: assign stable entity IDs; store typed relationships such as `dep
 
 When the record, clause, table cell, or source span is known, retrieve it through its stable identifier and return the relevant original content with minimal rephrasing. Use an LLM to locate candidate evidence or explain it where useful; let application code fetch the exact stored content.
 
+This recommendation is directly connected to our controlled study: [Rajendran & Singaravelu (2026)](https://www.preprints.org/manuscript/202609.0490) separates semantic localization from deterministic factual realization. The model selects evidence, while deterministic code performs the accepted replacement. The study reports a net 12/32 reduction in human-labelled RAGTruth hallucinated responses and repairs 26/110 reviewed ExpertQA grounding failures under its separate grounding endpoint. The study is a preprint and the evaluated generators/datasets limit generalization, so treat these numbers as evidence for the mechanism under the tested conditions rather than a universal production guarantee.
+
 For example, after identifying a policy clause, retrieve it by document version and clause ID. If it states that positions must be reduced above 80% margin utilisation, preserve the threshold, condition, and action. Do not let stylistic rewriting change them.
 
-The forum also describes separating source-backed statements from model inference, retrieving the original statements with Python, and keeping inference distinct. To implement this reliably, retain source offsets or span IDs and validate the model's proposed references. Copying text exactly prevents rewriting errors but does not fix selection of an irrelevant or obsolete source.
+The implementation principle is to separate source-backed statements from model inference, retrieve the accepted original statement through code where possible, and keep inference distinct. To implement this reliably, retain source offsets or span IDs and validate the model's proposed references. Copying text exactly prevents rewriting errors but does not fix selection of an irrelevant or obsolete source.
 
 ## How do DB retrieval and Python calculations fit in?
 
@@ -60,6 +84,14 @@ Example question: what is Strategy X's current exposure and how much headroom re
 | Explanation and supporting references | LLM using those returned facts |
 
 Use allowlisted, parameterized DB operations. Validate entity ID, permissions, timestamps, and units. If a required value is missing, do not substitute zero. For decimal-sensitive arithmetic, use Python `Decimal`. Keep percent and percentage points distinct. An explanation of headroom is not itself authorization to execute an action.
+
+## How should I retrieve code?
+
+Do not treat a repository as ordinary prose chopped into arbitrary token windows. Preserve structural units such as functions, methods, classes, imports, calls, definitions, and stable symbol identifiers. AST-derived boundaries are useful because they let the retriever return a coherent code unit and then expand to callers, callees, imports, or neighboring symbols only when needed.
+
+The broader research direction supports this approach. RepoCoder shows that repository-level retrieval improves code-completion performance over in-file and vanilla retrieval baselines, while CodeMEM uses AST-guided repository context and reports gains on repository-level iterative code-generation benchmarks. These studies do not prove that one AST retriever is universally optimal; they support preserving code structure and cross-file context rather than flattening a repository into unrelated text chunks.
+
+Implementation: parse supported languages into symbols; store file path, qualified symbol name, start/end lines, parent symbol, imports, call/dependency links, and commit hash; retrieve a primary symbol first; then expand along validated relations under a token budget. For dynamic dispatch, reflection, generated code, or unresolved calls, keep the relationship explicitly uncertain instead of inventing a static edge.
 
 ## How should metadata work for large files and collections?
 
@@ -120,7 +152,7 @@ Identify which parts of the question need documents, linked evidence, code, live
 
 ### Step 7: Evaluate with RAGChecker and targeted checks
 
-Use **[RAGChecker](https://github.com/amazon-science/RAGChecker)** for retrieval/generation diagnosis. Prepare records containing the question, reference answer, retrieved context with document IDs/text, and generated response, using the framework's documented schema. Configure its claim-extraction/checking models as documented. Inspect retrieval and generation metrics together to locate where evidence was lost or unsupported claims appeared.
+Use **[RAGChecker](https://github.com/amazon-science/RAGChecker)** for retrieval/generation diagnosis. The framework was published in the NeurIPS 2024 Datasets and Benchmarks Track ([paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract.html)) and reports a fine-grained evaluation design spanning retrieval and generation. Prepare records containing the question, reference answer, retrieved context with document IDs/text, and generated response, using the framework's documented schema. Configure its claim-extraction/checking models as documented. Inspect retrieval and generation metrics together to locate where evidence was lost or unsupported claims appeared.
 
 Start with human-reviewed cases. Include wrong policy versions, incomplete linked evidence, damaged table headers, missing DB values, and questions that should abstain. Compare RAGChecker results with human judgments, investigate disagreements, and rerun the same cases after parser/retriever/prompt changes.
 
@@ -135,3 +167,21 @@ Run `python rag_review_example.py` or `py rag_review_example.py` on Windows. It 
 The example's separate fixture uses a 1.50% limit and 1.37% exposure, producing **0.13 percentage points**. Its naive branch uses superseded policy and old memory, producing 0.20. The regression tests cover versions, units, missing inputs, tenant scope, table associations, linked evidence, syntax IDs, and routing.
 
 The example demonstrates controls; it does not execute the PDF parsers, DeepSeek OCR, RAGChecker, a live DB, or an LLM. Those are integration steps in the plan above. Use the companion RAG_REVIEW_CHECKLIST.md to review your implementation.
+
+
+## References and evidence links
+
+1. Rajendran, S., & Singaravelu, D. (2026). **Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers: Separating Semantic Localization from Deterministic Realization.** Preprint, not yet peer reviewed. [Preprints.org](https://www.preprints.org/manuscript/202609.0490) · [Zenodo deposit](https://doi.org/10.5281/zenodo.22249664)
+2. Niu, C. et al. (2024). **RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models.** ACL 2024. [ACL Anthology](https://aclanthology.org/2024.acl-long.585/)
+3. Ru, D. et al. (2024). **RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation.** NeurIPS 2024 Datasets and Benchmarks Track. [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract.html)
+4. Edge, D. et al. (2024/2025). **From Local to Global: A Graph RAG Approach to Query-Focused Summarization.** [arXiv](https://arxiv.org/abs/2404.16130)
+5. Auer, C. et al. (2024). **Docling Technical Report.** [arXiv](https://arxiv.org/abs/2408.09869)
+6. Zhang, F. et al. (2023). **RepoCoder: Repository-Level Code Completion Through Iterative Retrieval and Generation.** EMNLP 2023. [ACL Anthology](https://aclanthology.org/2023.emnlp-main.151/)
+7. Wang, P. et al. (2026). **CodeMEM: AST-Guided Adaptive Memory for Repository-Level Iterative Code Generation.** Findings of ACL 2026. [ACL Anthology](https://aclanthology.org/2026.findings-acl.834/)
+
+## How to cite this guide
+
+**FinanceFlash / UnvibeCode. (2026). _Production RAG Reliability: Practical Implementation Guide_.**  
+https://github.com/FinanceFlash/unvibecode/blob/main/skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md
+
+For the quantitative deterministic-repair results, cite the research preprint above rather than this implementation guide.
