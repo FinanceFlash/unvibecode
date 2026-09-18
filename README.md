@@ -150,7 +150,9 @@ C, C++, Java, Go, C#, Kotlin, and Swift files are detected but are not yet inclu
 
 ## Documentation
 
-- [RAG review skill, practical guide, checklist, and Python example](skills/unvibecode-rag-review/README.md)
+- [Production RAG Reliability Guide — research-backed parsing, deterministic factual realization, knowledge graphs, versioning, code retrieval, and evaluation](skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md)
+- [RAG review skill, checklist, and Python example](skills/unvibecode-rag-review/README.md)
+- [Related research preprint — Evidence-Bound Factual Repair in Retrieval-Augmented LLM Answers](https://www.preprints.org/manuscript/202609.0490)
 - [Quick start for Windows, macOS, and Linux](docs/QUICKSTART.md)
 - [Understanding the four outputs](docs/OUTPUTS.md)
 - [How UnvibeCode works](docs/HOW_IT_WORKS.md)
