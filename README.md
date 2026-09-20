@@ -72,31 +72,31 @@ No activation key. No customer OpenAI API key. The repository path is the only r
 
 ## One review. Four practical outputs.
 
-### 1. Connected Code Map
+Open `00_unvibecode_results.html` and explore the outputs in this order:
 
-See how files, symbols, imports, and calls work together. Select a file to trace its connected code and download a compact package for deeper LLM analysis.
+### 1. Business Workflows — Business Workflow Map
 
-![Interactive code dependency graph showing connected files and downloadable LLM context](docs/assets/connected_code_map.png)
-
-### 2. LLM-ready repository context
-
-Stop manually selecting files or pasting unrelated code into an LLM. UnvibeCode prepares complete and connected repository context with filenames, line references, verified relationships, and reusable selections.
-
-### 3. Business Workflow Map
-
-A file tree explains repository structure. It does not explain how the software performs a business operation.
-
-UnvibeCode reconstructs entry points, decisions, state changes, external calls, and business outcomes into understandable workflows.
+Start here to understand end-to-end business operations reconstructed from the code.
 
 ![Business workflow analysis connecting code paths to operational outcomes](docs/assets/business_workflow_map.png)
 
-### 4. Evidence-backed Business Risk Findings
+### 2. Connected Code — Connected Code Map
 
-UnvibeCode reviews completed workflows for failures that may materially affect customers, money, permissions, data integrity, operations, or other important business outcomes.
+Trace imports, symbols, and static code relationships. Hover a file to preview directly connected code; click a file to choose how much connected code to download for use with an LLM.
 
-Each published finding includes the affected workflow and supporting code evidence.
+Choose **Narrow (~30K tokens)**, **Optimal (~45K tokens, recommended)**, or **Wider (~75K tokens)**. Larger packages include more surrounding code.
+
+![Interactive code dependency graph showing connected files and downloadable LLM context](docs/assets/connected_code_map.png)
+
+### 3. Risk Findings — Business Risk Findings
+
+Review evidence-backed risks tied to analyzed workflows and supporting code.
 
 ![Business risk finding with impact, remediation, acceptance check, and code evidence](docs/assets/business_risk_findings.png)
+
+### 4. LLM Context — Complete Repository Context
+
+Download the complete normalized repository ZIP for LLM-assisted analysis, API workflows, or a reusable analysis bundle. This is the full repository context; use Connected Code when you want a smaller selection around a file.
 
 ## Why UnvibeCode instead of stopping at code search, graphs, PR review, or LLM context?
 
