@@ -1,0 +1,284 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnvibeCode Business Risk Findings</title>
+<style>body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 24px 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:25px}h3{font-size:16px;margin-bottom:6px}p,li,td,dd{overflow-wrap:anywhere}.summary,.flaw,.structural-review{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 8px 30px rgba(15,23,42,.05)}.critical{border-left:7px solid #991b1b}.high{border-left:7px solid #c2410c}.medium{border-left:7px solid #a16207}.badge,.structural-badge{display:inline-block;background:#0f172a;color:white;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.structural-badge{background:#4338ca}.bottom{font-size:19px;font-weight:600}.metrics{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#e2e8f0;border-radius:12px;padding:12px 16px;min-width:120px}.metric strong{display:block;font-size:25px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid section{background:#f1f5f9;padding:14px;border-radius:10px}dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}dt{font-weight:700}dd{margin:0}.graph-scroll{width:100%;overflow-x:auto;padding-bottom:8px}.path-graph{display:block;width:1500px;max-width:none;height:auto;background:white;border:1px solid #e2e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e2e8f0;padding:8px}summary{cursor:pointer;font-weight:700}.hotspot-card{margin-top:16px;padding:18px;background:#f8fafc;border:1px solid #dbe3f5;border-left:5px solid #4f46e5;border-radius:12px}.hotspot-card>h3{font-size:19px;margin:9px 0}.hotspot-code{margin-top:12px;padding:12px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:8px;color:#c4b5fd;font-size:12px;font-weight:700}pre{margin:0;overflow:auto;color:#e2e8f0;font:12px/1.5 Consolas,monospace;white-space:pre}.hotspot-details{margin-top:14px}@media(max-width:760px){main{padding:24px 12px 50px}h1{font-size:29px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}.summary,.flaw,.structural-review{padding:17px}.path-graph{width:1200px}pre{font-size:11px}}</style><style id="unvibecode-customer-report-style">
+main{
+  padding-top:22px !important;
+}
+main > h1{
+  margin-bottom:4px !important;
+  font-size:30px !important;
+}
+main > p{
+  margin-top:0 !important;
+}
+</style>
+</head>
+<body><main><h1>smolagents-main business flaw report</h1><p>Business-heavy findings reconstructed from connected code paths.</p>
+<section class="summary"><h2>Summary</h2><p class="bottom">No business flaw passed the business-impact gate in the analyzed paths.</p><div class="metrics"><div class="metric"><strong>0</strong>flaws</div><div class="metric"><strong>0</strong>strong evidence</div><div class="metric"><strong>0</strong>supported evidence</div></div></section>
+<h2>Business paths</h2><div class="graph-scroll"><img class="path-graph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDE1MDAgMjUwIj4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iOSIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDksMyB6IiBmaWxsPSIjNjQ3NDhiIi8+PC9tYXJrZXI+CjxzdHlsZT4udGl0bGV7Zm9udDo3MDAgMjRweCBBcmlhbDtmaWxsOiMwZjE3MmF9LmxhbmV7Zm9udDo3MDAgMTZweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm5vZGV7Zm9udDo2MDAgMTRweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm1ldGF7Zm9udDoxMi41cHggQXJpYWw7ZmlsbDojNDc1NTY5fS5lZGdle3N0cm9rZTojNjQ3NDhiO3N0cm9rZS13aWR0aDoyO21hcmtlci1lbmQ6dXJsKCNhcnJvdyl9LmltcGFjdHtzdHJva2U6I2RjMjYyNjtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYXJyb3cpfTwvc3R5bGU+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmYWZjIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0MCIgY2xhc3M9InRpdGxlIj5zbW9sYWdlbnRzLW1haW4g4oCUIGJ1c2luZXNzIGZsYXcgcGF0aHM8L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSI5NSIgY2xhc3M9ImxhbmUiPk5vIGJ1c2luZXNzIGZsYXcgcGFzc2VkIHRoZSBidXNpbmVzcy1pbXBhY3QgZ2F0ZS48L3RleHQ+Cjwvc3ZnPg==" alt="Business flaw paths"></div><h2>Business flaws</h2><article class="flaw"><h2>No business flaw passed the business-impact gate.</h2></article>
+
+<section class="structural-review">
+  <h2>Additional code areas worth reviewing</h2>
+  <p>These code areas met strict structural rules for concentrated complexity or strong code connections. They are review priorities, not confirmed business flaws.</p>
+  
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>1. Tightly connected module: agent_types.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>11 incoming and 1 outgoing source connections</li><li>Dependency cycle across 7 files</li></ul>
+  <h3>Connected source files</h3><ul><li>src/smolagents/__init__.py</li><li>src/smolagents/agents.py</li><li>src/smolagents/default_tools.py</li><li>src/smolagents/gradio_ui.py</li><li>src/smolagents/tools.py</li><li>src/smolagents/utils.py</li><li>tests/test_agents.py</li><li>tests/test_default_tools.py</li><li>tests/test_final_answer.py</li><li>tests/test_gradio_ui.py</li><li>tests/test_tools.py</li><li>tests/test_types.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/smolagents/agent_types.py · lines 1–284 · Relevant source section</div><pre><code>     1 | # coding=utf-8
+     2 | # Copyright 2024 HuggingFace Inc.
+     3 | #
+     4 | # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+     5 | # you may not use this file except in compliance with the License.
+     6 | # You may obtain a copy of the License at
+     7 | #
+     8 | #     http://www.apache.org/licenses/LICENSE-2.0
+     9 | #
+    10 | # Unless required by applicable law or agreed to in writing, software
+    11 | # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+    12 | # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    13 | # See the License for the specific language governing permissions and
+    14 | # limitations under the License.
+    15 | import logging
+    16 | import os
+    17 | import pathlib
+    18 | import tempfile
+    19 | import uuid
+    20 | from io import BytesIO
+    21 | from typing import Any
+    22 | 
+    23 | import PIL.Image
+    24 | import requests
+    25 | 
+    26 | from .utils import _is_package_available
+    27 | 
+    28 | 
+    29 | logger = logging.getLogger(__name__)
+    30 | 
+    31 | 
+    32 | class AgentType:
+    33 |     &quot;&quot;&quot;
+    34 |     Abstract class to be reimplemented to define types that can be returned by agents.
+    35 | 
+    36 |     These objects serve three purposes:
+    37 | 
+    38 |     - They behave as they were the type they&#x27;re meant to be, e.g., a string for text, a PIL.Image.Image for images
+    39 |     - They can be stringified: str(object) in order to return a string defining the object
+    40 |     - They should be displayed correctly in ipython notebooks/colab/jupyter
+    41 |     &quot;&quot;&quot;
+    42 | 
+    43 |     def __init__(self, value):
+    44 |         self._value = value
+    45 | 
+    46 |     def __str__(self):
+    47 |         return self.to_string()
+    48 | 
+    49 |     def to_raw(self):
+    50 |         logger.error(
+    51 |             &quot;This is a raw AgentType of unknown type. Display in notebooks and string conversion will be unreliable&quot;
+    52 |         )
+    53 |         return self._value
+    54 | 
+    55 |     def to_string(self) -&gt; str:
+    56 |         logger.error(
+    57 |             &quot;This is a raw AgentType of unknown type. Display in notebooks and string conversion will be unreliable&quot;
+    58 |         )
+    59 |         return str(self._value)
+    60 | 
+    61 | 
+    62 | class AgentText(AgentType, str):
+    63 |     &quot;&quot;&quot;
+    64 |     Text type returned by the agent. Behaves as a string.
+    65 |     &quot;&quot;&quot;
+    66 | 
+    67 |     def to_raw(self):
+    68 |         return self._value
+    69 | 
+    70 |     def to_string(self):
+    71 |         return str(self._value)
+    72 | 
+    73 | 
+    74 | class AgentImage(AgentType, PIL.Image.Image):
+    75 |     &quot;&quot;&quot;
+    76 |     Image type returned by the agent. Behaves as a PIL.Image.Image.
+    77 |     &quot;&quot;&quot;
+    78 | 
+    79 |     def __init__(self, value):
+    80 |         AgentType.__init__(self, value)
+    81 |         PIL.Image.Image.__init__(self)
+    82 | 
+    83 |         self._path = None
+    84 |         self._raw = None
+    85 |         self._tensor = None
+    86 | 
+    87 |         if isinstance(value, AgentImage):
+    88 |             self._raw, self._path, self._tensor = value._raw, value._path, value._tensor
+    89 |         elif isinstance(value, PIL.Image.Image):
+    90 |             self._raw = value
+       | … middle lines omitted from this display …
+   195 |         if isinstance(value, (str, pathlib.Path)):
+   196 |             self._path = value
+   197 |         elif isinstance(value, torch.Tensor):
+   198 |             self._tensor = value
+   199 |         elif isinstance(value, tuple):
+   200 |             self.samplerate = value[0]
+   201 |             if isinstance(value[1], np.ndarray):
+   202 |                 self._tensor = torch.from_numpy(value[1])
+   203 |             else:
+   204 |                 self._tensor = torch.tensor(value[1])
+   205 |         else:
+   206 |             raise ValueError(f&quot;Unsupported audio type: {type(value)}&quot;)
+   207 | 
+   208 |     def _ipython_display_(self, include=None, exclude=None):
+   209 |         &quot;&quot;&quot;
+   210 |         Displays correctly this type in an ipython notebook (ipython, colab, jupyter, ...)
+   211 |         &quot;&quot;&quot;
+   212 |         from IPython.display import Audio, display
+   213 | 
+   214 |         display(Audio(self.to_string(), rate=self.samplerate))
+   215 | 
+   216 |     def to_raw(self):
+   217 |         &quot;&quot;&quot;
+   218 |         Returns the &quot;raw&quot; version of that object. It is a `torch.Tensor` object.
+   219 |         &quot;&quot;&quot;
+   220 |         import soundfile as sf
+   221 | 
+   222 |         if self._tensor is not None:
+   223 |             return self._tensor
+   224 | 
+   225 |         import torch
+   226 | 
+   227 |         if self._path is not None:
+   228 |             if &quot;://&quot; in str(self._path):
+   229 |                 response = requests.get(self._path)
+   230 |                 response.raise_for_status()
+   231 |                 tensor, self.samplerate = sf.read(BytesIO(response.content))
+   232 |             else:
+   233 |                 tensor, self.samplerate = sf.read(self._path)
+   234 |             self._tensor = torch.tensor(tensor)
+   235 |             return self._tensor
+   236 | 
+   237 |     def to_string(self):
+   238 |         &quot;&quot;&quot;
+   239 |         Returns the stringified version of that object. In the case of an AgentAudio, it is a path to the serialized
+   240 |         version of the audio.
+   241 |         &quot;&quot;&quot;
+   242 |         import soundfile as sf
+   243 | 
+   244 |         if self._path is not None:
+   245 |             return self._path
+   246 | 
+   247 |         if self._tensor is not None:
+   248 |             directory = tempfile.mkdtemp()
+   249 |             self._path = os.path.join(directory, str(uuid.uuid4()) + &quot;.wav&quot;)
+   250 |             sf.write(self._path, self._tensor, samplerate=self.samplerate)
+   251 |             return self._path
+   252 | 
+   253 | 
+   254 | _AGENT_TYPE_MAPPING = {&quot;string&quot;: AgentText, &quot;image&quot;: AgentImage, &quot;audio&quot;: AgentAudio}
+   255 | 
+   256 | 
+   257 | def handle_agent_input_types(*args, **kwargs):
+   258 |     args = [(arg.to_raw() if isinstance(arg, AgentType) else arg) for arg in args]
+   259 |     kwargs = {k: (v.to_raw() if isinstance(v, AgentType) else v) for k, v in kwargs.items()}
+   260 |     return args, kwargs
+   261 | 
+   262 | 
+   263 | def handle_agent_output_types(output: Any, output_type: str | None = None) -&gt; Any:
+   264 |     if output_type in _AGENT_TYPE_MAPPING:
+   265 |         # If the class has defined outputs, we can map directly according to the class definition
+   266 |         decoded_outputs = _AGENT_TYPE_MAPPING[output_type](output)
+   267 |         return decoded_outputs
+   268 | 
+   269 |     # If the class does not have defined output, then we map according to the type
+   270 |     if isinstance(output, str):
+   271 |         return AgentText(output)
+   272 |     if isinstance(output, PIL.Image.Image):
+   273 |         return AgentImage(output)
+   274 |     try:
+   275 |         import torch
+   276 | 
+   277 |         if isinstance(output, torch.Tensor):
+   278 |             return AgentAudio(output)
+   279 |     except ModuleNotFoundError:
+   280 |         pass
+   281 |     return output
+   282 | 
+   283 | 
+   284 | __all__ = [&quot;AgentType&quot;, &quot;AgentImage&quot;, &quot;AgentText&quot;, &quot;AgentAudio&quot;]</code></pre></div></details>
+</article>
+</section></main>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Download normalized repository context for LLM or API analysis.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="llm-context">LLM Context →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+</body></html>
