@@ -1,35 +1,31 @@
-# smolagents analysis pages
+# smolagents sample analysis
 
-The public experience follows **Understand → Ask → Build**. It uses the supplied UnvibeCode export as its source of truth.
+The homepage introduces three sample outputs: **Business workflows**, **Connected code map**, and **Download LLM context**. All three are available on `index.html` through same-page navigation.
 
-## Files
+## Page organization
 
-| Location | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `index.html` | Understand: all 12 original workflow areas and 26 workflow cards; initial Build section. |
-| `ask.html` | Workflow questions, connected-code selection, context preview, JSON copy/download and full ZIP download. |
-| `connected-code.html` | Embedded graph generated from the original report's visualization library, nodes, edges and layout. |
-| `assets/` | Website styles and interaction code; generated workflow metadata. |
-| `design/build.py` | Standard-library-only page generator. |
-| `design/templates/` | Editable page layout templates. |
-| `original/` | Unchanged reports, original context store and repository context ZIP. |
+| `index.html` | Original business workflow section, followed by the connected-code map and context downloads. |
+| `connected-code.html` | Embedded original graph, styled to match the website. |
+| `ask.html` | Compatibility redirect for previously shared links. |
+| `assets/outputs.css` | Context-control styling scoped to avoid changing workflow styling. |
+| `assets/outputs.js` | File/context selection, preview, JSON copy/download, persistence and navigation. |
+| `assets/map.js` | Same-origin graph selection bridge and graph styling. |
+| `design/build.py` | Standard-library page generator. |
+| `design/templates/outputs.html` | Editable connected-code and download section. |
+| `original/` | Six unchanged source exports, including the context store and full ZIP. |
 
-## Update the pages
-
-From the repository root:
+Rebuild from the repository root:
 
 ```sh
 python docs/gitdocs/smolagents/design/build.py
 ```
 
-Edit the Ask layout in `design/templates/ask.html` and its presentation/interaction in `assets/ask.css`, `assets/ask.js` and `assets/map.js`. The Understand wrapper remains in `design/build.py`. Rebuild and commit the generated HTML and `assets/workflows.js` alongside source edits. No root-level scripts folder is needed for these pages.
+The renderer preserves all 12 original workflow areas and 26 workflow cards, their descriptions, outcomes and supporting code. The workflow sidebar and its layout are preserved. The output wrapper and homepage summary provide access to the existing analysis rather than a separate Understand/Ask/Build journey.
 
-The generator derives workflow navigation, questions, answer excerpts and source references from the original workflow report. Answers are explicitly attributed excerpts, not new model-generated claims. The Understand renderer retains every original workflow section apart from added navigation IDs.
+The graph retains the exported nodes, edges and layout. Its file picker is an accessible alternative to graph selection. Each narrow/optimal/wider context selection uses the original ordered chunks and connections. Users can preview the payload, add a question, copy it or download JSON. The complete repository ZIP is unchanged. Browser session storage retains file, scope and question; URLs carry file/scope selections. No LLM request is made by these pages.
 
-The graph retains the exported topology. Clicking it selects a starting file; JSON downloads happen only through the explicit action. The accessible file picker offers the same selection. Context sizes, ordered code chunks and cross-file connections come directly from `original/_support/fast_lane_context_store.js`. A copied/downloaded selection includes the user's question and source metadata. The original context ZIP remains unchanged.
+Serve `docs/` over HTTP for local preview; graph messaging validates the origin and sender. Business risk findings remain in the unchanged original exports but are not presented in this experience.
 
-Serve `docs/` through HTTP for local preview. Ask and its map use same-origin messaging with sender checks. The pages make no LLM requests. Session storage preserves selections and prompts within the browser tab; workflow/file/scope URLs can be bookmarked. Business risk findings remain in the original archive and are not linked or presented in Understand or Ask.
-
-## Source notes
-
-The supplied export records `smolagents-main`, but not a repository commit SHA. No runtime verification or performance benchmark is claimed. The original local-executor workflow uses sandbox wording; the executor's source docstring says it is not a security sandbox. These are source-review notes, not changes to the original report.
+The export identifies `smolagents-main` without a commit SHA. No runtime or performance evaluation is claimed. Original wording is retained; the local executor's own code states that it is not a security sandbox.
