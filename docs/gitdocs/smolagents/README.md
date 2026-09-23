@@ -6,8 +6,8 @@ The homepage introduces three sample outputs: **Business workflows**, **Connecte
 
 | Path | Purpose |
 | --- | --- |
-| `smolagents-main-unvibecode-analysis.html` | Supplied entry-page redirect, connected to `full-report.html`; preserves the selected output hash. |
-| `full-report.html` | Complete tabbed HTML report linked from the homepage hero; uses the existing original workflow, code-map, risk and ZIP exports. |
+| `smolagents-main-unvibecode-analysis.html` | Complete four-output report linked from the homepage. |
+| `full-report.html` | Supplied compatibility redirect to the complete report; preserves the selected output hash. |
 | `index.html` | Original business workflow section, followed by the connected-code map and context downloads. |
 | `connected-code.html` | Embedded original graph, styled to match the website. |
 | `ask.html` | Compatibility redirect for previously shared links. |
@@ -33,5 +33,4 @@ Serve `docs/` over HTTP for local preview; graph messaging validates the origin 
 The export identifies `smolagents-main` without a commit SHA. No runtime or performance evaluation is claimed. Original wording is retained; the local executor's own code states that it is not a security sandbox.
 
 
-The full report shell comes from the supplied `smolagents-main-unvibecode-analysis.html`. Its asset URLs are resolved to `original/`, and its workflow count matches those exports (26 workflows across 12 areas). It is maintained separately from the generated `index.html`; rebuilding that page does not overwrite it. The existing sample exploration links remain available.
-
+The complete report uses the existing exports in `original/` (26 workflows across 12 areas). The supplied redirect is retained at `full-report.html` for older shared URLs. The complete report and compatibility redirect are maintained separately from the generated `index.html`.
