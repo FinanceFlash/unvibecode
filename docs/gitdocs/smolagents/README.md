@@ -6,6 +6,7 @@ The homepage introduces three sample outputs: **Business workflows**, **Connecte
 
 | Path | Purpose |
 | --- | --- |
+| `smolagents-main-unvibecode-analysis.html` | Supplied entry-page redirect, connected to `full-report.html`; preserves the selected output hash. |
 | `full-report.html` | Complete tabbed HTML report linked from the homepage hero; uses the existing original workflow, code-map, risk and ZIP exports. |
 | `index.html` | Original business workflow section, followed by the connected-code map and context downloads. |
 | `connected-code.html` | Embedded original graph, styled to match the website. |
@@ -33,3 +34,4 @@ The export identifies `smolagents-main` without a commit SHA. No runtime or perf
 
 
 The full report shell comes from the supplied `smolagents-main-unvibecode-analysis.html`. Its asset URLs are resolved to `original/`, and its workflow count matches those exports (26 workflows across 12 areas). It is maintained separately from the generated `index.html`; rebuilding that page does not overwrite it. The existing sample exploration links remain available.
+
