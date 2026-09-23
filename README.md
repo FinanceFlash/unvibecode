@@ -104,11 +104,11 @@ Tools such as Probe, Graphify, PR-Agent / Qodo Merge, and Repomix solve useful p
 
 | Tool | Strong at | Where UnvibeCode goes further |
 | --- | --- | --- |
-| [**Probe**](https://github.com/probelabs/probe) | AST-aware code search, extraction, and code context for AI agents | Search and retrieval help locate code; UnvibeCode reconstructs the end-to-end business workflow that crosses those files and functions |
-| [**Graphify**](https://github.com/Graphify-Labs/graphify) | Building and querying a knowledge graph of code, documents, and relationships | A graph explains how things connect; UnvibeCode additionally reconstructs business workflows, edge cases, and evidence-backed business risks |
-| [**PR-Agent / Qodo Merge**](https://github.com/The-PR-Agent/pr-agent) | Reviewing pull requests, describing changes, and suggesting improvements around a diff | PR review starts from changed code; UnvibeCode reverse-engineers the existing repository and its business workflows beyond a single change set |
-| [**Repomix**](https://github.com/yamadashy/repomix) | Packaging a repository into AI-friendly context for LLMs | Repository context gives an LLM source material; UnvibeCode additionally reconstructs workflow logic, state changes, edge cases, and business consequences |
-| **UnvibeCode** | **Connected code + business workflows + business logic + edge cases + evidence-backed business risks** | **The codebase is reviewed through the business workflows it implements, not only files, graphs, diffs, or context packages** |
+| **Probe** | AST-aware code search, extraction, and code context for AI agents | Search and retrieval help locate code; UnvibeCode reconstructs the end-to-end business workflow that crosses those files and functions |
+| **Graphify** | Building and querying a knowledge graph of code, documents, and relationships | A graph explains how things connect; UnvibeCode additionally reconstructs business workflows, edge cases, and evidence-backed business risks |
+| **PR-Agent / Qodo Merge** | Reviewing pull requests, describing changes, and suggesting improvements around a diff | PR review starts from changed code; UnvibeCode reverse-engineers the existing repository and its business workflows beyond a single change set |
+| **Repomix** | Packaging a repository into AI-friendly context for LLMs | Repository context gives an LLM source material; UnvibeCode additionally reconstructs workflow logic, state changes, edge cases, and business consequences |
+| **UnvibeCode** | Connected code + business workflows + business logic + edge cases + evidence-backed business risks | The codebase is reviewed through the business workflows it implements, not only files, graphs, diffs, or context packages |
 
 **The core unit in UnvibeCode is not a file or a diff. It is the business workflow implemented across the codebase.**
 
