@@ -95,27 +95,27 @@ body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;paddin
 
 <section class="workspace" aria-label="UnvibeCode review workspace">
   <nav class="view-tabs" role="tablist" aria-label="Review results">
-    <button class="view-tab active" type="button" role="tab" aria-selected="true" data-index="0" data-view-id="business-workflows" data-kind="report" data-src="original/02_business_workflow_map.html" data-title="Business Workflow Map" data-description="Understand end-to-end business operations reconstructed from the code.">Business Workflows</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="1" data-view-id="connected-code" data-kind="report" data-src="original/01_connected_code_map_for_llm.html" data-title="Connected Code Map" data-description="Structured graph of your codebase linking different files and symbols.">Connected Code</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="2" data-view-id="risk-findings" data-kind="report" data-src="original/03_business_risk_findings.html" data-title="Business Risk Findings" data-description="Identify key risks tied to analyzed workflows and supporting code.">Risk Findings</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="3" data-view-id="llm-context" data-kind="context" data-src="original/complete_repository_context_for_llm.zip" data-title="Complete Repository Context" data-description="Download the complete normalized repository ZIP for LLM or API analysis.">LLM Context</button>
+    <button class="view-tab active" type="button" role="tab" aria-selected="true" data-index="0" data-view-id="business-workflows" data-kind="report" data-src="02_business_workflow_map.html" data-title="Business Workflow Map" data-description="Understand end-to-end business operations reconstructed from the code.">Business Workflows</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="1" data-view-id="connected-code" data-kind="report" data-src="01_connected_code_map_for_llm.html" data-title="Connected Code Map" data-description="Structured graph of your codebase linking different files and symbols.">Connected Code</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="2" data-view-id="risk-findings" data-kind="report" data-src="03_business_risk_findings.html" data-title="Business Risk Findings" data-description="Identify key risks tied to analyzed workflows and supporting code.">Risk Findings</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="3" data-view-id="llm-context" data-kind="context" data-src="complete_repository_context_for_llm.zip" data-title="Complete Repository Context" data-description="Download the complete normalized repository ZIP for LLM or API analysis.">LLM Context</button>
   </nav>
   <details class="uvc-help"><summary aria-label="About the four analysis outputs">ⓘ <span>Output guide</span></summary><div class="uvc-help-panel"><section class="quick-guide" aria-label="How to use this review"><div class="guide-title">How to use this review</div><div class="guide-grid"><div class="guide-item"><strong>Business Workflows</strong><span>Start here to see end-to-end business operations reconstructed from the code.</span></div><div class="guide-item"><strong>Connected Code</strong><span>Trace imports, symbols, and static code relationships; click a file to get connected LLM context.</span></div><div class="guide-item"><strong>Risk Findings</strong><span>Identify key risks tied to analyzed workflows and supporting code.</span></div><div class="guide-item"><strong>LLM Context</strong><span>Download the complete normalized repository ZIP for LLM or API analysis.</span></div></div></section></div></details>
   <div class="view-toolbar">
     <div>
       <h2 id="view-title">Business Workflow Map</h2>
       <p id="view-description">Understand end-to-end business operations reconstructed from the code.</p>
-      <p id="workflow-meta" class="uvc-meta" hidden>smolagents-main · 26 workflows · 12 areas</p>
+      <p id="workflow-meta" class="uvc-meta" hidden>smolagents-main · 30 workflows · 15 areas</p>
     </div>
   </div>
   <div id="report-stage" class="report-stage">
-    <iframe id="report-frame" src="original/02_business_workflow_map.html" title="Business Workflow Map"></iframe>
+    <iframe id="report-frame" src="02_business_workflow_map.html" title="Business Workflow Map"></iframe>
 
   </div>
   <section id="context-panel" class="context-panel" hidden>
     <h3>Complete repository context</h3>
     <p>Use this ZIP to continue the review in an LLM, pass normalized repository context to an API workflow, or keep a reusable analysis bundle.</p>
-    <a id="context-download" class="download-action" href="original/complete_repository_context_for_llm.zip" download>Download repository context ZIP</a>
+    <a id="context-download" class="download-action" href="complete_repository_context_for_llm.zip" download>Download repository context ZIP</a>
   </section>
 </section>
-<noscript><ul><li><a href="original/02_business_workflow_map.html">Business Workflow Map</a></li><li><a href="original/01_connected_code_map_for_llm.html">Connected Code Map</a></li><li><a href="original/03_business_risk_findings.html">Business Risk Findings</a></li><li><a href="original/complete_repository_context_for_llm.zip">Complete Repository Context</a></li></ul></noscript>
+<noscript><ul><li><a href="02_business_workflow_map.html">Business Workflow Map</a></li><li><a href="01_connected_code_map_for_llm.html">Connected Code Map</a></li><li><a href="03_business_risk_findings.html">Business Risk Findings</a></li><li><a href="complete_repository_context_for_llm.zip">Complete Repository Context</a></li></ul></noscript>
 </main>
 <script>
 (function() {
@@ -138,7 +138,6 @@ body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;paddin
       const active = itemIndex === index;
       item.classList.toggle('active', active);
       item.setAttribute('aria-selected', active ? 'true' : 'false');
-      item.tabIndex = active ? 0 : -1;
     });
 
     const kind = tab.dataset.kind;
@@ -187,20 +186,7 @@ body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;paddin
     }
   }
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => selectIndex(index));
-    tab.addEventListener('keydown', (event) => {
-      let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
-      else if (event.key === 'Home') next = 0;
-      else if (event.key === 'End') next = tabs.length - 1;
-      else return;
-      event.preventDefault();
-      selectIndex(next);
-      tabs[next].focus();
-    });
-  });
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => selectIndex(index)));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       const help = document.querySelector('.uvc-help');
@@ -208,7 +194,6 @@ body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;paddin
     }
   });
   window.addEventListener('message', (event) => {
-    if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
     if (!event.data || event.data.type !== 'unvibecode-select-view') return;
     selectViewId(event.data.target);
   });
