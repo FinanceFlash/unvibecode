@@ -1,36 +1,11 @@
-# smolagents sample analysis
+# smolagents sample reports
 
-The homepage introduces three sample outputs: **Business workflows**, **Connected code map**, and **Download LLM context**. All three are available on `index.html` through same-page navigation.
+Open `smolagents-main-unvibecode-analysis.html` for the current report: 30 workflows across 15 areas.
 
-## Page organization
+The supplied workflow, connected-code, risk, report shell, results redirect and context ZIP are preserved unchanged, with upload suffixes removed from filenames. The Connected Code Map is used directly, not rebuilt.
 
-| Path | Purpose |
-| --- | --- |
-| `smolagents-main-unvibecode-analysis.html` | Complete four-output report linked from the homepage. |
-| `full-report.html` | Supplied compatibility redirect to the complete report; preserves the selected output hash. |
-| `index.html` | Original business workflow section, followed by the connected-code map and context downloads. |
-| `connected-code.html` | Embedded original graph, styled to match the website. |
-| `ask.html` | Compatibility redirect for previously shared links. |
-| `assets/outputs.css` | Context-control styling scoped to avoid changing workflow styling. |
-| `assets/outputs.js` | File/context selection, preview, JSON copy/download, persistence and navigation. |
-| `assets/map.js` | Same-origin graph selection bridge and graph styling. |
-| `design/build.py` | Standard-library page generator. |
-| `design/templates/outputs.html` | Editable connected-code and download section. |
-| `original/` | Six unchanged source exports, including the context store and full ZIP. |
+The browser context store in `_support/fast_lane_context_store.js` is assembled from the supplied ZIP's chunks, connections and selections. It contains 74 file selections and 560 code chunks.
 
-Rebuild from the repository root:
+Older entry URLs redirect to the current report. The legacy connected-map fragment maps to connected-code.
 
-```sh
-python docs/gitdocs/smolagents/design/build.py
-```
-
-The renderer preserves all 12 original workflow areas and 26 workflow cards, their descriptions, outcomes and supporting code. The workflow sidebar and its layout are preserved. The output wrapper and homepage summary provide access to the existing analysis rather than a separate Understand/Ask/Build journey.
-
-The graph retains the exported nodes, edges and layout. Its file picker is an accessible alternative to graph selection. Each narrow/optimal/wider context selection uses the original ordered chunks and connections. Users can preview the payload, add a question, copy it or download JSON. The complete repository ZIP is unchanged. Browser session storage retains file, scope and question; URLs carry file/scope selections. No LLM request is made by these pages.
-
-Serve `docs/` over HTTP for local preview; graph messaging validates the origin and sender. Business risk findings remain in the unchanged original exports but are not presented in this experience.
-
-The export identifies `smolagents-main` without a commit SHA. No runtime or performance evaluation is claimed. Original wording is retained; the local executor's own code states that it is not a security sandbox.
-
-
-The complete report uses the existing exports in `original/` (26 workflows across 12 areas). The supplied redirect is retained at `full-report.html` for older shared URLs. The complete report and compatibility redirect are maintained separately from the generated `index.html`.
+The `original/` directory and `design/` generator belong to the previous 26-workflow snapshot. They are not used by the current report. Do not run that legacy generator to update the current report or redirects; replace the matching export set instead.
