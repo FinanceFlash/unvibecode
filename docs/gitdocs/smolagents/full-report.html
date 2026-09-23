@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>smolagents-main · UnvibeCode Analysis</title>
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.5 Segoe UI,Arial,sans-serif}
+main{width:min(1540px,100%);margin:0 auto;padding:18px 20px 28px}
+.review-header{margin-bottom:12px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4f46e5}
+h1{margin:3px 0 3px;font-size:27px;line-height:1.15}
+.repository{color:#64748b;overflow-wrap:anywhere;font-size:13px}
+.review-status{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:9px 12px;border:1px solid;border-radius:9px;font-size:13px}
+.review-status strong{font-size:11px;letter-spacing:.06em}
+.review-status.complete{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.review-status.partial{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+.review-status.failed{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.scope-note{margin:0 0 12px;padding:10px 12px;border-radius:9px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:13px}
+.quick-guide{margin:0 0 12px;padding:12px 14px;background:#fff;border:1px solid #dbe3ee;border-radius:12px}
+.guide-title{margin-bottom:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#475569}
+.guide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.guide-item{padding-right:10px;border-right:1px solid #e2e8f0}
+.guide-item:last-child{border-right:0}
+.guide-item strong{display:block;margin-bottom:2px;font-size:13px;color:#0f172a}
+.guide-item span{display:block;color:#64748b;font-size:12px;line-height:1.35}
+.workspace{background:#fff;border:1px solid #dbe3ee;border-radius:14px;box-shadow:0 8px 28px rgba(15,23,42,.06);overflow:hidden}
+.view-tabs{display:flex;gap:2px;padding:6px 10px 0;border-bottom:1px solid #e2e8f0;background:#f8fafc;overflow-x:auto}
+.view-tab{appearance:none;border:0;border-bottom:3px solid transparent;background:transparent;padding:10px 13px;color:#64748b;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}
+.view-tab:hover{color:#334155;background:#f1f5f9}
+.view-tab.active{color:#3730a3;border-bottom-color:#4f46e5;background:#fff}
+.view-toolbar{min-height:68px;display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #e2e8f0}
+.view-toolbar h2{margin:0 0 2px;font-size:18px}
+.view-toolbar p{margin:0;color:#64748b;font-size:13px;max-width:980px}
+#report-stage{display:block;background:#fff}
+#report-stage.connected-active{display:grid;grid-template-columns:minmax(0,1fr) 250px}
+#report-frame{display:block;width:100%;height:calc(100vh - 330px);min-height:520px;border:0;background:#fff}
+.connected-guide{padding:16px 14px;border-left:1px solid #e2e8f0;background:#fbfcff}
+.connected-guide-title{margin:0 0 10px;font-size:14px;font-weight:800;color:#0f172a}
+.connected-cue{margin-bottom:12px;padding:12px;border:1px solid #dbe3ee;border-radius:11px;background:#fff}
+.connected-cue-head{display:flex;align-items:center;gap:9px;margin-bottom:5px;font-size:13px}
+.connected-cue p{margin:0;color:#64748b;font-size:12px;line-height:1.4}
+.cue-icon{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:#eef0ff;flex:0 0 auto}
+.cue-icon svg{width:16px;height:16px;fill:none;stroke:#4f46e5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cue-node{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 7px;border:1.5px solid #6366f1;border-radius:7px;background:#fff;color:#334155;font-size:11px}
+.cue-node span{color:#4f46e5;font-weight:900}
+.context-sizes{display:grid;gap:5px;margin-top:9px}
+.context-sizes span{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 7px;border:1px solid #e2e8f0;border-radius:7px;background:#fbfcfe;color:#475569;font-size:11px}
+.context-sizes span.recommended{border-color:#c7d2fe;background:#f5f3ff;color:#3730a3}
+.context-sizes b{font-weight:700}
+.context-sizes em{font-style:normal}
+.token-help{margin-top:8px;color:#4f46e5;font-size:11px}
+.token-help summary{cursor:pointer;font-weight:700}
+.token-help p{margin:6px 0 0;color:#64748b;font-size:11px}
+.context-panel{min-height:420px;padding:36px 28px;background:linear-gradient(180deg,#fff,#f8fafc)}
+.context-panel h3{margin:0 0 7px;font-size:22px}
+.context-panel p{max-width:760px;margin:0 0 18px;color:#475569}
+.download-action{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:9px;background:#4f46e5;color:#fff;text-decoration:none;font-weight:700}
+.empty-state{padding:24px;background:#fff;border:1px solid #e2e8f0;border-radius:14px}
+[hidden]{display:none!important}
+@media(max-width:980px){.guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-item:nth-child(2){border-right:0}}
+@media(max-width:760px){main{padding:14px 10px 22px}h1{font-size:24px}.guide-grid{grid-template-columns:1fr}.guide-item{padding:0 0 8px;border-right:0;border-bottom:1px solid #e2e8f0}.guide-item:last-child{border-bottom:0}#report-stage.connected-active{grid-template-columns:1fr}#report-frame{height:68vh;min-height:470px}.connected-guide{border-left:0;border-top:1px solid #e2e8f0}}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head>
+<body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+<main>
+<div class="uvc-run-info"><span>smolagents-main analysis</span><span class="uvc-status">COMPLETE</span></div>
+
+
+
+<section class="workspace" aria-label="UnvibeCode review workspace">
+  <nav class="view-tabs" role="tablist" aria-label="Review results">
+    <button class="view-tab active" type="button" role="tab" aria-selected="true" data-index="0" data-view-id="business-workflows" data-kind="report" data-src="original/02_business_workflow_map.html" data-title="Business Workflow Map" data-description="Understand end-to-end business operations reconstructed from the code.">Business Workflows</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="1" data-view-id="connected-code" data-kind="report" data-src="original/01_connected_code_map_for_llm.html" data-title="Connected Code Map" data-description="Structured graph of your codebase linking different files and symbols.">Connected Code</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="2" data-view-id="risk-findings" data-kind="report" data-src="original/03_business_risk_findings.html" data-title="Business Risk Findings" data-description="Identify key risks tied to analyzed workflows and supporting code.">Risk Findings</button><button class="view-tab" type="button" role="tab" aria-selected="false" data-index="3" data-view-id="llm-context" data-kind="context" data-src="original/complete_repository_context_for_llm.zip" data-title="Complete Repository Context" data-description="Download the complete normalized repository ZIP for LLM or API analysis.">LLM Context</button>
+  </nav>
+  <details class="uvc-help"><summary aria-label="About the four analysis outputs">ⓘ <span>Output guide</span></summary><div class="uvc-help-panel"><section class="quick-guide" aria-label="How to use this review"><div class="guide-title">How to use this review</div><div class="guide-grid"><div class="guide-item"><strong>Business Workflows</strong><span>Start here to see end-to-end business operations reconstructed from the code.</span></div><div class="guide-item"><strong>Connected Code</strong><span>Trace imports, symbols, and static code relationships; click a file to get connected LLM context.</span></div><div class="guide-item"><strong>Risk Findings</strong><span>Identify key risks tied to analyzed workflows and supporting code.</span></div><div class="guide-item"><strong>LLM Context</strong><span>Download the complete normalized repository ZIP for LLM or API analysis.</span></div></div></section></div></details>
+  <div class="view-toolbar">
+    <div>
+      <h2 id="view-title">Business Workflow Map</h2>
+      <p id="view-description">Understand end-to-end business operations reconstructed from the code.</p>
+      <p id="workflow-meta" class="uvc-meta" hidden>smolagents-main · 26 workflows · 12 areas</p>
+    </div>
+  </div>
+  <div id="report-stage" class="report-stage">
+    <iframe id="report-frame" src="original/02_business_workflow_map.html" title="Business Workflow Map"></iframe>
+
+  </div>
+  <section id="context-panel" class="context-panel" hidden>
+    <h3>Complete repository context</h3>
+    <p>Use this ZIP to continue the review in an LLM, pass normalized repository context to an API workflow, or keep a reusable analysis bundle.</p>
+    <a id="context-download" class="download-action" href="original/complete_repository_context_for_llm.zip" download>Download repository context ZIP</a>
+  </section>
+</section>
+<noscript><ul><li><a href="original/02_business_workflow_map.html">Business Workflow Map</a></li><li><a href="original/01_connected_code_map_for_llm.html">Connected Code Map</a></li><li><a href="original/03_business_risk_findings.html">Business Risk Findings</a></li><li><a href="original/complete_repository_context_for_llm.zip">Complete Repository Context</a></li></ul></noscript>
+</main>
+<script>
+(function() {
+  const frame = document.getElementById('report-frame');
+  if (!frame) return;
+  const title = document.getElementById('view-title');
+  const description = document.getElementById('view-description');
+  const reportStage = document.getElementById('report-stage');
+
+  const contextPanel = document.getElementById('context-panel');
+  const contextDownload = document.getElementById('context-download');
+  const tabs = Array.from(document.querySelectorAll('.view-tab'));
+  let activeIndex = 0;
+
+  function selectIndex(index) {
+    if (index < 0 || index >= tabs.length) return;
+    activeIndex = index;
+    const tab = tabs[index];
+    tabs.forEach((item, itemIndex) => {
+      const active = itemIndex === index;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', active ? 'true' : 'false');
+      item.tabIndex = active ? 0 : -1;
+    });
+
+    const kind = tab.dataset.kind;
+    const viewId = tab.dataset.viewId;
+    title.textContent = tab.dataset.title;
+    description.textContent = tab.dataset.description;
+    document.getElementById('workflow-meta').hidden = viewId !== 'business-workflows';
+
+    reportStage.classList.toggle('connected-active', kind === 'report' && viewId === 'connected-code');
+    if (kind === 'context') {
+      reportStage.hidden = true;
+      contextPanel.hidden = false;
+      if (contextDownload) contextDownload.href = tab.dataset.src;
+    } else {
+      contextPanel.hidden = true;
+      reportStage.hidden = false;
+      const connectedActive = viewId === 'connected-code';
+      reportStage.classList.toggle('connected-active', connectedActive);
+
+      if (frame.getAttribute('src') !== tab.dataset.src) {
+        frame.src = tab.dataset.src;
+      }
+      frame.title = tab.dataset.title;
+    }
+
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + viewId);
+    }
+  }
+
+  function selectViewId(viewId) {
+    let index = tabs.findIndex((tab) => tab.dataset.viewId === viewId);
+    if (index < 0) {
+      const preferredOrder = ['business-workflows', 'connected-code', 'risk-findings', 'llm-context'];
+      const requestedPosition = preferredOrder.indexOf(viewId);
+      if (requestedPosition >= 0) {
+        for (let position = requestedPosition + 1; position < preferredOrder.length; position += 1) {
+          index = tabs.findIndex((tab) => tab.dataset.viewId === preferredOrder[position]);
+          if (index >= 0) break;
+        }
+      }
+    }
+    if (index >= 0) {
+      selectIndex(index);
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectIndex(index));
+    tab.addEventListener('keydown', (event) => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      selectIndex(next);
+      tabs[next].focus();
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const help = document.querySelector('.uvc-help');
+      if (help && help.open) { help.open = false; help.querySelector('summary').focus(); }
+    }
+  });
+  window.addEventListener('message', (event) => {
+    if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
+    if (!event.data || event.data.type !== 'unvibecode-select-view') return;
+    selectViewId(event.data.target);
+  });
+
+  const requestedView = decodeURIComponent((window.location.hash || '').replace(/^#/, ''));
+  const initialIndex = tabs.findIndex((tab) => tab.dataset.viewId === requestedView);
+  selectIndex(initialIndex >= 0 ? initialIndex : 0);
+})();
+</script>
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body>
+</html>
