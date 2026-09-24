@@ -1,6 +1,6 @@
 # Guardrails implementation pack
 
-Three deliverables: application-specific implementation guides, a production anti-pattern FAQ, and an evidence-based verification guide. These are Markdown files intended for developers and coding LLMs. No runtime guardrail programs are included in this release.
+Application-specific implementation guides, a production anti-pattern FAQ, an evidence-based verification guide, and practical Python notebooks for developers and coding LLMs.
 
 ## 1. Choose the application guide
 
@@ -25,6 +25,17 @@ Each entry includes a corrective action and verification step. Use it while desi
 
 A design-level PASS means the requirement is specified. It does not establish runtime enforcement. No evidence is reported as UNVERIFIED, not silently converted to success.
 
+## 4. Run the practical examples
+
+[Python notebooks and configuration checker](examples/README.md) cover:
+
+1. Geography-configurable PII detection with Presidio.
+2. SetFit intent classification, clarity, scope, and support routing.
+3. Prompt-injection and jailbreak screening with a long-context Sentinel adapter.
+4. Common configuration checks for chatbot, RAG, tool-agent, and multi-agent applications.
+
+Each notebook includes setup instructions, synthetic examples, and tests. The injection notebook runs framework tests without model access; real inference requires authorized access to the gated model. Configuration validation does not establish application runtime enforcement.
+
 ## How to start
 
 Give the selected application guide to an LLM with this message:
@@ -47,4 +58,4 @@ Do not share secrets or raw customer data with a reviewing LLM. Redacted schemas
 - All listed failure paths are minimum inventories to extend for the actual application, not an exhaustive claim about every production system.
 - Sources are linked compactly inside each guide. Framework-specific settings must be checked against the deployed release.
 
-Author: Divya Singaravelu, open-source creator of UnvibeCode.
+

@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "policy_version": "0.1.0",
+  "application": "agent",
+  "features": {
+    "retrieval": false,
+    "tools": true,
+    "memory": true
+  },
+  "controls": {
+    "egress_allowlist": {
+      "stage": "before_tool",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "input_content_policy": {
+      "stage": "input",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "input_injection": {
+      "stage": "input",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "input_intent": {
+      "stage": "input",
+      "tier": "semantic_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "input_pii": {
+      "stage": "input",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "memory_read_injection": {
+      "stage": "memory_read",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "memory_write_injection": {
+      "stage": "memory_write",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "memory_write_policy": {
+      "stage": "memory_write",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "output_content_policy": {
+      "stage": "answer",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "output_pii": {
+      "stage": "answer",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "resource_ownership": {
+      "stage": "before_tool",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "side_effect_idempotency": {
+      "stage": "before_tool",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "tool_authorization": {
+      "stage": "before_tool",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "tool_result_injection": {
+      "stage": "after_tool",
+      "tier": "specialized_classifier",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    },
+    "tool_schema": {
+      "stage": "before_tool",
+      "tier": "deterministic",
+      "execution": "before_release",
+      "on_error": "withhold",
+      "binding": null
+    }
+  },
+  "pii": {
+    "geographies": [
+      "IN"
+    ],
+    "language": "en",
+    "action": "redact",
+    "recognizer_version": "2.2.364"
+  },
+  "intent": {
+    "supported": [
+      "invoice",
+      "duplicate_charge",
+      "payment_failure",
+      "refund",
+      "cancel",
+      "account_access"
+    ],
+    "on_uncertain": "clarify",
+    "max_clarifications": 2,
+    "model_artifact": null,
+    "thresholds_artifact": null
+  },
+  "injection": {
+    "model_id": "rogue-security/prompt-injection-jailbreak-sentinel-v2",
+    "revision": "05ff9bfd1f28c5228e53121d5ee4427bb5205212",
+    "context_tokens": 32768,
+    "max_input_tokens": 32768,
+    "overflow": "withhold",
+    "review_threshold": 0.3,
+    "block_threshold": 0.85,
+    "access_confirmed": false
+  },
+  "runtime": {
+    "request_deadline_ms": 15000,
+    "guard_deadline_ms": 5000,
+    "timeout_enforcement": "supervised_worker",
+    "queue_limit": 32,
+    "max_inflight": 4,
+    "max_model_calls": 4,
+    "max_tool_calls": 6,
+    "max_retries": 1,
+    "max_agent_hops": 4,
+    "budget_scope": "shared_request",
+    "output_release": "after_checks"
+  },
+  "observability": {
+    "log_payloads": false,
+    "retention_days": 14,
+    "include_policy_version": true,
+    "include_model_revision": true
+  }
+}
