@@ -6,16 +6,16 @@ Three deliverables: application-specific implementation guides, a production ant
 
 | Application | File | Extra guides when capabilities overlap |
 |---|---|---|
-| RAG | [01_RAG_IMPLEMENTATION.md](01_RAG_IMPLEMENTATION.md) | Add tool-agent controls for actions |
-| Conversational chatbot | [02_CHATBOT_IMPLEMENTATION.md](02_CHATBOT_IMPLEMENTATION.md) | Add RAG for retrieval; tool-agent for API actions |
-| Agent with tool calling | [03_TOOL_AGENT_IMPLEMENTATION.md](03_TOOL_AGENT_IMPLEMENTATION.md) | Add RAG for document answers |
-| Multi-agent application | [04_MULTI_AGENT_IMPLEMENTATION.md](04_MULTI_AGENT_IMPLEMENTATION.md) | Add tool-agent/RAG details for participating agents |
+| RAG | [01_RAG_GUARDRAILS_IMPLEMENTATION.md](01_RAG_GUARDRAILS_IMPLEMENTATION.md) | Add tool-agent controls for actions |
+| Conversational chatbot | [02_CHATBOT_GUARDRAILS_IMPLEMENTATION.md](02_CHATBOT_GUARDRAILS_IMPLEMENTATION.md) | Add RAG for retrieval; tool-agent for API actions |
+| Agent with tool calling | [03_TOOL_AGENT_GUARDRAILS_IMPLEMENTATION.md](03_TOOL_AGENT_GUARDRAILS_IMPLEMENTATION.md) | Add RAG for document answers |
+| Multi-agent application | [04_MULTI_AGENT_GUARDRAILS_IMPLEMENTATION.md](04_MULTI_AGENT_GUARDRAILS_IMPLEMENTATION.md) | Add tool-agent/RAG details for participating agents |
 
 Each guide stands alone: it includes LLM instructions, six application-specific question prompts, a stage/interface control matrix, method tiers, failure paths, system-design rules, acceptance cases and a required design-output format. The repeated common sections are intentional so an individual file can be passed to an LLM without losing essential instructions.
 
 ## 2. Use the production FAQ
 
-[05_PRODUCTION_ANTIPATTERN_FAQ.md](05_PRODUCTION_ANTIPATTERN_FAQ.md) contains 28 focused failures: missing version history, PII in observability, premature external transmission, asynchronous bypasses, silent truncation, streaming leaks, stale approvals, duplicate actions, unbounded calls, delegation loops, unsafe caches, memory poisoning and more.
+[05_GUARDRAILS_PRODUCTION_ANTIPATTERN_FAQ.md](05_GUARDRAILS_PRODUCTION_ANTIPATTERN_FAQ.md) contains 28 focused failures: missing version history, PII in observability, premature external transmission, asynchronous bypasses, silent truncation, streaming leaks, stale approvals, duplicate actions, unbounded calls, delegation loops, unsafe caches, memory poisoning and more.
 
 Each entry includes a corrective action and verification step. Use it while designing and again when reviewing production incidents.
 
