@@ -27,7 +27,7 @@ A design-level PASS means the requirement is specified. It does not establish ru
 
 ## 4. Run the practical examples
 
-[Python notebooks and configuration checker](examples/README.md) cover:
+[Python notebooks and configuration checker](Pre-configured_gaurdrails_programs/README.md) cover:
 
 1. Geography-configurable PII detection with Presidio.
 2. SetFit intent classification, clarity, scope, and support routing.
