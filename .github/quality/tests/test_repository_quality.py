@@ -29,7 +29,12 @@ CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
 
 
 def workflow_packs():
-    return sorted(path for path in PACKS_ROOT.iterdir() if path.is_dir())
+    packs = sorted(path for path in PACKS_ROOT.iterdir() if path.is_dir())
+    assert packs, (
+        f"No workflow pack directories found in {PACKS_ROOT}. "
+        "If the directory was moved or renamed, update PACKS_ROOT in this file."
+    )
+    return packs
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
