@@ -30,7 +30,7 @@ flowchart TD
     H --> I["Learn + add test"]
     I --> A
 
-    J["Provider / model / data changes"] --> B
+    J["Provider / model /data change"] --> B
 
     classDef live fill:#1d4ed8,stroke:#1e3a8a,stroke-width:2px,color:#ffffff;
     classDef inspect fill:#b45309,stroke:#78350f,stroke-width:2px,color:#ffffff;
