@@ -10,6 +10,19 @@ Observability connects that experience to the application's behavior. When a cus
 
 Start with task outcomes, connected operation records, and a deliberate evidence-retention policy. Collect enough information to make decisions without turning every conversation into copies scattered across logs, traces, and evaluation systems.
 
+### What each signal actually proves
+
+| Signal | What it proves | What it does **not** prove |
+| --- | --- | --- |
+| HTTP 200 | The request returned successfully | The answer was correct or useful |
+| Model call succeeded | A provider returned output | Retrieval, tools, or the final task succeeded |
+| Relevant passage retrieved | Evidence was found | That evidence reached the prompt or was used correctly |
+| Guardrail passed | A specific check allowed the request/output | Every policy boundary was enforced at the right time |
+| Judge score is high | One evaluator rated one response highly | The business action completed or the judge is correct |
+| External receipt / state | The intended external action occurred | The generated explanation was correct |
+
+**Observability rule:** connect technical execution to **task outcome**, then keep quality and business-state evidence separate.
+
 ## 2. Know the units
 
 | Unit | Meaning | Example |
@@ -52,18 +65,31 @@ Define denominators: quality among evaluated answers differs from completion amo
 
 Use the existing application database for tasks, messages, feedback, and receipts; one telemetry backend for metrics and traces; and restricted object storage only when large evidence requires it. Run quality evaluation asynchronously unless a check must prevent an unsafe response or action.
 
-```mermaid
+~~~mermaid
 flowchart TD
-    A[Application] --> B[Task and response records]
-    A --> C[Bounded telemetry export]
-    C --> D[Metrics and traces]
-    B --> E[Protected evidence]
-    B --> F[Evaluation worker]
+    A["Application"] --> B["Task + response records"]
+    A --> C["Bounded telemetry export"]
+    C --> D["Metrics + traces"]
+    B --> E["Protected evidence"]
+    B --> F["Async evaluation worker"]
     E --> F
     F --> D
-    D --> G[Incident investigation]
+    D --> G["Incident investigation"]
     E --> G
-```
+
+    classDef app fill:#e0f2fe,stroke:#0284c7,color:#111827;
+    classDef record fill:#eef2ff,stroke:#6366f1,color:#111827;
+    classDef telemetry fill:#fff7ed,stroke:#ea580c,color:#111827;
+    classDef evidence fill:#f5f3ff,stroke:#7c3aed,color:#111827;
+    classDef eval fill:#ecfdf5,stroke:#059669,color:#111827;
+    classDef incident fill:#fef2f2,stroke:#dc2626,color:#111827;
+    class A app;
+    class B record;
+    class C,D telemetry;
+    class E evidence;
+    class F eval;
+    class G incident;
+~~~
 
 OpenTelemetry supplies conventions and collection components. Langfuse and LangSmith provide AI evaluation and trace workflows [1, 5, 6]. Your application still defines task success, permissions, and authoritative execution records.
 
@@ -82,6 +108,17 @@ OpenTelemetry supplies conventions and collection components. Langfuse and LangS
 Measure first-token, completed-response, and task-outcome latency separately. Aggregate task cost across retries, tools, checks, and evaluations. Label estimated costs; missing usage is unknown, not zero. Do not claim an immutable model revision when the provider exposes only an alias.
 
 ## 5. Production failures and how to detect them
+
+Before reading individual cases, start with the failure class:
+
+| Symptom | First place to inspect |
+| --- | --- |
+| “The answer is wrong” | source/version → retrieval → supplied context → model route |
+| “The action happened twice” | operation ID → external receipt → retry/reconciliation path |
+| “The agent says no data” | tool status → timeout/error → successful-empty distinction |
+| “Everything is suddenly blocked” | guardrail policy version → fallback → benign-block sample |
+| “Quality improved overnight” | evaluation coverage → judge/rubric version → missing failures |
+| “Tracing looks healthy but users complain” | task outcome + exact response evidence, not span success alone |
 
 ### Infrastructure and telemetry
 
@@ -155,6 +192,30 @@ OpenTelemetry recommends opt-in capture for sensitive message content [1]. Redac
 
 ## 7. Handle a harmful-answer complaint
 
+A complaint investigation should follow the evidence, not start by regenerating the answer.
+
+~~~mermaid
+flowchart TD
+    A["Customer complaint"] --> B["Locate exact response_id"]
+    B --> C{"Original evidence available?"}
+    C -->|Yes| D["Inspect wording + context + sources"]
+    C -->|No| E["Request customer evidence<br/>and record evidence gap"]
+    D --> F["Check model route + source versions<br/>+ guardrail timing + fallback"]
+    F --> G["Contain affected behavior"]
+    G --> H["Repair responsible component"]
+    H --> I["Add regression case + verify release"]
+    E --> G
+
+    classDef complaint fill:#fef2f2,stroke:#dc2626,color:#111827;
+    classDef inspect fill:#e0f2fe,stroke:#0284c7,color:#111827;
+    classDef decision fill:#fff7ed,stroke:#ea580c,color:#111827;
+    classDef repair fill:#ecfdf5,stroke:#059669,color:#111827;
+    class A complaint;
+    class B,D,F inspect;
+    class C,E decision;
+    class G,H,I repair;
+~~~
+
 When a customer reports a racist answer, locate the exact response ID, including its regeneration version. Preserve the necessary available evidence under the customer's retention policy, with an owner and review deadline. Inspect the wording and relevant context: was the material generated, quoted, retrieved, or introduced during transformation? Check the model route, source versions, guardrail result, timeout fallback, and whether text was emitted before checking finished. A passed automated check does not invalidate the complaint.
 
 Contain the affected behavior based on the evidence, repair the responsible component, and verify the result. If content has expired, request the message or screenshot and document the limitation. A fresh model response may support an investigation, but cannot prove what the user originally received.
@@ -182,9 +243,23 @@ Use exact checks for schemas, required fields, artifact existence, and confirmed
 
 Track the evaluation funnel:
 
-```text
-Eligible → selected → queued → completed → valid score → reviewed failure
-```
+~~~mermaid
+flowchart LR
+    A["Eligible"] --> B["Selected"]
+    B --> C["Queued"]
+    C --> D["Completed"]
+    D --> E["Valid score"]
+    E --> F["Reviewed failure"]
+    C -. timeout / error .-> X["Evaluation failure"]
+    D -. invalid result .-> X
+
+    classDef stage fill:#e0f2fe,stroke:#0284c7,color:#111827;
+    classDef score fill:#ecfdf5,stroke:#059669,color:#111827;
+    classDef failure fill:#fef2f2,stroke:#dc2626,color:#111827;
+    class A,B,C,D stage;
+    class E,F score;
+    class X failure;
+~~~
 
 Store request time and evaluation time separately. Show completeness and lag beside quality. Langfuse supports production filters and sampling rules [5]; version their configuration. Test judge length bias and attempts within evaluated content to override the rubric.
 
@@ -196,7 +271,17 @@ A confirmed failure should become a regression test when you can state the expec
 
 Attach release references for application, prompt, model configuration, routing, parser, index, memory policy, tools, guardrails, instrumentation, and evaluators. Record unavailable versions rather than claiming perfect reproducibility. Shadow runs must isolate external writes. Canary comparisons need comparable traffic and sufficient observation time.
 
-Use five dashboard views: task outcomes, quality/safety, latency/cost, telemetry/evaluator health, and releases/incidents. Give alerts an owner, evidence link, severity, and response procedure. Escalate urgent harmful actions promptly; investigate slower quality trends without paging on every individual judge failure.
+Use a small set of dashboard views rather than one giant AI dashboard:
+
+| View | Primary question |
+| --- | --- |
+| Task outcomes | Are users' tasks actually completing? |
+| Quality / safety | Are answers supported, useful, and within policy? |
+| Latency / cost | Where are time and money being spent? |
+| Telemetry / evaluator health | Are we losing traces or silently missing scores? |
+| Releases / incidents | Did behavior change with a model, prompt, parser, index, or policy release? |
+
+Give alerts an owner, evidence link, severity, and response procedure. Escalate urgent harmful actions promptly; investigate slower quality trends without paging on every individual judge failure.
 
 ## 10. Implementation checklist
 
