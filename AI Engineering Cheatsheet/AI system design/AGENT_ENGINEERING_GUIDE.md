@@ -25,7 +25,7 @@ flowchart LR
     T --> H
     H --> V["Verification"]
     V -->|continue| A
-    V -->|complete / blocked / partial| O["Result / Action / Status"]
+    V -->|blocked / partial| O["Result / Action / Status"]
     H --> S["State + Checkpoints"]
     H --> M["Observability + Evaluation"]
 
