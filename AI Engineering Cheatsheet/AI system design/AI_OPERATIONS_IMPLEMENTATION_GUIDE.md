@@ -17,31 +17,31 @@ Typical daily work includes provider/quota issues, latency or cost spikes, index
 
 ```mermaid
 flowchart TD
-    A["Serve tasks"] --> B["Observe<br/>outcomes · quality · latency · cost"]
+    A["Serve tasks"] --> B["Observe task health"]
     B --> C{"Healthy?"}
 
-    C -->|Yes| D["Routine checks<br/>probes · capacity · lifecycle"]
+    C -->|Yes| D["Routine checks"]
     D --> A
 
-    C -->|No| E["Triage<br/>scope · route · release"]
-    E --> F["Contain<br/>throttle · switch · rollback"]
-    F --> G["Recover<br/>state · side effects · backlog"]
-    G --> H["Verify recovery"]
-    H --> I["Add regression test<br/>update runbook"]
+    C -->|No| E["Triage cause"]
+    E --> F["Contain issue"]
+    F --> G["Recover safely"]
+    G --> H["Verify outcomes"]
+    H --> I["Learn + add test"]
     I --> A
 
     J["Provider / model / data changes"] --> B
 
-    classDef live fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#111827;
-    classDef inspect fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#111827;
-    classDef action fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#111827;
-    classDef safe fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#111827;
-    classDef external fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#111827;
+    classDef live fill:#1d4ed8,stroke:#1e3a8a,stroke-width:2px,color:#ffffff;
+    classDef inspect fill:#b45309,stroke:#78350f,stroke-width:2px,color:#ffffff;
+    classDef danger fill:#b91c1c,stroke:#7f1d1d,stroke-width:2px,color:#ffffff;
+    classDef safe fill:#047857,stroke:#064e3b,stroke-width:2px,color:#ffffff;
+    classDef external fill:#6d28d9,stroke:#4c1d95,stroke-width:2px,color:#ffffff;
 
     class A live;
     class B,C,E inspect;
-    class F,G action;
-    class D,H,I safe;
+    class F danger;
+    class D,G,H,I safe;
     class J external;
 ```
 
