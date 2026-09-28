@@ -69,7 +69,7 @@ flowchart TD
     D -->|Yes| F{"Can meaningful work run<br/>independently?"}
     F -->|No| G["Single agent + tools"]
     F -->|Yes| H["Consider multiple workers"]
-    H --> I{"Does decomposition improve<br/>quality / latency / isolation?"}
+    H --> I{"Does decomposition improve<br/>quality/latency/isolation?"}
     I -->|No| G
     I -->|Yes| J["Multi-agent / orchestrated workers"]
 
