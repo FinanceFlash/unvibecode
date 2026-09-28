@@ -25,7 +25,7 @@ A production AI system usually has two paths operating together:
 ```mermaid
 flowchart TB
     U["Users / Clients"] --> EDGE["CDN · WAF · API Gateway"]
-    EDGE --> API["Auth · Quotas · Application API"]
+    EDGE --> API["Auth · Quotas · API"]
 
     API --> CACHE["Cache"]
     API --> FLOW["AI Workflow / Orchestrator"]
