@@ -8,23 +8,6 @@ This guide covers the day-to-day operation of applications that use model APIs o
 
 AI observability tells you **what happened and why**. AI operations decides **what to do next**: continue, throttle, defer, switch route, rollback, recover, migrate, or retire.
 
-## Contents
-
-1. Keep the application reliable every day
-2. Define operating contracts and ownership
-3. Run the live service within hard limits
-4. Operate provider routes and fallbacks
-5. Manage changes to models, tools, APIs, and evaluators
-6. Release changes safely
-7. Operate RAG, memory, and long-running agents
-8. Respond to incidents and recover safely
-9. Production failure playbook
-10. Worked example: a small model starts underperforming
-11. Operating cadence and production checklist
-12. Frequently asked questions
-13. References
-
----
 
 ## 1. Keep the application reliable every day
 
