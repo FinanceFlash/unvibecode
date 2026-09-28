@@ -298,21 +298,205 @@ Give alerts an owner, evidence link, severity, and response procedure. Escalate 
 
 ## 11. Frequently asked questions
 
-**Should we store every prompt forever?** No. Define the investigation window and retain necessary evidence once. Keep routine telemetry lightweight.
+### What should I actually trace in an AI request?
 
-**Can we investigate without content?** Metadata explains execution, but cannot establish expired wording. Request customer evidence and state the gap.
+Trace the boundaries that help reconstruct the task: retrieval, model attempts, routing and fallbacks, tool calls, guardrail decisions, evaluations, and important state transitions.
 
-**Are traces sufficient for payments or approvals?** No. Sampled traces cannot replace durable business records.
+Do not automatically copy every prompt, document, or tool payload into telemetry. Keep large or sensitive evidence in an access-controlled store and reference it from the trace.
 
-**Should every answer receive a model judge score?** Only if justified. Begin with exact checks, representative sampling, and targeted risk cases; track coverage and evaluator errors.
+The trace should explain **what happened** without becoming a second uncontrolled copy of all application data.
 
-**Can a judge be wrong?** Yes. Calibrate against reviewed examples and version the rubric and model. Scores inform investigation rather than deciding incidents automatically.
+### How do I know whether the failure came from retrieval or the model?
 
-**Do we need Kafka immediately?** No. Begin with bounded export and suitable persistence. Dedicated queues improve some durability properties while introducing operating complexity [2].
+Record both:
 
-**How do we attribute a model regression?** Compare controlled versions and traffic groups; inspect simultaneous retrieval, prompt, policy, and evaluator changes.
+1. what retrieval returned, and
+2. what context was actually supplied to the model.
 
-**What is the minimum useful setup?** Task outcomes, connected operation records, response evidence references, versions, a complaint path, and visible telemetry losses.
+Then distinguish:
+
+- required evidence was never retrieved → **retrieval failure**
+- evidence was retrieved but removed during reranking or truncation → **context-assembly failure**
+- correct evidence reached the model but the answer was still wrong → **generation or grounding failure**
+
+Without these boundaries, all three problems look like “the LLM hallucinated.”
+
+### Should traces contain the complete prompt and response?
+
+Only when the investigation need justifies it and the data policy permits it.
+
+A useful default is:
+
+**trace metadata → response/source references → protected evidence store**
+
+rather than duplicating complete content across traces, logs, evaluation systems, and dashboards.
+
+For incidents where exact wording matters, such as harmful-output complaints, ensure the response can be recovered for the defined investigation period.
+
+### How should observability work for agents that continue after the HTTP request finishes?
+
+Use the **task** as the parent concept rather than the original HTTP request.
+
+Propagate `task_id`, tracing context, workflow version, and relevant operation IDs through queues and workers. A later worker or resumed agent may create a new trace, but it should still be discoverable as part of the same logical task.
+
+Otherwise a long-running agent appears as several unrelated successful requests.
+
+### What should I record for tool calls?
+
+At minimum record:
+
+- requested tool
+- validated operation
+- arguments or safe argument references
+- user, tenant, and resource scope
+- attempt ID
+- stable operation ID for writes
+- execution status
+- latency
+- external receipt or result reference
+
+For write operations, observability should let you distinguish:
+
+**requested → dispatched → externally committed → locally confirmed**
+
+because a timeout between the last two states is where duplicate-action incidents often begin.
+
+### How do I observe streaming responses?
+
+Track at least three different events:
+
+**first token → stream termination → task completion**
+
+First-token latency only tells you how quickly output started.
+
+Also record whether the stream:
+
+- completed normally
+- was interrupted
+- was cancelled
+- failed after partial output
+- continued backend work after client disconnection
+
+For safety-sensitive applications, record whether required checks happened **before or after content was emitted**.
+
+### How can I detect silent AI degradation when the API is still healthy?
+
+Use production probes and task-level quality signals alongside infrastructure monitoring.
+
+Typical warning signals include:
+
+- retrieval quality falling after an index change
+- fallback usage increasing
+- abstention rate changing sharply
+- unsupported-answer rate increasing
+- benign guardrail blocks increasing
+- tool retries increasing
+- cost per successful task increasing
+- evaluation distributions shifting after a release
+
+HTTP availability cannot detect these failures.
+
+### How should I compare behavior before and after a model, prompt, or retrieval change?
+
+Attach release or configuration identity to every relevant task:
+
+**application + model + prompt + router + parser + index + guardrail + evaluator**
+
+Then compare matched task groups rather than comparing unrelated traffic before and after a date.
+
+Avoid changing the application and the evaluator simultaneously. Otherwise an apparent quality improvement may come from a changed scoring system rather than a better application.
+
+### What happens when the evaluator itself fails?
+
+Treat evaluator execution separately from evaluator score.
+
+A useful state model is:
+
+**selected → queued → completed → valid score**
+
+Timeouts, parsing errors, missing outputs, and evaluator-provider failures should remain **unknown or error**, never silently become passes.
+
+Always show evaluation coverage next to quality metrics.
+
+For example, a 95% supported-answer score means little if only 40% of eligible responses were successfully evaluated.
+
+### How much telemetry should I retain?
+
+Retention should follow the question you need to answer.
+
+Operational metrics may be useful for longer periods, while detailed traces and sensitive evidence may need much shorter retention.
+
+Start from:
+
+> How long after an interaction are users likely to report a problem that requires exact evidence?
+
+Then design evidence retention around that investigation window, while respecting privacy and contractual requirements.
+
+Do not use observability as a reason to retain application data indefinitely.
+
+### How should I investigate a user complaint when the original content has already expired?
+
+Be explicit about the evidence gap.
+
+Use available metadata to reconstruct:
+
+- release and configuration
+- model route
+- source versions
+- guardrail decisions
+- tool outcomes
+- timing
+
+but do not claim that these prove the wording of an expired response.
+
+Ask for the customer's screenshot or copied response when appropriate. Regenerating the same prompt may help investigation, but it does not establish what the user originally received.
+
+### When should a production incident become an evaluation test?
+
+When you can define:
+
+1. the triggering condition,
+2. the expected behavior,
+3. and a measurable pass or fail result.
+
+Examples:
+
+- removed evidence should cause abstention
+- stale policy versions should not be retrieved
+- a timed-out write should not create a duplicate action
+- harmful output should be blocked before emission
+- a benign neighboring case should remain allowed
+
+Use component tests when the defect is local and end-to-end tests when the failure crossed several boundaries.
+
+### What is the minimum observability setup I would ship with?
+
+For a small production AI application, start with:
+
+**Task outcome**  
+Did the user's job actually complete?
+
+**Trace**  
+Retrieval, model, tool, guardrail, and major workflow steps.
+
+**Versions**  
+Model, prompt, retrieval or index, workflow, and guardrail.
+
+**Cost and latency**  
+At both call level and complete-task level.
+
+**Evidence references**  
+Enough to investigate important responses without duplicating everything.
+
+**Failure visibility**  
+Retries, fallback, cancellation, evaluator failures, and dropped telemetry.
+
+**Incident → regression loop**  
+Confirmed production failures become permanent tests.
+
+That is enough to answer the most important production question:
+
+> **What happened, why did it happen, and can we prove the fix worked?**
 
 ## References
 
