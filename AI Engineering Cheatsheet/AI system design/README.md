@@ -63,7 +63,6 @@ Operations
 Each section includes **production failures** alongside the architecture to give a real flavour of actual engg
 
 
-
 ## If you are a final-year student, use this job search guide 
 
-[**Practical job-search guide — YouTube**](https://www.youtube.com/watch?v=O5NBjmF1fME)
+https://www.youtube.com/watch?v=O5NBjmF1fME
