@@ -1,4 +1,4 @@
-# AI System Design — Part 1
+# AI System Design Foundations
 ## Architecture, Data, Retrieval, Models, and Deterministic Facts
 
 ## Scope
@@ -11,7 +11,7 @@ The central design rule is:
 
 > **Use models for interpretation and synthesis; databases for authoritative facts; code for calculations; deterministic services for permissions and execution boundaries.**
 
-For deeper implementation detail, use the dedicated UnvibeCode guides for [RAG](../../skills/unvibecode-rag-review/README.md), [guardrails](../../skills/unvibecode_gaurdrails_implemenataion_pack/README.md), [LLM routing](../../skills/unvibecode-llm-routing/LLM_ROUTING_STRATEGY_GUIDE.md), [AI observability](./AI_OBSERVABILITY_IMPLEMENTATION_GUIDE.md), and [AI operations](./AI_OPERATIONS_IMPLEMENTATION_GUIDE.md).
+For deeper implementation detail, use the dedicated UnvibeCode guides for [RAG](./02_RAG/README.md), [guardrails](./05_GUARDRAILS/README.md), [LLM routing](./07_LLM_ROUTING_STRATEGY.md), [AI observability](./09_AI_OBSERVABILITY_IMPLEMENTATION.md), and [AI operations](./10_AI_OPERATIONS_IMPLEMENTATION.md).
 
 ---
 
@@ -587,7 +587,7 @@ Possible boundaries:
 - Measure false positives and false negatives.
 - Version guardrail configurations and policies.
 
-For implementation detail, see the [UnvibeCode guardrails pack](../../skills/unvibecode_gaurdrails_implemenataion_pack/README.md).
+For implementation detail, see the [UnvibeCode guardrails pack](./05_GUARDRAILS/README.md).
 
 ---
 
@@ -619,7 +619,7 @@ Response / durable job
 
 Long-running jobs such as OCR, repository analysis, indexing, and batch evaluation should generally become asynchronous jobs.
 
-Cloud and API implementation is covered in Part 2.
+Cloud and API implementation is covered in [Production Serving and Cloud Architecture](./08_PRODUCTION_SERVING_AND_CLOUD_ARCHITECTURE.md).
 
 ---
 
@@ -656,7 +656,7 @@ Capture appropriate versions and diagnostics:
 
 Mask sensitive information before telemetry is persisted.
 
-For deeper implementation, see the [AI Observability guide](./AI_OBSERVABILITY_IMPLEMENTATION_GUIDE.md).
+For deeper implementation, see the [AI Observability guide](./09_AI_OBSERVABILITY_IMPLEMENTATION.md).
 
 ---
 
@@ -699,7 +699,7 @@ Application code
 
 Changes should move through qualification, controlled release, monitoring, and rollback.
 
-For the operating lifecycle, see the [AI Operations guide](./AI_OPERATIONS_IMPLEMENTATION_GUIDE.md).
+For the operating lifecycle, see the [AI Operations guide](./10_AI_OPERATIONS_IMPLEMENTATION.md).
 
 ---
 
@@ -799,4 +799,4 @@ These questions often reveal missing boundaries faster than starting with a fram
 - [ ] Retrieval, generation, calculations, and tools have separate tests.
 - [ ] Important production failures become regression cases.
 
-Continue with [Part 2: Serving, Cloud Architecture, and Production Reliability](../../skills/unvibecode-ai-system-design/AI_SYSTEM_DESIGN_PART_2.md).
+Continue with [Part 2: Serving, Cloud Architecture, and Production Reliability](./08_PRODUCTION_SERVING_AND_CLOUD_ARCHITECTURE.md).

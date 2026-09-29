@@ -553,5 +553,5 @@ Start with:
 5. Langfuse. [Compare experiments](https://langfuse.com/docs/evaluation/experiments/compare-experiments).
 6. LangGraph. [Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts).
 7. Anthropic. [An update on recent Claude Code quality reports](https://www.anthropic.com/engineering/april-23-postmortem). April 23, 2026.
-8. UnvibeCode. [AI Observability in Production](https://github.com/FinanceFlash/unvibecode/blob/main/skills/unvibecode-ai-observability/AI_OBSERVABILITY_IMPLEMENTATION_GUIDE.md).
-9. UnvibeCode. [Context, Memory, and State Engineering](https://github.com/FinanceFlash/unvibecode/blob/main/skills/unvibecode-context-memory-state/CONTEXT_MEMORY_STATE_ENGINEERING_GUIDE.md).
+8. UnvibeCode. [AI Observability in Production](./09_AI_OBSERVABILITY_IMPLEMENTATION.md).
+9. UnvibeCode. [Context, Memory, and State Engineering](./03_CONTEXT_MEMORY_STATE_ENGINEERING.md).

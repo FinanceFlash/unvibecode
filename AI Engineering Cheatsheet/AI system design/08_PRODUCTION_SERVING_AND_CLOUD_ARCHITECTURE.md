@@ -1,17 +1,17 @@
-# AI System Design — Part 2
-## Serving, Cloud Architecture, and Production Reliability
+# Production Serving and Cloud Architecture
+## APIs, Queues, Scaling, Releases, and Reliability
 
 ## Scope
 
-Part 1 explains how data, retrieval, structured facts, calculations, models, workflows, tools, and guardrails fit together.
+[AI System Design Foundations](./01_AI_SYSTEM_DESIGN_FOUNDATIONS.md) explains how data, retrieval, structured facts, calculations, models, workflows, tools, and guardrails fit together.
 
-Part 2 addresses the production question:
+This guide addresses the production question:
 
 > **What must change before this architecture can safely serve real users?**
 
 This guide covers API boundaries, cloud workloads, queues, storage, caching, scaling, provider dependencies, release controls, schema/index migrations, production failures, recovery, and readiness checks.
 
-For deeper topic-specific implementation, use the dedicated [AI Observability](./AI_OBSERVABILITY_IMPLEMENTATION_GUIDE.md), [AI Operations](./AI_OPERATIONS_IMPLEMENTATION_GUIDE.md), [LLM Routing](../../skills/unvibecode-llm-routing/LLM_ROUTING_STRATEGY_GUIDE.md), and [Guardrails](../../skills/unvibecode_gaurdrails_implemenataion_pack/README.md) guides.
+For deeper topic-specific implementation, use the dedicated [AI Observability](./09_AI_OBSERVABILITY_IMPLEMENTATION.md), [AI Operations](./10_AI_OPERATIONS_IMPLEMENTATION.md), [LLM Routing](./07_LLM_ROUTING_STRATEGY.md), and [Guardrails](./05_GUARDRAILS/README.md) guides.
 
 ---
 
@@ -1166,4 +1166,4 @@ Can the system degrade, rollback, reconcile, and resume safely after failure?
 
 That is the difference between a successful AI demo and a production AI system.
 
-Back to [Part 1: Architecture, Data, Retrieval, Models, and Deterministic Facts](./AI_SYSTEM_DESIGN_PART_1.md).
+Back to [AI System Design Foundations](./01_AI_SYSTEM_DESIGN_FOUNDATIONS.md).
