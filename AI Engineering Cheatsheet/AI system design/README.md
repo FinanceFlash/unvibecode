@@ -60,58 +60,10 @@ Operations
 
 ## Production failures are part of the guides
 
-Each section includes **production failures, anti-patterns, and failure scenarios** alongside the architecture.
+Each section includes **production failures** alongside the architecture to give a real flavour of actual engg
 
-The aim is to teach not only:
 
-> How should this work?
 
-but also:
-
-> **How can this fail, which component owns the failure, and how should the system recover?**
-
-This is usually where the difference between a working demo and a production system appears.
-
----
-
-## How to use the guide
-
-For each topic:
-
-```text
-Understand the responsibility
-        ↓
-Recognize the pattern
-        ↓
-Design the normal path
-        ↓
-Design the failure path
-        ↓
-Implement
-        ↓
-Evaluate
-        ↓
-Observe and improve
-```
-
-When using AI to help you build, ask:
-
-- What component should own this responsibility?
-- Is there an established pattern for this problem?
-- Which part should remain deterministic?
-- What state must survive failure?
-- What happens after timeout or partial success?
-- How would I test this?
-- How would I diagnose it in production?
-
-The goal is not the most complicated architecture.
-
-It is the **simplest architecture whose responsibilities, trade-offs, and failure modes you understand**.
-
----
-
-## If you are a final-year student
-
-Read the guide in sequence, build one or two projects around these principles, and learn to explain your architecture and failure handling clearly. Combined with a disciplined job-application process, this can put you approximately **80% ahead of candidates who stop at basic framework and API tutorials**.
+## If you are a final-year student, use this job search guide 
 
 [**Practical job-search guide — YouTube**](https://www.youtube.com/watch?v=O5NBjmF1fME)
