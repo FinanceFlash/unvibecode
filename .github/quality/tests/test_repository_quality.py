@@ -26,6 +26,8 @@ REQUIRED_PACK_FILES = {
 SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
+CORE_SCENARIO_TITLE = re.compile(r"^\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|", re.MULTILINE)
+TESTING_GUIDE_HEADING = re.compile(r"^##\s*(\d+)\.\s*(.+?)\s*$", re.MULTILINE)
 
 
 def workflow_packs():
@@ -52,6 +54,47 @@ def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
     content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
     scenario_numbers = [int(value) for value in CORE_SCENARIO_ROW.findall(content)]
     assert scenario_numbers == list(range(1, 21))
+
+
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_testing_guide_scenarios_match_core_scenarios(pack):
+    core_content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
+    testing_content = (pack / "TESTING_GUIDE.md").read_text(encoding="utf-8")
+
+    core_scenarios = [
+        (int(num), title.strip())
+        for num, title in CORE_SCENARIO_TITLE.findall(core_content)
+    ]
+    testing_scenarios = [
+        (int(num), title.strip())
+        for num, title in TESTING_GUIDE_HEADING.findall(testing_content)
+    ]
+
+    assert (
+        len(core_scenarios) == 20
+    ), "CORE_20_SCENARIOS.md does not have exactly 20 valid titles"
+    assert (
+        len(testing_scenarios) == 20
+    ), "TESTING_GUIDE.md does not have exactly 20 scenario headings"
+
+    expected_sequence = list(range(1, 21))
+    assert [
+        num for num, _ in core_scenarios
+    ] == expected_sequence, "Core scenarios are not exactly numbered 1 to 20 in order"
+    assert [
+        num for num, _ in testing_scenarios
+    ] == expected_sequence, (
+        "Testing scenarios are not exactly numbered 1 to 20 in order"
+    )
+
+    for i in range(20):
+        core_title = core_scenarios[i][1]
+        testing_title = testing_scenarios[i][1]
+        assert core_title == testing_title, (
+            f"Testing Guide scenario {i+1} title does not match CORE_20_SCENARIOS.md.\n"
+            f"Expected: '{core_title}'\n"
+            f"Found: '{testing_title}'"
+        )
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
