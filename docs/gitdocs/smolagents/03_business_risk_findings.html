@@ -1,0 +1,239 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnvibeCode Business Risk Findings</title>
+<style>body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 24px 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:25px}h3{font-size:16px;margin-bottom:6px}p,li,td,dd{overflow-wrap:anywhere}.summary,.flaw,.structural-review{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 8px 30px rgba(15,23,42,.05)}.critical{border-left:7px solid #991b1b}.high{border-left:7px solid #c2410c}.medium{border-left:7px solid #a16207}.badge,.structural-badge{display:inline-block;background:#0f172a;color:white;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.structural-badge{background:#4338ca}.bottom{font-size:19px;font-weight:600}.metrics{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#e2e8f0;border-radius:12px;padding:12px 16px;min-width:120px}.metric strong{display:block;font-size:25px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid section{background:#f1f5f9;padding:14px;border-radius:10px}dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}dt{font-weight:700}dd{margin:0}.graph-scroll{width:100%;overflow-x:auto;padding-bottom:8px}.path-graph{display:block;width:1500px;max-width:none;height:auto;background:white;border:1px solid #e2e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e2e8f0;padding:8px}summary{cursor:pointer;font-weight:700}.hotspot-card{margin-top:16px;padding:18px;background:#f8fafc;border:1px solid #dbe3f5;border-left:5px solid #4f46e5;border-radius:12px}.hotspot-card>h3{font-size:19px;margin:9px 0}.hotspot-code{margin-top:12px;padding:12px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:8px;color:#c4b5fd;font-size:12px;font-weight:700}pre{margin:0;overflow:auto;color:#e2e8f0;font:12px/1.5 Consolas,monospace;white-space:pre}.hotspot-details{margin-top:14px}@media(max-width:760px){main{padding:24px 12px 50px}h1{font-size:29px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}.summary,.flaw,.structural-review{padding:17px}.path-graph{width:1200px}pre{font-size:11px}}</style><style id="unvibecode-customer-report-style">
+main{
+  padding-top:22px !important;
+}
+main > h1{
+  margin-bottom:4px !important;
+  font-size:30px !important;
+}
+main > p{
+  margin-top:0 !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head>
+<body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><main><h1>smolagents-main business flaw report</h1><p>Business-heavy findings reconstructed from connected code paths.</p>
+<section class="summary"><h2>Summary</h2><p class="bottom">One confirmed business flaw was established in the local Python execution path: configured timeouts signal an error, but the timed-out code keeps the execution slot occupied until it finishes, so runaway snippets are not cut off at the promised boundary.</p><div class="metrics"><div class="metric"><strong>1</strong>flaws</div><div class="metric"><strong>1</strong>strong evidence</div><div class="metric"><strong>0</strong>supported evidence</div></div></section>
+<h2>Business paths</h2><div class="graph-scroll"><img class="path-graph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjI5OCIgdmlld0JveD0iMCAwIDE1MDAgMjk4Ij4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iOSIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDksMyB6IiBmaWxsPSIjNjQ3NDhiIi8+PC9tYXJrZXI+CjxzdHlsZT4udGl0bGV7Zm9udDo3MDAgMjRweCBBcmlhbDtmaWxsOiMwZjE3MmF9LmxhbmV7Zm9udDo3MDAgMTZweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm5vZGV7Zm9udDo2MDAgMTRweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm1ldGF7Zm9udDoxMi41cHggQXJpYWw7ZmlsbDojNDc1NTY5fS5lZGdle3N0cm9rZTojNjQ3NDhiO3N0cm9rZS13aWR0aDoyO21hcmtlci1lbmQ6dXJsKCNhcnJvdyl9LmltcGFjdHtzdHJva2U6I2RjMjYyNjtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYXJyb3cpfTwvc3R5bGU+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmYWZjIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0MCIgY2xhc3M9InRpdGxlIj5zbW9sYWdlbnRzLW1haW4g4oCUIGJ1c2luZXNzIGZsYXcgcGF0aHM8L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSI5MCIgY2xhc3M9ImxhbmUiPkhJR0ggwrcgU1RST05HIEVWSURFTkNFIOKAlCBUaW1lZC1vdXQgUHl0aG9uIGV4ZWN1dGlvbnMga2VlcCB0aGUgbG9jYWwgcnVubmVyIGJ1c3kgdW50aWwgdGhlIGNvZGUgZmluaXNoZXM8L3RleHQ+CjxyZWN0IHg9IjQwIiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSIxMzYiIGZpbGw9IiNlMGYyZmUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjUwIiB5PSIxNDQiIGNsYXNzPSJub2RlIj5BZ2VudCBydW50aW1lIHVzZXI8L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSIyMjciIGNsYXNzPSJtZXRhIj5yZXN0cmljdGVkIGNvZGU8L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSIyNDIiIGNsYXNzPSJtZXRhIj5leGVjdXRpb248L3RleHQ+CjxyZWN0IHg9IjI1NCIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZTBmMmZlIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIyNjQiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPlN1Ym1pdCBsb25nLXJ1bm5pbmc8L3RleHQ+Cjx0ZXh0IHg9IjI2NCIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+UHl0aG9uIHNuaXBwZXQ8L3RleHQ+Cjx0ZXh0IHg9IjI2NCIgeT0iMjI3IiBjbGFzcz0ibWV0YSI+cmVzdHJpY3RlZCBjb2RlPC90ZXh0Pgo8dGV4dCB4PSIyNjQiIHk9IjI0MiIgY2xhc3M9Im1ldGEiPmV4ZWN1dGlvbjwvdGV4dD4KPHJlY3QgeD0iNDY4IiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSIxMzYiIGZpbGw9IiNlMGYyZmUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjQ3OCIgeT0iMTQ0IiBjbGFzcz0ibm9kZSI+QXBwbHkgY29uZmlndXJlZDwvdGV4dD4KPHRleHQgeD0iNDc4IiB5PSIxNjIiIGNsYXNzPSJub2RlIj50aW1lb3V0IHRvIGxvY2FsPC90ZXh0Pgo8dGV4dCB4PSI0NzgiIHk9IjE4MCIgY2xhc3M9Im5vZGUiPmV4ZWN1dGlvbjwvdGV4dD4KPHRleHQgeD0iNDc4IiB5PSIyNDIiIGNsYXNzPSJtZXRhIj50aW1lb3V0IGNvbnRyb2w8L3RleHQ+CjxyZWN0IHg9IjY4MiIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZjFmNWY5IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI2OTIiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPlRpbWVkLW91dCBjb2RlIGtlZXBzPC90ZXh0Pgo8dGV4dCB4PSI2OTIiIHk9IjE2MiIgY2xhc3M9Im5vZGUiPnJ1bm5pbmcgdW50aWw8L3RleHQ+Cjx0ZXh0IHg9IjY5MiIgeT0iMTgwIiBjbGFzcz0ibm9kZSI+Y29tcGxldGlvbjwvdGV4dD4KPHRleHQgeD0iNjkyIiB5PSIyNDIiIGNsYXNzPSJtZXRhIj50aW1lb3V0IGNvbnRyb2w8L3RleHQ+CjxyZWN0IHg9Ijg5NiIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZjFmNWY5IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI5MDYiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPkxvY2FsIGNvZGUgZXhlY3V0aW9uPC90ZXh0Pgo8dGV4dCB4PSI5MDYiIHk9IjE2MiIgY2xhc3M9Im5vZGUiPnNsb3Q8L3RleHQ+Cjx0ZXh0IHg9IjkwNiIgeT0iMjQyIiBjbGFzcz0ibWV0YSI+YWdlbnQgcnVudGltZTwvdGV4dD4KPHJlY3QgeD0iMTExMCIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZmVlMmUyIiBzdHJva2U9IiNiOTFjMWMiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxMTIwIiB5PSIxNDQiIGNsYXNzPSJub2RlIj5BZ2VudCBydW4gc3RheXM8L3RleHQ+Cjx0ZXh0IHg9IjExMjAiIHk9IjE2MiIgY2xhc3M9Im5vZGUiPm9jY3VwaWVkIGFmdGVyIHRpbWVvdXQ8L3RleHQ+Cjx0ZXh0IHg9IjExMjAiIHk9IjI0MiIgY2xhc3M9Im1ldGEiPmFnZW50IHJ1bnRpbWU8L3RleHQ+CjxsaW5lIHgxPSIyMzAiIHkxPSIxODYuMCIgeDI9IjI1MCIgeTI9IjE4Ni4wIiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iNDQ0IiB5MT0iMTg2LjAiIHgyPSI0NjQiIHkyPSIxODYuMCIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjY1OCIgeTE9IjE4Ni4wIiB4Mj0iNjc4IiB5Mj0iMTg2LjAiIGNsYXNzPSJlZGdlIi8+CjxsaW5lIHgxPSI4NzIiIHkxPSIxODYuMCIgeDI9Ijg5MiIgeTI9IjE4Ni4wIiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iMTA4NiIgeTE9IjE4Ni4wIiB4Mj0iMTEwNiIgeTI9IjE4Ni4wIiBjbGFzcz0iaW1wYWN0Ii8+Cjwvc3ZnPg==" alt="Business flaw paths"></div><h2>Business flaws</h2>
+<article class="flaw high">
+<div class="badge">HIGH · STRONG EVIDENCE</div>
+<h2>1. Timed-out Python executions keep the local runner busy until the code finishes</h2>
+<p class="bottom">When Python code exceeds the configured timeout, the local executor raises a timeout error but keeps waiting for the submitted code to finish, so the agent run stays occupied instead of being cut off.</p>
+<div class="grid">
+<section><h3>Trigger</h3><p>When a caller submits Python code that runs longer than the configured timeout through the local executor entrypoints, the timeout path is activated.</p></section>
+<section><h3>What the code does</h3><p>The timeout wrapper runs code in a worker thread and raises a timeout error when the wait expires, but the worker is not stopped and the call path remains occupied until that worker finishes; LocalPythonExecutor and PythonInterpreterTool both route caller code through this wrapper.</p></section>
+<section><h3>Business rule</h3><p>Configured execution time limits are expected to halt overlong local code runs so the restricted executor returns control promptly instead of continuing the timed-out work.</p><small>Basis: EXPLICIT</small></section>
+<section><h3>Business downside</h3><p>Runaway or intentionally slow snippets are not cut off at the promised timeout boundary, delaying completion of code-based agent runs.</p></section>
+</div>
+<h3>Impact</h3><dl>
+<dt>Immediate outcome</dt><dd>A timed-out code run still occupies the local execution path until the submitted code naturally exits.</dd>
+<dt>Affected party or asset</dt><dd>agent runtime sessions and the local code execution slot</dd>
+<dt>Scale mechanism</dt><dd>Each timed-out invocation retains its execution slot until the underlying code finishes, so repeated overlong submissions accumulate occupied runs.</dd>
+<dt>Detection difficulty</dt><dd>The caller receives a timeout error, which hides that the execution path remains busy after the timeout condition is reported.</dd>
+<dt>Reversibility</dt><dd>The condition clears only after the submitted code finishes or the process is terminated.</dd>
+</dl>
+<h3>How the code reaches the outcome</h3><ul><li>PythonInterpreterTool.forward and LocalPythonExecutor.__call__ both pass caller-supplied code into evaluate_python_code.</li><li>evaluate_python_code wraps its execution function with timeout(timeout_seconds) when a timeout is configured.</li><li>The timeout decorator submits the work to a ThreadPoolExecutor and raises ExecutionTimeoutError when future.result times out.</li><li>The decorator documentation states the timed-out thread continues running until completion, and this path provides no stop or cancellation step before unwinding.</li><li>As a result, the timeout signal does not cut off the underlying work, so the local execution path remains occupied until that work exits.</li></ul>
+<h3>What to change</h3><p>Ensure configured timeout enforcement returns control promptly and does not leave timed-out local code occupying the execution path.</p>
+<h3>Acceptance check</h3><p><strong>Given</strong> A caller submits Python code through the local executor with a 1-second timeout and the code runs longer than 1 second.<br><strong>When</strong> The timeout threshold is exceeded during execution.<br><strong>Then</strong> The call returns promptly and the submitted code no longer occupies the local execution path.</p>
+<details><summary>Exact code proof</summary><table><thead><tr><th>File</th><th>Symbol</th><th>Lines</th><th>Proof</th></tr></thead><tbody><tr><td>src/smolagents/default_tools.py</td><td>PythonInterpreterTool.forward</td><td>69–80</td><td>Tool accepts a code string and passes it to the Python evaluator.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestEvaluatePythonCode.test_max_operations</td><td>392–408</td><td>Operation limit guard.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestTimeout.test_evaluate_python_code_with_timeout_raises</td><td>2207–2216</td><td>imports time and sleeps to exceed timeout</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestEvaluatePythonCode.test_while</td><td>653–657</td><td>While-loop iteration guard.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestTimeout</td><td>2180–2314</td><td>Timeout threshold and timeout-disabled cases.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>LocalPythonExecutor.__call__</td><td>1715–1758</td><td>Executor maintains and returns state-backed outputs.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>timeout</td><td>285–316</td><td>ThreadPoolExecutor-based timeout wrapper.</td></tr></tbody></table></details>
+</article>
+
+<section class="structural-review">
+  <h2>Additional code areas worth reviewing</h2>
+  <p>These code areas met strict structural rules for concentrated complexity or strong code connections. They are review priorities, not confirmed business flaws.</p>
+  
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>1. Tightly connected module: utils.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>16 incoming and 1 outgoing source connections</li><li>Dependency cycle across 7 files</li></ul>
+  <h3>Connected source files</h3><ul><li>examples/open_deep_research/scripts/run_agents.py</li><li>src/smolagents/__init__.py</li><li>src/smolagents/agent_types.py</li><li>src/smolagents/agents.py</li><li>src/smolagents/gradio_ui.py</li><li>src/smolagents/local_python_executor.py</li><li>src/smolagents/memory.py</li><li>src/smolagents/models.py</li><li>src/smolagents/monitoring.py</li><li>src/smolagents/remote_executors.py</li><li>src/smolagents/tool_validation.py</li><li>src/smolagents/tools.py</li><li>tests/test_agents.py</li><li>tests/test_models.py</li><li>tests/test_remote_executors.py</li><li>tests/test_utils.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/smolagents/utils.py · lines 283–373 · Relevant source section</div><pre><code>   283 | 
+   284 | 
+   285 | def instance_to_source(instance, base_cls=None):
+   286 |     &quot;&quot;&quot;Convert an instance to its class source code representation.&quot;&quot;&quot;
+   287 |     cls = instance.__class__
+   288 |     class_name = cls.__name__
+   289 | 
+   290 |     # Start building class lines
+   291 |     class_lines = []
+   292 |     if base_cls:
+   293 |         class_lines.append(f&quot;class {class_name}({base_cls.__name__}):&quot;)
+   294 |     else:
+   295 |         class_lines.append(f&quot;class {class_name}:&quot;)
+   296 | 
+   297 |     # Add docstring if it exists and differs from base
+   298 |     if cls.__doc__ and (not base_cls or cls.__doc__ != base_cls.__doc__):
+   299 |         class_lines.append(f&#x27;    &quot;&quot;&quot;{cls.__doc__}&quot;&quot;&quot;&#x27;)
+   300 | 
+   301 |     # Add class-level attributes
+   302 |     class_attrs = {
+   303 |         name: value
+   304 |         for name, value in cls.__dict__.items()
+   305 |         if not name.startswith(&quot;__&quot;)
+   306 |         and not name == &quot;_abc_impl&quot;
+   307 |         and not callable(value)
+   308 |         and not (base_cls and hasattr(base_cls, name) and getattr(base_cls, name) == value)
+   309 |     }
+   310 | 
+   311 |     for name, value in class_attrs.items():
+   312 |         if isinstance(value, str):
+   313 |             # multiline value
+   314 |             if &quot;\n&quot; in value:
+   315 |                 escaped_value = value.replace(&#x27;&quot;&quot;&quot;&#x27;, r&quot;\&quot;\&quot;\&quot;&quot;)  # Escape triple quotes
+   316 |                 class_lines.append(f&#x27;    {name} = &quot;&quot;&quot;{escaped_value}&quot;&quot;&quot;&#x27;)
+   317 |             else:
+   318 |                 class_lines.append(f&quot;    {name} = {json.dumps(value)}&quot;)
+   319 |         else:
+   320 |             class_lines.append(f&quot;    {name} = {repr(value)}&quot;)
+   321 | 
+   322 |     if class_attrs:
+   323 |         class_lines.append(&quot;&quot;)
+   324 | 
+   325 |     # Add methods
+   326 |     methods = {
+   327 |         name: func.__wrapped__ if hasattr(func, &quot;__wrapped__&quot;) else func
+   328 |         for name, func in cls.__dict__.items()
+   329 |         if callable(func)
+   330 |         and (
+   331 |             not base_cls
+   332 |             or not hasattr(base_cls, name)
+   333 |             or (
+   334 |                 isinstance(func, (staticmethod, classmethod))
+   335 |                 or (getattr(base_cls, name).__code__.co_code != func.__code__.co_code)
+   336 |             )
+   337 |         )
+   338 |     }
+   339 | 
+   340 |     for name, method in methods.items():
+   341 |         method_source = get_source(method)
+   342 |         # Clean up the indentation
+   343 |         method_lines = method_source.split(&quot;\n&quot;)
+   344 |         first_line = method_lines[0]
+   345 |         indent = len(first_line) - len(first_line.lstrip())
+   346 |         method_lines = [line[indent:] for line in method_lines]
+   347 |         method_source = &quot;\n&quot;.join([&quot;    &quot; + line if line.strip() else line for line in method_lines])
+   348 |         class_lines.append(method_source)
+   349 |         class_lines.append(&quot;&quot;)
+   350 | 
+   351 |     # Find required imports using ImportFinder
+   352 |     import_finder = ImportFinder()
+   353 |     import_finder.visit(ast.parse(&quot;\n&quot;.join(class_lines)))
+   354 |     required_imports = import_finder.packages
+   355 | 
+   356 |     # Build final code with imports
+   357 |     final_lines = []
+   358 | 
+   359 |     # Add base class import if needed
+   360 |     if base_cls:
+   361 |         final_lines.append(f&quot;from {base_cls.__module__} import {base_cls.__name__}&quot;)
+   362 | 
+   363 |     # Add discovered imports
+   364 |     for package in required_imports:
+   365 |         final_lines.append(f&quot;import {package}&quot;)
+   366 | 
+   367 |     if final_lines:  # Add empty line after imports
+   368 |         final_lines.append(&quot;&quot;)
+   369 | 
+   370 |     # Add the class code
+   371 |     final_lines.extend(class_lines)
+   372 | 
+   373 |     return &quot;\n&quot;.join(final_lines)</code></pre></div></details>
+</article>
+</section></main>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Download the complete normalized repository ZIP for LLM or API analysis.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="llm-context">LLM Context →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>

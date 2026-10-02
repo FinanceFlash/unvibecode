@@ -1,41 +1,64 @@
 # How UnvibeCode Works
 
-UnvibeCode combines local repository analysis with hosted business workflow and risk review.
+UnvibeCode connects the business behaviour of a repository to the files and functions that implement it. Use the reports to understand what the product does, follow its implementation, and investigate the consequences of a change.
 
-## 1. Local repository mapping
+## 1. Map the repository locally
 
-The package reads supported source files and builds a resolved graph containing files, symbols, imports, calls, and connected code relationships.
+UnvibeCode reads supported source files and maps files, symbols, imports, calls and their static relationships. It divides source code into ordered sections and prepares connected context for analysis.
 
-## 2. Connected context preparation
+These relationships help you follow an implementation across files. They describe source-code connections, not a recording of a live application run.
 
-Source code is divided into ordered chunks. The graph is used to prepare focused and connected contexts without repeatedly copying the same source into every package.
+## 2. Reconstruct business workflows
 
-## 3. Business workflow reconstruction
+Structured code context is sent to the hosted UnvibeCode service for workflow and risk analysis. Repository scanning, graph construction and context preparation run locally. No customer OpenAI API key or activation key is required.
 
-Relevant structured context is reviewed to connect entry points, decisions, state transitions, external effects, and business outcomes into understandable workflows.
+The workflow review connects entry points, decisions, state changes, external effects and outcomes. A workflow can span several files and functions.
 
-## 4. Critical risk review
+The **Business Workflow Map** groups workflows by area. Each workflow explains what it does, its purpose, what it produces, who relies on it and why it matters, with supporting code you can inspect.
 
-Completed workflows are reviewed for failures that can materially affect customers, money, permissions, data integrity, operations, or other business outcomes. Findings must pass evidence checks before appearing in the customer report.
+See [Data processing and privacy](DATA_PROCESSING.md) for the processing boundary.
 
-## 5. Customer report generation
+## 3. Review business risks against the code
 
-UnvibeCode renders the interactive code map, repository-context ZIP, workflow map, and risk findings as customer-ready files.
+The risk review examines failures that can affect customers, permissions, data integrity, operations or other business outcomes. Accepted findings connect a trigger and the observed code behaviour to a business downside, supporting evidence, a proposed correction and an acceptance check.
 
-## Repository-size branches
+Use a finding to investigate and test a specific path. A completed review with no accepted findings does not establish that every path is safe.
 
-### Repositories at or below approximately two million source tokens
+## 4. Explore the reports in this order
 
-UnvibeCode prepares the Connected Code Map and complete Business Workflow and Risk Review.
+Open `00_unvibecode_results.html` in the generated results folder.
 
-### Repositories above approximately two million source tokens
+| Report tab | What to do |
+| --- | --- |
+| **Business Workflows** | Choose a workflow and understand its purpose, outcome and supporting code. |
+| **Connected Code** | Find the files involved. Hover to preview connected code; click a file to choose downloadable context. |
+| **Risk Findings** | Inspect reported failure paths, their code evidence and acceptance checks before changing behaviour. |
+| **LLM Context** | Download the complete normalized repository context for further analysis. |
 
-UnvibeCode prepares:
+Keep the HTML files, context ZIP and any supporting folders together. The entry page loads companion files; it is not a self-contained copy of every report.
 
-- Connected Code Map for LLMs
-- Complete Repository Context
+## 5. Continue with your AI assistant
 
-The deeper Business Workflow and Risk Review is not started for repositories above the supported threshold.
+In Connected Code, choose **Narrow**, **Optimal** or **Wider** context around a file. Start with Optimal, or choose Narrow for a smaller question. Give that context and the relevant HTML report to your assistant; in an editor such as Cursor, include the relevant repository files too.
 
-This prevents an oversized repository from entering a long hosted review while still giving the customer useful graph and LLM-context deliverables.
+Ask: “Explain this workflow from entry point to outcome. Cite the files and symbols, identify what my proposed change affects, and suggest tests for the reported failure paths.”
 
+Use the complete repository ZIP when you need the broader context. Extract it and follow its README rather than assuming an assistant can read the entire archive in one prompt.
+
+## Explore a real example
+
+The [smolagents sample report](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#business-workflows) contains **30 workflows across 15 areas**, including agent execution, memory and replay, and streaming. Open a workflow, inspect its supporting code, then switch to Connected Code or Risk Findings.
+
+Those counts describe this sample; your repository will produce its own results.
+
+## What happens with a large repository?
+
+Under the [documented size limits](LIMITATIONS.md), repositories at or below approximately two million estimated source tokens are eligible for the full workflow and risk review. Above that threshold, UnvibeCode produces the Connected Code Map and Complete Repository Context without starting the deeper workflow and risk review.
+
+Check the terminal and report status for the scope actually completed.
+
+## Next steps
+
+- [Install and run UnvibeCode](../README.md#try-unvibecode)
+- [Understand each output and its files](OUTPUTS.md)
+- [Troubleshoot installation and report problems](TROUBLESHOOTING.md)

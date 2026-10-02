@@ -1,0 +1,49 @@
+name: Archive GitHub traffic
+
+on:
+  schedule:
+    # Daily at 03:17 UTC. Avoiding minute 0 reduces cron congestion.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-traffic-archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Archive traffic
+        env:
+          TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python .github/scripts/archive_github_traffic.py
+
+      - name: Commit updated traffic history
+        shell: bash
+        run: |
+          if git diff --quiet -- analytics/github-traffic; then
+            echo "No traffic changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add analytics/github-traffic
+          git commit -m "chore: archive GitHub traffic"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

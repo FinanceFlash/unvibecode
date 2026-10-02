@@ -1,78 +1,91 @@
 # Understanding UnvibeCode Outputs
 
-For a supported repository, UnvibeCode produces four customer-facing deliverables.
+Open `00_unvibecode_results.html` in your results folder. Start with **Business Workflows**, then explore **Connected Code**, **Risk Findings** and **LLM Context**.
 
-## 1. Connected Code Map for LLMs
+[Explore the complete smolagents sample report](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#business-workflows): **30 workflows across 15 areas**, with supporting code and downloadable context.
 
-`01_connected_code_map_for_llm.html`
+## 1. Business Workflows — Business Workflow Map
 
-The interactive graph shows meaningful file, symbol, import, and call relationships.
+**File:** `02_business_workflow_map.html`
 
-Use it to:
+Choose a workflow area, then read a workflow to understand:
 
-- Explore a complex codebase visually
-- Hover over a file to preview its context
-- Click a file to trace connected code
-- Download a focused LLM-ready code package
-- Choose narrow, optimal, or wider connected context
+- What it does and why it exists.
+- What it produces and who relies on it.
+- Why the workflow matters.
+- Which code supports the explanation.
 
-The graph layout is an exploration interface. Downloaded context is selected from the complete resolved graph rather than from a reduced visual subset.
+Use this view to connect product behaviour to implementation before reading files individually. In the smolagents sample, you can explore agent memory and replay, multi-step agent execution, and UI streaming.
 
-## 2. Complete Repository Context
+[Explore business workflows](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#business-workflows)
 
-`complete_repository_context_for_llm.zip`
+## 2. Connected Code — Connected Code Map
 
-This normalized bundle stores source chunks once and preserves the information required to assemble contexts later.
+**File:** `01_connected_code_map_for_llm.html`
 
-```text
-complete_repository_context_for_llm.zip
-├── manifest.json
-├── chunks.jsonl
-├── connections.jsonl
-├── selections.jsonl
-└── README.md
-```
+The interactive map shows static relationships between files and symbols. Hover over a file to preview connected code. Click a file to choose the context to download for your AI assistant.
 
-The ZIP is intended for storage, automation, and later LLM or API workflows. It should not normally be sent to an LLM as one large prompt.
+| Context size | Approximate token budget | When to choose it |
+| --- | --- | --- |
+| **Narrow** | 30K | A focused question about a file and its nearby context. |
+| **Optimal** | 45K | The recommended starting point for understanding connected implementation. |
+| **Wider** | 75K | A question needing more surrounding code. |
 
-## 3. Business Workflow Map
+These are context budgets, not a promise that every download contains that many tokens. Inspect the selection and use a size your assistant can accept.
 
-`02_business_workflow_map.html`
+Use the map to answer “Which code belongs with this file?” Then give the downloaded context to your assistant to investigate a workflow or proposed change.
 
-The workflow report connects technical implementation paths to understandable business operations. It shows:
+[Explore connected code](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#connected-code)
 
-- What starts a workflow
-- Important decisions and state changes
-- External calls and material effects
-- The business object being changed
-- The resulting customer or operational outcome
+## 3. Risk Findings — Business Risk Findings
 
-## 4. Business Risk Findings
+**File:** `03_business_risk_findings.html`
 
-`03_business_risk_findings.html`
+Read each finding through its trigger, code behaviour and business consequence. The report can include:
 
-The risk report identifies critical business workflow risks and shows the supporting code evidence. Each accepted finding explains:
+- Trigger and what the code does.
+- Business rule, downside and impact.
+- The code path that reaches the outcome.
+- What to change and an acceptance check.
+- Supporting files, symbols and code references.
 
-- Trigger
-- Current code behaviour
-- Business rule
-- Business downside
-- Affected customer, asset, or operation
-- Recommended correction
-- Acceptance check
-- Supporting files, symbols, and line references
+The report may also identify additional code areas worth reviewing. Treat these review suggestions separately from the reported business flaws.
 
-If no candidate passes the evidence threshold, the report records a clear no-findings outcome for the completed review scope.
+For example, the smolagents sample reports a timeout path where Python execution can continue occupying the local runner. Inspect the evidence and acceptance check before deciding how to address it.
 
-## Results directory
+A no-findings result applies to the completed review scope; it does not prove the repository is defect-free.
 
-```text
-shipready_results/
-└── analysis_<timestamp>/
-    └── customer_results/
-        ├── 01_connected_code_map_for_llm.html
-        ├── complete_repository_context_for_llm.zip
-        ├── 02_business_workflow_map.html
-        └── 03_business_risk_findings.html
-```
+[Explore risk findings](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#risk-findings)
 
+## 4. LLM Context — Complete Repository Context
+
+**File:** `complete_repository_context_for_llm.zip`
+
+This bundle contains normalized source sections, connections and context selections for later analysis.
+
+| File inside the ZIP | Contents |
+| --- | --- |
+| `manifest.json` | Repository identity, counts and bundle metadata. |
+| `chunks.jsonl` | Source-code sections with file and line information. |
+| `connections.jsonl` | Connections between code sections. |
+| `selections.jsonl` | Precomputed context selections by file and scope. |
+| `README.md` | Instructions for using the bundle. |
+
+Use Connected Code for a focused download. Use the complete ZIP for broader repository analysis, API workflows or a reusable handoff. Extract it and read its README; avoid pasting the entire bundle into one prompt without checking your assistant's limits.
+
+[Open repository context downloads](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#llm-context)
+
+## Keep the report files together
+
+Results are saved under `shipready_results/analysis_<timestamp>/customer_results/` as described in the [quick start](QUICKSTART.md). Open the entry file in that folder.
+
+Keep these files together when moving or sharing a review:
+
+- `00_unvibecode_results.html` and any report page it redirects to.
+- The three numbered report HTML files listed above.
+- `complete_repository_context_for_llm.zip`.
+- Any companion folders, including `_support/` when present.
+
+The published smolagents entry page is `smolagents-main-unvibecode-analysis.html`. Downloading only that page does not download the reports it displays.
+
+If an output is missing, check the review status and [repository limits](LIMITATIONS.md), then follow [Troubleshooting](TROUBLESHOOTING.md).

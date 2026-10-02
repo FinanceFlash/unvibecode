@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Top 10 — UnvibeCode Engineering Challenge 2026</title>
+  <desc id="desc">Congratulations graphic recognizing Top 10 contributors to the UnvibeCode Engineering Challenge 2026.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061426"/>
+      <stop offset="0.55" stop-color="#0a1d33"/>
+      <stop offset="1" stop-color="#020914"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1a6"/>
+      <stop offset="0.35" stop-color="#f6c451"/>
+      <stop offset="0.7" stop-color="#bd791c"/>
+      <stop offset="1" stop-color="#f3ca68"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)"/>
+  <circle cx="768" cy="365" r="290" fill="#d9982d" opacity="0.07" filter="url(#glow)"/>
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#f6f9ff">
+    <text x="70" y="80" font-size="42" font-weight="700">&lt;/&gt; Unvibe<tspan fill="#3aa5ff">Code</tspan></text>
+    <text x="72" y="112" font-size="18" fill="#d5dfed">Understand. Trace. Build Better.</text>
+
+    <text x="1240" y="64" font-size="20" letter-spacing="5" fill="#dbe8f7">OPEN SOURCE</text>
+    <text x="1240" y="96" font-size="20" letter-spacing="5" fill="#dbe8f7">BETTER ENGINEERING</text>
+    <text x="1240" y="128" font-size="20" letter-spacing="5" fill="#dbe8f7">BRIGHTER SOFTWARE</text>
+
+    <text x="768" y="160" text-anchor="middle" font-size="58" fill="url(#gold)">♛</text>
+    <text x="768" y="265" text-anchor="middle" font-size="110" font-weight="800" fill="url(#gold)">TOP</text>
+    <text x="768" y="500" text-anchor="middle" font-size="280" font-weight="900" fill="url(#gold)" filter="url(#glow)">10</text>
+
+    <g fill="none" stroke="#e8b957" stroke-width="10" opacity="0.95">
+      <path d="M455 480 C360 390 355 255 470 175"/>
+      <path d="M1081 480 C1176 390 1181 255 1066 175"/>
+    </g>
+    <g fill="#f1c762">
+      <ellipse cx="425" cy="430" rx="18" ry="45" transform="rotate(-42 425 430)"/>
+      <ellipse cx="390" cy="365" rx="18" ry="45" transform="rotate(-34 390 365)"/>
+      <ellipse cx="390" cy="290" rx="18" ry="45" transform="rotate(-20 390 290)"/>
+      <ellipse cx="425" cy="225" rx="18" ry="45" transform="rotate(25 425 225)"/>
+      <ellipse cx="1111" cy="430" rx="18" ry="45" transform="rotate(42 1111 430)"/>
+      <ellipse cx="1146" cy="365" rx="18" ry="45" transform="rotate(34 1146 365)"/>
+      <ellipse cx="1146" cy="290" rx="18" ry="45" transform="rotate(20 1146 290)"/>
+      <ellipse cx="1111" cy="225" rx="18" ry="45" transform="rotate(-25 1111 225)"/>
+    </g>
+
+    <rect x="430" y="505" width="676" height="96" rx="48" fill="#c28a2d" opacity="0.95"/>
+    <text x="768" y="568" text-anchor="middle" font-size="43" font-weight="700" letter-spacing="6" fill="#111820">CONGRATULATIONS</text>
+
+    <text x="768" y="650" text-anchor="middle" font-size="34" letter-spacing="12">UNVIBECODE</text>
+    <text x="768" y="694" text-anchor="middle" font-size="29" letter-spacing="9" fill="#dce7f5">ENGINEERING CHALLENGE 2026</text>
+    <text x="768" y="760" text-anchor="middle" font-size="22" letter-spacing="8" fill="#e2eaf4">REAL ANALYSIS  |  DEEP INSIGHTS  |  STRONGER CODEBASES</text>
+
+    <g font-size="21" text-anchor="middle" fill="#d6e5f5">
+      <text x="180" y="850">BUSINESS</text><text x="180" y="878">WORKFLOWS</text>
+      <text x="410" y="850">BUSINESS</text><text x="410" y="878">LOGIC</text>
+      <text x="640" y="850">CONNECTED</text><text x="640" y="878">CODE</text>
+      <text x="870" y="850">ENTRY</text><text x="870" y="878">POINTS</text>
+      <text x="1100" y="850">EDGE</text><text x="1100" y="878">CASES</text>
+      <text x="1330" y="850">EVIDENCE-BACKED</text><text x="1330" y="878">RISKS</text>
+    </g>
+
+    <text x="768" y="965" text-anchor="middle" font-size="21" letter-spacing="9" fill="#6784a7">OPEN SOURCE CONTRIBUTORS BUILD A STRONGER FUTURE</text>
+  </g>
+</svg>
