@@ -290,7 +290,7 @@ The form will ask for your participant details and:
 - five-word explanation.
 
 ### Both tracks
-You can submit both links in the same [Cohort 2 Google Form](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing&ouid=105047859725440832774).
+You submit both links in the same [Cohort 2 Google Form](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing&ouid=105047859725440832774).
 
 Do not upload private source code, passwords, API keys, access tokens, or customer information.
 
@@ -336,11 +336,10 @@ Generic promotional posts, unsupported claims, copied content, or obvious AI fil
 - Do not create a Pull Request for Track 1.
 - Do not submit copied issues, posts, or videos.
 - Do not upload passwords, API keys, access tokens, customer information, or private source code.
-- AI tools can assist your work, but you remain responsible for technical correctness and originality.
-- Spam, unrelated, copied, or incomplete submissions may be rejected.
-- Organizers' decisions on final rankings are final.
+- Fill the google form to complete the submission: (https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing&ouid=105047859725440832774 
 
-Stars, follower counts, raw views, and repository size do **not** directly determine judging.
+  Support the project: ⭐ Star this repo to help spread the word and encourage the developers!
+
 
 ---
 
@@ -362,4 +361,4 @@ Alphashots.ai is a pre-seed-funded AI technology startup building open-source to
 5. Submit it through the [Cohort 2 Google Form](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing&ouid=105047859725440832774).
 
 
-⭐ Finished the challenge? If UnvibeCode helped you learn something useful, **Star the repository** and follow this space—we will be publishing more practical guides and challenges around verified engineering, AI system design, and building stronger technical projects.
+Finished the challenge? Follow this space—we will be publishing more practical guides and challenges around verified engineering, AI system design, and building stronger technical projects.
