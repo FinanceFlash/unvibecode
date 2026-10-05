@@ -28,7 +28,7 @@ Our mission is to transform engineering projects from vibe-coded complexity into
 
 ## 🚀 Internship Opportunity with Alphashots.ai
 
-Outstanding participants from either track may be considered for a **3-week Open Source / Developer Advocacy Internship with Alphashots.ai**.
+This challenge is the primary criterion for **3-week Open Source / Developer Advocacy Internship with Alphashots.ai**.
 
 - **Stipend:** ₹10,000-15,000/month
 - **Duration:** 3 weeks
