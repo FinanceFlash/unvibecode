@@ -1,6 +1,6 @@
 # 🏆 UnvibeCode Engineering Challenge 2026 — Cohort 2
 
-## Hosted by Alphashots.ai
+## Secure an internship, win hackathon prizes, and establish a verified open-source contributor status
 
 **Unvibe complex code. Trace business workflows. Build verified engineering intuition.**
 
