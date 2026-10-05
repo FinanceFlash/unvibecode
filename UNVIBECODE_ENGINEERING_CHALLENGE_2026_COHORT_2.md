@@ -329,7 +329,7 @@ Generic promotional posts, unsupported claims, copied content, or obvious AI fil
 ---
 
 # ✅ Submission Rules
-
+ ⭐ **Star [UnvibeCode](https://github.com/FinanceFlash/unvibecode)** to bookmark the challenge and easily return for results, updates, and certificate-related announcements.
 - Choose Track 1, Track 2, or complete both.
 - **Both tracks require participants to install and use UnvibeCode first.**
 - Track 1 requires one useful, focused, non-duplicate GitHub issue.
@@ -339,7 +339,7 @@ Generic promotional posts, unsupported claims, copied content, or obvious AI fil
 - Do not submit copied issues, posts, or videos.
 - Do not upload passwords, API keys, access tokens, customer information, or private source code.
 - Complete the [Cohort 2 Google Form](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing&ouid=105047859725440832774) to finish your submission.
-- ⭐ **Star [UnvibeCode](https://github.com/FinanceFlash/unvibecode)** to bookmark the challenge and easily return for results, updates, and certificate-related announcements.
+
 
 ---
 
