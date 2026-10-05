@@ -30,7 +30,7 @@ Our mission is to transform engineering projects from vibe-coded complexity into
 
 Outstanding participants from either track may be considered for a **3-week Open Source / Developer Advocacy Internship with Alphashots.ai**.
 
-- **Stipend:** ₹10,000/month
+- **Stipend:** ₹10,000-15,000/month
 - **Duration:** 3 weeks
 - **Time commitment:** approximately 2–3 hours per week
 - **Mode:** Remote/online or on-campus
@@ -353,7 +353,7 @@ Alphashots.ai is a pre-seed-funded AI technology startup building open-source to
 
 ---
 
-# ⭐ Start. Build. Submit.
+#  Start. Build. Submit.
 
 1. ⭐ [Star UnvibeCode](https://github.com/FinanceFlash/unvibecode) if you find the project useful.
 2. Install it and analyze a real repository.
