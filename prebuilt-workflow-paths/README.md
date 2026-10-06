@@ -61,6 +61,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [LLM Content Generation and Structured-output Validation](llm-content-generation-and-output-validation/) | generates content or structured results and must validate them before use |
 | [RAG Question Answering with Evidence and Citations](rag-question-answering-with-evidence-and-citations/) | retrieves sources and produces answers that must remain grounded in evidence |
 | [External-system Synchronization and Checkpointing](external-system-data-sync-and-checkpointing/) | synchronizes records with an external system while tracking progress and recovery |
+| [Agent Tool Calling and Task Execution](agent-tool-calling-and-task-execution/) | receives a task, plans execution, selects tools, validates authorization, and manages external side effects |
 
 ### Risk, privacy, and background execution
 
