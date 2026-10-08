@@ -185,3 +185,35 @@ For product questions, public-repository review requests, or collaboration enqui
 - Explore the [pre-built business workflow packs](prebuilt-workflow-paths/README.md) or contribute a new one using the MECE rules.
 - Look for a focused starting point in [good first issues](https://github.com/FinanceFlash/unvibecode/labels/good%20first%20issue).
 - Reuse and distribution are governed by the repository's [license](LICENSE).
+
+py --version
+py -m pip install --upgrade unvibecode
+py -m unvibecode --help
+``` :chatgpt-content-reference{index="3"}
+
+
+Tum **Windows troubleshooting** ka small section add kar sakti ho:
+
+```md
+### Windows troubleshooting
+
+If the `py` command is not recognized, make sure Python 3.11 or newer
+is installed and added to your system PATH.
+
+You can verify the installation with:
+
+```bash
+python --version
+
+Ye genuinely useful documentation improvement hai, especially beginners ke liye.
+
+### Step 4 — Branch banao
+
+Fork ke repo me:
+
+**Code → Branch dropdown → New branch**
+
+Name:
+
+```text
+docs/windows-troubleshooting
