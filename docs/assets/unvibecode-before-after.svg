@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="735" viewBox="0 0 1400 735" role="img" aria-labelledby="t d">
+<title id="t">Before and after UnvibeCode</title><desc id="d">Full code dumps into an LLM compared with AST and code graph, graph-aware context, and evidence-gated findings.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#182438}.big{font-size:30px;font-weight:800}.head{font-size:25px;font-weight:800}.label{font-size:19px;font-weight:700}.sub{font-size:17px;fill:#475569}.item{font-size:17px}.pill{font-size:16px;font-weight:800}</style>
+<rect width="1400" height="735" rx="14" fill="white"/>
+<text x="700" y="47" text-anchor="middle" class="big">Why not just dump your entire codebase into an LLM?</text><text x="700" y="79" text-anchor="middle" font-size="18" fill="#52617a">More source code doesn't automatically mean better code understanding.</text>
+<rect x="30" y="105" width="655" height="605" rx="16" fill="#fff8f8" stroke="#ec9096" stroke-width="2"/>
+<rect x="715" y="105" width="655" height="605" rx="16" fill="#f3fcf7" stroke="#67c694" stroke-width="2"/>
+<rect x="286" y="119" width="143" height="34" rx="17" fill="#ffdcdf"/><text x="358" y="141" text-anchor="middle" class="pill" fill="#972c37">BEFORE</text>
+<rect x="971" y="119" width="143" height="34" rx="17" fill="#c8f1d9"/><text x="1043" y="141" text-anchor="middle" class="pill" fill="#177545">AFTER</text>
+<text x="358" y="184" text-anchor="middle" class="head">Full-code dumps into an LLM</text>
+<text x="1043" y="184" text-anchor="middle" class="head">With UnvibeCode</text>
+<rect x="64" y="204" width="587" height="119" rx="13" fill="#e8eef5"/><rect x="749" y="204" width="587" height="119" rx="13" fill="#e8eef5"/>
+<text x="358" y="233" text-anchor="middle" class="label">SOURCE REPOSITORY</text><text x="1043" y="233" text-anchor="middle" class="label">SOURCE REPOSITORY</text>
+<g font-size="18" fill="#34506d" text-anchor="middle"><text x="224" y="285">▣ File A</text><text x="358" y="285">▣ File B</text><text x="493" y="285">▣ File C</text><text x="909" y="285">▣ File A</text><text x="1043" y="285">▣ File B</text><text x="1178" y="285">▣ File C</text></g>
+<path d="M358 325v30" stroke="#91a0b4" stroke-width="4"/><path d="M350 347l8 10 8-10" fill="none" stroke="#91a0b4" stroke-width="3"/>
+<rect x="64" y="371" width="587" height="140" rx="12" fill="#fff" stroke="#a7b4c6" stroke-width="2"/>
+<text x="358" y="412" text-anchor="middle" font-size="32">◉</text><text x="358" y="446" text-anchor="middle" class="head">LLM</text><text x="358" y="474" text-anchor="middle" class="sub">Infer relationships, workflows and risks</text><text x="358" y="496" text-anchor="middle" class="sub">from raw text</text>
+<path d="M1043 324v23M1043 413v18M1043 497v17" stroke="#26a26c" stroke-width="4" stroke-linecap="round"/>
+<g fill="#26a26c"><path d="M1035 340l8 10 8-10"/><path d="M1035 424l8 10 8-10"/><path d="M1035 508l8 10 8-10"/></g>
+<rect x="749" y="350" width="587" height="63" rx="10" fill="#fff" stroke="#8ab5d9"/><text x="1043" y="378" text-anchor="middle" class="label">AST + Code Graph</text><text x="1043" y="399" text-anchor="middle" class="sub">Structured code relationships</text>
+<rect x="749" y="433" width="587" height="64" rx="10" fill="#fff" stroke="#8ab5d9"/><text x="1043" y="460" text-anchor="middle" class="label">Graph-aware LLM context</text><text x="1043" y="482" text-anchor="middle" class="sub">Relevant connected source</text>
+<rect x="749" y="517" width="587" height="64" rx="10" fill="#fff" stroke="#8ab5d9"/><text x="1043" y="545" text-anchor="middle" class="label">Evidence-gated findings</text><text x="1043" y="567" text-anchor="middle" class="sub">Supporting code and verification checks</text>
+<rect x="64" y="532" width="587" height="151" rx="12" fill="#ffe7e9"/><rect x="749" y="599" width="587" height="84" rx="12" fill="#e0f6e8"/>
+<g class="item"><text x="88" y="569" fill="#be2a39">✕</text><text x="117" y="569">Relevant and unrelated code compete for attention</text><text x="88" y="611" fill="#be2a39">✕</text><text x="117" y="611">Dependencies reconstructed from supplied text</text><text x="88" y="653" fill="#be2a39">✕</text><text x="117" y="653">Plausible findings may lack source evidence</text><text x="774" y="624" fill="#18844c">✓</text><text x="801" y="624">Structured repository relationships</text><text x="774" y="651" fill="#18844c">✓</text><text x="801" y="651">Connected code organized for analysis</text><text x="774" y="678" fill="#18844c">✓</text><text x="801" y="678">Risk findings constrained by source evidence</text></g>
+</svg>
