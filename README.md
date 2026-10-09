@@ -114,23 +114,6 @@ Download a normalized repository ZIP for code review, documentation, or further 
 
 ![Before: full-code dumps into an LLM. After: structured code relationships, graph-aware context, and evidence-gated findings with UnvibeCode.](docs/assets/unvibecode-before-after.svg)
 
-### Three engineering differentiators
-
-**🔀 Structure-aware code understanding**
-
-AST parsing, symbol resolution and repository relationships create a structural foundation for understanding the codebase.
-
-**🕸️ Graph-aware LLM context**
-
-Context preparation keeps code relationships and relevant source evidence together, rather than passing a giant undifferentiated source dump.
-
-**🛡️ Evidence-gated risk findings**
-
-Business-risk candidates are checked against source evidence, causal relationships, and explicit proof requirements before final reporting.
-
-*This visual compares UnvibeCode with unstructured full-code prompting, not every modern coding agent. These mechanisms are designed to improve grounding; measured hallucination reduction would require controlled evaluation.*
-
----
 
 ## What our users are saying
 
@@ -147,18 +130,6 @@ Business-risk candidates are checked against source evidence, causal relationshi
 **Rohit Sanju Patil**
 
 ---
-
-## What makes UnvibeCode different?
-
-**UnvibeCode brings business understanding, connected code navigation, evidence-backed risks, and reusable source context into one repository review.**
-
-| Capability | What developers get |
-|---|---|
-| Business workflow reconstruction | Understand application behavior across files and functions |
-| Interactive connected code | Trace dependencies and retrieve related implementation context |
-| Evidence-backed business risks | Investigate potential defects with supporting code and verification guidance |
-| Reusable code context | Download complete or focused source packages |
-| Progressive results | Explore available code analysis while deeper business review continues |
 
 ### How does UnvibeCode compare?
 
