@@ -69,6 +69,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [Fraud-risk Scoring, Step-up, Block, and Case Creation](fraud-risk-check-step-up-block-and-investigation/) | evaluates protected actions and may allow, challenge, hold, block, or investigate them |
 | [Right-to-erasure and Account-data Deletion](account-data-deletion-and-right-to-erasure/) | verifies and executes deletion or anonymization requests across data stores and processors |
 | [Scheduled Job Execution, Checkpoint, Retry, and Recovery](scheduled-job-execution-retry-and-recovery/) | runs scheduled work with leases, bounded input windows, checkpoints, retries, and repair |
+| [API Credential Lifecycle Management](api-credential-lifecycle-management/) | creates, activates, rotates, expires, and revokes API credentials while enforcing scope, authorization, and recovery |
 
 The navigation categories are only for discovery. Each workflow has its own clear start, end, stages, effects, permissions, and recovery boundary.
 
