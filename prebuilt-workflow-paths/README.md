@@ -40,6 +40,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 
 | Workflow | Use it when your application… |
 |---|---|
+| [Shopping Cart Management and Abandonment](shopping-cart-management-and-abandonment/) | manages cart state, guest-to-user merging, pricing, and abandonment |
 | [Checkout Payment Authorization and Capture](checkout-payment-authorization-and-capture/) | authorizes and captures payment while coordinating checkout and order state |
 | [Subscription Renewal, Cancellation, and Entitlement Release](subscription-renewal-cancellation-and-access-removal/) | renews subscriptions, handles cancellation, and grants or removes access |
 | [Order Placement and Confirmation](order-placement-and-confirmation/) | validates a cart, creates an order, and confirms acceptance to the customer |
