@@ -26,6 +26,7 @@ REQUIRED_PACK_FILES = {
 SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
+NUMERIC_PREFIX = re.compile(r"^\d")
 
 
 def workflow_packs():
@@ -36,6 +37,11 @@ def workflow_packs():
 def test_workflow_pack_has_required_files(pack):
     present = {path.name for path in pack.iterdir() if path.is_file()}
     assert REQUIRED_PACK_FILES <= present, sorted(REQUIRED_PACK_FILES - present)
+
+
+@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
+def test_workflow_pack_folder_name_has_no_numeric_prefix(pack):
+    assert not NUMERIC_PREFIX.match(pack.name), f"{pack.name} starts with a digit"
 
 
 @pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
