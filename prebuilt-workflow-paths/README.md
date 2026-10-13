@@ -62,6 +62,8 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [RAG Question Answering with Evidence and Citations](rag-question-answering-with-evidence-and-citations/) | retrieves sources and produces answers that must remain grounded in evidence |
 | [External-system Synchronization and Checkpointing](external-system-data-sync-and-checkpointing/) | synchronizes records with an external system while tracking progress and recovery |
 
+| [AI Agent Tool Execution and Side-effect Control](ai-agent-tool-execution-and-side-effect-control/) | lets an AI agent select and execute tools while validating requests, enforcing authorization, controlling side effects, and recovering from uncertain execution |
+
 ### Risk, privacy, and background execution
 
 | Workflow | Use it when your application… |
