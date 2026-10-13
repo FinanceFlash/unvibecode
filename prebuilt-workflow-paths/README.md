@@ -54,6 +54,12 @@ No installation, generator, schema, or build step is required. Every workflow is
 | [Seller or Service-provider Onboarding and Eligibility](seller-and-service-provider-onboarding/) | verifies and activates providers before allowing them to sell or deliver services |
 | [Commission, Fee, Split Payout, and Seller Settlement](marketplace-fees-split-payouts-and-settlement/) | calculates platform fees and settles funds among sellers or service providers |
 
+### Identity, access, and integrations
+
+| Workflow | Use it when your application… |
+|---|---|
+| [OAuth Authorization and Account Linking](oauth-authorization-and-account-linking/) | signs users in through an external provider or links an external identity or data-provider account to a local account |
+
 ### LLM, retrieval, and external systems
 
 | Workflow | Use it when your application… |
@@ -129,10 +135,10 @@ Read the [repository contribution guide](../.github/CONTRIBUTING.md) before prop
 
 ## Collection summary
 
-- 18 independently usable business workflow packs
-- 234 workflow-specific Markdown files
-- 360 compact core scenarios
-- 360 complete Given/When/Expect scenario descriptions
-- 90 portable task skills
+- 19 independently usable business workflow packs
+- 247 workflow-specific Markdown files
+- 380 compact core scenarios
+- 380 complete Given/When/Expect scenario descriptions
+- 95 portable task skills
 
 These packs are starting points for application-specific analysis. Product rules, laws, provider contracts, data-retention requirements, and operational limits still need to be adapted to the repository being reviewed.
