@@ -197,6 +197,10 @@ Connected-code mapping and context preparation recognize:
 Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details.
 
 ---
+## Privacy 
+UnvibeCode uses lightweight safeguards to reduce accidental credential sharing and keep AI requests focused on supported analysis tasks.
+Before the official UnvibeCode client sends code for AI analysis, it looks for recognizable credentials—such as API keys, passwords, access tokens and private keys—and replaces detected values with placeholders.
+Deeply encoded or custom secret format files could be skipped by the safeguards 
 
 ## Documentation
 
