@@ -73,6 +73,17 @@ Test: two modules contain the same function name. Preserve qualified identities 
 
 Test: memory says exposure 0.80%, DB says 1.37%. Use DB for current exposure; memory explains only the prior discussion.
 
+## 7. Data protection before retrieval and generation
+
+- [ ] Pseudonymize or tokenize personal and account identifiers before any hosted-model request; treat the reversal map as a secret with its own access control, not as a document in the corpus.
+- [ ] Treat tool and retrieval results as transcript content: they are re-sent on every later turn, so strip PII and unneeded columns when the result object is created, not afterwards.
+- [ ] Request transaction, reporting, or summary endpoints only; do not expand or include customer sub-objects for convenience, and verify once per feed that the chosen endpoint does not attach them by default.
+- [ ] Keep confirmed records immutable; corrections supersede with an effective date instead of editing in place, so retrieval can show what was believed at a given time.
+- [ ] Record the model, model version, prompt template version, and source versions that produced each answer, so a wrong answer can be traced to one stage.
+- [ ] Apply the same scope and retention rules to caches, embeddings, evaluation fixtures, and logs as to the source documents.
+
+Test: ingest a document containing a synthetic name and account number. Expected: neither value appears in any outbound model request payload, stored tool result, or evaluation export.
+
 ## Findings worksheet
 
 | Module | Status | Evidence/location | Consequence | Smallest correction | Regression scenario |
