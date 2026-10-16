@@ -226,6 +226,18 @@ Found a problem or have a feature request? [Open a GitHub issue](https://github.
 
 For product questions, repository reviews, or collaboration, contact [divya.singaravelu@iiml.org](mailto:divya.singaravelu@iiml.org).
 
+# Security Policy
+
+## Report a vulnerability
+
+If you discover a security vulnerability in UnvibeCode, please
+report it privately using the link below.
+
+[Report a vulnerability privately](https://github.com/FinanceFlash/unvibecode/security/advisories/new)
+
+Include the affected version, steps to reproduce, and potential impact.
+Please do not disclose security vulnerabilities in public GitHub issues.
+
 ## License
 
 See [LICENSE](LICENSE) for reuse and distribution terms.
