@@ -140,21 +140,6 @@ Download a normalized repository ZIP for code review, documentation, or further 
 | **[Qodo PR-Agent](https://github.com/qodo-ai/pr-agent)** | Pull-request review | Understand existing application behavior beyond a proposed code change |
 | **[CodeQL](https://codeql.github.com/)** | Static security and correctness analysis | Business workflow explanations connected to implementation and operational consequences |
 
----
-
-## What's new in v0.3.8?
-
-**A clearer, easier-to-explore repository review experience.**
-
-- **Review results at a glance:** See available outputs, identified workflows, and supported business-risk summaries directly in the CLI.
-- **Explore results while analysis continues:** Access the interim Connected Code Map before deeper business analysis finishes.
-- **Open reports directly:** The CLI provides interim and final HTML report paths, with clickable links in supported terminals.
-- **Cleaner progress updates:** Fewer repetitive messages and no intermediate elapsed-time estimates.
-- **More useful final summary:** Find the generated outputs, key workflows, and full results location together.
-
-[View UnvibeCode on PyPI](https://pypi.org/project/unvibecode/)
-
----
 
 ## When should you use UnvibeCode?
 
