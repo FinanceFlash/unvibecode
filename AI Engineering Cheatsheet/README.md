@@ -21,6 +21,7 @@ Eleven focused guides covering:
 - Security
 - Testing
 - Observability
+- LLM Integrations
 
 Each guide includes a compact visual, ten critical questions, warning signs, evidence to collect, and a prompt for challenging the design with an LLM or reviewer.
 
