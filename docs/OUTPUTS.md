@@ -17,6 +17,8 @@ Choose a workflow area, then read a workflow to understand:
 
 Use this view to connect product behaviour to implementation before reading files individually. In the smolagents sample, you can explore agent memory and replay, multi-step agent execution, and UI streaming.
 
+Before relying on a reported rule such as "requires an active request," check the condition that enforces it. Comments and error messages can describe an intended precondition that differs from runtime behaviour. See [Verifying workflow guards](VERIFYING_WORKFLOW_GUARDS.md) for a pinned Flask example and a repeatable check.
+
 [Explore business workflows](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#business-workflows)
 
 ## 2. Connected Code — Connected Code Map
