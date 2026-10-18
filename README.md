@@ -70,6 +70,24 @@ python3 -m unvibecode review --repository "/home/yourname/projects/customer-supp
 
 No activation key. No customer OpenAI API key. The repository path is the only required input.
 
+## Explore sample analyses
+
+[smolagents](https://financeflash.github.io/unvibecode/gitdocs/smolagents/2026-10-18/) · [PocketFlow](https://financeflash.github.io/unvibecode/gitdocs/pocketflow/2026-10-18/) · [mini-swe-agent](https://financeflash.github.io/unvibecode/gitdocs/mini-swe-agent/2026-10-18/) · [django-payments](https://financeflash.github.io/unvibecode/gitdocs/django-payments/2026-10-18/)
+
+## Used by engineers at
+
+Vertigo · Kovai.co · Ancient · Tingle Software · Racetrack by Palomino Consulting · DVARA · Insomnia Labs · AICB · Ritech · Pixit
+
+## UnvibeCode, in their words
+
+> “The business workflow getting lost across 500 files is the real issue. AI can keep generating code, but once nobody can trace why the product behaves the way it does, the speed advantage disappears fast.”
+
+**Kavitha Ranganathan — Senior PM, Better**
+
+> “By tracing a customer recovery workflow from the screen to the code, I found that the system could mark a customer as having promised to pay based on the last digit of their ID, not an actual promise”
+
+**Fernanda Teixeira — QA Engineer, Vertigo**
+
 ## One repository review. Four connected outputs.
 
 UnvibeCode helps developers understand **what a codebase does, how its components connect, and what could break** — without manually tracing every file.
@@ -114,20 +132,6 @@ Download a normalized repository ZIP for code review, documentation, or further 
 
 ![Before: full-code dumps into an LLM. After: structured code relationships, graph-aware context, and evidence-gated findings with UnvibeCode.](docs/assets/unvibecode-before-after.svg)
 
-
-## What our users are saying
-
-### Understanding complex code
-
-> “The workflow and code maps helped me quickly trace relationships between routes, services, models, and database-related code.”
-
-**Subhankar Nath**
-
-### Finding a real bug
-
-> “The Business Risk Findings report caught a real bug I didn't know about: my meditation-save endpoint always inserts a new row, but the model has a unique constraint on user + date, so a repeat save on the same day throws an unhandled error.”
-
-**Rohit Sanju Patil**
 
 ---
 
