@@ -1,0 +1,21 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navbar variant. The bar is solid brand purple in both themes, so the
+       gradient mark cannot sit on it directly — violet on violet. Rather than
+       redraw the mark, this backs the ORIGINAL logo.svg artwork with a white
+       plate and insets it, the way getbootstrap.com rides its purple B on a
+       white sticker. The gradient is untouched; logo.svg stays the mark
+       everywhere off the bar. -->
+  <defs>
+    <linearGradient id="dvaraGradPlate" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="12" fill="#ffffff"/>
+  <g transform="translate(3.5 3.5) scale(0.825)">
+    <rect width="40" height="40" rx="10" fill="url(#dvaraGradPlate)"/>
+    <path d="M12 12h6c5.523 0 10 4.477 10 8s-4.477 8-10 8h-6V12z" stroke="white" stroke-width="2.8" fill="none" stroke-linejoin="round"/>
+    <circle cx="21" cy="20" r="2" fill="white"/>
+  </g>
+</svg>
