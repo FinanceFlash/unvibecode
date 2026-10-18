@@ -1,0 +1,553 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnvibeCode Business Risk Findings</title>
+<style>body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 24px 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:25px}h3{font-size:16px;margin-bottom:6px}p,li,td,dd{overflow-wrap:anywhere}.summary,.flaw,.structural-review{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 8px 30px rgba(15,23,42,.05)}.critical{border-left:7px solid #991b1b}.high{border-left:7px solid #c2410c}.medium{border-left:7px solid #a16207}.badge,.structural-badge{display:inline-block;background:#0f172a;color:white;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.structural-badge{background:#4338ca}.bottom{font-size:19px;font-weight:600}.metrics{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#e2e8f0;border-radius:12px;padding:12px 16px;min-width:120px}.metric strong{display:block;font-size:25px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid section{background:#f1f5f9;padding:14px;border-radius:10px}dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}dt{font-weight:700}dd{margin:0}.graph-scroll{width:100%;overflow-x:auto;padding-bottom:8px}.path-graph{display:block;width:1500px;max-width:none;height:auto;background:white;border:1px solid #e2e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e2e8f0;padding:8px}summary{cursor:pointer;font-weight:700}.hotspot-card{margin-top:16px;padding:18px;background:#f8fafc;border:1px solid #dbe3f5;border-left:5px solid #4f46e5;border-radius:12px}.hotspot-card>h3{font-size:19px;margin:9px 0}.hotspot-code{margin-top:12px;padding:12px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:8px;color:#c4b5fd;font-size:12px;font-weight:700}pre{margin:0;overflow:auto;color:#e2e8f0;font:12px/1.5 Consolas,monospace;white-space:pre}.hotspot-details{margin-top:14px}@media(max-width:760px){main{padding:24px 12px 50px}h1{font-size:29px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}.summary,.flaw,.structural-review{padding:17px}.path-graph{width:1200px}pre{font-size:11px}}</style><style id="unvibecode-customer-report-style">
+main{
+  padding-top:22px !important;
+}
+main > h1{
+  margin-bottom:4px !important;
+  font-size:30px !important;
+}
+main > p{
+  margin-top:0 !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Centered loading view, above iframe while its embedded report initializes. */
+#report-stage{position:relative}
+#uvc-report-loader{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:var(--paper);text-align:center;color:var(--ink)}
+#uvc-report-loader[hidden]{display:none!important}#uvc-report-loader strong{display:block;font-size:16px}#uvc-report-loader p{font-size:12px;color:var(--muted)!important}
+.uvc-loading-spinner{display:block;width:28px;height:28px;border:2px solid var(--soft);border-top-color:var(--ink);border-radius:50%;margin:0 auto 14px;animation:uvc-spin .9s linear infinite}
+@keyframes uvc-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.uvc-loading-spinner{animation:none}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head>
+<body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a></div><main><h1>smolagents-main business flaw report</h1><p>Business-heavy findings reconstructed from connected code paths.</p>
+<section class="summary"><h2>Summary</h2><p class="bottom">One high-severity business flaw was confirmed. When stateful local code execution hits its timeout, the timed-out code continues running against shared interpreter state, and later executions reuse that altered state. The remaining candidates described intended external API adapter behavior or lacked enough connected context to establish a business downside.</p><div class="metrics"><div class="metric"><strong>1</strong>flaws</div><div class="metric"><strong>1</strong>strong evidence</div><div class="metric"><strong>0</strong>supported evidence</div></div></section>
+<h2>Business paths</h2><div class="graph-scroll"><img class="path-graph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjI4MyIgdmlld0JveD0iMCAwIDE1MDAgMjgzIj4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iOSIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDksMyB6IiBmaWxsPSIjNjQ3NDhiIi8+PC9tYXJrZXI+CjxzdHlsZT4udGl0bGV7Zm9udDo3MDAgMjRweCBBcmlhbDtmaWxsOiMwZjE3MmF9LmxhbmV7Zm9udDo3MDAgMTZweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm5vZGV7Zm9udDo2MDAgMTRweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm1ldGF7Zm9udDoxMi41cHggQXJpYWw7ZmlsbDojNDc1NTY5fS5lZGdle3N0cm9rZTojNjQ3NDhiO3N0cm9rZS13aWR0aDoyO21hcmtlci1lbmQ6dXJsKCNhcnJvdyl9LmltcGFjdHtzdHJva2U6I2RjMjYyNjtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYXJyb3cpfTwvc3R5bGU+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmYWZjIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0MCIgY2xhc3M9InRpdGxlIj5zbW9sYWdlbnRzLW1haW4g4oCUIGJ1c2luZXNzIGZsYXcgcGF0aHM8L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSI5MCIgY2xhc3M9ImxhbmUiPkhJR0ggwrcgU1RST05HIEVWSURFTkNFIOKAlCBUaW1lZC1vdXQgZXhlY3V0aW9ucyBrZWVwIGNoYW5naW5nIHNoYXJlZCBpbnRlcnByZXRlciBzdGF0ZTwvdGV4dD4KPHJlY3QgeD0iNDAiIHk9IjExOCIgcng9IjEwIiB3aWR0aD0iMTgyIiBoZWlnaHQ9IjEyMSIgZmlsbD0iI2UwZjJmZSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iNTAiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPkNhbGxlciB1c2luZyBhPC90ZXh0Pgo8dGV4dCB4PSI1MCIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+c3RhdGVmdWwgZXhlY3V0b3I8L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSIyMjciIGNsYXNzPSJtZXRhIj5zZXJ2aWNlIGJhY2tlbmQ8L3RleHQ+CjxyZWN0IHg9IjI0NiIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxODIiIGhlaWdodD0iMTIxIiBmaWxsPSIjZTBmMmZlIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIyNTYiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPlN1Ym1pdHMgbG9uZy1ydW5uaW5nPC90ZXh0Pgo8dGV4dCB4PSIyNTYiIHk9IjE2MiIgY2xhc3M9Im5vZGUiPmNvZGU8L3RleHQ+Cjx0ZXh0IHg9IjI1NiIgeT0iMjI3IiBjbGFzcz0ibWV0YSI+c2VydmljZSBiYWNrZW5kPC90ZXh0Pgo8cmVjdCB4PSI0NTIiIHk9IjExOCIgcng9IjEwIiB3aWR0aD0iMTgyIiBoZWlnaHQ9IjEyMSIgZmlsbD0iI2YxZjVmOSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iNDYyIiB5PSIxNDQiIGNsYXNzPSJub2RlIj5FeGVjdXRpb24gcmVhY2hlcyB0aGU8L3RleHQ+Cjx0ZXh0IHg9IjQ2MiIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+Y29uZmlndXJlZCB0aW1lIGxpbWl0PC90ZXh0Pgo8dGV4dCB4PSI0NjIiIHk9IjIyNyIgY2xhc3M9Im1ldGEiPnNlcnZpY2UgYmFja2VuZDwvdGV4dD4KPHJlY3QgeD0iNjU4IiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE4MiIgaGVpZ2h0PSIxMjEiIGZpbGw9IiNmMWY1ZjkiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjY2OCIgeT0iMTQ0IiBjbGFzcz0ibm9kZSI+VGltZWQtb3V0IGNvZGUga2VlcHM8L3RleHQ+Cjx0ZXh0IHg9IjY2OCIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+cnVubmluZyBpbiB0aGU8L3RleHQ+Cjx0ZXh0IHg9IjY2OCIgeT0iMTgwIiBjbGFzcz0ibm9kZSI+YmFja2dyb3VuZDwvdGV4dD4KPHRleHQgeD0iNjY4IiB5PSIyMjciIGNsYXNzPSJtZXRhIj5zZXJ2aWNlIGJhY2tlbmQ8L3RleHQ+CjxyZWN0IHg9Ijg2NCIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxODIiIGhlaWdodD0iMTIxIiBmaWxsPSIjZjFmNWY5IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI4NzQiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPlNoYXJlZCBleGVjdXRpb24gc3RhdGU8L3RleHQ+Cjx0ZXh0IHg9Ijg3NCIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+YW5kIGxvZyBidWZmZXI8L3RleHQ+Cjx0ZXh0IHg9Ijg3NCIgeT0iMjI3IiBjbGFzcz0ibWV0YSI+c2VydmljZSBiYWNrZW5kPC90ZXh0Pgo8cmVjdCB4PSIxMDcwIiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE4MiIgaGVpZ2h0PSIxMjEiIGZpbGw9IiNlMGYyZmUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjEwODAiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPkxhdGVyIGNvZGUgcnVucyByZXVzZTwvdGV4dD4KPHRleHQgeD0iMTA4MCIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+dGhlIHNhbWUgZXhlY3V0b3I8L3RleHQ+Cjx0ZXh0IHg9IjEwODAiIHk9IjIyNyIgY2xhc3M9Im1ldGEiPnNlcnZpY2UgYmFja2VuZDwvdGV4dD4KPHJlY3QgeD0iMTI3NiIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxODIiIGhlaWdodD0iMTIxIiBmaWxsPSIjZmVlMmUyIiBzdHJva2U9IiNiOTFjMWMiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxMjg2IiB5PSIxNDQiIGNsYXNzPSJub2RlIj5MYXRlciBydW5zIHVzZSBzdGFsZTwvdGV4dD4KPHRleHQgeD0iMTI4NiIgeT0iMTYyIiBjbGFzcz0ibm9kZSI+cG9zdC10aW1lb3V0IHN0YXRlIGFuZDwvdGV4dD4KPHRleHQgeD0iMTI4NiIgeT0iMTgwIiBjbGFzcz0ibm9kZSI+bG9nczwvdGV4dD4KPHRleHQgeD0iMTI4NiIgeT0iMjI3IiBjbGFzcz0ibWV0YSI+c2VydmljZSBiYWNrZW5kPC90ZXh0Pgo8bGluZSB4MT0iMjIyIiB5MT0iMTc4LjUiIHgyPSIyNDIiIHkyPSIxNzguNSIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjQyOCIgeTE9IjE3OC41IiB4Mj0iNDQ4IiB5Mj0iMTc4LjUiIGNsYXNzPSJlZGdlIi8+CjxsaW5lIHgxPSI2MzQiIHkxPSIxNzguNSIgeDI9IjY1NCIgeTI9IjE3OC41IiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iODQwIiB5MT0iMTc4LjUiIHgyPSI4NjAiIHkyPSIxNzguNSIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjEwNDYiIHkxPSIxNzguNSIgeDI9IjEwNjYiIHkyPSIxNzguNSIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjEyNTIiIHkxPSIxNzguNSIgeDI9IjEyNzIiIHkyPSIxNzguNSIgY2xhc3M9ImltcGFjdCIvPgo8L3N2Zz4=" alt="Business flaw paths"></div><h2>Business flaws</h2>
+<article class="flaw high">
+<div class="badge">HIGH · STRONG EVIDENCE</div>
+<h2>1. Timed-out executions keep changing shared interpreter state</h2>
+<p class="bottom">When a local execution exceeds its timeout, the timed-out code continues running against shared state and later runs reuse that altered state.</p>
+<div class="grid">
+<section><h3>Trigger</h3><p>A caller runs code through the stateful local executor and the code exceeds the configured timeout.</p></section>
+<section><h3>What the code does</h3><p>When the time limit is reached, the submitted code continues running in a worker thread against the same shared state object after the timeout boundary.</p></section>
+<section><h3>Business rule</h3><p>Once a local execution hits its configured time limit, that execution must stop changing the shared execution state used by later runs.</p><small>Basis: EXPLICIT</small></section>
+<section><h3>Business downside</h3><p>Later runs use stale variables and logs from work that already timed out, so the timeout no longer contains the failed step.</p></section>
+</div>
+<h3>Impact</h3><dl>
+<dt>Immediate outcome</dt><dd>A timed-out execution keeps appending logs and variables to the shared interpreter state after the timeout boundary.</dd>
+<dt>Affected party or asset</dt><dd>Shared agent execution state and subsequent local code runs</dd>
+<dt>Scale mechanism</dt><dd>Any reused executor instance that times out carries post-timeout mutations into the next execution.</dd>
+<dt>Detection difficulty</dt><dd>High because the caller sees a timeout while the state changes happen afterward.</dd>
+<dt>Reversibility</dt><dd>Recovery requires discarding or reinitializing the executor state.</dd>
+</dl>
+<h3>How the code reaches the outcome</h3><ul><li>LocalPythonExecutor.__call__ passes its persistent self.state into evaluate_python_code for each execution.</li><li>evaluate_python_code executes submitted code against that state and stores print output inside the same state object.</li><li>When timeout_seconds is set, evaluate_python_code wraps execution with timeout().</li><li>timeout() submits the work to a thread and documents that a timed-out thread continues until completion, so the shared state object can keep changing after the timeout boundary.</li></ul>
+<h3>What to change</h3><p>Timed-out executions stop mutating shared interpreter state and cannot influence later executions.</p>
+<h3>Acceptance check</h3><p><strong>Given</strong> a reused local executor with timeout_seconds set and shared execution state<br><strong>When</strong> one submitted code action exceeds the timeout and a later action runs on the same executor instance.<br><strong>Then</strong> </p>
+<details><summary>Exact code proof</summary><table><thead><tr><th>File</th><th>Symbol</th><th>Lines</th><th>Proof</th></tr></thead><tbody><tr><td>src/smolagents/local_python_executor.py</td><td>LocalPythonExecutor._check_authorized_imports_are_installed</td><td>1727–1745</td><td>Validates installed modules before execution.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>evaluate_python_code</td><td>1663–1667</td><td>_execute_code is wrapped with timeout when configured.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestEvaluatePythonCode.test_max_operations</td><td>392–408</td><td>Patch sets MAX_OPERATIONS and expects a max-operations InterpreterError.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestPrintContainer</td><td>2108–2136</td><td>PrintContainer stores appended text, supporting the execution-state output buffer concept.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>LocalPythonExecutor.__call__/send_variables</td><td>1715–1758</td><td>State is stored on the executor and updated across calls.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>LocalPythonExecutor</td><td>1688–1758</td><td>Local executor maintains state, authorized imports, and returns CodeOutput.</td></tr><tr><td>tests/test_local_python_executor.py</td><td>TestEvaluatePythonCode.test_print_output</td><td>806–821</td><td>Print output is accumulated into a state buffer during execution.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>timeout</td><td>285–320</td><td>Timeout decorator enforces maximum execution time.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>timeout</td><td>285–320</td><td>Decorator raises ExecutionTimeoutError when execution exceeds allowed time.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>evaluate_python_code</td><td>1583–1667</td><td>Evaluates code string input.</td></tr><tr><td>src/smolagents/default_tools.py</td><td>PythonInterpreterTool.forward</td><td>69–80</td><td>Tool forwards code to the python evaluator and returns stdout/output.</td></tr><tr><td>src/smolagents/local_python_executor.py</td><td>evaluate_python_code</td><td>1627–1667</td><td>Print outputs are captured in state and truncated before return.</td></tr></tbody></table></details>
+</article>
+
+<section class="structural-review">
+  <h2>Additional code areas worth reviewing</h2>
+  <p>These code areas met strict structural rules for concentrated complexity or strong code connections. They are review priorities, not confirmed business flaws.</p>
+  
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>1. Tightly connected module: utils.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>16 incoming and 1 outgoing source connections</li><li>Dependency cycle across 7 files</li></ul>
+  <h3>Connected source files</h3><ul><li>examples/open_deep_research/scripts/run_agents.py</li><li>src/smolagents/__init__.py</li><li>src/smolagents/agent_types.py</li><li>src/smolagents/agents.py</li><li>src/smolagents/gradio_ui.py</li><li>src/smolagents/local_python_executor.py</li><li>src/smolagents/memory.py</li><li>src/smolagents/models.py</li><li>src/smolagents/monitoring.py</li><li>src/smolagents/remote_executors.py</li><li>src/smolagents/tool_validation.py</li><li>src/smolagents/tools.py</li><li>tests/test_agents.py</li><li>tests/test_models.py</li><li>tests/test_remote_executors.py</li><li>tests/test_utils.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/smolagents/utils.py · lines 283–373 · Relevant source section</div><pre><code>   283 | 
+   284 | 
+   285 | def instance_to_source(instance, base_cls=None):
+   286 |     &quot;&quot;&quot;Convert an instance to its class source code representation.&quot;&quot;&quot;
+   287 |     cls = instance.__class__
+   288 |     class_name = cls.__name__
+   289 | 
+   290 |     # Start building class lines
+   291 |     class_lines = []
+   292 |     if base_cls:
+   293 |         class_lines.append(f&quot;class {class_name}({base_cls.__name__}):&quot;)
+   294 |     else:
+   295 |         class_lines.append(f&quot;class {class_name}:&quot;)
+   296 | 
+   297 |     # Add docstring if it exists and differs from base
+   298 |     if cls.__doc__ and (not base_cls or cls.__doc__ != base_cls.__doc__):
+   299 |         class_lines.append(f&#x27;    &quot;&quot;&quot;{cls.__doc__}&quot;&quot;&quot;&#x27;)
+   300 | 
+   301 |     # Add class-level attributes
+   302 |     class_attrs = {
+   303 |         name: value
+   304 |         for name, value in cls.__dict__.items()
+   305 |         if not name.startswith(&quot;__&quot;)
+   306 |         and not name == &quot;_abc_impl&quot;
+   307 |         and not callable(value)
+   308 |         and not (base_cls and hasattr(base_cls, name) and getattr(base_cls, name) == value)
+   309 |     }
+   310 | 
+   311 |     for name, value in class_attrs.items():
+   312 |         if isinstance(value, str):
+   313 |             # multiline value
+   314 |             if &quot;\n&quot; in value:
+   315 |                 escaped_value = value.replace(&#x27;&quot;&quot;&quot;&#x27;, r&quot;\&quot;\&quot;\&quot;&quot;)  # Escape triple quotes
+   316 |                 class_lines.append(f&#x27;    {name} = &quot;&quot;&quot;{escaped_value}&quot;&quot;&quot;&#x27;)
+   317 |             else:
+   318 |                 class_lines.append(f&quot;    {name} = {json.dumps(value)}&quot;)
+   319 |         else:
+   320 |             class_lines.append(f&quot;    {name} = {repr(value)}&quot;)
+   321 | 
+   322 |     if class_attrs:
+   323 |         class_lines.append(&quot;&quot;)
+   324 | 
+   325 |     # Add methods
+   326 |     methods = {
+   327 |         name: func.__wrapped__ if hasattr(func, &quot;__wrapped__&quot;) else func
+   328 |         for name, func in cls.__dict__.items()
+   329 |         if callable(func)
+   330 |         and (
+   331 |             not base_cls
+   332 |             or not hasattr(base_cls, name)
+   333 |             or (
+   334 |                 isinstance(func, (staticmethod, classmethod))
+   335 |                 or (getattr(base_cls, name).__code__.co_code != func.__code__.co_code)
+   336 |             )
+   337 |         )
+   338 |     }
+   339 | 
+   340 |     for name, method in methods.items():
+   341 |         method_source = get_source(method)
+   342 |         # Clean up the indentation
+   343 |         method_lines = method_source.split(&quot;\n&quot;)
+   344 |         first_line = method_lines[0]
+   345 |         indent = len(first_line) - len(first_line.lstrip())
+   346 |         method_lines = [line[indent:] for line in method_lines]
+   347 |         method_source = &quot;\n&quot;.join([&quot;    &quot; + line if line.strip() else line for line in method_lines])
+   348 |         class_lines.append(method_source)
+   349 |         class_lines.append(&quot;&quot;)
+   350 | 
+   351 |     # Find required imports using ImportFinder
+   352 |     import_finder = ImportFinder()
+   353 |     import_finder.visit(ast.parse(&quot;\n&quot;.join(class_lines)))
+   354 |     required_imports = import_finder.packages
+   355 | 
+   356 |     # Build final code with imports
+   357 |     final_lines = []
+   358 | 
+   359 |     # Add base class import if needed
+   360 |     if base_cls:
+   361 |         final_lines.append(f&quot;from {base_cls.__module__} import {base_cls.__name__}&quot;)
+   362 | 
+   363 |     # Add discovered imports
+   364 |     for package in required_imports:
+   365 |         final_lines.append(f&quot;import {package}&quot;)
+   366 | 
+   367 |     if final_lines:  # Add empty line after imports
+   368 |         final_lines.append(&quot;&quot;)
+   369 | 
+   370 |     # Add the class code
+   371 |     final_lines.extend(class_lines)
+   372 | 
+   373 |     return &quot;\n&quot;.join(final_lines)</code></pre></div></details>
+</article>
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>2. Tightly connected module: monitoring.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>12 incoming and 1 outgoing source connections</li><li>Dependency cycle across 7 files</li></ul>
+  <h3>Connected source files</h3><ul><li>src/smolagents/__init__.py</li><li>src/smolagents/agents.py</li><li>src/smolagents/memory.py</li><li>src/smolagents/models.py</li><li>src/smolagents/remote_executors.py</li><li>src/smolagents/utils.py</li><li>tests/conftest.py</li><li>tests/test_agents.py</li><li>tests/test_gradio_ui.py</li><li>tests/test_memory.py</li><li>tests/test_models.py</li><li>tests/test_monitoring.py</li><li>tests/test_remote_executors.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/smolagents/monitoring.py · lines 1–273 · Relevant source section</div><pre><code>     1 | #!/usr/bin/env python
+     2 | # coding=utf-8
+     3 | 
+     4 | # Copyright 2024 The HuggingFace Inc. team. All rights reserved.
+     5 | #
+     6 | # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+     7 | # you may not use this file except in compliance with the License.
+     8 | # You may obtain a copy of the License at
+     9 | #
+    10 | #     http://www.apache.org/licenses/LICENSE-2.0
+    11 | #
+    12 | # Unless required by applicable law or agreed to in writing, software
+    13 | # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+    14 | # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    15 | # See the License for the specific language governing permissions and
+    16 | # limitations under the License.
+    17 | import json
+    18 | from dataclasses import dataclass, field
+    19 | from enum import IntEnum
+    20 | 
+    21 | from rich import box
+    22 | from rich.console import Console, Group
+    23 | from rich.panel import Panel
+    24 | from rich.rule import Rule
+    25 | from rich.syntax import Syntax
+    26 | from rich.table import Table
+    27 | from rich.text import Text
+    28 | from rich.tree import Tree
+    29 | 
+    30 | from smolagents.utils import sanitize_for_rich
+    31 | 
+    32 | 
+    33 | __all__ = [&quot;AgentLogger&quot;, &quot;LogLevel&quot;, &quot;Monitor&quot;, &quot;TokenUsage&quot;, &quot;Timing&quot;]
+    34 | 
+    35 | 
+    36 | @dataclass
+    37 | class TokenUsage:
+    38 |     &quot;&quot;&quot;
+    39 |     Contains the token usage information for a given step or run.
+    40 |     &quot;&quot;&quot;
+    41 | 
+    42 |     input_tokens: int
+    43 |     output_tokens: int
+    44 |     total_tokens: int = field(init=False)
+    45 | 
+    46 |     def __post_init__(self):
+    47 |         self.total_tokens = self.input_tokens + self.output_tokens
+    48 | 
+    49 |     def dict(self):
+    50 |         return {
+    51 |             &quot;input_tokens&quot;: self.input_tokens,
+    52 |             &quot;output_tokens&quot;: self.output_tokens,
+    53 |             &quot;total_tokens&quot;: self.total_tokens,
+    54 |         }
+    55 | 
+    56 | 
+    57 | @dataclass
+    58 | class Timing:
+    59 |     &quot;&quot;&quot;
+    60 |     Contains the timing information for a given step or run.
+    61 |     &quot;&quot;&quot;
+    62 | 
+    63 |     start_time: float
+    64 |     end_time: float | None = None
+    65 | 
+    66 |     @property
+    67 |     def duration(self):
+    68 |         return None if self.end_time is None else self.end_time - self.start_time
+    69 | 
+    70 |     def dict(self):
+    71 |         return {
+    72 |             &quot;start_time&quot;: self.start_time,
+    73 |             &quot;end_time&quot;: self.end_time,
+    74 |             &quot;duration&quot;: self.duration,
+    75 |         }
+    76 | 
+    77 |     def __repr__(self) -&gt; str:
+    78 |         return f&quot;Timing(start_time={self.start_time}, end_time={self.end_time}, duration={self.duration})&quot;
+    79 | 
+    80 | 
+    81 | class Monitor:
+    82 |     def __init__(self, tracked_model, logger):
+    83 |         self.step_durations = []
+    84 |         self.tracked_model = tracked_model
+    85 |         self.logger = logger
+    86 |         self.total_input_token_count = 0
+    87 |         self.total_output_token_count = 0
+    88 | 
+    89 |     def get_total_token_counts(self) -&gt; TokenUsage:
+    90 |         return TokenUsage(
+       | … middle lines omitted from this display …
+   184 |                 title_align=&quot;left&quot;,
+   185 |                 box=box.HORIZONTALS,
+   186 |             ),
+   187 |             level=level,
+   188 |         )
+   189 | 
+   190 |     def log_rule(self, title: str, level: int = LogLevel.INFO) -&gt; None:
+   191 |         self.log(
+   192 |             Rule(
+   193 |                 &quot;[bold white]&quot; + title,
+   194 |                 characters=&quot;━&quot;,
+   195 |                 style=YELLOW_HEX,
+   196 |             ),
+   197 |             level=LogLevel.INFO,
+   198 |         )
+   199 | 
+   200 |     def log_task(self, content: str, subtitle: str, title: str | None = None, level: LogLevel = LogLevel.INFO) -&gt; None:
+   201 |         # Important: `content` can contain arbitrary tool logs / payloads. If we embed it
+   202 |         # inside Rich markup (e.g. f&quot;[bold]{content}&quot;), any stray &quot;[/...]&quot; sequences or
+   203 |         # binary-ish characters can crash Rich&#x27;s markup parser. Render the content as
+   204 |         # `Text` instead, and apply styling via Text/style, not markup.
+   205 |         safe_content = sanitize_for_rich(content)
+   206 |         safe_subtitle = sanitize_for_rich(subtitle)
+   207 |         content_text = Text(&quot;\n&quot;) + Text(safe_content, style=&quot;bold&quot;) + Text(&quot;\n&quot;)
+   208 |         subtitle_text = Text(safe_subtitle)
+   209 |         self.log(
+   210 |             Panel(
+   211 |                 content_text,
+   212 |                 title=&quot;[bold]New run&quot; + (f&quot; - {title}&quot; if title else &quot;&quot;),
+   213 |                 subtitle=subtitle_text,
+   214 |                 border_style=YELLOW_HEX,
+   215 |                 subtitle_align=&quot;left&quot;,
+   216 |             ),
+   217 |             level=level,
+   218 |         )
+   219 | 
+   220 |     def log_messages(self, messages: list[dict], level: LogLevel = LogLevel.DEBUG) -&gt; None:
+   221 |         messages_as_string = &quot;\n&quot;.join([json.dumps(message.dict(), indent=4) for message in messages])
+   222 |         self.log(
+   223 |             Syntax(
+   224 |                 messages_as_string,
+   225 |                 lexer=&quot;markdown&quot;,
+   226 |                 theme=&quot;github-dark&quot;,
+   227 |                 word_wrap=True,
+   228 |             ),
+   229 |             level=level,
+   230 |         )
+   231 | 
+   232 |     def visualize_agent_tree(self, agent):
+   233 |         def create_tools_section(tools_dict):
+   234 |             table = Table(show_header=True, header_style=&quot;bold&quot;)
+   235 |             table.add_column(&quot;Name&quot;, style=&quot;#1E90FF&quot;)
+   236 |             table.add_column(&quot;Description&quot;)
+   237 |             table.add_column(&quot;Arguments&quot;)
+   238 | 
+   239 |             for name, tool in tools_dict.items():
+   240 |                 args = [
+   241 |                     f&quot;{arg_name} (`{info.get(&#x27;type&#x27;, &#x27;Any&#x27;)}`{&#x27;, optional&#x27; if info.get(&#x27;optional&#x27;) else &#x27;&#x27;}): {info.get(&#x27;description&#x27;, &#x27;&#x27;)}&quot;
+   242 |                     for arg_name, info in getattr(tool, &quot;inputs&quot;, {}).items()
+   243 |                 ]
+   244 |                 table.add_row(name, getattr(tool, &quot;description&quot;, str(tool)), &quot;\n&quot;.join(args))
+   245 | 
+   246 |             return Group(&quot;🛠️ [italic #1E90FF]Tools:[/italic #1E90FF]&quot;, table)
+   247 | 
+   248 |         def get_agent_headline(agent, name: str | None = None):
+   249 |             name_headline = f&quot;{name} | &quot; if name else &quot;&quot;
+   250 |             return f&quot;[bold {YELLOW_HEX}]{name_headline}{agent.__class__.__name__} | {agent.model.model_id}&quot;
+   251 | 
+   252 |         def build_agent_tree(parent_tree, agent_obj):
+   253 |             &quot;&quot;&quot;Recursively builds the agent tree.&quot;&quot;&quot;
+   254 |             parent_tree.add(create_tools_section(agent_obj.tools))
+   255 | 
+   256 |             if agent_obj.managed_agents:
+   257 |                 agents_branch = parent_tree.add(&quot;🤖 [italic #1E90FF]Managed agents:&quot;)
+   258 |                 for name, managed_agent in agent_obj.managed_agents.items():
+   259 |                     agent_tree = agents_branch.add(get_agent_headline(managed_agent, name))
+   260 |                     if managed_agent.__class__.__name__ == &quot;CodeAgent&quot;:
+   261 |                         agent_tree.add(
+   262 |                             f&quot;✅ [italic #1E90FF]Authorized imports:[/italic #1E90FF] {managed_agent.additional_authorized_imports}&quot;
+   263 |                         )
+   264 |                     agent_tree.add(f&quot;📝 [italic #1E90FF]Description:[/italic #1E90FF] {managed_agent.description}&quot;)
+   265 |                     build_agent_tree(agent_tree, managed_agent)
+   266 | 
+   267 |         main_tree = Tree(get_agent_headline(agent))
+   268 |         if agent.__class__.__name__ == &quot;CodeAgent&quot;:
+   269 |             main_tree.add(
+   270 |                 f&quot;✅ [italic #1E90FF]Authorized imports:[/italic #1E90FF] {agent.additional_authorized_imports}&quot;
+   271 |             )
+   272 |         build_agent_tree(main_tree, agent)
+   273 |         self.console.print(main_tree)</code></pre></div></details>
+</article>
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>3. Complex decision function in tool_validation.py</h3>
+  <p>A heavily branched decision function is used on an important execution surface.</p>
+  <h3>Why it was selected</h3><ul><li>validate_tool_attributes: 23 decisions with nesting depth 4</li></ul>
+  <h3>Connected source files</h3><ul><li>src/smolagents/tools.py</li><li>src/smolagents/utils.py</li><li>tests/test_tool_validation.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/smolagents/tool_validation.py · lines 157–263 · validate_tool_attributes</div><pre><code>   157 | def validate_tool_attributes(cls, check_imports: bool = True) -&gt; None:
+   158 |     &quot;&quot;&quot;
+   159 |     Validates that a Tool class follows the proper patterns:
+   160 |     0. Any argument of __init__ should have a default.
+   161 |     Args chosen at init are not traceable, so we cannot rebuild the source code for them, thus any important arg should be defined as a class attribute.
+   162 |     1. About the class:
+   163 |         - Class attributes should only be strings or dicts
+   164 |         - Class attributes cannot be complex attributes
+   165 |     2. About all class methods:
+   166 |         - Imports must be from packages, not local files
+   167 |         - All methods must be self-contained
+   168 | 
+   169 |     Raises all errors encountered, if no error returns None.
+   170 |     &quot;&quot;&quot;
+   171 | 
+   172 |     class ClassLevelChecker(ast.NodeVisitor):
+   173 |         def __init__(self):
+   174 |             self.imported_names = set()
+   175 |             self.complex_attributes = set()
+   176 |             self.class_attributes = set()
+   177 |             self.non_defaults = set()
+   178 |             self.non_literal_defaults = set()
+   179 |             self.in_method = False
+   180 |             self.invalid_attributes = []
+   181 | 
+   182 |         def visit_FunctionDef(self, node):
+   183 |             if node.name == &quot;__init__&quot;:
+   184 |                 self._check_init_function_parameters(node)
+   185 |             old_context = self.in_method
+   186 |             self.in_method = True
+   187 |             self.generic_visit(node)
+   188 |             self.in_method = old_context
+   189 | 
+   190 |         def visit_Assign(self, node):
+   191 |             if self.in_method:
+   192 |                 return
+   193 |             # Track class attributes
+   194 |             for target in node.targets:
+   195 |                 if isinstance(target, ast.Name):
+   196 |                     self.class_attributes.add(target.id)
+   197 | 
+   198 |             # Check if the assignment is more complex than simple literals
+   199 |             if not all(isinstance(val, (ast.Constant, ast.Dict, ast.List, ast.Set)) for val in ast.walk(node.value)):
+   200 |                 for target in node.targets:
+   201 |                     if isinstance(target, ast.Name):
+   202 |                         self.complex_attributes.add(target.id)
+   203 | 
+   204 |             # Check specific class attributes
+   205 |             if getattr(node.targets[0], &quot;id&quot;, &quot;&quot;) == &quot;name&quot;:
+   206 |                 if not isinstance(node.value, ast.Constant):
+   207 |                     self.invalid_attributes.append(f&quot;Class attribute &#x27;name&#x27; must be a constant, found &#x27;{node.value}&#x27;&quot;)
+   208 |                 elif not isinstance(node.value.value, str):
+   209 |                     self.invalid_attributes.append(
+   210 |                         f&quot;Class attribute &#x27;name&#x27; must be a string, found &#x27;{node.value.value}&#x27;&quot;
+   211 |                     )
+   212 |                 elif not is_valid_name(node.value.value):
+   213 |                     self.invalid_attributes.append(
+   214 |                         f&quot;Class attribute &#x27;name&#x27; must be a valid Python identifier and not a reserved keyword, found &#x27;{node.value.value}&#x27;&quot;
+   215 |                     )
+   216 | 
+   217 |         def _check_init_function_parameters(self, node):
+   218 |             # Check defaults in parameters
+   219 |             for arg, default in reversed(list(zip_longest(reversed(node.args.args), reversed(node.args.defaults)))):
+   220 |                 if default is None:
+   221 |                     if arg.arg != &quot;self&quot;:
+   222 |                         self.non_defaults.add(arg.arg)
+   223 |                 elif not isinstance(default, (ast.Constant, ast.Dict, ast.List, ast.Set)):
+   224 |                     self.non_literal_defaults.add(arg.arg)
+   225 | 
+   226 |     class_level_checker = ClassLevelChecker()
+   227 |     source = get_source(cls)
+   228 |     tree = ast.parse(source)
+   229 |     class_node = tree.body[0]
+   230 |     if not isinstance(class_node, ast.ClassDef):
+   231 |         raise ValueError(&quot;Source code must define a class&quot;)
+   232 |     class_level_checker.visit(class_node)
+   233 | 
+   234 |     errors = []
+   235 |     # Check invalid class attributes
+   236 |     if class_level_checker.invalid_attributes:
+   237 |         errors += class_level_checker.invalid_attributes
+   238 |     if class_level_checker.complex_attributes:
+   239 |         errors.append(
+   240 |             f&quot;Complex attributes should be defined in __init__, not as class attributes: &quot;
+   241 |             f&quot;{&#x27;, &#x27;.join(class_level_checker.complex_attributes)}&quot;
+   242 |         )
+   243 |     if class_level_checker.non_defaults:
+   244 |         errors.append(
+   245 |             f&quot;Parameters in __init__ must have default values, found required parameters: &quot;
+   246 |             f&quot;{&#x27;, &#x27;.join(class_level_checker.non_defaults)}&quot;
+   247 |         )
+   248 |     if class_level_checker.non_literal_defaults:
+   249 |         errors.append(
+   250 |             f&quot;Parameters in __init__ must have literal default values, found non-literal defaults: &quot;
+   251 |             f&quot;{&#x27;, &#x27;.join(class_level_checker.non_literal_defaults)}&quot;
+   252 |         )
+   253 | 
+   254 |     # Run checks on all methods
+   255 |     for node in class_node.body:
+   256 |         if isinstance(node, ast.FunctionDef):
+   257 |             method_checker = MethodChecker(class_level_checker.class_attributes, check_imports=check_imports)
+   258 |             method_checker.visit(node)
+   259 |             errors += [f&quot;- {node.name}: {error}&quot; for error in method_checker.errors]
+   260 | 
+   261 |     if errors:
+   262 |         raise ValueError(f&quot;Tool validation failed for {cls.__name__}:\n&quot; + &quot;\n&quot;.join(errors))
+   263 |     return</code></pre></div></details>
+</article>
+</section></main>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Download the complete normalized repository ZIP for LLM or API analysis.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="llm-context">LLM Context →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  if (new URLSearchParams(window.location.search).get('early') === '1') {
+    button.setAttribute('data-target', 'llm-context');
+    button.textContent = 'LLM Context →';
+    section.querySelector('.uvc-next-copy').textContent = 'Download repository context for LLM or API analysis.';
+  }
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>

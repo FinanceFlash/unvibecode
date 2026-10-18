@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>smolagents-main · Business Workflow Map</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f9fc;color:#0f172a;font-family:Segoe UI,Arial,sans-serif}
+.hero{padding:28px max(20px,6vw) 24px;background:linear-gradient(125deg,#111827,#312e81);color:#fff}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#7c3aed}.hero .eyebrow{color:#c4b5fd}
+.hero h1{margin:5px 0 7px;font-size:32px;line-height:1.15;letter-spacing:-.02em}.hero p{max-width:840px;margin:0;color:#e0e7ff;font-size:14px;line-height:1.45}.hero-meta{margin-top:12px;font-size:12px;color:#cbd5e1}
+.wrap{max-width:1180px;margin:20px auto;padding:0 20px 50px}.workflow-group{margin:18px 0 24px;padding:18px;background:#eef2ff;border:1px solid #dbe3f5;border-radius:22px}.group-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:2px 4px 14px}.group-header h2{margin:4px 0 0;font-size:25px;line-height:1.2}.group-count{flex:0 0 auto;padding:7px 11px;background:#fff;border:1px solid #d8def0;border-radius:999px;color:#475569;font-size:12px;font-weight:750}
+.workflow-card{display:flex;gap:18px;margin:10px 0;padding:21px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 7px 20px rgba(15,23,42,.05)}
+.workflow-number{flex:0 0 44px;font-size:27px;font-weight:850;color:#c4b5fd}.workflow-content{flex:1;min-width:0}.workflow-title{margin:5px 0 13px;font-size:22px;line-height:1.25;color:#0f172a}h3{margin:0 0 6px;font-size:13px;color:#475569}p,li{color:#334155;line-height:1.52}
+.workflow-summary{padding:13px 15px;margin-bottom:13px;background:#f5f3ff;border-left:4px solid #7c3aed;border-radius:9px}.workflow-summary p{margin:0;font-size:15px}
+.context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.context-panel{padding:13px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px}.context-panel p{margin:0;font-size:13px}
+.value-section{margin-top:15px;padding-top:13px;border-top:1px solid #e2e8f0}.value-section ul{margin:6px 0 0;padding-left:21px}.value-section li{margin:4px 0;font-size:13px}
+.supporting-code{margin-top:15px;padding-top:12px;border-top:1px solid #e2e8f0}summary{cursor:pointer;color:#475569;font-weight:700;font-size:13px}.evidence-list{margin-top:10px}.evidence-item{margin:9px 0;padding:10px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:7px;color:#c4b5fd;font-size:11px;font-weight:700;word-break:break-all}pre{margin:0;overflow:auto;color:#e2e8f0;font:11px/1.45 Consolas,monospace;white-space:pre}.empty-state{padding:30px;background:#fff;border-radius:16px;text-align:center}
+@media(max-width:760px){.hero{padding:20px 15px 17px}.hero h1{font-size:25px}.wrap{margin-top:12px;padding:0 12px 35px}.workflow-group{padding:12px;margin:12px 0 18px;border-radius:16px}.group-header{display:block;padding:2px 2px 10px}.group-header h2{font-size:21px}.group-count{display:inline-block;margin-top:9px}.workflow-card{display:block;padding:16px;margin:9px 0}.workflow-number{font-size:20px;margin-bottom:3px}.workflow-title{font-size:19px}.context-grid{grid-template-columns:1fr}.workflow-summary{padding:11px 12px}pre{font-size:10px}}
+</style><style id="unvibecode-customer-report-style">
+.hero{
+  padding:14px max(16px,4vw) 12px !important;
+}
+.hero h1{
+  margin:3px 0 4px !important;
+  font-size:24px !important;
+  line-height:1.12 !important;
+}
+.hero p{
+  max-width:980px !important;
+  font-size:13px !important;
+  line-height:1.35 !important;
+}
+.hero-meta{
+  margin-top:6px !important;
+  font-size:11px !important;
+}
+.wrap{
+  margin-top:12px !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Centered loading view, above iframe while its embedded report initializes. */
+#report-stage{position:relative}
+#uvc-report-loader{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:var(--paper);text-align:center;color:var(--ink)}
+#uvc-report-loader[hidden]{display:none!important}#uvc-report-loader strong{display:block;font-size:16px}#uvc-report-loader p{font-size:12px;color:var(--muted)!important}
+.uvc-loading-spinner{display:block;width:28px;height:28px;border:2px solid var(--soft);border-top-color:var(--ink);border-radius:50%;margin:0 auto 14px;animation:uvc-spin .9s linear infinite}
+@keyframes uvc-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.uvc-loading-spinner{animation:none}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head><body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a></div>
+<header class="uvc-report-heading"><h1>Business Workflow Map</h1><p>Understand end-to-end business operations reconstructed from the code.</p><div class="uvc-meta">smolagents-main · 30 workflows · 11 areas</div></header>
+<div class="uvc-workflow-layout"><aside class="uvc-area-nav" aria-label="Workflow areas"><p class="eyebrow">Workflow areas</p><a href="#workflow-area-1">Agent workflows<span>03</span></a><a href="#workflow-area-2">Agent workflows<span>04</span></a><a href="#workflow-area-3">Remote workflows<span>04</span></a><a href="#workflow-area-4">Web workflows<span>04</span></a><a href="#workflow-area-5">Llm workflows<span>03</span></a><a href="#workflow-area-6">Python workflows<span>03</span></a><a href="#workflow-area-7">Tool workflows<span>02</span></a><a href="#workflow-area-8">Model workflows<span>02</span></a><a href="#workflow-area-9">Remote workflows<span>01</span></a><a href="#workflow-area-10">File workflows<span>03</span></a><a href="#workflow-area-11">tool-session setup and teardown<span>01</span></a></aside><main class="wrap">
+        <section class="workflow-group" id="workflow-area-1">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 1</div><h2>Agent workflows</h2></div>
+            <div class="group-count">3 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_790217de04fcbbb8">
+              <div class="workflow-number">01</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 1</div>
+                <h3 class="workflow-title">Agent run memory, replay, and message reconstruction</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent task/action/planning history is stored in AgentMemory, converted back into messages, replayed to logs, and can yield concatenated code actions.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Persist and inspect an agent&#x27;s step-by-step work product</p></section><section class="context-panel"><h3>What it produces</h3><p>AgentMemory / step history</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Agent developer or operator</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Enables debugging and auditability of agent runs</li><li>Preserves task, planning, tool-call, and final-answer context for later inspection</li><li>Supports reconstruction of executable code from prior actions</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>AgentMemory</strong> <span class="implementation-location">src/smolagents/memory.py · lines 214–277</span></li><li class="implementation-item"><strong>ActionStep</strong> <span class="implementation-location">src/smolagents/memory.py · lines 50–150</span></li><li class="implementation-item"><strong>AgentMemory.return_full_code()</strong> <span class="implementation-location">src/smolagents/memory.py · lines 273–277</span></li><li class="implementation-item"><strong>MemoryStep</strong> <span class="implementation-location">src/smolagents/memory.py · lines 41–47</span></li><li class="implementation-item"><strong>AgentMemory.replay()</strong> <span class="implementation-location">src/smolagents/memory.py · lines 248–271</span></li><li class="implementation-item"><strong>ActionStep.to_messages()</strong> <span class="implementation-location">src/smolagents/memory.py · lines 92–150</span></li><li class="implementation-item"><strong>PlanningStep.to_messages()</strong> <span class="implementation-location">src/smolagents/memory.py · lines 174–183</span></li><li class="implementation-item"><strong>TestAgentMemory.test_initialization()</strong> <span class="implementation-location">tests/test_memory.py · lines 21–25</span></li><li class="implementation-item"><strong>TestAgentMemory.test_return_all_code_actions()</strong> <span class="implementation-location">tests/test_memory.py · lines 27–34</span></li><li class="implementation-item"><strong>test_action_step_to_messages_no_tool_calls_with_observations()</strong> <span class="implementation-location">tests/test_memory.py · lines 159–177</span></li><li class="implementation-item"><strong>test_action_step_to_messages()</strong> <span class="implementation-location">tests/test_memory.py · lines 119–156</span></li><li class="implementation-item"><strong>PlanningStep</strong> <span class="implementation-location">src/smolagents/memory.py · lines 153–183</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_c46d37bd14535f77">
+              <div class="workflow-number">02</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 2</div>
+                <h3 class="workflow-title">Normalize multimodal agent inputs and outputs</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>AgentImage and AgentAudio normalize text, image, and audio outputs into raw objects or serialized file paths, enabling display and transport across agent tools and notebooks.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Convert agent outputs into portable artifacts and recover raw objects from serialized forms</p></section><section class="context-panel"><h3>What it produces</h3><p>AgentText / AgentImage / AgentAudio</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Agent caller or UI consumer</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Allows images and audio to be passed through agent workflows</li><li>Creates temporary file artifacts for notebook/UI consumption</li><li>Handles remote audio URLs by downloading and decoding content</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>AgentImage._ipython_display_()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 111–117</span></li><li class="implementation-item"><strong>AgentImage.save()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 164–173</span></li><li class="implementation-item"><strong>AgentImage.to_raw()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 119–134</span></li><li class="implementation-item"><strong>AgentImage.to_string()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 136–162</span></li><li class="implementation-item"><strong>AgentImage.__init__()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 79–109</span></li><li class="implementation-item"><strong>AgentAudio._ipython_display_()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 208–214</span></li><li class="implementation-item"><strong>AgentAudio.to_string()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 237–251</span></li><li class="implementation-item"><strong>AgentAudio.to_raw()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 216–235</span></li><li class="implementation-item"><strong>AgentAudio.__init__()</strong> <span class="implementation-location">src/smolagents/agent_types.py · lines 181–206</span></li><li class="implementation-item"><strong>AgentAudioTests.test_from_string()</strong> <span class="implementation-location">tests/test_types.py · lines 55–66</span></li><li class="implementation-item"><strong>AgentAudioTests.test_from_tensor()</strong> <span class="implementation-location">tests/test_types.py · lines 35–53</span></li><li class="implementation-item"><strong>TestAgentImage</strong> <span class="implementation-location">tests/test_types.py · lines 69–109</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_b721e21635eb04ee">
+              <div class="workflow-number">03</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 3</div>
+                <h3 class="workflow-title">multi-step agent orchestration</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent tests show a tool-calling or code-executing agent taking a task, invoking tools, recording memory steps, and producing a final answer or error state.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>solve a task by iterating between model reasoning and tool execution</p></section><section class="context-panel"><h3>What it produces</h3><p>agent memory / task run / final answer</p></section><section class="context-panel"><h3>Who relies on it</h3><p>end user issuing the task</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Demonstrates tool use and final-answer completion</li><li>Records observations, tool calls, and errors in memory</li><li>Supports streaming tool-call handling and validation</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>TestAgent</strong> <span class="implementation-location">tests/test_agents.py · lines 417–821</span></li><li class="implementation-item"><strong>TestToolCallingAgent.test_toolcalling_agent_passes_both_tools_and_managed_agents()</strong> <span class="implementation-location">tests/test_agents.py · lines 1651–1676</span></li><li class="implementation-item"><strong>TestToolCallingAgent.test_process_tool_calls()</strong> <span class="implementation-location">tests/test_agents.py · lines 2065–2089</span></li><li class="implementation-item"><strong>TestAgent.test_code_nontrivial_final_answer_works()</strong> <span class="implementation-location">tests/test_agents.py · lines 615–631</span></li><li class="implementation-item"><strong>TestAgent.test_generation_errors_are_raised()</strong> <span class="implementation-location">tests/test_agents.py · lines 739–748</span></li><li class="implementation-item"><strong>TestAgent.test_fake_toolcalling_agent()</strong> <span class="implementation-location">tests/test_agents.py · lines 418–425</span></li><li class="implementation-item"><strong>TestAgent.test_fake_code_agent()</strong> <span class="implementation-location">tests/test_agents.py · lines 466–474</span></li><li class="implementation-item"><strong>TestAgent.test_planning_step_with_injected_memory()</strong> <span class="implementation-location">tests/test_agents.py · lines 750–821</span></li><li class="implementation-item"><strong>TestMultiStepAgent.test_step_number()</strong> <span class="implementation-location">tests/test_agents.py · lines 1245–1260</span></li><li class="implementation-item"><strong>TestAgent.test_fails_max_steps()</strong> <span class="implementation-location">tests/test_agents.py · lines 501–520</span></li><li class="implementation-item"><strong>TestToolCallingAgent</strong> <span class="implementation-location">tests/test_agents.py · lines 1645–2089</span></li><li class="implementation-item"><strong>TestToolCallingAgent.test_toolcalling_agent_api_misformatted_output()</strong> <span class="implementation-location">tests/test_agents.py · lines 1890–1914</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-2">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 2</div><h2>Agent workflows</h2></div>
+            <div class="group-count">4 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_a64e1675fe62c580">
+              <div class="workflow-number">04</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 4</div>
+                <h3 class="workflow-title">Chat UI rendering for agent step logs</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent step logs are converted into Gradio chat messages, including formatted tool calls, execution logs, images, and footnotes.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Present agent reasoning, tool usage, observations, and errors in a conversational interface</p></section><section class="context-panel"><h3>What it produces</h3><p>ActionStep / PlanningStep visual transcript</p></section><section class="context-panel"><h3>Who relies on it</h3><p>End user observing the agent run</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Provides a readable live transcript of agent execution</li><li>Surfaces tool call arguments, logs, images, and errors in the UI</li><li>Preserves step metadata such as duration and token counts for display</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>_process_action_step()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 80–163</span></li><li class="implementation-item"><strong>get_step_footnote_content()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 29–36</span></li><li class="implementation-item"><strong>_clean_model_output()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 39–56</span></li><li class="implementation-item"><strong>_format_code_content()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 59–77</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_704f32c74eb4a775">
+              <div class="workflow-number">05</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 5</div>
+                <h3 class="workflow-title">Interactive UI presentation of agent progress</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent execution steps are converted into Gradio chat messages and streamed to a UI consumer as planning, action, or final-answer updates.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Show the user what the agent is planning or answering in real time</p></section><section class="context-panel"><h3>What it produces</h3><p>agent step logs and chat messages</p></section><section class="context-panel"><h3>Who relies on it</h3><p>end user viewing the Gradio interface</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Surfaces intermediate reasoning and final answers to the user</li><li>Preserves stream order across planning, action, and final-answer events</li><li>Converts rich outputs such as images and audio into UI-friendly payloads</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>stream_to_gradio()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 248–276</span></li><li class="implementation-item"><strong>pull_messages_from_step()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 226–245</span></li><li class="implementation-item"><strong>_process_final_answer_step()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 189–223</span></li><li class="implementation-item"><strong>_process_planning_step()</strong> <span class="implementation-location">src/smolagents/gradio_ui.py · lines 166–186</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_d15ef6b6c515ac29">
+              <div class="workflow-number">06</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 6</div>
+                <h3 class="workflow-title">agentic web browsing and retrieval</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent-facing browser/search tools let an agent search the web, visit pages, and receive readable page content or search result summaries.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>find online information and read webpage content through a text browser</p></section><section class="context-panel"><h3>What it produces</h3><p>web search query / visited webpage</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent or user running a browser-assisted research task</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>returns searchable text from web pages</li><li>surfaces prior-visit context and viewport position</li><li>enables agentic research workflows</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>SearchInformationTool.forward()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 388–391</span></li><li class="implementation-item"><strong>SimpleTextBrowser</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 22–370</span></li><li class="implementation-item"><strong>SimpleTextBrowser._serpapi_search()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 204–261</span></li><li class="implementation-item"><strong>SimpleTextBrowser._fetch_page()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 263–353</span></li><li class="implementation-item"><strong>SimpleTextBrowser._find_next_viewport()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 147–175</span></li><li class="implementation-item"><strong>SearchInformationTool</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 373–391</span></li><li class="implementation-item"><strong>VisitTool</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 394–407</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_8319c7f20c390e59">
+              <div class="workflow-number">07</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 7</div>
+                <h3 class="workflow-title">external file acquisition and web archival lookup</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Browser download and archive tools fetch external files or archived URLs, persist downloads locally, and then route content back into the browser state for inspection.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>retrieve a remote file or closest archived copy of a URL for later inspection</p></section><section class="context-panel"><h3>What it produces</h3><p>remote file / archived URL snapshot</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent or user investigating external content</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>downloads binary assets to a local path</li><li>returns archive snapshot text for inspection</li><li>supports research on unavailable or historical pages</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>DownloadTool.forward()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 423–442</span></li><li class="implementation-item"><strong>ArchiveSearchTool.forward()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 461–485</span></li><li class="implementation-item"><strong>SimpleTextBrowser._fetch_page()</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 263–353</span></li><li class="implementation-item"><strong>DownloadTool</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 410–442</span></li><li class="implementation-item"><strong>ArchiveSearchTool</strong> <span class="implementation-location">examples/open_deep_research/scripts/text_web_browser.py · lines 445–485</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-3">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 3</div><h2>Remote workflows</h2></div>
+            <div class="group-count">4 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_6f9b965a64d7e675">
+              <div class="workflow-number">08</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 8</div>
+                <h3 class="workflow-title">Remote code execution transport and answer handoff</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>An agent executor serializes variables and final answers for transport into a remote Python environment, then deserializes results under an explicit safe-versus-pickle policy.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Run agent code in a remote sandbox while preserving data fidelity and transport safety</p></section><section class="context-panel"><h3>What it produces</h3><p>serialized variables and final answer payloads</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime / remote execution environment</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Moves agent state into the remote kernel namespace</li><li>Encodes final answers for return to the caller</li><li>Rejects unsafe pickle payloads unless explicitly enabled</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>RemotePythonExecutor.__init__()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 70–80</span></li><li class="implementation-item"><strong>RemotePythonExecutor.send_variables()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 115–131</span></li><li class="implementation-item"><strong>SafeSerializer.loads()</strong> <span class="implementation-location">src/smolagents/serialization.py · lines 294–346</span></li><li class="implementation-item"><strong>RemotePythonExecutor</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 53–332</span></li><li class="implementation-item"><strong>SafeSerializer.dumps()</strong> <span class="implementation-location">src/smolagents/serialization.py · lines 251–292</span></li><li class="implementation-item"><strong>SafeSerializer</strong> <span class="implementation-location">src/smolagents/serialization.py · lines 45–514</span></li><li class="implementation-item"><strong>RemotePythonExecutor._deserialize_final_answer()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 306–332</span></li><li class="implementation-item"><strong>RemotePythonExecutor._patch_final_answer_with_exception.forward()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 168–283</span></li><li class="implementation-item"><strong>RemotePythonExecutor.send_tools()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 94–113</span></li><li class="implementation-item"><strong>RemotePythonExecutor._patch_final_answer_with_exception()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 143–304</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_6ea95c496e245025">
+              <div class="workflow-number">09</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 9</div>
+                <h3 class="workflow-title">remote python sandbox execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>DockerExecutor initializes a Docker-backed Jupyter sandbox, connects to it over HTTP/websocket, executes remote Python code, and cleans up the container.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>start and manage a Docker-backed execution environment for agent code</p></section><section class="context-panel"><h3>What it produces</h3><p>Docker container / Jupyter kernel</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime / local caller</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Provides isolated code execution for agents</li><li>Returns executed code results through the remote kernel</li><li>Releases container resources after use</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>DockerExecutor.__init__()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 572–677</span></li><li class="implementation-item"><strong>DockerExecutor.run_code_raise_errors()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 679–692</span></li><li class="implementation-item"><strong>DockerExecutor</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 551–723</span></li><li class="implementation-item"><strong>DockerExecutor.cleanup()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 694–704</span></li><li class="implementation-item"><strong>TestDockerExecutorUnit</strong> <span class="implementation-location">tests/test_remote_executors.py · lines 231–261</span></li><li class="implementation-item"><strong>TestDockerExecutorIntegration</strong> <span class="implementation-location">tests/test_remote_executors.py · lines 385–407</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_3745840c15ec9e1c">
+              <div class="workflow-number">10</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 10</div>
+                <h3 class="workflow-title">remote python sandbox execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>ModalExecutor creates a Modal sandbox, starts a Jupyter kernel gateway, executes remote Python code, and terminates the sandbox.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>provision and manage a Modal-backed execution environment</p></section><section class="context-panel"><h3>What it produces</h3><p>Modal sandbox / Jupyter kernel</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime / local caller</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Provides isolated execution for agent code</li><li>Installs requested packages into the sandbox</li><li>Ensures sandbox termination on cleanup</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>ModalExecutor.__init__()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 748–811</span></li><li class="implementation-item"><strong>ModalExecutor.run_code_raise_errors()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 813–826</span></li><li class="implementation-item"><strong>ModalExecutor</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 726–856</span></li><li class="implementation-item"><strong>BlaxelExecutor.install_packages()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 982–1039</span></li><li class="implementation-item"><strong>BlaxelExecutor.cleanup()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 1049–1065</span></li><li class="implementation-item"><strong>TestModalExecutorUnit</strong> <span class="implementation-location">tests/test_remote_executors.py · lines 422–474</span></li><li class="implementation-item"><strong>TestModalExecutorIntegration</strong> <span class="implementation-location">tests/test_remote_executors.py · lines 410–419</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_e972d791a670c247">
+              <div class="workflow-number">11</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 11</div>
+                <h3 class="workflow-title">remote python sandbox execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>BlaxelExecutor provisions a Blaxel sandbox, creates a Jupyter kernel, installs packages, executes remote Python code, and deletes the sandbox on cleanup.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>provision and manage a Blaxel-backed execution environment</p></section><section class="context-panel"><h3>What it produces</h3><p>Blaxel sandbox / Jupyter kernel</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime / local caller</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Provides isolated execution for agent code</li><li>Installs packages requested at runtime</li><li>Ensures sandbox teardown on cleanup</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>BlaxelExecutor.__init__()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 882–951</span></li><li class="implementation-item"><strong>BlaxelExecutor.run_code_raise_errors()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 963–980</span></li><li class="implementation-item"><strong>BlaxelExecutor</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 859–1076</span></li><li class="implementation-item"><strong>BlaxelExecutor.install_packages()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 982–1039</span></li><li class="implementation-item"><strong>BlaxelExecutor.cleanup()</strong> <span class="implementation-location">src/smolagents/remote_executors.py · lines 1049–1065</span></li><li class="implementation-item"><strong>TestBlaxelExecutorUnit</strong> <span class="implementation-location">tests/test_remote_executors.py · lines 477–617</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-4">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 4</div><h2>Web workflows</h2></div>
+            <div class="group-count">4 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_70c59c5bcec67880">
+              <div class="workflow-number">12</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 12</div>
+                <h3 class="workflow-title">browser-assisted web navigation for an agent</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A browser helper captures screenshots, appends current URL context, and exposes a safe search tool that focuses a matching page element.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Find page text safely and keep browser observations current for the agent</p></section><section class="context-panel"><h3>What it produces</h3><p>current browser page / page search result</p></section><section class="context-panel"><h3>Who relies on it</h3><p>CodeAgent using Selenium/Helium</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Supports web research and task completion</li><li>Improves observation quality with screenshots and URL context</li><li>Reduces XPath query injection risk via escaping</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>initialize_agent()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 148–157</span></li><li class="implementation-item"><strong>run_webagent()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 217–237</span></li><li class="implementation-item"><strong>save_screenshot()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 66–84</span></li><li class="implementation-item"><strong>search_item_ctrl_f()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 105–121</span></li><li class="implementation-item"><strong>_escape_xpath_string()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 87–102</span></li><li class="implementation-item"><strong>TestXPathEscaping.test_escape_prevents_injection()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 67–75</span></li><li class="implementation-item"><strong>TestXPathEscaping.test_escape_xpath_string_basic()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 39–42</span></li><li class="implementation-item"><strong>TestXPathEscaping.test_escape_xpath_string_mixed_quotes()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 52–56</span></li><li class="implementation-item"><strong>TestSearchItemCtrlF.test_search_item_not_found()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 126–132</span></li><li class="implementation-item"><strong>TestSearchItemCtrlF.test_search_item_nth_result()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 115–124</span></li><li class="implementation-item"><strong>TestSearchItemCtrlF.test_search_item_prevents_injection()</strong> <span class="implementation-location">tests/test_vision_web_browser.py · lines 91–113</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_85c7d52d7bc68dce">
+              <div class="workflow-number">13</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 13</div>
+                <h3 class="workflow-title">Web search and article retrieval</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A user query is sent to external search or article sources and returned as formatted text results for agent consumption.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Find and return source text or search results for a user query</p></section><section class="context-panel"><h3>What it produces</h3><p>search query / Wikipedia topic</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent or end user consuming retrieved content</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Provides external knowledge to the agent</li><li>Formats results for downstream prompting or display</li><li>Can fail gracefully when no result exists or the article is unavailable</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>DuckDuckGoSearchTool.forward()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 140–146</span></li><li class="implementation-item"><strong>WikipediaSearchTool</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 547–643</span></li><li class="implementation-item"><strong>DuckDuckGoSearchTool</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 104–159</span></li><li class="implementation-item"><strong>WikipediaSearchTool.forward()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 623–643</span></li><li class="implementation-item"><strong>DuckDuckGoSearchTool._enforce_rate_limit()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 148–159</span></li><li class="implementation-item"><strong>WikipediaSearchTool.__init__()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 587–621</span></li><li class="implementation-item"><strong>DuckDuckGoSearchTool.__init__()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 126–138</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_5c4827b45442a541">
+              <div class="workflow-number">14</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 14</div>
+                <h3 class="workflow-title">web research question answering</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>CLI user supplies a question; the open_deep_research script builds a browsing/search agent stack and runs it to produce an answer.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>ask a natural-language question and get a researched answer</p></section><section class="context-panel"><h3>What it produces</h3><p>question/answer task and supporting browser context</p></section><section class="context-panel"><h3>Who relies on it</h3><p>CLI user</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Produces a synthesized answer from web browsing and file inspection</li><li>Uses external search and model inference services to complete the task</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>main()</strong> <span class="implementation-location">examples/open_deep_research/run.py · lines 114–121</span></li><li class="implementation-item"><strong>create_agent()</strong> <span class="implementation-location">examples/open_deep_research/run.py · lines 60–111</span></li><li class="implementation-item"><strong>parse_args()</strong> <span class="implementation-location">examples/open_deep_research/run.py · lines 34–40</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_f0f21c0213e0c51c">
+              <div class="workflow-number">15</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 15</div>
+                <h3 class="workflow-title">web chat agent response</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Anonymous web client submits a chat message to /chat, the server runs the code agent on the message, and returns a JSON reply.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>ask the agent a question and receive a response</p></section><section class="context-panel"><h3>What it produces</h3><p>chat message / reply</p></section><section class="context-panel"><h3>Who relies on it</h3><p>web visitor using the demo UI</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>interactive conversational assistance</li><li>immediate JSON response for the frontend</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>chat()</strong> <span class="implementation-location">examples/server/main.py · lines 197–204</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-5">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 5</div><h2>Llm workflows</h2></div>
+            <div class="group-count">3 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_5ea4317e5edba324">
+              <div class="workflow-number">16</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 16</div>
+                <h3 class="workflow-title">LLM task orchestration with tool use</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A MultiStepAgent receives a task, cycles through planning and action steps with tools and memory, and returns a final answer or max-steps result.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Solve a user-provided task step by step and produce a final answer</p></section><section class="context-panel"><h3>What it produces</h3><p>Agent run / task execution session</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Caller invoking the agent</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Produces a task completion result</li><li>Tracks execution steps, token usage, and timing</li><li>Supports managed-agent delegation and step callbacks</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>MultiStepAgent</strong> <span class="implementation-location">src/smolagents/agents.py · lines 268–1212</span></li><li class="implementation-item"><strong>MultiStepAgent.__init__()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 294–352</span></li><li class="implementation-item"><strong>MultiStepAgent.run()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 436–538</span></li><li class="implementation-item"><strong>RunResult</strong> <span class="implementation-location">src/smolagents/agents.py · lines 195–253</span></li><li class="implementation-item"><strong>MultiStepAgent._run_stream()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 540–611</span></li><li class="implementation-item"><strong>get_json_schema()</strong> <span class="implementation-location">src/smolagents/_function_type_hints_utils.py · lines 97–231</span></li><li class="implementation-item"><strong>MultiStepAgent.from_hub()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1064–1116</span></li><li class="implementation-item"><strong>go_back()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 124–127</span></li><li class="implementation-item"><strong>close_popups()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 130–135</span></li><li class="implementation-item"><strong>initialize_driver()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 138–145</span></li><li class="implementation-item"><strong>initialize_agent()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 148–157</span></li><li class="implementation-item"><strong>_escape_xpath_string()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 87–102</span></li><li class="implementation-item"><strong>search_item_ctrl_f()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 105–121</span></li><li class="implementation-item"><strong>save_screenshot()</strong> <span class="implementation-location">src/smolagents/vision_web_browser.py · lines 66–84</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_4c88daccb6ceec38">
+              <div class="workflow-number">17</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 17</div>
+                <h3 class="workflow-title">LLM tool-call execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A ToolCallingAgent receives an LLM-produced tool call, validates it, executes the tool or managed agent, and records the resulting observation or final answer.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>invoke a tool or managed agent on behalf of the model</p></section><section class="context-panel"><h3>What it produces</h3><p>tool call and tool output</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime and downstream tool target</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Turns model decisions into concrete tool actions</li><li>Captures observations and final answers for subsequent steps</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>ToolCallingAgent._step_stream()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1276–1359</span></li><li class="implementation-item"><strong>ToolCallingAgent</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1215–1502</span></li><li class="implementation-item"><strong>ToolCallingAgent.execute_tool_call()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1453–1502</span></li><li class="implementation-item"><strong>ToolCallingAgent.__init__()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1231–1258</span></li><li class="implementation-item"><strong>ToolCallingAgent._substitute_state_variables()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1444–1451</span></li><li class="implementation-item"><strong>ToolCallingAgent.process_tool_calls()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1361–1442</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_68d5c9f7e2c84755">
+              <div class="workflow-number">18</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 18</div>
+                <h3 class="workflow-title">code-based agent execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A CodeAgent generates code from the model, parses it, executes it through a Python executor, and returns the resulting output or final answer.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>let the model solve a task by emitting executable code</p></section><section class="context-panel"><h3>What it produces</h3><p>generated code and execution output</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime and code executor</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Runs model-written code to complete tasks</li><li>Supports local or remote execution backends</li><li>Produces truncated logs/output for the user-facing run</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>CodeAgent._step_stream()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1638–1764</span></li><li class="implementation-item"><strong>CodeAgent.create_python_executor()</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1598–1618</span></li><li class="implementation-item"><strong>CodeAgent</strong> <span class="implementation-location">src/smolagents/agents.py · lines 1505–1803</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-6">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 6</div><h2>Python workflows</h2></div>
+            <div class="group-count">3 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_7a9ae5b1f18bf7fe">
+              <div class="workflow-number">19</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 19</div>
+                <h3 class="workflow-title">Safe local Python execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Agent-generated Python code is parsed and evaluated locally with controlled imports, bounded operations, and explicit error handling.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Run model-generated or user-supplied Python logic while constraining imports and runaway execution</p></section><section class="context-panel"><h3>What it produces</h3><p>Python AST / execution state</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Agent runtime and caller waiting for computed output</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Allows the system to compute results from generated code</li><li>Prevents unrestricted imports and excessive operation counts</li><li>Surfaces interpreter errors and timeouts instead of hanging</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>evaluate_ast()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1416–1569</span></li><li class="implementation-item"><strong>evaluate_import()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1309–1342</span></li><li class="implementation-item"><strong>evaluate_generatorexp()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1345–1377</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_67020919c6a08dce">
+              <div class="workflow-number">20</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 20</div>
+                <h3 class="workflow-title">constrained code execution for agent reasoning / sandboxed Python code execution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Restricted local Python execution evaluates agent-generated code, enforces authorized imports and timeouts, and returns stdout plus a structured result. / A caller submits Python code to the local executor, which evaluates it against a controlled tool/state environment and returns the computed result while mutating execution state.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>run Python snippets to compute results or manipulate intermediate state / execute agent-authored Python snippets safely</p></section><section class="context-panel"><h3>What it produces</h3><p>Python code action / execution state and tool namespace</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent executing calculations / agent or caller supplying code</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>produces stdout and output for agent reasoning</li><li>rejects unsupported imports and unsafe constructs</li><li>limits execution duration</li><li>returns computed values from code</li><li>persists variables and print output into execution state</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>LocalPythonExecutor</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1688–1765</span></li><li class="implementation-item"><strong>evaluate_python_code()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1583–1667</span></li><li class="implementation-item"><strong>PrintContainer</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 240–263</span></li><li class="implementation-item"><strong>evaluate_python_code._execute_code()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1639–1661</span></li><li class="implementation-item"><strong>LocalPythonExecutor._check_authorized_imports_are_installed()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1727–1745</span></li><li class="implementation-item"><strong>timeout()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 285–320</span></li><li class="implementation-item"><strong>PythonInterpreterTool.forward()</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 69–80</span></li><li class="implementation-item"><strong>PythonInterpreterTool</strong> <span class="implementation-location">src/smolagents/default_tools.py · lines 39–80</span></li><li class="implementation-item"><strong>TestEvaluatePythonCode</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 52–1803</span></li><li class="implementation-item"><strong>TestPrintContainer</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 2108–2136</span></li><li class="implementation-item"><strong>TestEvaluatePythonCode.test_print_output()</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 806–831</span></li><li class="implementation-item"><strong>TestEvaluatePythonCode.test_assignment_cannot_overwrite_tool()</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 77–81</span></li><li class="implementation-item"><strong>TestEvaluatePythonCode.test_max_operations()</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 392–408</span></li><li class="implementation-item"><strong>TestLocalPythonExecutorSecurity</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 2440–2989</span></li><li class="implementation-item"><strong>TestEvaluatePythonCode.test_evaluate_assign()</strong> <span class="implementation-location">tests/test_local_python_executor.py · lines 58–75</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_58dcd70f7f747b04">
+              <div class="workflow-number">21</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 21</div>
+                <h3 class="workflow-title">sandboxed Python evaluation</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>The local Python executor evaluates AST/code with explicit safety gates, restricted imports/calls, bounded loops, and controlled state mutation.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>execute generated Python safely while preserving interpreter state control</p></section><section class="context-panel"><h3>What it produces</h3><p>evaluation state and result</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime / tool caller</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>reduces unsafe access to dunder attributes and unauthorized builtins</li><li>controls loop execution and assignment side effects</li><li>produces evaluated results for tool execution</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>check_safer_result()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 156–182</span></li><li class="implementation-item"><strong>evaluate_call()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 825–918</span></li><li class="implementation-item"><strong>set_value()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 794–822</span></li><li class="implementation-item"><strong>create_function.new_func()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 471–519</span></li><li class="implementation-item"><strong>evaluate_while()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 440–459</span></li><li class="implementation-item"><strong>nodunder_getattr()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 68–71</span></li><li class="implementation-item"><strong>evaluate_attribute()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 383–393</span></li><li class="implementation-item"><strong>safer_eval._check_return()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 196–206</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-7">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 7</div><h2>Tool workflows</h2></div>
+            <div class="group-count">2 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_59dde4eb457065fa">
+              <div class="workflow-number">22</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 22</div>
+                <h3 class="workflow-title">tool schema extraction</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Utility functions inspect Python callables, parse Google-style docstrings and type hints, and emit JSON schemas for tool descriptions.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Turn Python functions into machine-readable tool schemas</p></section><section class="context-panel"><h3>What it produces</h3><p>function schema / tool schema</p></section><section class="context-panel"><h3>Who relies on it</h3><p>LLM prompt template or tool caller</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Enables tool descriptions for chat templates</li><li>Validates docstring and type-hint completeness</li><li>Normalizes complex Python types into JSON-schema structures</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>get_json_schema()</strong> <span class="implementation-location">src/smolagents/_function_type_hints_utils.py · lines 97–231</span></li><li class="implementation-item"><strong>TestGetJsonSchema</strong> <span class="implementation-location">tests/test_function_type_hints_utils.py · lines 240–452</span></li><li class="implementation-item"><strong>_parse_type_hint()</strong> <span class="implementation-location">src/smolagents/_function_type_hints_utils.py · lines 326–384</span></li><li class="implementation-item"><strong>_convert_type_hints_to_json_schema()</strong> <span class="implementation-location">src/smolagents/_function_type_hints_utils.py · lines 291–323</span></li><li class="implementation-item"><strong>_parse_google_format_docstring()</strong> <span class="implementation-location">src/smolagents/_function_type_hints_utils.py · lines 256–288</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_f3acbfe8dd000f3e">
+              <div class="workflow-number">23</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 23</div>
+                <h3 class="workflow-title">Tool packaging and distribution</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A developer-defined Tool is validated, serialized, saved or published, and can later be reloaded from code, Hub, or MCP into an executable tool object.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Prepare a tool for reuse, distribution, or deployment in another runtime</p></section><section class="context-panel"><h3>What it produces</h3><p>Tool / ToolCollection</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Downstream agent or user who loads the tool</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Makes tool logic portable across local code, Hub, and MCP sources</li><li>Creates executable UI and requirements artifacts for sharing</li><li>Can initialize remote-backed tool wrappers for agent use</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>Tool</strong> <span class="implementation-location">src/smolagents/tools.py · lines 106–791</span></li><li class="implementation-item"><strong>ToolCollection</strong> <span class="implementation-location">src/smolagents/tools.py · lines 895–1058</span></li><li class="implementation-item"><strong>Tool.to_dict()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 292–365</span></li><li class="implementation-item"><strong>load_tool()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 840–879</span></li><li class="implementation-item"><strong>Tool.from_hub()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 516–569</span></li><li class="implementation-item"><strong>ToolCollection.from_mcp()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 949–1058</span></li><li class="implementation-item"><strong>Tool.validate_arguments()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 144–226</span></li><li class="implementation-item"><strong>Tool.to_code_prompt()</strong> <span class="implementation-location">src/smolagents/tools.py · lines 258–287</span></li><li class="implementation-item"><strong>evaluate_ast()</strong> <span class="implementation-location">src/smolagents/local_python_executor.py · lines 1416–1569</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-8">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 8</div><h2>Model workflows</h2></div>
+            <div class="group-count">2 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_9c08a9ff1a95f0a5">
+              <div class="workflow-number">24</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 24</div>
+                <h3 class="workflow-title">model generation with telemetry instrumentation</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A caller invokes InferenceClientModel.generate, and instrumentation records a successful OpenTelemetry span around the model call.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>produce a language-model response while emitting trace data</p></section><section class="context-panel"><h3>What it produces</h3><p>generated model response and trace span</p></section><section class="context-panel"><h3>Who relies on it</h3><p>caller of the model API</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>returns a model-generated answer</li><li>records observability data for the call</li><li>supports integration monitoring and tracing</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>TestOpenTelemetry.test_model()</strong> <span class="implementation-location">tests/test_telemetry.py · lines 68–88</span></li><li class="implementation-item"><strong>instrument()</strong> <span class="implementation-location">tests/test_telemetry.py · lines 55–63</span></li><li class="implementation-item"><strong>InferenceClientModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 1456–1643</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_d54aea15419136ba">
+              <div class="workflow-number">25</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 25</div>
+                <h3 class="workflow-title">model inference backend selection and prompt-to-response generation</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>A backend model adapter loads a local or hosted LLM, prepares chat-formatted prompts, and returns assistant text or tool-call capable responses for agent use.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>obtain model-generated assistant output from a chosen inference backend</p></section><section class="context-panel"><h3>What it produces</h3><p>ChatMessage / generated assistant response</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime consuming the model output</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Enables local inference and serving</li><li>Produces assistant text for downstream agent steps</li><li>Preserves token accounting and stop-sequence behavior</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>VLLMModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 633–748</span></li><li class="implementation-item"><strong>MLXModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 751–857</span></li><li class="implementation-item"><strong>TransformersModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 860–1135</span></li><li class="implementation-item"><strong>VLLMModel.generate()</strong> <span class="implementation-location">src/smolagents/models.py · lines 687–748</span></li><li class="implementation-item"><strong>MLXModel.generate()</strong> <span class="implementation-location">src/smolagents/models.py · lines 816–857</span></li><li class="implementation-item"><strong>TransformersModel.generate()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1052–1091</span></li><li class="implementation-item"><strong>VLLMModel.__init__()</strong> <span class="implementation-location">src/smolagents/models.py · lines 648–668</span></li><li class="implementation-item"><strong>MLXModel.__init__()</strong> <span class="implementation-location">src/smolagents/models.py · lines 791–814</span></li><li class="implementation-item"><strong>TransformersModel.__init__()</strong> <span class="implementation-location">src/smolagents/models.py · lines 906–978</span></li><li class="implementation-item"><strong>VLLMModel.cleanup()</strong> <span class="implementation-location">src/smolagents/models.py · lines 670–685</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-9">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 9</div><h2>Remote workflows</h2></div>
+            <div class="group-count">1 workflow</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_7825212fb53fed12">
+              <div class="workflow-number">26</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 26</div>
+                <h3 class="workflow-title">remote LLM API integration</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>An API-backed model adapter builds a completion request, rate-limits it, retries on rate-limit errors, and returns the provider response as a ChatMessage.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>call a hosted model endpoint safely and recover from transient rate limits</p></section><section class="context-panel"><h3>What it produces</h3><p>completion request and response</p></section><section class="context-panel"><h3>Who relies on it</h3><p>external model provider</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Supports OpenAI-compatible, Azure OpenAI, and Bedrock deployments</li><li>Applies retry and throttle controls for API stability</li><li>Normalizes response content and token usage for the agent runtime</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>ApiModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 1138–1191</span></li><li class="implementation-item"><strong>OpenAIModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 1646–1793</span></li><li class="implementation-item"><strong>AmazonBedrockModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 1859–2060</span></li><li class="implementation-item"><strong>AzureOpenAIModel</strong> <span class="implementation-location">src/smolagents/models.py · lines 1799–1853</span></li><li class="implementation-item"><strong>OpenAIModel.generate_stream()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1707–1759</span></li><li class="implementation-item"><strong>AmazonBedrockModel.generate()</strong> <span class="implementation-location">src/smolagents/models.py · lines 2020–2060</span></li><li class="implementation-item"><strong>OpenAIModel.generate()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1761–1793</span></li><li class="implementation-item"><strong>ApiModel.__init__()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1161–1183</span></li><li class="implementation-item"><strong>is_rate_limit_error()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1194–1202</span></li><li class="implementation-item"><strong>AmazonBedrockModel._prepare_completion_kwargs()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1968–2008</span></li><li class="implementation-item"><strong>OpenAIModel.create_client()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1697–1705</span></li><li class="implementation-item"><strong>AzureOpenAIModel.create_client()</strong> <span class="implementation-location">src/smolagents/models.py · lines 1845–1853</span></li><li class="implementation-item"><strong>AmazonBedrockModel.create_client()</strong> <span class="implementation-location">src/smolagents/models.py · lines 2010–2018</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-10">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 10</div><h2>File workflows</h2></div>
+            <div class="group-count">3 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_0adc88f8e9d30bb3">
+              <div class="workflow-number">27</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 27</div>
+                <h3 class="workflow-title">inspect_file_as_text / document-to-text conversion</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>File-inspection tools convert local text-like and web document inputs into markdown/text results for downstream research use.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Read a local file as markdown/text so a research agent can ask questions about it</p></section><section class="context-panel"><h3>What it produces</h3><p>local file content and converted text output</p></section><section class="context-panel"><h3>Who relies on it</h3><p>first-party research agent using the text-inspection utility</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Makes non-text documents queryable in a text-centric workflow</li><li>Normalizes heterogeneous document formats into a common representation</li><li>Reduces the need for format-specific downstream handling</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>PlainTextConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 130–146</span></li><li class="implementation-item"><strong>HtmlConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 152–162</span></li><li class="implementation-item"><strong>WikipediaConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 192–231</span></li><li class="implementation-item"><strong>YouTubeConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 237–329</span></li><li class="implementation-item"><strong>HtmlConverter._convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 164–186</span></li><li class="implementation-item"><strong>DocumentConverterResult</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 112–117</span></li><li class="implementation-item"><strong>HtmlConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 149–186</span></li><li class="implementation-item"><strong>PlainTextConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 127–146</span></li><li class="implementation-item"><strong>WikipediaConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 189–231</span></li><li class="implementation-item"><strong>YouTubeConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 234–351</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_c8b1a51610b5cd32">
+              <div class="workflow-number">28</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 28</div>
+                <h3 class="workflow-title">media-to-text enrichment</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Audio and image converters enrich media inputs with metadata, transcription, OCR/LLM-style description, and return text outputs.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Turn audio or image files into readable research notes</p></section><section class="context-panel"><h3>What it produces</h3><p>media file metadata, transcript, and description text</p></section><section class="context-panel"><h3>Who relies on it</h3><p>first-party research agent using the converted media text</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Makes non-text media searchable and inspectable</li><li>Captures metadata alongside human-readable text</li><li>Can add transcription or image description when optional dependencies are present</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>ImageConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 679–757</span></li><li class="implementation-item"><strong>WavConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 523–559</span></li><li class="implementation-item"><strong>ImageConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 684–725</span></li><li class="implementation-item"><strong>Mp3Converter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 573–628</span></li><li class="implementation-item"><strong>WavConverter._transcribe_audio()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 561–565</span></li><li class="implementation-item"><strong>ImageConverter._get_mlm_description()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 727–757</span></li><li class="implementation-item"><strong>DocumentConverterResult</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 112–117</span></li><li class="implementation-item"><strong>WavConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 518–565</span></li><li class="implementation-item"><strong>Mp3Converter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 568–628</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_25cd68dbab3d82ef">
+              <div class="workflow-number">29</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 29</div>
+                <h3 class="workflow-title">archive extraction and file listing</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>ZIP archives are extracted to a local directory and a deterministic file listing is returned for the agent.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Unpack a ZIP file into a local working directory and know what was extracted</p></section><section class="context-panel"><h3>What it produces</h3><p>ZIP archive and extracted file set</p></section><section class="context-panel"><h3>Who relies on it</h3><p>first-party research agent using downloaded artifacts</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Makes packaged downloads usable as individual files</li><li>Creates a stable extracted file listing for downstream processing</li><li>Persists extracted content under a configured directory</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>ZipConverter</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 631–676</span></li><li class="implementation-item"><strong>ZipConverter.convert()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 647–676</span></li><li class="implementation-item"><strong>ZipConverter.__init__()</strong> <span class="implementation-location">examples/open_deep_research/scripts/mdconvert.py · lines 636–645</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-11">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 11</div><h2>tool-session setup and teardown</h2></div>
+            <div class="group-count">1 workflow</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_e6be5d5a5e305331">
+              <div class="workflow-number">30</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 30</div>
+                <h3 class="workflow-title">tool-session setup and teardown</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>The MCP client establishes a tool session with a remote MCP server, exposes the tools to SmolAgents, and disconnects on cleanup.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>obtain usable tools from an MCP server for agent execution</p></section><section class="context-panel"><h3>What it produces</h3><p>MCP tool list</p></section><section class="context-panel"><h3>Who relies on it</h3><p>agent runtime and the remote MCP server</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>remote tools become callable by the agent</li><li>session resources are cleaned up when disconnected</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>MCPClient</strong> <span class="implementation-location">src/smolagents/mcp_client.py · lines 33–171</span></li><li class="implementation-item"><strong>MCPClient.get_tools()</strong> <span class="implementation-location">src/smolagents/mcp_client.py · lines 137–154</span></li><li class="implementation-item"><strong>test_mcp_client_without_structured_output()</strong> <span class="implementation-location">tests/test_mcp_client.py · lines 87–100</span></li><li class="implementation-item"><strong>test_mcp_client_with_structured_output()</strong> <span class="implementation-location">tests/test_mcp_client.py · lines 64–84</span></li><li class="implementation-item"><strong>MCPClient.__init__()</strong> <span class="implementation-location">src/smolagents/mcp_client.py · lines 85–122</span></li><li class="implementation-item"><strong>test_mcp_client_with_syntax()</strong> <span class="implementation-location">tests/test_mcp_client.py · lines 54–61</span></li></ul></details>
+              </div>
+            </article></div>
+        </section></main></div>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Structured graph of your codebase linking different files and symbols.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="connected-code">Connected Code →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  if (new URLSearchParams(window.location.search).get('early') === '1') {
+    button.setAttribute('data-target', 'llm-context');
+    button.textContent = 'LLM Context →';
+    section.querySelector('.uvc-next-copy').textContent = 'Download repository context for LLM or API analysis.';
+  }
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>

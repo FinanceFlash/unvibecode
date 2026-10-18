@@ -1,0 +1,382 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnvibeCode Business Risk Findings</title>
+<style>body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 24px 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:25px}h3{font-size:16px;margin-bottom:6px}p,li,td,dd{overflow-wrap:anywhere}.summary,.flaw,.structural-review{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 8px 30px rgba(15,23,42,.05)}.critical{border-left:7px solid #991b1b}.high{border-left:7px solid #c2410c}.medium{border-left:7px solid #a16207}.badge,.structural-badge{display:inline-block;background:#0f172a;color:white;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.structural-badge{background:#4338ca}.bottom{font-size:19px;font-weight:600}.metrics{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#e2e8f0;border-radius:12px;padding:12px 16px;min-width:120px}.metric strong{display:block;font-size:25px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid section{background:#f1f5f9;padding:14px;border-radius:10px}dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}dt{font-weight:700}dd{margin:0}.graph-scroll{width:100%;overflow-x:auto;padding-bottom:8px}.path-graph{display:block;width:1500px;max-width:none;height:auto;background:white;border:1px solid #e2e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e2e8f0;padding:8px}summary{cursor:pointer;font-weight:700}.hotspot-card{margin-top:16px;padding:18px;background:#f8fafc;border:1px solid #dbe3f5;border-left:5px solid #4f46e5;border-radius:12px}.hotspot-card>h3{font-size:19px;margin:9px 0}.hotspot-code{margin-top:12px;padding:12px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:8px;color:#c4b5fd;font-size:12px;font-weight:700}pre{margin:0;overflow:auto;color:#e2e8f0;font:12px/1.5 Consolas,monospace;white-space:pre}.hotspot-details{margin-top:14px}@media(max-width:760px){main{padding:24px 12px 50px}h1{font-size:29px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}.summary,.flaw,.structural-review{padding:17px}.path-graph{width:1200px}pre{font-size:11px}}</style><style id="unvibecode-customer-report-style">
+main{
+  padding-top:22px !important;
+}
+main > h1{
+  margin-bottom:4px !important;
+  font-size:30px !important;
+}
+main > p{
+  margin-top:0 !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Centered loading view, above iframe while its embedded report initializes. */
+#report-stage{position:relative}
+#uvc-report-loader{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:var(--paper);text-align:center;color:var(--ink)}
+#uvc-report-loader[hidden]{display:none!important}#uvc-report-loader strong{display:block;font-size:16px}#uvc-report-loader p{font-size:12px;color:var(--muted)!important}
+.uvc-loading-spinner{display:block;width:28px;height:28px;border:2px solid var(--soft);border-top-color:var(--ink);border-radius:50%;margin:0 auto 14px;animation:uvc-spin .9s linear infinite}
+@keyframes uvc-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.uvc-loading-spinner{animation:none}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head>
+<body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a></div><main><h1>mini-swe-agent-main business flaw report</h1><p>Business-heavy findings reconstructed from connected code paths.</p>
+<section class="summary"><h2>Summary</h2><p class="bottom">No business flaw passed the business-impact gate in the analyzed paths.</p><div class="metrics"><div class="metric"><strong>0</strong>flaws</div><div class="metric"><strong>0</strong>strong evidence</div><div class="metric"><strong>0</strong>supported evidence</div></div></section>
+<h2>Business paths</h2><div class="graph-scroll"><img class="path-graph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDE1MDAgMjUwIj4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iOSIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDksMyB6IiBmaWxsPSIjNjQ3NDhiIi8+PC9tYXJrZXI+CjxzdHlsZT4udGl0bGV7Zm9udDo3MDAgMjRweCBBcmlhbDtmaWxsOiMwZjE3MmF9LmxhbmV7Zm9udDo3MDAgMTZweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm5vZGV7Zm9udDo2MDAgMTRweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm1ldGF7Zm9udDoxMi41cHggQXJpYWw7ZmlsbDojNDc1NTY5fS5lZGdle3N0cm9rZTojNjQ3NDhiO3N0cm9rZS13aWR0aDoyO21hcmtlci1lbmQ6dXJsKCNhcnJvdyl9LmltcGFjdHtzdHJva2U6I2RjMjYyNjtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYXJyb3cpfTwvc3R5bGU+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmYWZjIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0MCIgY2xhc3M9InRpdGxlIj5taW5pLXN3ZS1hZ2VudC1tYWluIOKAlCBidXNpbmVzcyBmbGF3IHBhdGhzPC90ZXh0Pgo8dGV4dCB4PSI0MCIgeT0iOTUiIGNsYXNzPSJsYW5lIj5ObyBidXNpbmVzcyBmbGF3IHBhc3NlZCB0aGUgYnVzaW5lc3MtaW1wYWN0IGdhdGUuPC90ZXh0Pgo8L3N2Zz4=" alt="Business flaw paths"></div><h2>Business flaws</h2><article class="flaw"><h2>No business flaw passed the business-impact gate.</h2></article>
+
+<section class="structural-review">
+  <h2>Additional code areas worth reviewing</h2>
+  <p>These code areas met strict structural rules for concentrated complexity or strong code connections. They are review priorities, not confirmed business flaws.</p>
+  
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>1. Complex decision function in content_string.py</h3>
+  <p>A heavily branched decision function is used on an important execution surface.</p>
+  <h3>Why it was selected</h3><ul><li>get_content_string: 22 decisions with nesting depth 7</li></ul>
+  <h3>Connected source files</h3><ul><li>src/minisweagent/agents/interactive.py</li><li>src/minisweagent/run/utilities/inspector.py</li><li>tests/models/test_content_string.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/minisweagent/models/utils/content_string.py · lines 32–87 · get_content_string</div><pre><code>    32 | def get_content_string(message: dict) -&gt; str:
+    33 |     &quot;&quot;&quot;Extract text content from any message format for display.
+    34 |     Should support both OpenAI and Anthropic message formats.
+    35 | 
+    36 |     Handles:
+    37 |     - Traditional chat: {&quot;content&quot;: &quot;text&quot;}
+    38 |     - Multimodal chat: {&quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;...&quot;}]}
+    39 |     - Anthropic tool use: {&quot;content&quot;: [{&quot;type&quot;: &quot;tool_use&quot;, &quot;input&quot;: {...}}]}
+    40 |     - Anthropic tool result: {&quot;content&quot;: [{&quot;type&quot;: &quot;tool_result&quot;, &quot;content&quot;: &quot;...&quot;}]}
+    41 |     - Observation messages: {&quot;content&quot;: &quot;{\&quot;returncode\&quot;: 0, \&quot;output\&quot;: \&quot;...\&quot;}&quot;}
+    42 |     - Traditional tool calls: {&quot;tool_calls&quot;: [{&quot;function&quot;: {&quot;name&quot;: &quot;...&quot;, &quot;arguments&quot;: &quot;...&quot;}}]}
+    43 |     - Responses API: {&quot;output&quot;: [{&quot;type&quot;: &quot;message&quot;, &quot;content&quot;: [...]}]}
+    44 |     &quot;&quot;&quot;
+    45 |     texts = []
+    46 | 
+    47 |     # Extract content (string or multimodal list)
+    48 |     content = message.get(&quot;content&quot;)
+    49 |     if isinstance(content, str):
+    50 |         texts.append(_format_observation(content))
+    51 |     elif isinstance(content, list):
+    52 |         for item in content:
+    53 |             if not isinstance(item, dict):
+    54 |                 continue
+    55 |             if item.get(&quot;type&quot;) == &quot;tool_use&quot;:
+    56 |                 texts.append(_format_tool_call(json.dumps(item.get(&quot;input&quot;, {}))))
+    57 |             elif item.get(&quot;type&quot;) == &quot;tool_result&quot;:
+    58 |                 rc = item.get(&quot;content&quot;, &quot;&quot;)
+    59 |                 if isinstance(rc, str):
+    60 |                     texts.append(_format_observation(rc))
+    61 |             elif text := item.get(&quot;text&quot;):
+    62 |                 texts.append(text)
+    63 | 
+    64 |     # Handle traditional tool_calls format (OpenAI/LiteLLM style)
+    65 |     if tool_calls := message.get(&quot;tool_calls&quot;):
+    66 |         for tc in tool_calls:
+    67 |             func = tc.get(&quot;function&quot;, {}) if isinstance(tc, dict) else getattr(tc, &quot;function&quot;, None)
+    68 |             if func:
+    69 |                 args = func.get(&quot;arguments&quot;, &quot;{}&quot;) if isinstance(func, dict) else getattr(func, &quot;arguments&quot;, &quot;{}&quot;)
+    70 |                 texts.append(_format_tool_call(args))
+    71 | 
+    72 |     # Handle Responses API format (output array)
+    73 |     if output := message.get(&quot;output&quot;):
+    74 |         if isinstance(output, str):
+    75 |             texts.append(_format_observation(output))
+    76 |         elif isinstance(output, list):
+    77 |             for item in output:
+    78 |                 if not isinstance(item, dict):
+    79 |                     continue
+    80 |                 if item.get(&quot;type&quot;) == &quot;message&quot;:
+    81 |                     for c in item.get(&quot;content&quot;, []):
+    82 |                         if isinstance(c, dict) and (text := c.get(&quot;text&quot;)):
+    83 |                             texts.append(text)
+    84 |                 elif item.get(&quot;type&quot;) == &quot;function_call&quot;:
+    85 |                     texts.append(_format_tool_call(item.get(&quot;arguments&quot;, &quot;{}&quot;)))
+    86 | 
+    87 |     return &quot;\n\n&quot;.join(t for t in texts if t)</code></pre></div></details>
+</article>
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>2. Tightly connected module: test_models.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>13 incoming and 4 outgoing source connections</li></ul>
+  <h3>Connected source files</h3><ul><li>src/minisweagent/models/utils/actions_text.py</li><li>src/minisweagent/models/utils/actions_toolcall.py</li><li>src/minisweagent/models/utils/actions_toolcall_response.py</li><li>src/minisweagent/models/utils/openai_multimodal.py</li><li>tests/agents/test_default.py</li><li>tests/agents/test_init.py</li><li>tests/agents/test_interactive.py</li><li>tests/agents/test_multimodal.py</li><li>tests/models/test_init.py</li><li>tests/models/test_test_models.py</li><li>tests/run/test_local.py</li><li>tests/run/test_run_hello_world.py</li><li>tests/run/test_save.py</li><li>tests/run/test_swebench.py</li><li>tests/run/test_swebench_single.py</li><li>tests/test_data/update_outputs_github_issue.py</li><li>tests/test_data/update_outputs_local.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">src/minisweagent/models/test_models.py · lines 1–269 · Relevant source section</div><pre><code>     1 | import logging
+     2 | import time
+     3 | from typing import Any
+     4 | 
+     5 | from pydantic import BaseModel
+     6 | 
+     7 | from minisweagent.models import GLOBAL_MODEL_STATS
+     8 | from minisweagent.models.utils.actions_text import format_observation_messages
+     9 | from minisweagent.models.utils.actions_toolcall import format_toolcall_observation_messages
+    10 | from minisweagent.models.utils.actions_toolcall_response import (
+    11 |     format_toolcall_observation_messages as format_response_api_observation_messages,
+    12 | )
+    13 | from minisweagent.models.utils.openai_multimodal import expand_multimodal_content
+    14 | 
+    15 | 
+    16 | def make_output(content: str, actions: list[dict], cost: float = 1.0) -&gt; dict:
+    17 |     &quot;&quot;&quot;Helper to create an output dict for DeterministicModel.
+    18 | 
+    19 |     Args:
+    20 |         content: The response content string
+    21 |         actions: List of action dicts, e.g., [{&quot;command&quot;: &quot;echo hello&quot;}]
+    22 |         cost: Cost to report for this output (default 1.0)
+    23 |     &quot;&quot;&quot;
+    24 |     return {
+    25 |         &quot;role&quot;: &quot;assistant&quot;,
+    26 |         &quot;content&quot;: content,
+    27 |         &quot;extra&quot;: {&quot;actions&quot;: actions, &quot;cost&quot;: cost, &quot;timestamp&quot;: time.time()},
+    28 |     }
+    29 | 
+    30 | 
+    31 | def make_toolcall_output(content: str | None, tool_calls: list[dict], actions: list[dict]) -&gt; dict:
+    32 |     &quot;&quot;&quot;Helper to create a toolcall output dict for DeterministicToolcallModel.
+    33 | 
+    34 |     Args:
+    35 |         content: Optional text content (can be None for tool-only responses)
+    36 |         tool_calls: List of tool call dicts in OpenAI format
+    37 |         actions: List of parsed action dicts, e.g., [{&quot;command&quot;: &quot;echo hello&quot;, &quot;tool_call_id&quot;: &quot;call_123&quot;}]
+    38 |     &quot;&quot;&quot;
+    39 |     return {
+    40 |         &quot;role&quot;: &quot;assistant&quot;,
+    41 |         &quot;content&quot;: content,
+    42 |         &quot;tool_calls&quot;: tool_calls,
+    43 |         &quot;extra&quot;: {&quot;actions&quot;: actions, &quot;cost&quot;: 1.0, &quot;timestamp&quot;: time.time()},
+    44 |     }
+    45 | 
+    46 | 
+    47 | def make_response_api_output(content: str | None, actions: list[dict]) -&gt; dict:
+    48 |     &quot;&quot;&quot;Helper to create an output dict for DeterministicResponseAPIToolcallModel.
+    49 | 
+    50 |     Args:
+    51 |         content: Optional text content (can be None for tool-only responses)
+    52 |         actions: List of action dicts with &#x27;command&#x27; and &#x27;tool_call_id&#x27; keys
+    53 |     &quot;&quot;&quot;
+    54 |     output_items = []
+    55 |     if content:
+    56 |         output_items.append(
+    57 |             {&quot;type&quot;: &quot;message&quot;, &quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;output_text&quot;, &quot;text&quot;: content}]}
+    58 |         )
+    59 |     for action in actions:
+    60 |         output_items.append(
+    61 |             {
+    62 |                 &quot;type&quot;: &quot;function_call&quot;,
+    63 |                 &quot;call_id&quot;: action[&quot;tool_call_id&quot;],
+    64 |                 &quot;name&quot;: &quot;bash&quot;,
+    65 |                 &quot;arguments&quot;: f&#x27;{{&quot;command&quot;: &quot;{action[&quot;command&quot;]}&quot;}}&#x27;,
+    66 |             }
+    67 |         )
+    68 |     return {
+    69 |         &quot;object&quot;: &quot;response&quot;,
+    70 |         &quot;output&quot;: output_items,
+    71 |         &quot;extra&quot;: {&quot;actions&quot;: actions, &quot;cost&quot;: 1.0, &quot;timestamp&quot;: time.time()},
+    72 |     }
+    73 | 
+    74 | 
+    75 | def _process_test_actions(actions: list[dict]) -&gt; bool:
+    76 |     &quot;&quot;&quot;Process special test actions. Returns True if the query should be retried.&quot;&quot;&quot;
+    77 |     for action in actions:
+    78 |         if &quot;raise&quot; in action:
+    79 |             raise action[&quot;raise&quot;]
+    80 |         cmd = action.get(&quot;command&quot;, &quot;&quot;)
+    81 |         if cmd.startswith(&quot;/sleep &quot;):
+    82 |             time.sleep(float(cmd.split(&quot;/sleep &quot;)[1]))
+    83 |             return True
+    84 |         if cmd.startswith(&quot;/warning&quot;):
+    85 |             logging.warning(cmd.split(&quot;/warning&quot;)[1])
+    86 |             return True
+    87 |     return False
+    88 | 
+    89 | 
+    90 | class DeterministicModelConfig(BaseModel):
+       | … middle lines omitted from this display …
+   180 |         &quot;&quot;&quot;Format execution outputs into tool result messages.&quot;&quot;&quot;
+   181 |         actions = message.get(&quot;extra&quot;, {}).get(&quot;actions&quot;, [])
+   182 |         return format_toolcall_observation_messages(
+   183 |             actions=actions,
+   184 |             outputs=outputs,
+   185 |             observation_template=self.config.observation_template,
+   186 |             template_vars=template_vars,
+   187 |             multimodal_regex=self.config.multimodal_regex,
+   188 |         )
+   189 | 
+   190 |     def get_template_vars(self, **kwargs) -&gt; dict[str, Any]:
+   191 |         return self.config.model_dump()
+   192 | 
+   193 |     def serialize(self) -&gt; dict:
+   194 |         return {
+   195 |             &quot;info&quot;: {
+   196 |                 &quot;config&quot;: {
+   197 |                     &quot;model&quot;: self.config.model_dump(mode=&quot;json&quot;),
+   198 |                     &quot;model_type&quot;: f&quot;{self.__class__.__module__}.{self.__class__.__name__}&quot;,
+   199 |                 },
+   200 |             }
+   201 |         }
+   202 | 
+   203 | 
+   204 | class DeterministicResponseAPIToolcallModelConfig(BaseModel):
+   205 |     outputs: list[dict]
+   206 |     &quot;&quot;&quot;List of exact Response API output messages to return in sequence.&quot;&quot;&quot;
+   207 |     model_name: str = &quot;deterministic_response_api_toolcall&quot;
+   208 |     cost_per_call: float = 1.0
+   209 |     observation_template: str = (
+   210 |         &quot;{% if output.exception_info %}&lt;exception&gt;{{output.exception_info}}&lt;/exception&gt;\n{% endif %}&quot;
+   211 |         &quot;&lt;returncode&gt;{{output.returncode}}&lt;/returncode&gt;\n&lt;output&gt;\n{{output.output}}&lt;/output&gt;&quot;
+   212 |     )
+   213 |     &quot;&quot;&quot;Template used to render the observation after executing an action.&quot;&quot;&quot;
+   214 |     multimodal_regex: str = &quot;&quot;
+   215 |     &quot;&quot;&quot;Regex to extract multimodal content. Empty string disables multimodal processing.&quot;&quot;&quot;
+   216 | 
+   217 | 
+   218 | class DeterministicResponseAPIToolcallModel:
+   219 |     &quot;&quot;&quot;Deterministic test model using OpenAI Responses API format.&quot;&quot;&quot;
+   220 | 
+   221 |     def __init__(self, **kwargs):
+   222 |         &quot;&quot;&quot;Initialize with a list of Response API output messages to return in sequence.&quot;&quot;&quot;
+   223 |         self.config = DeterministicResponseAPIToolcallModelConfig(**kwargs)
+   224 |         self.current_index = -1
+   225 | 
+   226 |     def query(self, messages: list[dict[str, str]], **kwargs) -&gt; dict:
+   227 |         self.current_index += 1
+   228 |         output = self.config.outputs[self.current_index]
+   229 |         if _process_test_actions(output.get(&quot;extra&quot;, {}).get(&quot;actions&quot;, [])):
+   230 |             return self.query(messages, **kwargs)
+   231 |         GLOBAL_MODEL_STATS.add(self.config.cost_per_call)
+   232 |         return output
+   233 | 
+   234 |     def format_message(self, **kwargs) -&gt; dict:
+   235 |         &quot;&quot;&quot;Format message in Responses API format.&quot;&quot;&quot;
+   236 |         role = kwargs.get(&quot;role&quot;, &quot;user&quot;)
+   237 |         content = kwargs.get(&quot;content&quot;, &quot;&quot;)
+   238 |         extra = kwargs.get(&quot;extra&quot;)
+   239 |         content_items = [{&quot;type&quot;: &quot;input_text&quot;, &quot;text&quot;: content}] if isinstance(content, str) else content
+   240 |         msg: dict = {&quot;type&quot;: &quot;message&quot;, &quot;role&quot;: role, &quot;content&quot;: content_items}
+   241 |         if extra:
+   242 |             msg[&quot;extra&quot;] = extra
+   243 |         return msg
+   244 | 
+   245 |     def format_observation_messages(
+   246 |         self, message: dict, outputs: list[dict], template_vars: dict | None = None
+   247 |     ) -&gt; list[dict]:
+   248 |         &quot;&quot;&quot;Format execution outputs into function_call_output messages.&quot;&quot;&quot;
+   249 |         actions = message.get(&quot;extra&quot;, {}).get(&quot;actions&quot;, [])
+   250 |         return format_response_api_observation_messages(
+   251 |             actions=actions,
+   252 |             outputs=outputs,
+   253 |             observation_template=self.config.observation_template,
+   254 |             template_vars=template_vars,
+   255 |             multimodal_regex=self.config.multimodal_regex,
+   256 |         )
+   257 | 
+   258 |     def get_template_vars(self, **kwargs) -&gt; dict[str, Any]:
+   259 |         return self.config.model_dump()
+   260 | 
+   261 |     def serialize(self) -&gt; dict:
+   262 |         return {
+   263 |             &quot;info&quot;: {
+   264 |                 &quot;config&quot;: {
+   265 |                     &quot;model&quot;: self.config.model_dump(mode=&quot;json&quot;),
+   266 |                     &quot;model_type&quot;: f&quot;{self.__class__.__module__}.{self.__class__.__name__}&quot;,
+   267 |                 },
+   268 |             }
+   269 |         }</code></pre></div></details>
+</article>
+</section></main>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Download the complete normalized repository ZIP for LLM or API analysis.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="llm-context">LLM Context →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  if (new URLSearchParams(window.location.search).get('early') === '1') {
+    button.setAttribute('data-target', 'llm-context');
+    button.textContent = 'LLM Context →';
+    section.querySelector('.uvc-next-copy').textContent = 'Download repository context for LLM or API analysis.';
+  }
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>

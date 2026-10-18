@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>django-payments-main · Business Workflow Map</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f9fc;color:#0f172a;font-family:Segoe UI,Arial,sans-serif}
+.hero{padding:28px max(20px,6vw) 24px;background:linear-gradient(125deg,#111827,#312e81);color:#fff}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#7c3aed}.hero .eyebrow{color:#c4b5fd}
+.hero h1{margin:5px 0 7px;font-size:32px;line-height:1.15;letter-spacing:-.02em}.hero p{max-width:840px;margin:0;color:#e0e7ff;font-size:14px;line-height:1.45}.hero-meta{margin-top:12px;font-size:12px;color:#cbd5e1}
+.wrap{max-width:1180px;margin:20px auto;padding:0 20px 50px}.workflow-group{margin:18px 0 24px;padding:18px;background:#eef2ff;border:1px solid #dbe3f5;border-radius:22px}.group-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:2px 4px 14px}.group-header h2{margin:4px 0 0;font-size:25px;line-height:1.2}.group-count{flex:0 0 auto;padding:7px 11px;background:#fff;border:1px solid #d8def0;border-radius:999px;color:#475569;font-size:12px;font-weight:750}
+.workflow-card{display:flex;gap:18px;margin:10px 0;padding:21px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 7px 20px rgba(15,23,42,.05)}
+.workflow-number{flex:0 0 44px;font-size:27px;font-weight:850;color:#c4b5fd}.workflow-content{flex:1;min-width:0}.workflow-title{margin:5px 0 13px;font-size:22px;line-height:1.25;color:#0f172a}h3{margin:0 0 6px;font-size:13px;color:#475569}p,li{color:#334155;line-height:1.52}
+.workflow-summary{padding:13px 15px;margin-bottom:13px;background:#f5f3ff;border-left:4px solid #7c3aed;border-radius:9px}.workflow-summary p{margin:0;font-size:15px}
+.context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.context-panel{padding:13px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px}.context-panel p{margin:0;font-size:13px}
+.value-section{margin-top:15px;padding-top:13px;border-top:1px solid #e2e8f0}.value-section ul{margin:6px 0 0;padding-left:21px}.value-section li{margin:4px 0;font-size:13px}
+.supporting-code{margin-top:15px;padding-top:12px;border-top:1px solid #e2e8f0}summary{cursor:pointer;color:#475569;font-weight:700;font-size:13px}.evidence-list{margin-top:10px}.evidence-item{margin:9px 0;padding:10px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:7px;color:#c4b5fd;font-size:11px;font-weight:700;word-break:break-all}pre{margin:0;overflow:auto;color:#e2e8f0;font:11px/1.45 Consolas,monospace;white-space:pre}.empty-state{padding:30px;background:#fff;border-radius:16px;text-align:center}
+@media(max-width:760px){.hero{padding:20px 15px 17px}.hero h1{font-size:25px}.wrap{margin-top:12px;padding:0 12px 35px}.workflow-group{padding:12px;margin:12px 0 18px;border-radius:16px}.group-header{display:block;padding:2px 2px 10px}.group-header h2{font-size:21px}.group-count{display:inline-block;margin-top:9px}.workflow-card{display:block;padding:16px;margin:9px 0}.workflow-number{font-size:20px;margin-bottom:3px}.workflow-title{font-size:19px}.context-grid{grid-template-columns:1fr}.workflow-summary{padding:11px 12px}pre{font-size:10px}}
+</style><style id="unvibecode-customer-report-style">
+.hero{
+  padding:14px max(16px,4vw) 12px !important;
+}
+.hero h1{
+  margin:3px 0 4px !important;
+  font-size:24px !important;
+  line-height:1.12 !important;
+}
+.hero p{
+  max-width:980px !important;
+  font-size:13px !important;
+  line-height:1.35 !important;
+}
+.hero-meta{
+  margin-top:6px !important;
+  font-size:11px !important;
+}
+.wrap{
+  margin-top:12px !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Centered loading view, above iframe while its embedded report initializes. */
+#report-stage{position:relative}
+#uvc-report-loader{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:var(--paper);text-align:center;color:var(--ink)}
+#uvc-report-loader[hidden]{display:none!important}#uvc-report-loader strong{display:block;font-size:16px}#uvc-report-loader p{font-size:12px;color:var(--muted)!important}
+.uvc-loading-spinner{display:block;width:28px;height:28px;border:2px solid var(--soft);border-top-color:var(--ink);border-radius:50%;margin:0 auto 14px;animation:uvc-spin .9s linear infinite}
+@keyframes uvc-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.uvc-loading-spinner{animation:none}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head><body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a></div>
+<header class="uvc-report-heading"><h1>Business Workflow Map</h1><p>Understand end-to-end business operations reconstructed from the code.</p><div class="uvc-meta">django-payments-main · 7 workflows · 3 areas</div></header>
+<div class="uvc-workflow-layout"><aside class="uvc-area-nav" aria-label="Workflow areas"><p class="eyebrow">Workflow areas</p><a href="#workflow-area-1">Payment workflows<span>01</span></a><a href="#workflow-area-2">Payment workflows<span>05</span></a><a href="#workflow-area-3">Callback workflows<span>01</span></a></aside><main class="wrap">
+        <section class="workflow-group" id="workflow-area-1">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 1</div><h2>Payment workflows</h2></div>
+            <div class="group-count">1 workflow</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_60b18a242ff0f9fb">
+              <div class="workflow-number">01</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 1</div>
+                <h3 class="workflow-title">provider-backed payment checkout and callback handling</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Application code builds a provider-specific checkout form, redirects the user or returns hidden fields, then handles callback processing to update payment state and return success/failure outcomes.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>submit a payment and receive a gateway redirect or callback-driven completion</p></section><section class="context-panel"><h3>What it produces</h3><p>payment instance and provider checkout/callback data</p></section><section class="context-panel"><h3>Who relies on it</h3><p>customer and external payment gateway</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>creates a gateway-ready payment form</li><li>directs the customer to the correct payment/callback URL</li><li>enables provider implementations to update payment status and amounts</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>BasicProvider.capture()</strong> <span class="implementation-location">payments/core.py · lines 146–147</span></li><li class="implementation-item"><strong>BasicProvider.release()</strong> <span class="implementation-location">payments/core.py · lines 149–150</span></li><li class="implementation-item"><strong>BasicProvider.refund()</strong> <span class="implementation-location">payments/core.py · lines 152–153</span></li><li class="implementation-item"><strong>BasicProvider.cancel()</strong> <span class="implementation-location">payments/core.py · lines 155–156</span></li><li class="implementation-item"><strong>BasicProvider.get_action()</strong> <span class="implementation-location">payments/core.py · lines 70–72</span></li><li class="implementation-item"><strong>BasicProvider.get_token_from_request()</strong> <span class="implementation-location">payments/core.py · lines 117–119</span></li><li class="implementation-item"><strong>BasicProvider.__init__()</strong> <span class="implementation-location">payments/core.py · lines 74–80</span></li><li class="implementation-item"><strong>BasicProvider.get_hidden_fields()</strong> <span class="implementation-location">payments/core.py · lines 82–91</span></li><li class="implementation-item"><strong>BasicProvider.get_form()</strong> <span class="implementation-location">payments/core.py · lines 93–103</span></li><li class="implementation-item"><strong>BasicProvider.process_data()</strong> <span class="implementation-location">payments/core.py · lines 105–115</span></li><li class="implementation-item"><strong>_default_provider_factory()</strong> <span class="implementation-location">payments/core.py · lines 162–177</span></li><li class="implementation-item"><strong>BasicProvider.get_return_url()</strong> <span class="implementation-location">payments/core.py · lines 121–144</span></li><li class="implementation-item"><strong>get_payment_model()</strong> <span class="implementation-location">payments/__init__.py · lines 86–103</span></li><li class="implementation-item"><strong>PaymentStatus</strong> <span class="implementation-location">payments/__init__.py · lines 30–49</span></li><li class="implementation-item"><strong>MercadoPagoProvider.create_preference()</strong> <span class="implementation-location">payments/mercadopago/__init__.py · lines 74–122</span></li><li class="implementation-item"><strong>StripeProviderV3.get_form()</strong> <span class="implementation-location">payments/stripe/providers.py · lines 98–113</span></li><li class="implementation-item"><strong>MercadoPagoProvider.get_form()</strong> <span class="implementation-location">payments/mercadopago/__init__.py · lines 189–198</span></li><li class="implementation-item"><strong>DummyProvider.process_data()</strong> <span class="implementation-location">payments/dummy/__init__.py · lines 60–67</span></li><li class="implementation-item"><strong>MercadoPagoProvider.process_callback()</strong> <span class="implementation-location">payments/mercadopago/__init__.py · lines 150–158</span></li><li class="implementation-item"><strong>MercadoPagoProvider.process_notification()</strong> <span class="implementation-location">payments/mercadopago/__init__.py · lines 128–148</span></li><li class="implementation-item"><strong>StripeProviderV3.process_data()</strong> <span class="implementation-location">payments/stripe/providers.py · lines 243–268</span></li><li class="implementation-item"><strong>DummyProvider.get_form()</strong> <span class="implementation-location">payments/dummy/__init__.py · lines 26–58</span></li><li class="implementation-item"><strong>MercadoPagoProvider</strong> <span class="implementation-location">payments/mercadopago/__init__.py · lines 38–218</span></li><li class="implementation-item"><strong>StripeProviderV3.create_session()</strong> <span class="implementation-location">payments/stripe/providers.py · lines 115–146</span></li><li class="implementation-item"><strong>PaymentError.__init__()</strong> <span class="implementation-location">payments/__init__.py · lines 71–79</span></li><li class="implementation-item"><strong>get_base_url()</strong> <span class="implementation-location">payments/core.py · lines 32–57</span></li><li class="implementation-item"><strong>DummyProvider</strong> <span class="implementation-location">payments/dummy/__init__.py · lines 16–81</span></li><li class="implementation-item"><strong>StripeProviderV3</strong> <span class="implementation-location">payments/stripe/providers.py · lines 73–268</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-2">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 2</div><h2>Payment workflows</h2></div>
+            <div class="group-count">5 workflows</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_6982e20b6fa0efba">
+              <div class="workflow-number">02</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 2</div>
+                <h3 class="workflow-title">card payment authorization and capture via Authorize.Net</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Authorize.Net provider posts card data to the gateway, updates payment status from waiting/input to confirmed or error, and redirects to the success URL on valid input.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>complete payment using card details and receive a result page</p></section><section class="context-panel"><h3>What it produces</h3><p>BasePayment / transaction_id / captured_amount / message</p></section><section class="context-panel"><h3>Who relies on it</h3><p>payer and merchant using Authorize.Net</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>successful approval creates a confirmed payment</li><li>declined or errored card input surfaces a form error message</li><li>transaction id is stored for the approved charge</li><li>caller is redirected to the success URL on valid form submission</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>AuthorizeNetProvider.__init__()</strong> <span class="implementation-location">payments/authorizenet/__init__.py · lines 28–42</span></li><li class="implementation-item"><strong>AuthorizeNetProvider</strong> <span class="implementation-location">payments/authorizenet/__init__.py · lines 14–90</span></li><li class="implementation-item"><strong>PaymentForm</strong> <span class="implementation-location">payments/authorizenet/forms.py · lines 12–39</span></li><li class="implementation-item"><strong>AuthorizeNetProvider.get_form()</strong> <span class="implementation-location">payments/authorizenet/__init__.py · lines 81–87</span></li><li class="implementation-item"><strong>PaymentForm.clean()</strong> <span class="implementation-location">payments/authorizenet/forms.py · lines 13–39</span></li><li class="implementation-item"><strong>BasePayment</strong> <span class="implementation-location">payments/models.py · lines 49–274</span></li><li class="implementation-item"><strong>AuthorizeNetProvider.get_payment_response()</strong> <span class="implementation-location">payments/authorizenet/__init__.py · lines 77–79</span></li><li class="implementation-item"><strong>test_provider_redirects_to_success_on_payment_success()</strong> <span class="implementation-location">payments/authorizenet/test_authorizenet.py · lines 59–81</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_14afb4c904e906be">
+              <div class="workflow-number">03</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 3</div>
+                <h3 class="workflow-title">card payment authorization and settlement</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Braintree payment form collects card data, submits a gateway sale, then captures and confirms the payment before redirecting to the success URL.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>submit a payment and complete checkout</p></section><section class="context-panel"><h3>What it produces</h3><p>BasePayment / transaction_id / captured_amount</p></section><section class="context-panel"><h3>Who relies on it</h3><p>payer and merchant using Braintree</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>payment is settled with the gateway</li><li>payment state becomes CONFIRMED</li><li>captured amount is recorded</li><li>caller is redirected to the success page</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>BraintreeProvider.__init__()</strong> <span class="implementation-location">payments/braintree/__init__.py · lines 26–50</span></li><li class="implementation-item"><strong>BraintreeProvider.get_form()</strong> <span class="implementation-location">payments/braintree/__init__.py · lines 52–59</span></li><li class="implementation-item"><strong>BraintreePaymentForm.clean()</strong> <span class="implementation-location">payments/braintree/forms.py · lines 12–33</span></li><li class="implementation-item"><strong>BraintreePaymentForm.save()</strong> <span class="implementation-location">payments/braintree/forms.py · lines 64–68</span></li><li class="implementation-item"><strong>BasePayment</strong> <span class="implementation-location">payments/models.py · lines 49–274</span></li><li class="implementation-item"><strong>test_provider_redirects_to_success_on_payment_success()</strong> <span class="implementation-location">payments/braintree/test_braintree.py · lines 55–72</span></li><li class="implementation-item"><strong>BraintreeProvider</strong> <span class="implementation-location">payments/braintree/__init__.py · lines 13–59</span></li><li class="implementation-item"><strong>BraintreePaymentForm</strong> <span class="implementation-location">payments/braintree/forms.py · lines 9–68</span></li><li class="implementation-item"><strong>test_provider_shows_validation_error_message()</strong> <span class="implementation-location">payments/braintree/test_braintree.py · lines 75–89</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_20a73509f5a820d6">
+              <div class="workflow-number">04</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 4</div>
+                <h3 class="workflow-title">Provider-specific payment request composition and callback verification</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Dotpay and Coinbase providers build provider-specific payment requests and reconcile callbacks by verifying signatures or custom tokens before confirming or rejecting the payment.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Start and confirm payment flows through gateway-specific fields and signed callback data</p></section><section class="context-panel"><h3>What it produces</h3><p>Payment</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Dotpay or Coinbase gateway and the payer</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Produces provider-specific redirect/form payloads</li><li>Rejects malformed or forged callback data</li><li>Confirms completed payments and records transaction identifiers</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>DotpayProvider</strong> <span class="implementation-location">payments/dotpay/__init__.py · lines 16–105</span></li><li class="implementation-item"><strong>CoinbaseProvider</strong> <span class="implementation-location">payments/coinbase/__init__.py · lines 18–97</span></li><li class="implementation-item"><strong>CoinbaseProvider.get_checkout_code()</strong> <span class="implementation-location">payments/coinbase/__init__.py · lines 47–75</span></li><li class="implementation-item"><strong>DotpayProvider.process_data()</strong> <span class="implementation-location">payments/dotpay/__init__.py · lines 98–105</span></li><li class="implementation-item"><strong>ProcessPaymentForm.save()</strong> <span class="implementation-location">payments/dotpay/forms.py · lines 93–101</span></li><li class="implementation-item"><strong>CoinbaseProvider.process_data()</strong> <span class="implementation-location">payments/coinbase/__init__.py · lines 84–97</span></li><li class="implementation-item"><strong>ProcessPaymentForm.clean()</strong> <span class="implementation-location">payments/dotpay/forms.py · lines 51–91</span></li><li class="implementation-item"><strong>CoinbaseProvider.get_custom_token()</strong> <span class="implementation-location">payments/coinbase/__init__.py · lines 43–45</span></li><li class="implementation-item"><strong>test_process_data_payment_accepted()</strong> <span class="implementation-location">payments/dotpay/test_dotpay.py · lines 96–109</span></li><li class="implementation-item"><strong>test_incorrect_process_data()</strong> <span class="implementation-location">payments/dotpay/test_dotpay.py · lines 130–135</span></li><li class="implementation-item"><strong>test_process_data()</strong> <span class="implementation-location">payments/coinbase/test_coinbase.py · lines 65–71</span></li><li class="implementation-item"><strong>test_incorrect_custom_token_process_data()</strong> <span class="implementation-location">payments/coinbase/test_coinbase.py · lines 74–83</span></li><li class="implementation-item"><strong>ProcessPaymentForm</strong> <span class="implementation-location">payments/dotpay/forms.py · lines 17–101</span></li><li class="implementation-item"><strong>test_get_hidden_fields()</strong> <span class="implementation-location">payments/dotpay/test_dotpay.py · lines 91–93</span></li><li class="implementation-item"><strong>test_process_data_payment_rejected()</strong> <span class="implementation-location">payments/dotpay/test_dotpay.py · lines 112–127</span></li><li class="implementation-item"><strong>test_incorrect_data_process_data()</strong> <span class="implementation-location">payments/coinbase/test_coinbase.py · lines 86–93</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_76c6213522540dfd">
+              <div class="workflow-number">05</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 5</div>
+                <h3 class="workflow-title">PayPal checkout and post-payment reconciliation</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>PayPal provider creates or reuses checkout sessions, redirects the user, then processes the return/callback to capture, preauthorize, refund, or reject the payment.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Guide the buyer through PayPal checkout and reconcile the payment after return or refund/capture operations</p></section><section class="context-panel"><h3>What it produces</h3><p>Payment</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Buyer and PayPal gateway</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Creates redirectable checkout sessions</li><li>Confirms, preauthorizes, refunds, or rejects payment records</li><li>Persists API response data for later reconciliation</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>PaypalProvider</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 62–380</span></li><li class="implementation-item"><strong>test_provider_raises_redirect_needed_on_success()</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 213–239</span></li><li class="implementation-item"><strong>PaypalProvider.get_access_token()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 198–225</span></li><li class="implementation-item"><strong>PaypalProvider.get_form()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 272–284</span></li><li class="implementation-item"><strong>PaypalProvider.capture()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 331–360</span></li><li class="implementation-item"><strong>PaypalProvider.process_data()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 286–313</span></li><li class="implementation-item"><strong>authorize.wrapper()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 37–57</span></li><li class="implementation-item"><strong>test_provider_renews_access_token()</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 434–466</span></li><li class="implementation-item"><strong>test_provider_request_without_payerid_redirects_on_failure()</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 422–431</span></li><li class="implementation-item"><strong>PaypalProvider.refund()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 367–380</span></li><li class="implementation-item"><strong>Payment</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 91–196</span></li><li class="implementation-item"><strong>test_provider_captures_payment()</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 242–262</span></li><li class="implementation-item"><strong>test_provider_refunds_payment_fully()</strong> <span class="implementation-location">payments/paypal/test_paypal.py · lines 278–307</span></li><li class="implementation-item"><strong>authorize()</strong> <span class="implementation-location">payments/paypal/__init__.py · lines 36–59</span></li></ul></details>
+              </div>
+            </article>
+            <article class="workflow-card" data-workflow-id="business_path_57afbea1c19415a7">
+              <div class="workflow-number">06</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 6</div>
+                <h3 class="workflow-title">gateway-specific checkout callback handling</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>CyberSource and Sagepay provider flows create gateway requests, process gateway callbacks, and move payment state to confirmed, preauth, rejected, or error depending on gateway outcome.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>hand off payment to an external processor and reconcile the returned result</p></section><section class="context-panel"><h3>What it produces</h3><p>BasePayment / fraud_status / transaction_id / extra_data</p></section><section class="context-panel"><h3>Who relies on it</h3><p>payer, merchant, and external payment gateway</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>handles 3-D Secure or encrypted return flows</li><li>updates fraud and payment status based on gateway reason/status codes</li><li>stores transaction identifiers and payment metadata</li><li>routes the user to success or failure depending on outcome</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>CyberSourceProvider</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 44–502</span></li><li class="implementation-item"><strong>CyberSourceProvider.process_data()</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 472–502</span></li><li class="implementation-item"><strong>SagepayProvider</strong> <span class="implementation-location">payments/sagepay/__init__.py · lines 24–141</span></li><li class="implementation-item"><strong>SagepayProvider.get_hidden_fields()</strong> <span class="implementation-location">payments/sagepay/__init__.py · lines 83–118</span></li><li class="implementation-item"><strong>SagepayProvider.process_data()</strong> <span class="implementation-location">payments/sagepay/__init__.py · lines 120–141</span></li><li class="implementation-item"><strong>BasePayment</strong> <span class="implementation-location">payments/models.py · lines 49–274</span></li><li class="implementation-item"><strong>CyberSourceProvider.charge()</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 167–194</span></li><li class="implementation-item"><strong>CyberSourceProvider._set_proper_payment_status_from_reason_code()</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 118–165</span></li><li class="implementation-item"><strong>CyberSourceProvider._change_status_to_confirmed()</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 111–116</span></li><li class="implementation-item"><strong>CyberSourceProvider.__init__()</strong> <span class="implementation-location">payments/cybersource/__init__.py · lines 63–98</span></li><li class="implementation-item"><strong>test_provider_raises_redirect_needed_on_success()</strong> <span class="implementation-location">payments/sofort/test_sofort.py · lines 54–69</span></li><li class="implementation-item"><strong>test_provider_redirects_on_success()</strong> <span class="implementation-location">payments/sofort/test_sofort.py · lines 72–96</span></li></ul></details>
+              </div>
+            </article></div>
+        </section>
+        <section class="workflow-group" id="workflow-area-3">
+          <header class="group-header">
+            <div><div class="eyebrow">Workflow area 3</div><h2>Callback workflows</h2></div>
+            <div class="group-count">1 workflow</div>
+          </header>
+          <div class="group-paths">
+            <article class="workflow-card" data-workflow-id="business_path_c3778b1f3da6e259">
+              <div class="workflow-number">07</div>
+              <div class="workflow-content">
+                <div class="eyebrow">Workflow 7</div>
+                <h3 class="workflow-title">Process provider callback to update a payment record</h3>
+                <section class="workflow-summary"><h3>What this workflow does</h3><p>Django payment callback route locks a payment row, resolves the configured provider, and delegates asynchronous callback processing to update payment state.</p></section>
+                <div class="context-grid"><section class="context-panel"><h3>Purpose</h3><p>Deliver asynchronous payment status updates for a specific payment</p></section><section class="context-panel"><h3>What it produces</h3><p>Payment</p></section><section class="context-panel"><h3>Who relies on it</h3><p>Payment provider / gateway webhook sender</p></section></div>
+                <section class="value-section"><h3>Why this workflow matters</h3><ul><li>Prevents concurrent callback races</li><li>Updates the canonical payment record from provider data</li><li>Returns a deterministic response for the callback caller</li></ul></section>
+                <details class="supporting-code"><summary>Implementation references</summary><ul class="evidence-list"><li class="implementation-item"><strong>process_data()</strong> <span class="implementation-location">payments/urls.py · lines 28–52</span></li><li class="implementation-item"><strong>ProcessDataLockingTestCase</strong> <span class="implementation-location">payments/test_urls.py · lines 91–115</span></li><li class="implementation-item"><strong>ProcessDataLockingTestCase.test_process_data_locks_the_payment_row()</strong> <span class="implementation-location">payments/test_urls.py · lines 94–115</span></li><li class="implementation-item"><strong>CoinbaseProvider.process_data()</strong> <span class="implementation-location">payments/coinbase/__init__.py · lines 84–97</span></li><li class="implementation-item"><strong>DotpayProvider.process_data()</strong> <span class="implementation-location">payments/dotpay/__init__.py · lines 98–105</span></li><li class="implementation-item"><strong>static_callback()</strong> <span class="implementation-location">payments/urls.py · lines 55–98</span></li><li class="implementation-item"><strong>StaticCallbackTestCase.test_payment_not_found_returns_json_404()</strong> <span class="implementation-location">payments/test_urls.py · lines 66–88</span></li><li class="implementation-item"><strong>StaticCallbackTestCase.test_invalid_provider_variant_returns_json_400()</strong> <span class="implementation-location">payments/test_urls.py · lines 20–29</span></li></ul></details>
+              </div>
+            </article></div>
+        </section></main></div>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Structured graph of your codebase linking different files and symbols.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="connected-code">Connected Code →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  if (new URLSearchParams(window.location.search).get('early') === '1') {
+    button.setAttribute('data-target', 'llm-context');
+    button.textContent = 'LLM Context →';
+    section.querySelector('.uvc-next-copy').textContent = 'Download repository context for LLM or API analysis.';
+  }
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>

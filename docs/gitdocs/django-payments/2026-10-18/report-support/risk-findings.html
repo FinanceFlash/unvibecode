@@ -1,0 +1,422 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnvibeCode Business Risk Findings</title>
+<style>body{margin:0;background:#f8fafc;color:#0f172a;font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 24px 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:25px}h3{font-size:16px;margin-bottom:6px}p,li,td,dd{overflow-wrap:anywhere}.summary,.flaw,.structural-review{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:20px 0;box-shadow:0 8px 30px rgba(15,23,42,.05)}.critical{border-left:7px solid #991b1b}.high{border-left:7px solid #c2410c}.medium{border-left:7px solid #a16207}.badge,.structural-badge{display:inline-block;background:#0f172a;color:white;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}.structural-badge{background:#4338ca}.bottom{font-size:19px;font-weight:600}.metrics{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#e2e8f0;border-radius:12px;padding:12px 16px;min-width:120px}.metric strong{display:block;font-size:25px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid section{background:#f1f5f9;padding:14px;border-radius:10px}dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}dt{font-weight:700}dd{margin:0}.graph-scroll{width:100%;overflow-x:auto;padding-bottom:8px}.path-graph{display:block;width:1500px;max-width:none;height:auto;background:white;border:1px solid #e2e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e2e8f0;padding:8px}summary{cursor:pointer;font-weight:700}.hotspot-card{margin-top:16px;padding:18px;background:#f8fafc;border:1px solid #dbe3f5;border-left:5px solid #4f46e5;border-radius:12px}.hotspot-card>h3{font-size:19px;margin:9px 0}.hotspot-code{margin-top:12px;padding:12px;background:#0f172a;border-radius:10px;overflow:hidden}.code-location{margin-bottom:8px;color:#c4b5fd;font-size:12px;font-weight:700}pre{margin:0;overflow:auto;color:#e2e8f0;font:12px/1.5 Consolas,monospace;white-space:pre}.hotspot-details{margin-top:14px}@media(max-width:760px){main{padding:24px 12px 50px}h1{font-size:29px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr}.summary,.flaw,.structural-review{padding:17px}.path-graph{width:1200px}pre{font-size:11px}}</style><style id="unvibecode-customer-report-style">
+main{
+  padding-top:22px !important;
+}
+main > h1{
+  margin-bottom:4px !important;
+  font-size:30px !important;
+}
+main > p{
+  margin-top:0 !important;
+}
+</style>
+<style id="unvibecode-shared-theme">
+:root{--paper:#f7f6f2;--ink:#171714;--muted:#575750;--line:#35352e;--soft:#e9e8e1}
+html{scroll-behavior:smooth}body{background:var(--paper)!important;color:var(--ink)!important;font-family:Arial,Helvetica,sans-serif!important}
+a{color:inherit}.uvc-brand-bar{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--paper)}.uvc-brand{font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.uvc-brand span{font-weight:400}
+h1,h2,h3,p,li,dt,dd,.eyebrow,.repository,.code-location{color:var(--ink)!important}.eyebrow,.hero-meta,.uvc-meta{font-family:Consolas,monospace!important;color:var(--muted)!important}
+.workspace,.view-toolbar,.view-tabs,.guide-item,.quick-guide,.connected-guide,.connected-cue,.cue-node,.context-sizes span,.token-help,.context-panel,.empty-state,.summary,.flaw,.structural-review,.hotspot-card,.metric,.grid section,.review-status,.scope-note{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+.view-tab{border-radius:0!important;color:var(--ink)!important;background:var(--paper)!important;border-color:var(--line)!important}.view-tab.active,.download-link,.context-download,.context-panel a,.uvc-next-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;border-color:var(--line)!important}
+.connected-cue p,.context-sizes span,.token-help p,.view-toolbar p{color:var(--muted)!important}.cue-icon,.context-sizes span.recommended{background:var(--soft)!important;border-color:var(--line)!important;color:var(--ink)!important}.cue-icon svg{stroke:var(--ink)!important}
+pre,.hotspot-code{background:var(--soft)!important;color:var(--ink)!important;border-radius:0!important}pre code{color:inherit!important}.path-graph{border-radius:0!important}.uvc-meta{font-size:12px;line-height:1.6;margin-top:8px}.uvc-report-heading{padding:28px 32px;border-bottom:1px solid var(--line)}.uvc-report-heading h1{font-size:32px;margin:0 0 8px}.uvc-report-heading p{margin:0}
+.uvc-workflow-layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1600px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.uvc-area-nav{position:sticky;top:0;max-height:100vh;overflow:auto;align-self:start;padding:24px 20px;border-right:1px solid var(--line)}.uvc-area-nav a{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d4d3ca;text-decoration:none;font-size:14px}.uvc-area-nav a:hover{background:var(--soft)}.uvc-area-nav span{font:12px Consolas,monospace;color:var(--muted)}
+.uvc-workflow-layout .wrap{max-width:none;margin:0!important;padding:0;min-width:0}.workflow-group{padding:30px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--line)!important;background:var(--paper)!important;border-radius:0!important}.workflow-card{padding:26px 0!important;margin:0!important;border:0!important;border-top:1px solid #bbbbae!important;background:var(--paper)!important;box-shadow:none!important;border-radius:0!important}.workflow-number{font:16px Consolas,monospace!important;color:var(--muted)!important;flex-basis:auto!important}.workflow-title{font-size:23px!important}.group-header h2{font-size:30px}.group-count{border:1px solid var(--line)!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important}.workflow-summary{background:transparent!important;border-left:2px solid var(--ink)!important;border-radius:0!important}.context-panel{border-radius:0!important}.supporting-code{border:1px solid #b2b2a6;border-radius:0!important;padding:14px 16px}.evidence-item pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow:auto}.uvc-embedded .uvc-brand-bar,.uvc-embedded .uvc-report-heading{display:none}
+#shipready-context-download,#shipready-file-details,#shipready-context-size{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}#shipready-context-download,#shipready-file-details{border:0!important;box-shadow:none!important}#shipready-download-button{background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important}#mynetwork{background:var(--paper)!important}#unvibecode-review-continue{background:var(--paper)!important;border-color:var(--line)!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:850px){.uvc-workflow-layout{grid-template-columns:1fr}.uvc-area-nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border-right:0;border-bottom:1px solid var(--line)}.uvc-area-nav>p{grid-column:1/-1}.uvc-brand-bar,.uvc-report-heading{padding:20px}.workflow-group{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Centered loading view, above iframe while its embedded report initializes. */
+#report-stage{position:relative}
+#uvc-report-loader{position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:var(--paper);text-align:center;color:var(--ink)}
+#uvc-report-loader[hidden]{display:none!important}#uvc-report-loader strong{display:block;font-size:16px}#uvc-report-loader p{font-size:12px;color:var(--muted)!important}
+.uvc-loading-spinner{display:block;width:28px;height:28px;border:2px solid var(--soft);border-top-color:var(--ink);border-radius:50%;margin:0 auto 14px;animation:uvc-spin .9s linear infinite}
+@keyframes uvc-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.uvc-loading-spinner{animation:none}}
+/* Compact output workspace; workflow cards and their sidebar are unchanged. */
+.uvc-brand-bar{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}.uvc-github{font-size:12px;text-decoration:none}.uvc-run-info{right:110px!important}.uvc-brand{font-size:21px}
+body:has(.workspace){height:100vh;display:flex;flex-direction:column;overflow:hidden}
+body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;padding:0 12px 12px;display:flex;flex-direction:column}
+.uvc-run-info{position:absolute;top:12px;left:165px;right:20px;display:flex;align-items:center;gap:14px;font-size:13px;min-width:0}.uvc-run-info>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.uvc-status{font:10px Consolas,monospace;border:1px solid var(--line);padding:3px 6px}
+.workspace{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0!important}.view-tabs{flex-shrink:0;padding-right:130px;flex-wrap:wrap}.view-toolbar{flex-shrink:0;min-height:0!important;padding:9px 14px!important}.view-toolbar h2{font-size:18px}.view-toolbar p{margin:3px 0!important}.report-stage{flex:1;min-height:0!important}#report-stage.connected-active:not([hidden]){display:block!important}#report-stage[hidden],#context-panel[hidden]{display:none!important}#report-frame{height:100%!important;min-height:0!important}.workspace>#context-panel{min-height:0!important;overflow:auto;flex:1}.review-status,.scope-note{flex-shrink:0}
+.uvc-help{position:absolute;right:10px;top:10px;z-index:20;font-size:12px}.uvc-help>summary{list-style:none;cursor:pointer;padding:5px;border:1px solid var(--line);background:var(--paper)}.uvc-help-panel{position:absolute;right:0;top:34px;width:min(580px,calc(100vw - 50px));max-height:65vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:12px}.uvc-help-panel .guide-grid{display:grid;grid-template-columns:1fr!important}.uvc-help-panel .guide-item{border:0;border-bottom:1px solid #bbbbae;padding:10px}.uvc-help-panel .quick-guide{margin:0!important}.uvc-help summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){.uvc-run-info{left:145px;font-size:12px;gap:6px}.uvc-brand{font-size:19px}.view-tabs{padding-right:45px}.uvc-help>summary span{display:none}.view-tab{padding:8px!important;font-size:12px!important}}
+
+</style></head>
+<body><div class="uvc-brand-bar"><a class="uvc-brand" href="https://financeflash.github.io/unvibecode/" target="_blank" rel="noopener">Unvibe<span>Code</span></a><a class="uvc-github" href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a></div><main><h1>django-payments-main business flaw report</h1><p>Business-heavy findings reconstructed from connected code paths.</p>
+<section class="summary"><h2>Summary</h2><p class="bottom">Two payment-integrity flaws are established. CyberSource maps explicitly rejected gateway outcomes into successful payment states, and Sagepay callback processing updates whichever waiting payment object is supplied without binding the callback to that payment.</p><div class="metrics"><div class="metric"><strong>2</strong>flaws</div><div class="metric"><strong>2</strong>strong evidence</div><div class="metric"><strong>0</strong>supported evidence</div></div></section>
+<h2>Business paths</h2><div class="graph-scroll"><img class="path-graph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjUyNCIgdmlld0JveD0iMCAwIDE1MDAgNTI0Ij4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iOSIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDksMyB6IiBmaWxsPSIjNjQ3NDhiIi8+PC9tYXJrZXI+CjxzdHlsZT4udGl0bGV7Zm9udDo3MDAgMjRweCBBcmlhbDtmaWxsOiMwZjE3MmF9LmxhbmV7Zm9udDo3MDAgMTZweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm5vZGV7Zm9udDo2MDAgMTRweCBBcmlhbDtmaWxsOiMwZjE3MmF9Lm1ldGF7Zm9udDoxMi41cHggQXJpYWw7ZmlsbDojNDc1NTY5fS5lZGdle3N0cm9rZTojNjQ3NDhiO3N0cm9rZS13aWR0aDoyO21hcmtlci1lbmQ6dXJsKCNhcnJvdyl9LmltcGFjdHtzdHJva2U6I2RjMjYyNjtzdHJva2Utd2lkdGg6MzttYXJrZXItZW5kOnVybCgjYXJyb3cpfTwvc3R5bGU+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmYWZjIi8+Cjx0ZXh0IHg9IjQwIiB5PSI0MCIgY2xhc3M9InRpdGxlIj5kamFuZ28tcGF5bWVudHMtbWFpbiDigJQgYnVzaW5lc3MgZmxhdyBwYXRoczwvdGV4dD4KPHRleHQgeD0iNDAiIHk9IjkwIiBjbGFzcz0ibGFuZSI+Q1JJVElDQUwgwrcgU1RST05HIEVWSURFTkNFIOKAlCBDeWJlclNvdXJjZSByZWplY3Rpb24gcmVzdWx0cyBhcmUgY29tbWl0dGVkIGFzIHN1Y2Nlc3NmdWwgcGF5bWVudHM8L3RleHQ+CjxyZWN0IHg9IjQwIiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE4MiIgaGVpZ2h0PSIxNTQiIGZpbGw9IiNlMGYyZmUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjUwIiB5PSIxNDQiIGNsYXNzPSJub2RlIj5QYXltZW50IGdhdGV3YXk8L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSIyNDUiIGNsYXNzPSJtZXRhIj5DeWJlclNvdXJjZTwvdGV4dD4KPHRleHQgeD0iNTAiIHk9IjI2MCIgY2xhc3M9Im1ldGEiPnJlY29uY2lsaWF0aW9uPC90ZXh0Pgo8cmVjdCB4PSIyNDYiIHk9IjExOCIgcng9IjEwIiB3aWR0aD0iMTgyIiBoZWlnaHQ9IjE1NCIgZmlsbD0iI2UwZjJmZSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMjU2IiB5PSIxNDQiIGNsYXNzPSJub2RlIj5HYXRld2F5IHJldHVybnMgYTwvdGV4dD4KPHRleHQgeD0iMjU2IiB5PSIxNjIiIGNsYXNzPSJub2RlIj5yZWplY3Qgb3I8L3RleHQ+Cjx0ZXh0IHg9IjI1NiIgeT0iMTgwIiBjbGFzcz0ibm9kZSI+dmVyaWZpY2F0aW9uLWZhaWx1cmU8L3RleHQ+Cjx0ZXh0IHg9IjI1NiIgeT0iMTk4IiBjbGFzcz0ibm9kZSI+cmVzdWx0PC90ZXh0Pgo8dGV4dCB4PSIyNTYiIHk9IjI0NSIgY2xhc3M9Im1ldGEiPkdhdGV3YXkgb3V0Y29tZTwvdGV4dD4KPHRleHQgeD0iMjU2IiB5PSIyNjAiIGNsYXNzPSJtZXRhIj5tYXBwaW5nPC90ZXh0Pgo8cmVjdCB4PSI0NTIiIHk9IjExOCIgcng9IjEwIiB3aWR0aD0iMTgyIiBoZWlnaHQ9IjE1NCIgZmlsbD0iI2YxZjVmOSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iNDYyIiB5PSIxNDQiIGNsYXNzPSJub2RlIj5Qcm92aWRlciBtYXBzIHRoZTwvdGV4dD4KPHRleHQgeD0iNDYyIiB5PSIxNjIiIGNsYXNzPSJub2RlIj5yZXR1cm5lZCByZWFzb24gY29kZTwvdGV4dD4KPHRleHQgeD0iNDYyIiB5PSIyNDUiIGNsYXNzPSJtZXRhIj5HYXRld2F5IG91dGNvbWU8L3RleHQ+Cjx0ZXh0IHg9IjQ2MiIgeT0iMjYwIiBjbGFzcz0ibWV0YSI+bWFwcGluZzwvdGV4dD4KPHJlY3QgeD0iNjU4IiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE4MiIgaGVpZ2h0PSIxNTQiIGZpbGw9IiNmMWY1ZjkiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjY2OCIgeT0iMTQ0IiBjbGFzcz0ibm9kZSI+UGF5bWVudCByZWNvcmQ8L3RleHQ+Cjx0ZXh0IHg9IjY2OCIgeT0iMjYwIiBjbGFzcz0ibWV0YSI+UGF5bWVudCBsaWZlY3ljbGU8L3RleHQ+CjxyZWN0IHg9Ijg2NCIgeT0iMTE4IiByeD0iMTAiIHdpZHRoPSIxODIiIGhlaWdodD0iMTU0IiBmaWxsPSIjZjFmNWY5IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI4NzQiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPlBheW1lbnQgaXMgbWFya2VkPC90ZXh0Pgo8dGV4dCB4PSI4NzQiIHk9IjE2MiIgY2xhc3M9Im5vZGUiPmNvbmZpcm1lZCBvcjwvdGV4dD4KPHRleHQgeD0iODc0IiB5PSIxODAiIGNsYXNzPSJub2RlIj5wcmVhdXRob3JpemVkPC90ZXh0Pgo8dGV4dCB4PSI4NzQiIHk9IjI2MCIgY2xhc3M9Im1ldGEiPlBheW1lbnQgbGlmZWN5Y2xlPC90ZXh0Pgo8cmVjdCB4PSIxMDcwIiB5PSIxMTgiIHJ4PSIxMCIgd2lkdGg9IjE4MiIgaGVpZ2h0PSIxNTQiIGZpbGw9IiNmMWY1ZjkiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjEwODAiIHk9IjE0NCIgY2xhc3M9Im5vZGUiPkJ1eWVyIGlzIHNlbnQgdG8gdGhlPC90ZXh0Pgo8dGV4dCB4PSIxMDgwIiB5PSIxNjIiIGNsYXNzPSJub2RlIj5zdWNjZXNzIHBhdGg8L3RleHQ+Cjx0ZXh0IHg9IjEwODAiIHk9IjI2MCIgY2xhc3M9Im1ldGEiPkNoZWNrb3V0IGNvbXBsZXRpb248L3RleHQ+CjxyZWN0IHg9IjEyNzYiIHk9IjExOCIgcng9IjEwIiB3aWR0aD0iMTgyIiBoZWlnaHQ9IjE1NCIgZmlsbD0iI2ZlZTJlMiIgc3Ryb2tlPSIjYjkxYzFjIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMTI4NiIgeT0iMTQ0IiBjbGFzcz0ibm9kZSI+UmVqZWN0ZWQgdHJhbnNhY3Rpb25zPC90ZXh0Pgo8dGV4dCB4PSIxMjg2IiB5PSIxNjIiIGNsYXNzPSJub2RlIj5hcmUgdHJlYXRlZCBhcyBwYWlkPC90ZXh0Pgo8dGV4dCB4PSIxMjg2IiB5PSIyNDUiIGNsYXNzPSJtZXRhIj5PcmRlciBhbmQgcGF5bWVudDwvdGV4dD4KPHRleHQgeD0iMTI4NiIgeT0iMjYwIiBjbGFzcz0ibWV0YSI+aW50ZWdyaXR5PC90ZXh0Pgo8bGluZSB4MT0iMjIyIiB5MT0iMTk1LjAiIHgyPSIyNDIiIHkyPSIxOTUuMCIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjQyOCIgeTE9IjE5NS4wIiB4Mj0iNDQ4IiB5Mj0iMTk1LjAiIGNsYXNzPSJlZGdlIi8+CjxsaW5lIHgxPSI2MzQiIHkxPSIxOTUuMCIgeDI9Ijg2MCIgeTI9IjE5NS4wIiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iODQwIiB5MT0iMTk1LjAiIHgyPSI4NjAiIHkyPSIxOTUuMCIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjEwNDYiIHkxPSIxOTUuMCIgeDI9IjEwNjYiIHkyPSIxOTUuMCIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjEyNTIiIHkxPSIxOTUuMCIgeDI9IjEyNzIiIHkyPSIxOTUuMCIgY2xhc3M9ImltcGFjdCIvPgo8dGV4dCB4PSI0MCIgeT0iMzE2IiBjbGFzcz0ibGFuZSI+SElHSCDCtyBTVFJPTkcgRVZJREVOQ0Ug4oCUIFNhZ2VwYXkgY2FsbGJhY2tzIHVwZGF0ZSB3aGljaGV2ZXIgd2FpdGluZyBwYXltZW50IGlzIHN1cHBsaWVkPC90ZXh0Pgo8cmVjdCB4PSI0MCIgeT0iMzQ0IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZTBmMmZlIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI1MCIgeT0iMzcwIiBjbGFzcz0ibm9kZSI+R2F0ZXdheSBjYWxsYmFjayBjYWxsZXI8L3RleHQ+Cjx0ZXh0IHg9IjUwIiB5PSI0NjgiIGNsYXNzPSJtZXRhIj5TYWdlcGF5IHJlY29uY2lsaWF0aW9uPC90ZXh0Pgo8cmVjdCB4PSIyNTQiIHk9IjM0NCIgcng9IjEwIiB3aWR0aD0iMTkwIiBoZWlnaHQ9IjEzNiIgZmlsbD0iI2YxZjVmOSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMjY0IiB5PSIzNzAiIGNsYXNzPSJub2RlIj5BIGRpZmZlcmVudCB3YWl0aW5nPC90ZXh0Pgo8dGV4dCB4PSIyNjQiIHk9IjM4OCIgY2xhc3M9Im5vZGUiPnBheW1lbnQgaXMgc2VsZWN0ZWQgZm9yPC90ZXh0Pgo8dGV4dCB4PSIyNjQiIHk9IjQwNiIgY2xhc3M9Im5vZGUiPnByb2Nlc3Npbmc8L3RleHQ+Cjx0ZXh0IHg9IjI2NCIgeT0iNDY4IiBjbGFzcz0ibWV0YSI+UGF5bWVudCBzZWxlY3Rpb248L3RleHQ+CjxyZWN0IHg9IjQ2OCIgeT0iMzQ0IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZTBmMmZlIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI0NzgiIHk9IjM3MCIgY2xhc3M9Im5vZGUiPkNhbGxiYWNrIHBheWxvYWQgaXM8L3RleHQ+Cjx0ZXh0IHg9IjQ3OCIgeT0iMzg4IiBjbGFzcz0ibm9kZSI+ZGVjcnlwdGVkIGFuZCByZWFkPC90ZXh0Pgo8dGV4dCB4PSI0NzgiIHk9IjQ2OCIgY2xhc3M9Im1ldGEiPkNhbGxiYWNrIHBhcnNpbmc8L3RleHQ+CjxyZWN0IHg9IjY4MiIgeT0iMzQ0IiByeD0iMTAiIHdpZHRoPSIxOTAiIGhlaWdodD0iMTM2IiBmaWxsPSIjZjFmNWY5IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI2OTIiIHk9IjM3MCIgY2xhc3M9Im5vZGUiPlByb3ZpZGVyIGNoZWNrcyBvbmx5PC90ZXh0Pgo8dGV4dCB4PSI2OTIiIHk9IjM4OCIgY2xhc3M9Im5vZGUiPndhaXRpbmcgc3RhdGUgYW5kPC90ZXh0Pgo8dGV4dCB4PSI2OTIiIHk9IjQwNiIgY2xhc3M9Im5vZGUiPnJldHVybmVkIHN0YXR1czwvdGV4dD4KPHRleHQgeD0iNjkyIiB5PSI0NjgiIGNsYXNzPSJtZXRhIj5DYWxsYmFjayBkZWNpc2lvbjwvdGV4dD4KPHJlY3QgeD0iODk2IiB5PSIzNDQiIHJ4PSIxMCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSIxMzYiIGZpbGw9IiNmMWY1ZjkiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjkwNiIgeT0iMzcwIiBjbGFzcz0ibm9kZSI+U2VsZWN0ZWQgcGF5bWVudCBpczwvdGV4dD4KPHRleHQgeD0iOTA2IiB5PSIzODgiIGNsYXNzPSJub2RlIj5jb25maXJtZWQgb3IgcmVqZWN0ZWQ8L3RleHQ+Cjx0ZXh0IHg9IjkwNiIgeT0iNDY4IiBjbGFzcz0ibWV0YSI+UGF5bWVudCBsaWZlY3ljbGU8L3RleHQ+CjxyZWN0IHg9IjExMTAiIHk9IjM0NCIgcng9IjEwIiB3aWR0aD0iMTkwIiBoZWlnaHQ9IjEzNiIgZmlsbD0iI2ZlZTJlMiIgc3Ryb2tlPSIjYjkxYzFjIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMTEyMCIgeT0iMzcwIiBjbGFzcz0ibm9kZSI+V3JvbmcgcGF5bWVudCByZWNvcmQgaXM8L3RleHQ+Cjx0ZXh0IHg9IjExMjAiIHk9IjM4OCIgY2xhc3M9Im5vZGUiPnJlY29uY2lsZWQ8L3RleHQ+Cjx0ZXh0IHg9IjExMjAiIHk9IjQ1MyIgY2xhc3M9Im1ldGEiPk9yZGVyIGFuZCBwYXltZW50PC90ZXh0Pgo8dGV4dCB4PSIxMTIwIiB5PSI0NjgiIGNsYXNzPSJtZXRhIj5pbnRlZ3JpdHk8L3RleHQ+CjxsaW5lIHgxPSIyMzAiIHkxPSI0MTIuMCIgeDI9IjQ2NCIgeTI9IjQxMi4wIiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iNDQ0IiB5MT0iNDEyLjAiIHgyPSI2NzgiIHkyPSI0MTIuMCIgY2xhc3M9ImVkZ2UiLz4KPGxpbmUgeDE9IjY1OCIgeTE9IjQxMi4wIiB4Mj0iNjc4IiB5Mj0iNDEyLjAiIGNsYXNzPSJlZGdlIi8+CjxsaW5lIHgxPSI4NzIiIHkxPSI0MTIuMCIgeDI9Ijg5MiIgeTI9IjQxMi4wIiBjbGFzcz0iZWRnZSIvPgo8bGluZSB4MT0iMTA4NiIgeTE9IjQxMi4wIiB4Mj0iMTEwNiIgeTI9IjQxMi4wIiBjbGFzcz0iaW1wYWN0Ii8+Cjwvc3ZnPg==" alt="Business flaw paths"></div><h2>Business flaws</h2>
+<article class="flaw critical">
+<div class="badge">CRITICAL · STRONG EVIDENCE</div>
+<h2>1. CyberSource rejection results are committed as successful payments</h2>
+<p class="bottom">When CyberSource returns listed reject or verification-failure reason codes, the provider records the payment as CONFIRMED or PREAUTH and uses the success path.</p>
+<div class="grid">
+<section><h3>Trigger</h3><p>A CyberSource charge or payer-auth callback returns a mapped reject or verification-failure reason code.</p></section>
+<section><h3>What the code does</h3><p>The mapped reject branches set a reject-oriented fraud result and then call the success-state helper, which sets captured amount and moves the payment to CONFIRMED or PREAUTH.</p></section>
+<section><h3>Business rule</h3><p>A payment outcome that the gateway explicitly marks as rejected or failed by fraud or verification checks must not be committed as a successful payment.</p><small>Basis: UNIVERSAL INTEGRITY</small></section>
+<section><h3>Business downside</h3><p>Rejected or suspicious transactions enter the successful payment workflow.</p></section>
+</div>
+<h3>Impact</h3><dl>
+<dt>Immediate outcome</dt><dd>The payment record carries a paid or preauthorized status after a reject-coded gateway result.</dd>
+<dt>Affected party or asset</dt><dd>Payment records, buyer checkout outcome, and downstream paid-order handling</dd>
+<dt>Scale mechanism</dt><dd>Every listed reject branch uses the same confirm helper and the callback path redirects confirmed or preauthorized payments to success.</dd>
+<dt>Detection difficulty</dt><dd>The record keeps a separate fraud flag, so ordinary checks that trust payment status still treat the transaction as paid.</dd>
+<dt>Reversibility</dt><dd>Manual payment-state correction and downstream order correction are required after the record is committed.</dd>
+</dl>
+<h3>How the code reaches the outcome</h3><ul><li>CyberSource reason-code handling has explicit branches for reject-oriented outcomes such as decision-manager rejection and verification failures.</li><li>Those branches call the same helper that records captured amount and moves the payment to CONFIRMED or PREAUTH.</li><li>The callback completion path treats CONFIRMED and PREAUTH as success and redirects to the success URL.</li></ul>
+<h3>What to change</h3><p>Gateway reject outcomes must never commit a payment into a successful lifecycle state.</p>
+<h3>Acceptance check</h3><p><strong>Given</strong> a CyberSource response carrying FRAUD_MANAGER_REJECT or another listed reject or verification-failure reason code<br><strong>When</strong> the provider maps that outcome during charge or callback processing.<br><strong>Then</strong> the payment must not be marked CONFIRMED or PREAUTH and the success path must not be used.</p>
+<details><summary>Exact code proof</summary><table><thead><tr><th>File</th><th>Symbol</th><th>Lines</th><th>Proof</th></tr></thead><tbody><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider.charge/capture</td><td>167–209</td><td>Charge/capture path writes transaction data, handles 3-D Secure, and updates payment status.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider._change_status_to_confirmed</td><td>111–117</td><td>Status becomes CONFIRMED or PREAUTH depending on capture flag.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider.process_data</td><td>472–502</td><td>Callback verification and success/failure redirect path.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider._set_proper_payment_status_from_reason_code</td><td>118–165</td><td>Reason codes set fraud status to accept/review/reject and may raise payment error.</td></tr><tr><td>payments/models.py</td><td>BasePayment fields</td><td>70–93</td><td>Payment lifecycle and transaction metadata fields.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider._change_status_to_confirmed</td><td>111–117</td><td>Capture mode yields CONFIRMED, otherwise PREAUTH.</td></tr><tr><td>payments/models.py</td><td>BasePayment</td><td>49–93</td><td>Payment model has lifecycle/status fields and transaction metadata.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider._change_status_to_confirmed</td><td>111–116</td><td>Capture mode sets captured_amount to total.</td></tr><tr><td>payments/cybersource/__init__.py</td><td>CyberSourceProvider.process_data</td><td>494–502</td><td>Callback response determines redirect success or failure.</td></tr></tbody></table></details>
+</article>
+<article class="flaw high">
+<div class="badge">HIGH · STRONG EVIDENCE</div>
+<h2>2. Sagepay callbacks update whichever waiting payment is supplied</h2>
+<p class="bottom">Submitting a valid Sagepay callback against a different waiting payment changes that payment because the callback is not matched to the payment before status changes.</p>
+<div class="grid">
+<section><h3>Trigger</h3><p>A Sagepay callback is processed for a waiting payment object.</p></section>
+<section><h3>What the code does</h3><p>The callback handler decrypts the callback, reads the returned status, and confirms or rejects the supplied payment based on WAITING state and returned status without validating that the callback belongs to that payment.</p></section>
+<section><h3>Business rule</h3><p>A gateway callback must be bound to the same payment it is reconciling before that payment is confirmed or rejected.</p><small>Basis: UNIVERSAL INTEGRITY</small></section>
+<section><h3>Business downside</h3><p>A different payment record is reconciled with the wrong gateway result.</p></section>
+</div>
+<h3>Impact</h3><dl>
+<dt>Immediate outcome</dt><dd>The selected waiting payment is confirmed or rejected even when the callback belongs to a different payment.</dd>
+<dt>Affected party or asset</dt><dd>Payment records and checkout outcome routing</dd>
+<dt>Scale mechanism</dt><dd>Any valid Sagepay callback processed with the wrong waiting payment object follows the same status-change path.</dd>
+<dt>Detection difficulty</dt><dd>The resulting update looks like an ordinary callback reconciliation unless callback-to-payment linkage is audited.</dd>
+<dt>Reversibility</dt><dd>Manual state correction is required for the misapplied payment and any downstream order actions.</dd>
+</dl>
+<h3>How the code reaches the outcome</h3><ul><li>Sagepay checkout creation is payment-specific and writes payment identity into the outbound request payload.</li><li>The callback handler decrypts the return payload and branches only on the supplied payment&#x27;s WAITING state and the returned Status value.</li><li>No callback-to-payment validation is performed before the supplied payment is confirmed or rejected.</li></ul>
+<h3>What to change</h3><p>Gateway callbacks must be bound to the intended payment before any payment state transition is committed.</p>
+<h3>Acceptance check</h3><p><strong>Given</strong> a valid Sagepay callback and a different waiting payment object<br><strong>When</strong> callback processing runs for the supplied payment<br><strong>Then</strong> the provider must reject the mismatch instead of confirming or rejecting that payment.</p>
+<details><summary>Exact code proof</summary><table><thead><tr><th>File</th><th>Symbol</th><th>Lines</th><th>Proof</th></tr></thead><tbody><tr><td>payments/sagepay/__init__.py</td><td>SagepayProvider.process_data</td><td>131–141</td><td>Payment transitions to confirmed or rejected.</td></tr><tr><td>payments/sagepay/__init__.py</td><td>SagepayProvider.get_hidden_fields</td><td>83–118</td><td>Payment details are assembled, encrypted, and returned as hidden fields.</td></tr><tr><td>payments/sagepay/__init__.py</td><td>SagepayProvider.process_data</td><td>131–139</td><td>Waiting/OK path confirms and sets captured amount; otherwise rejected.</td></tr><tr><td>payments/urls.py</td><td>process_data</td><td>42–46</td><td>The callback view retrieves a payment with token=token under row lock.</td></tr><tr><td>payments/sagepay/__init__.py</td><td>SagepayProvider.get_hidden_fields</td><td>83–118</td><td>Payment is saved and its PK is used in the hidden field payload.</td></tr><tr><td>payments/urls.py</td><td>process_data</td><td>28–52</td><td>Callback endpoint is CSRF-exempt, extracts payment by token, and delegates to provider.process_data().</td></tr><tr><td>payments/sagepay/__init__.py</td><td>SagepayProvider.process_data</td><td>120–141</td><td>Callback decrypts response, updates payment state, and redirects.</td></tr></tbody></table></details>
+</article>
+
+<section class="structural-review">
+  <h2>Additional code areas worth reviewing</h2>
+  <p>These code areas met strict structural rules for concentrated complexity or strong code connections. They are review priorities, not confirmed business flaws.</p>
+  
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>1. Tightly connected module: forms.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>9 incoming and 1 outgoing source connections</li><li>Dependency cycle across 4 files</li></ul>
+  <h3>Connected source files</h3><ul><li>payments/authorizenet/forms.py</li><li>payments/braintree/forms.py</li><li>payments/core.py</li><li>payments/cybersource/__init__.py</li><li>payments/cybersource/forms.py</li><li>payments/dummy/forms.py</li><li>payments/fields.py</li><li>payments/paypal/forms.py</li><li>payments/stripe/providers.py</li><li>payments/test_core.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">payments/forms.py · lines 1–90 · Relevant source section</div><pre><code>     1 | from __future__ import annotations
+     2 | 
+     3 | from collections import OrderedDict
+     4 | 
+     5 | from django import forms
+     6 | from django.utils.translation import gettext_lazy as _
+     7 | 
+     8 | from .fields import CreditCardExpiryField
+     9 | from .fields import CreditCardNameField
+    10 | from .fields import CreditCardNumberField
+    11 | from .fields import CreditCardVerificationField
+    12 | 
+    13 | 
+    14 | class PaymentForm(forms.Form):
+    15 |     &quot;&quot;&quot;
+    16 |     Payment form, suitable for Django templates.
+    17 | 
+    18 |     When displaying the form remember to use *action* and *method*.
+    19 |     &quot;&quot;&quot;
+    20 | 
+    21 |     def __init__(
+    22 |         self,
+    23 |         data=None,
+    24 |         action=&quot;&quot;,
+    25 |         method=&quot;post&quot;,
+    26 |         provider=None,
+    27 |         payment=None,
+    28 |         hidden_inputs=True,
+    29 |         autosubmit=False,
+    30 |     ) -&gt; None:
+    31 |         if hidden_inputs and data is not None:
+    32 |             super().__init__(auto_id=False)
+    33 |             for key, val in data.items():
+    34 |                 widget = forms.widgets.HiddenInput()
+    35 |                 self.fields[key] = forms.CharField(initial=val, widget=widget)
+    36 |         else:
+    37 |             super().__init__(data=data)
+    38 |         self.action = action
+    39 |         self.autosubmit = autosubmit
+    40 |         self.method = method
+    41 |         self.provider = provider
+    42 |         self.payment = payment
+    43 | 
+    44 | 
+    45 | class CreditCardPaymentForm(PaymentForm):
+    46 |     number = CreditCardNumberField(label=_(&quot;Card Number&quot;), max_length=32, required=True)
+    47 |     expiration = CreditCardExpiryField(label=_(&quot;Expiration&quot;))
+    48 |     cvv2 = CreditCardVerificationField(
+    49 |         label=_(&quot;CVV2 Security Number&quot;),
+    50 |         required=False,
+    51 |         help_text=_(
+    52 |             &quot;Last three digits located on the back of your card.&quot;
+    53 |             &quot; For American Express the four digits found on the front side.&quot;
+    54 |         ),
+    55 |     )
+    56 | 
+    57 |     def __init__(
+    58 |         self,
+    59 |         data=None,
+    60 |         action=&quot;&quot;,
+    61 |         method=&quot;post&quot;,
+    62 |         provider=None,
+    63 |         payment=None,
+    64 |         hidden_inputs=False,
+    65 |         autosubmit=False,
+    66 |     ) -&gt; None:
+    67 |         super().__init__(
+    68 |             data=data,
+    69 |             action=action,
+    70 |             method=method,
+    71 |             provider=provider,
+    72 |             payment=payment,
+    73 |             hidden_inputs=False,
+    74 |             autosubmit=autosubmit,
+    75 |         )
+    76 |         if hasattr(self, &quot;VALID_TYPES&quot;):
+    77 |             number_field = self.fields[&quot;number&quot;]
+    78 |             assert isinstance(number_field, CreditCardNumberField)
+    79 |             number_field.valid_types = self.VALID_TYPES
+    80 | 
+    81 | 
+    82 | class CreditCardPaymentFormWithName(CreditCardPaymentForm):
+    83 |     name = CreditCardNameField(label=_(&quot;Name on Credit Card&quot;), max_length=128)
+    84 | 
+    85 |     def __init__(self, *args, **kwargs) -&gt; None:
+    86 |         super().__init__(*args, **kwargs)
+    87 |         name_field = self.fields.pop(&quot;name&quot;)
+    88 |         fields = OrderedDict({&quot;name&quot;: name_field})
+    89 |         fields.update(self.fields)
+    90 |         self.fields = fields</code></pre></div></details>
+</article>
+<article class="hotspot-card">
+  <div class="structural-badge">STRUCTURAL REVIEW</div>
+  <h3>2. Tightly connected module: fields.py</h3>
+  <p>Changes can propagate across several connected source files.</p>
+  <h3>Why it was selected</h3><ul><li>2 incoming and 3 outgoing source connections</li><li>Dependency cycle across 4 files</li></ul>
+  <h3>Connected source files</h3><ul><li>payments/core.py</li><li>payments/forms.py</li><li>payments/test_fields.py</li><li>payments/utils.py</li><li>payments/widgets.py</li></ul>
+  <details class="hotspot-details"><summary>View the relevant code</summary><div class="hotspot-code"><div class="code-location">payments/fields.py · lines 1–143 · Relevant source section</div><pre><code>     1 | from __future__ import annotations
+     2 | 
+     3 | import re
+     4 | from calendar import monthrange
+     5 | from datetime import date
+     6 | 
+     7 | from django import forms
+     8 | from django.core import validators
+     9 | from django.utils.timezone import localdate
+    10 | from django.utils.translation import gettext_lazy as _
+    11 | 
+    12 | from .core import CARD_TYPES
+    13 | from .core import get_credit_card_issuer
+    14 | from .utils import get_month_choices
+    15 | from .utils import get_year_choices
+    16 | from .widgets import CreditCardExpiryWidget
+    17 | from .widgets import CreditCardNumberWidget
+    18 | 
+    19 | 
+    20 | class CreditCardNumberField(forms.CharField):
+    21 |     widget = CreditCardNumberWidget(
+    22 |         attrs={&quot;autocomplete&quot;: &quot;cc-number&quot;, &quot;required&quot;: &quot;required&quot;}
+    23 |     )
+    24 |     default_error_messages = {
+    25 |         &quot;invalid&quot;: _(&quot;Please enter a valid card number&quot;),
+    26 |         &quot;invalid_type&quot;: _(&quot;We accept only %(valid_types)s&quot;),
+    27 |     }
+    28 | 
+    29 |     def __init__(self, valid_types=None, *args, **kwargs) -&gt; None:
+    30 |         self.valid_types = valid_types
+    31 |         kwargs[&quot;max_length&quot;] = kwargs.pop(&quot;max_length&quot;, 32)
+    32 |         super().__init__(*args, **kwargs)
+    33 | 
+    34 |     def to_python(self, value):
+    35 |         if value is not None:
+    36 |             value = re.sub(r&quot;[\s-]+&quot;, &quot;&quot;, value)
+    37 |         return super().to_python(value)
+    38 | 
+    39 |     def validate(self, value) -&gt; None:
+    40 |         card_type, _issuer_name = get_credit_card_issuer(value)
+    41 |         if value in validators.EMPTY_VALUES and self.required:
+    42 |             raise forms.ValidationError(self.error_messages[&quot;required&quot;])
+    43 |         if value and not self.cart_number_checksum_validation(value):
+    44 |             raise forms.ValidationError(self.error_messages[&quot;invalid&quot;])
+    45 |         if value and self.valid_types is not None and card_type not in self.valid_types:
+    46 |             card_type_names = {ct: name for _, ct, name in CARD_TYPES}
+    47 |             valid_type_names = [card_type_names.get(t, t) for t in self.valid_types]
+    48 |             error_message = self.error_messages[&quot;invalid_type&quot;] % {
+    49 |                 &quot;valid_types&quot;: &quot;, &quot;.join(valid_type_names)
+    50 |             }
+    51 |             raise forms.ValidationError(error_message)
+    52 | 
+    53 |     @staticmethod
+    54 |     def cart_number_checksum_validation(number):
+    55 |         digits = []
+    56 |         even = False
+    57 |         if not number.isdigit():
+    58 |             return False
+    59 |         for digit in reversed(number):
+    60 |             digit = ord(digit) - ord(&quot;0&quot;)
+    61 |             if even:
+    62 |                 digit *= 2
+    63 |                 if digit &gt;= 10:
+    64 |                     digit = digit % 10 + digit // 10
+    65 |             digits.append(digit)
+    66 |             even = not even
+    67 |         return sum(digits) % 10 == 0 if digits else False
+    68 | 
+    69 | 
+    70 | class CreditCardExpiryField(forms.MultiValueField):
+    71 |     default_error_messages = {
+    72 |         &quot;invalid_month&quot;: &quot;Enter a valid month.&quot;,
+    73 |         &quot;invalid_year&quot;: &quot;Enter a valid year.&quot;,
+    74 |     }
+    75 | 
+    76 |     def __init__(self, *args, **kwargs) -&gt; None:
+    77 |         errors = self.default_error_messages.copy()
+    78 |         if &quot;error_messages&quot; in kwargs:
+    79 |             errors.update(kwargs[&quot;error_messages&quot;])
+    80 | 
+    81 |         fields = (
+    82 |             forms.ChoiceField(
+    83 |                 choices=get_month_choices(),
+    84 |                 error_messages={&quot;invalid&quot;: errors[&quot;invalid_month&quot;]},
+    85 |                 widget=forms.Select(
+    86 |                     attrs={&quot;autocomplete&quot;: &quot;cc-exp-month&quot;, &quot;required&quot;: &quot;required&quot;}
+    87 |                 ),
+    88 |             ),
+    89 |             forms.ChoiceField(
+    90 |                 choices=get_year_choices(),
+    91 |                 error_messages={&quot;invalid&quot;: errors[&quot;invalid_year&quot;]},
+    92 |                 widget=forms.Select(
+    93 |                     attrs={&quot;autocomplete&quot;: &quot;cc-exp-year&quot;, &quot;required&quot;: &quot;required&quot;}
+    94 |                 ),
+    95 |             ),
+    96 |         )
+    97 | 
+    98 |         super().__init__(fields, *args, **kwargs)
+    99 |         self.widget = CreditCardExpiryWidget(
+   100 |             widgets=[fields[0].widget, fields[1].widget]
+   101 |         )
+   102 | 
+   103 |     def clean(self, value):
+   104 |         exp = super().clean(value)
+   105 |         if exp and localdate() &gt; exp:
+   106 |             raise forms.ValidationError(
+   107 |                 &quot;The expiration date you entered is in the past.&quot;
+   108 |             )
+   109 |         return exp
+   110 | 
+   111 |     def compress(self, data_list):
+   112 |         if data_list:
+   113 |             if data_list[1] in validators.EMPTY_VALUES:
+   114 |                 error = self.error_messages[&quot;invalid_year&quot;]
+   115 |                 raise forms.ValidationError(error)
+   116 |             if data_list[0] in validators.EMPTY_VALUES:
+   117 |                 error = self.error_messages[&quot;invalid_month&quot;]
+   118 |                 raise forms.ValidationError(error)
+   119 |             year = int(data_list[1])
+   120 |             month = int(data_list[0])
+   121 |             # find last day of the month
+   122 |             day = monthrange(year, month)[1]
+   123 |             return date(year, month, day)
+   124 |         return None
+   125 | 
+   126 | 
+   127 | class CreditCardVerificationField(forms.CharField):
+   128 |     widget = forms.TextInput(attrs={&quot;autocomplete&quot;: &quot;cc-csc&quot;})
+   129 |     default_error_messages = {&quot;invalid&quot;: _(&quot;Enter a valid security number.&quot;)}
+   130 | 
+   131 |     def __init__(self, *args, **kwargs) -&gt; None:
+   132 |         kwargs[&quot;max_length&quot;] = kwargs.pop(&quot;max_length&quot;, 4)
+   133 |         super().__init__(*args, **kwargs)
+   134 | 
+   135 |     def validate(self, value) -&gt; None:
+   136 |         if value in validators.EMPTY_VALUES and self.required:
+   137 |             raise forms.ValidationError(self.error_messages[&quot;required&quot;])
+   138 |         if value and not re.match(&quot;^[0-9]{3,4}$&quot;, value):
+   139 |             raise forms.ValidationError(self.error_messages[&quot;invalid&quot;])
+   140 | 
+   141 | 
+   142 | class CreditCardNameField(forms.CharField):
+   143 |     widget = forms.TextInput(attrs={&quot;autocomplete&quot;: &quot;cc-name&quot;, &quot;required&quot;: &quot;required&quot;})</code></pre></div></details>
+</article>
+</section></main>
+<style id="unvibecode-review-continue-style">
+#unvibecode-review-continue{
+  width:min(1180px,calc(100% - 32px));
+  margin:26px auto 18px;
+  padding:16px 18px;
+  border:1px solid #dbe3ee;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#0f172a;
+  font-family:Segoe UI,Arial,sans-serif;
+}
+#unvibecode-review-continue .uvc-next-kicker{
+  margin:0 0 3px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#unvibecode-review-continue .uvc-next-copy{
+  margin:0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.4;
+}
+#unvibecode-review-continue .uvc-next-button{
+  appearance:none;
+  border:0;
+  border-radius:9px;
+  background:#4f46e5;
+  color:#fff;
+  padding:10px 14px;
+  font:700 13px/1.2 Segoe UI,Arial,sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  #unvibecode-review-continue{align-items:stretch;flex-direction:column}
+  #unvibecode-review-continue .uvc-next-button{width:100%}
+}
+</style>
+<section id="unvibecode-review-continue" aria-label="Continue your review">
+  <div>
+    <p class="uvc-next-kicker">Continue your review</p>
+    <p class="uvc-next-copy">Download the complete normalized repository ZIP for LLM or API analysis.</p>
+  </div>
+  <button class="uvc-next-button" type="button" data-target="llm-context">LLM Context →</button>
+</section>
+<script>
+(function(){
+  const section = document.getElementById('unvibecode-review-continue');
+  if (!section) return;
+  const button = section.querySelector('[data-target]');
+  if (!button) return;
+  if (new URLSearchParams(window.location.search).get('early') === '1') {
+    button.setAttribute('data-target', 'llm-context');
+    button.textContent = 'LLM Context →';
+    section.querySelector('.uvc-next-copy').textContent = 'Download repository context for LLM or API analysis.';
+  }
+  button.addEventListener('click', function(){
+    const target = button.getAttribute('data-target');
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'unvibecode-select-view',
+        target: target
+      }, '*');
+      return;
+    }
+    window.location.href = '00_unvibecode_results.html#' + encodeURIComponent(target);
+  });
+})();
+</script>
+
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body></html>
