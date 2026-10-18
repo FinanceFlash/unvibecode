@@ -74,7 +74,7 @@ No activation key. No customer OpenAI API key. The repository path is the only r
 
 [smolagents](https://financeflash.github.io/unvibecode/gitdocs/smolagents/2026-10-18/) · [PocketFlow](https://financeflash.github.io/unvibecode/gitdocs/pocketflow/2026-10-18/) · [mini-swe-agent](https://financeflash.github.io/unvibecode/gitdocs/mini-swe-agent/2026-10-18/) · [django-payments](https://financeflash.github.io/unvibecode/gitdocs/django-payments/2026-10-18/)
 
-## Used by engineers @ Vertigo, Kovai.co, Ancient, Tingle Software, DVARA and Many More 
+## Trusted by engineers @ Vertigo, Kovai.co, Ancient, Tingle Software, DVARA and Many More 
 
 ## UnvibeCode, in their words
 
