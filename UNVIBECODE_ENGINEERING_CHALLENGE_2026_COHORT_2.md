@@ -22,7 +22,7 @@ You may choose either track or complete both.
 Our mission is to transform engineering projects from vibe-coded complexity into **verified engineering** through code understanding, evidence, and open-source collaboration.
 
 - **Challenge opens:** 30 September 2026
-- **Submission deadline:** 30 October 2026
+- **Submission deadline:** 1 November 2026
 - **Results announced:** 7 November 2026
 
 ---
