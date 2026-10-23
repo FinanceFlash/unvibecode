@@ -180,6 +180,7 @@ Connected-code mapping and context preparation recognize:
 | PHP | `.php` |
 | Ruby | `.rb` |
 | HTML and CSS | `.html`, `.htm`, `.css` |
+| Go| .go
 
 Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details.
 
