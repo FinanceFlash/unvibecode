@@ -180,9 +180,9 @@ Connected-code mapping and context preparation recognize:
 | PHP | `.php` |
 | Ruby | `.rb` |
 | HTML and CSS | `.html`, `.htm`, `.css` |
-| Go| .go
+| Go | `.go` |
 
-Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details.
+Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details, and [Go parsing and connected graphs](docs/GO_SUPPORT.md) for how Go packages, files, and call edges are resolved.
 
 ---
 ## Privacy 
