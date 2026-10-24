@@ -28,6 +28,30 @@ MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
 
 
+def markdown_link_target(raw_target):
+    target = raw_target.strip()
+
+    if target.startswith("<"):
+        closing_bracket = target.find(">")
+        if closing_bracket != -1:
+            return target[1:closing_bracket]
+
+    return re.split(r'\s+["\']', target, maxsplit=1)[0]
+
+
+@pytest.mark.parametrize(
+    ("raw_target", "expected"),
+    [
+        ("README.md", "README.md"),
+        ('README.md "Helpful title"', "README.md"),
+        ("<README.md>", "README.md"),
+        ('<README.md> "Helpful title"', "README.md"),
+    ],
+)
+def test_markdown_link_target_handles_titles_and_angle_brackets(raw_target, expected):
+    assert markdown_link_target(raw_target) == expected
+
+
 def workflow_packs():
     return sorted(path for path in PACKS_ROOT.iterdir() if path.is_dir())
 
@@ -98,9 +122,11 @@ def test_local_markdown_links_resolve(markdown_file):
     missing = []
 
     for raw_target in MARKDOWN_LINK.findall(content):
-        target = unquote(raw_target.strip()).split("#", 1)[0]
+        target = unquote(markdown_link_target(raw_target)).split("#", 1)[0]
+
         if not target or target.startswith(("http://", "https://", "mailto:")):
             continue
+
         if not (markdown_file.parent / target).resolve().exists():
             missing.append(raw_target)
 
