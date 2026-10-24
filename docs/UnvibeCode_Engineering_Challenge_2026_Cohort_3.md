@@ -36,8 +36,8 @@ Want to demonstrate skills beyond certificates and classroom projects? Cohort 3 
 5. Review the **Business Workflow Map**, **Connected Code Map**, **Business Risk Findings**, and **Complete Repository Context** where available. Verify important claims against the source code rather than assuming the output is always correct.
 6. Choose one or both tracks and **submit your response through the Google form by 15 November 2026**.
 
-**Submission form:** [Google Form — challenge entry](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing)  
-*Organizers: Ensure this form has been updated to collect Cohort 3 responses and both new tracks before publishing this challenge.*
+**Submission form:** [Google Form — challenge entry](https://docs.google.com/forms/d/1an-hce3EQ8bUVArnZJnD1VwxQIxgmNzLKYQ8h814CVE/viewform)  
+*Organizers: Confirm that the Cohort 3 form is accepting responses and collects the required fields for both tracks before sharing it with participants.*
 
 ---
 
@@ -196,7 +196,7 @@ Entries must be complete, original, and valid. Rankings, prizes, and recognition
 
 ⭐ **[Star UnvibeCode on GitHub](https://github.com/FinanceFlash/unvibecode)** if you want to keep the repository in your saved projects and find future challenge updates, results, and certificate announcements easily. Stars are **not** part of the evaluation.
 
-**[Open the challenge submission Google Form](https://docs.google.com/forms/d/e/1FAIpQLScX0aUoH-rMVeTcis-onXYY_iBLYX3-tYdeMD4jsgYuah7ppg/viewform?usp=sharing)**
+**[Open the challenge submission Google Form](https://docs.google.com/forms/d/1an-hce3EQ8bUVArnZJnD1VwxQIxgmNzLKYQ8h814CVE/viewform)**
 
 ---
 
