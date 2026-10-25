@@ -37,7 +37,7 @@ Want to demonstrate skills beyond certificates and classroom projects? Cohort 3 
 6. Choose one or both tracks and **submit your response through the Google form by 15 November 2026**.
 
 **Submission form:** [Google Form — challenge entry](https://docs.google.com/forms/d/1an-hce3EQ8bUVArnZJnD1VwxQIxgmNzLKYQ8h814CVE/viewform)  
-*Organizers: Confirm that the Cohort 3 form is accepting responses and collects the required fields for both tracks before sharing it with participants.*
+
 
 ---
 
