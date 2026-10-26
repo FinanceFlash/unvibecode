@@ -228,4 +228,8 @@ Please do not disclose security vulnerabilities in public GitHub issues.
 
 ## License
 
-See [LICENSE](LICENSE) for reuse and distribution terms.
+**UnvibeCode uses a mixed licensing model.** Materials published under [Apache License 2.0](LICENSE) retain that license, including commercial-use and redistribution rights. The official Python package may also contain separately licensed, proprietary business-domain definitions, workflow archetypes, and analysis assets.
+
+**Commercial use of the official package is permitted** for internal business activities, subject to the restrictions on extraction and separate redistribution of proprietary assets.
+
+Read the [Licensing Clarification](docs/LICENSE_CLARIFICATION.md) for the specific scope, permissions, restrictions, and package-metadata explanation.
