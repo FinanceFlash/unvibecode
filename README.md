@@ -233,3 +233,14 @@ Please do not disclose security vulnerabilities in public GitHub issues.
 **Commercial use of the official package is permitted** for internal business activities, subject to the restrictions on extraction and separate redistribution of proprietary assets.
 
 Read the [Licensing Clarification](docs/LICENSE_CLARIFICATION.md) for the specific scope, permissions, restrictions, and package-metadata explanation.
+
+---
+
+## Contributors & Acknowledgements
+
+A special thanks to the developers who have helped strengthen UnvibeCode:
+
+- **[Hariom](https://github.com/HariomPCode)** — Contributed to more accurate findings, clearer interpretation of business risks, and evidence-backed engineering analysis.
+- **[Abhay](https://github.com/singhastar)** — Improved Go language parsing and symbol resolution, strengthening the accuracy of connected-code analysis for Go repositories.
+
+We appreciate their thoughtful engineering contributions and their commitment to making UnvibeCode more reliable for developers.
