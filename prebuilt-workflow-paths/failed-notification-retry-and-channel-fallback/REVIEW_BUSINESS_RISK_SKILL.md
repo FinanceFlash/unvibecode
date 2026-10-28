@@ -15,5 +15,5 @@ Review entry, validation, authorization, state, timing, concurrency, external ef
 - Stale-status conflict — Late callbacks and active retries disagree and move the message backward
 - Secret or personal-data exposure — Fallback adaptation, provider errors, and diagnostics reveal protected content
 
-For each material risk, explain the trigger, current or expected behavior, business consequence, protection, decision or test, and acceptance condition.
+For each material risk, explain the trigger, current or expected behavior, business consequence, protection, decision or test, and acceptance condition. Also state Required Skills: the specific developer expertise (for example, programming language, framework or library, database technology, authentication/authorization, concurrency, idempotency, transaction management, webhook handling, queue processing, caching, external integration, API design, or infrastructure/deployment concern) needed to understand and fix the risk. Derive Required Skills only from the trigger, behavior, and affected code or workflow already identified for that risk; do not invent technologies or expertise the evidence does not support, and keep the list concise. If no specialised expertise beyond general application development is evident, say so instead of guessing.
 

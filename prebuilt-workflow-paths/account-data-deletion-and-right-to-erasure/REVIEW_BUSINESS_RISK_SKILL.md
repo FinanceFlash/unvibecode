@@ -15,5 +15,5 @@ Review entry, identity, authorization, policy, state, timing, concurrency, exter
 - Cross-tenant deletion — Shared identifiers or jobs remove another customer's records
 - Sensitive-data exposure — Identity proof, inventory, retained data, or deletion evidence reaches unsafe logs
 
-For each material risk, explain trigger, behavior, business consequence, protection, decision or test, and acceptance condition.
+For each material risk, explain trigger, behavior, business consequence, protection, decision or test, and acceptance condition. Also state Required Skills: the specific developer expertise (for example, programming language, framework or library, database technology, authentication/authorization, concurrency, idempotency, transaction management, webhook handling, queue processing, caching, external integration, API design, or infrastructure/deployment concern) needed to understand and fix the risk. Derive Required Skills only from the trigger, behavior, and affected code or workflow already identified for that risk; do not invent technologies or expertise the evidence does not support, and keep the list concise. If no specialised expertise beyond general application development is evident, say so instead of guessing.
 
