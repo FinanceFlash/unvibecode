@@ -1,0 +1,17 @@
+# UnvibeCode analysis outputs
+unvibecode_results/
+shipready_results/
+*.zip
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Operating system files
+.DS_Store
+Thumbs.db
