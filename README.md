@@ -1,10 +1,12 @@
 # UnvibeCode
 
+## Provide a brain for your codebase 
+
 ## Reverse engineer a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
 **⭐ Hit Star to help increase UnvibeCode's visibility among developers.**
 
-*Unvibe complex code. Trace what the business actually does.*
+*Unvibe complex code. Trace what the business actually does*
 
 ![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
