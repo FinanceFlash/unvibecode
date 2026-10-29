@@ -59,7 +59,9 @@ For other cases, check the terminal and report status for a skipped, failed or i
 
 ## The report does not open automatically
 
-Open the generated results folder and double-click `00_unvibecode_results.html`. The [quick start](QUICKSTART.md) documents the results location as `shipready_results/analysis_<timestamp>/customer_results/`.
+Open the generated results folder and double-click `<repository>-unvibecode-full.html` (or `00_unvibecode_results.html` in earlier releases). In modern UnvibeCode (v0.3+), output is saved directly under:
+
+`unvibecode_results/<repository>-unvibecode-analysis-<timestamp>/`
 
 Use the latest completed review folder. Keep the entry file and its companion reports together.
 
@@ -69,11 +71,10 @@ The entry page loads separate HTML files. Moving only the entry page breaks thos
 
 Keep the complete results folder together, including:
 
-- `01_connected_code_map_for_llm.html`
-- `02_business_workflow_map.html`
-- `03_business_risk_findings.html`
-- `complete_repository_context_for_llm.zip`
-- Any companion folders such as `_support/`
+- `<repository>-unvibecode-full.html` (or `00_unvibecode_results.html`)
+- `<repository>-unvibecode-interim.html`
+- `<repository>-repository-context.zip` (or `complete_repository_context_for_llm.zip`)
+- Companion folders such as `report-support/` and `technical-logs/`
 
 If a referenced file was never generated, check the review status rather than substituting a report from a different run.
 

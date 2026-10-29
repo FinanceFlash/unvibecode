@@ -38,11 +38,13 @@ python3 -m unvibecode review --repository "/path/to/repository"
 
 ## What happens next
 
-UnvibeCode displays live progress in the terminal. Completed HTML reports open automatically and all customer files are saved under:
+UnvibeCode displays live progress in the terminal. Completed HTML reports open automatically and all review files are saved under:
 
 ```text
-./shipready_results/analysis_<timestamp>/customer_results/
+./unvibecode_results/<repository>-unvibecode-analysis-<timestamp>/
 ```
+
+*(In earlier versions prior to v0.3, results were stored under `./shipready_results/analysis_<timestamp>/customer_results/`.)*
 
 No activation key, customer OpenAI key, or `.env` file is required.
 
