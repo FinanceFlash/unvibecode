@@ -8,13 +8,19 @@
 
 *Unvibe complex code. Trace what the business actually does*
 
-![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
+<p align="center">
+  <a href="https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml"><img src="https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg" alt="Quality checks"/></a>
+  <a href="https://pypi.org/project/unvibecode/"><img src="https://img.shields.io/pypi/v/unvibecode.svg" alt="PyPI version"/></a>
+  <a href="https://pypi.org/project/unvibecode/"><img src="https://img.shields.io/badge/python-3.11%2B-blue.svg" alt="Python 3.11+"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/FinanceFlash/unvibecode.svg" alt="License"/></a>
+  <a href="https://github.com/FinanceFlash/unvibecode/stargazers"><img src="https://img.shields.io/github/stars/FinanceFlash/unvibecode?style=flat" alt="GitHub stars"/></a>
+</p>
 
-[![Quality checks](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml/badge.svg)](https://github.com/FinanceFlash/unvibecode/actions/workflows/test.yml)
-[![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://pypi.org/project/unvibecode/)
-[![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
-<a href="https://trendshift.io/repositories/105036?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-105036"><img src="https://trendshift.io/api/badge/trendshift/repositories/105036/daily?language=Jupyter%20Notebook" alt="FinanceFlash/unvibecode | Trendshift" width="250" height="55"/></a>
+<p align="center">
+  <a href="https://trendshift.io/repositories/105036?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-105036"><img src="https://trendshift.io/api/badge/trendshift/repositories/105036/daily?language=Jupyter%20Notebook" alt="FinanceFlash/unvibecode | Trendshift" width="250" height="55"/></a>
+</p>
+
+![UnvibeCode AI codebase analysis demo showing connected code, business workflows, and risk findings](docs/assets/unvibecode-codebase-analysis-demo.gif)
 
 ### Your LLM helped write 100,000 lines of code. Now how do you understand what it actually built?
 
