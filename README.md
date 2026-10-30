@@ -41,6 +41,15 @@ py -m unvibecode --help
 py -m unvibecode review --repository "D:\path\to\repository"
 ```
 
+If `py --version` fails (for example, the launcher points to a Python version that is no longer installed), use `python` instead of `py`:
+
+```powershell
+python --version
+python -m pip install --upgrade unvibecode
+python -m unvibecode --help
+python -m unvibecode review --repository "D:\path\to\repository"
+```
+
 Example:
 
 ```powershell
