@@ -14,6 +14,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/unvibecode.svg)](https://pypi.org/project/unvibecode/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://pypi.org/project/unvibecode/)
 [![License](https://img.shields.io/github/license/FinanceFlash/unvibecode.svg)](LICENSE)
+<a href="https://trendshift.io/repositories/105036?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-105036"><img src="https://trendshift.io/api/badge/trendshift/repositories/105036/daily?language=Jupyter%20Notebook" alt="FinanceFlash/unvibecode | Trendshift" width="250" height="55"/></a>
 
 ### Your LLM helped write 100,000 lines of code. Now how do you understand what it actually built?
 
