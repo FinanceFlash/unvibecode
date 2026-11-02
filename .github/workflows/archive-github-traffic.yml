@@ -30,6 +30,7 @@ jobs:
           TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python .github/scripts/archive_github_traffic.py
+
       - name: Commit updated traffic history
         shell: bash
         run: |
