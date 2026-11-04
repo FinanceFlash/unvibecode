@@ -296,7 +296,7 @@ def main(argv=None):
         result = check(config)
         print(json.dumps(result, indent=2))
         return int(not result["configuration_valid"] or (args.strict and result["warnings"] > 0))
-    except (OSError, ValueError, TypeError):
+    except (OSError, ValueError, TypeError, RecursionError):
         print(json.dumps({"configuration_valid": False, "runtime_verified": False,
                           "error": "Invalid configuration or file operation; check the schema and path."}))
         return 2
