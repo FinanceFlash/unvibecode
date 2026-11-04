@@ -19,12 +19,12 @@ import csv
 import json
 import os
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
-
 
 REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "FinanceFlash/unvibecode")
 TOKEN = os.environ.get("TRAFFIC_TOKEN", "").strip()
@@ -69,10 +69,33 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(rows)
+    temp_path: Path | None = None
+
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            newline="",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            temp_path = Path(handle.name)
+            writer = csv.DictWriter(
+                handle, fieldnames=fieldnames, extrasaction="ignore"
+            )
+            writer.writeheader()
+            writer.writerows(rows)
+            handle.flush()
+            os.fsync(handle.fileno())
+
+        os.replace(temp_path, path)
+
+    except BaseException:
+        if temp_path is not None:
+            temp_path.unlink(missing_ok=True)
+        raise
 
 
 def update_daily(views: dict[str, Any], clones: dict[str, Any]) -> None:
@@ -121,9 +144,7 @@ def replace_snapshot(
     """Replace one UTC day's snapshot, keeping all previous days."""
     path = DATA_DIR / filename
     historical = [
-        row
-        for row in read_csv(path)
-        if row.get("snapshot_date") != snapshot_date
+        row for row in read_csv(path) if row.get("snapshot_date") != snapshot_date
     ]
 
     current: list[dict[str, Any]] = []
