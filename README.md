@@ -250,6 +250,6 @@ Read the [Licensing Clarification](docs/LICENSE_CLARIFICATION.md) for the specif
 A special thanks to the developers who have helped strengthen UnvibeCode:
 
 - **[Hariom](https://github.com/HariomPCode)** — Contributed to more accurate findings, clearer interpretation of business risks, and evidence-backed engineering analysis.
-- **[Abhay](https://github.com/SinghAstra))** — Improved Go language parsing and symbol resolution, strengthening the accuracy of connected-code analysis for Go repositories.
+- **[Abhay](https://github.com/SinghAstra)** — Improved Go language parsing and symbol resolution, strengthening the accuracy of connected-code analysis for Go repositories.
 
 We appreciate their thoughtful engineering contributions and their commitment to making UnvibeCode more reliable for developers.
