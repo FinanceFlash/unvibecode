@@ -60,6 +60,7 @@ No installation, generator, schema, or build step is required. Every workflow is
 |---|---|
 | [LLM Content Generation and Structured-output Validation](llm-content-generation-and-output-validation/) | generates content or structured results and must validate them before use |
 | [RAG Question Answering with Evidence and Citations](rag-question-answering-with-evidence-and-citations/) | retrieves sources and produces answers that must remain grounded in evidence |
+| [Agentic Code Analysis and Automated Remediation](agentic-code-analysis-and-remediation/) | clones or reads a codebase, extracts ASTs, and executes autonomous reflection loops |
 | [External-system Synchronization and Checkpointing](external-system-data-sync-and-checkpointing/) | synchronizes records with an external system while tracking progress and recovery |
 
 ### Risk, privacy, and background execution
