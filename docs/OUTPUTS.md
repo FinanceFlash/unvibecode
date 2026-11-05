@@ -76,16 +76,16 @@ Use Connected Code for a focused download. Use the complete ZIP for broader repo
 [Open repository context downloads](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#llm-context)
 
 ## Keep the report files together
-
-Results are saved under `shipready_results/analysis_<timestamp>/customer_results/` as described in the [quick start](QUICKSTART.md). Open the entry file in that folder.
-
+ 
+Results are saved under `unvibecode_results/<repository>-unvibecode-analysis-<timestamp>/` (or `shipready_results/analysis_<timestamp>/customer_results/` in earlier legacy versions) as described in the [quick start](QUICKSTART.md). Open the landing file in that folder.
+ 
 Keep these files together when moving or sharing a review:
-
-- `00_unvibecode_results.html` and any report page it redirects to.
-- The three numbered report HTML files listed above.
-- `complete_repository_context_for_llm.zip`.
-- Any companion folders, including `_support/` when present.
-
+ 
+- `<repository>-unvibecode-full.html` (or `00_unvibecode_results.html` in earlier versions) and interim files.
+- `<repository>-repository-context.zip` (or `complete_repository_context_for_llm.zip`).
+- Supporting report assets under `report-support/` (including `connected-code.html`).
+- Engine logs under `technical-logs/`.
+ 
 The published smolagents entry page is `smolagents-main-unvibecode-analysis.html`. Downloading only that page does not download the reports it displays.
 
 If an output is missing, check the review status and [repository limits](LIMITATIONS.md), then follow [Troubleshooting](TROUBLESHOOTING.md).
