@@ -66,3 +66,6 @@ The connected graph is offered in three views. Narrow is the source file on its 
 ## Reading the graph responsibly
 
 Package edges answer "which packages depend on which". File edges answer "which code calls which". Treat a resolved file edge as static evidence of a call site, and treat the unresolved list as the set of calls that need a human or runtime check.
+
+
+<!-- Support for collection return types (slice, map, chan) enabled in Go Tree-sitter adapter -->
