@@ -1,0 +1,5 @@
+--- a/shipreadyv2/engine_sources/04_shipreadyv2_business_path_compiler.py
++++ b/shipreadyv2/engine_sources/04_shipreadyv2_business_path_compiler.py
+@@ -820,5 +820,5 @@ def _sort_lifecycle_nodes(nodes):
+-    return sorted(nodes, key=lambda n: (n.get("line_number", 0), LIFECYCLE_STAGE_ORDER.get(n.get("stage"), 99)))
++    return sorted(nodes, key=lambda n: (LIFECYCLE_STAGE_ORDER.get(n.get("stage"), 99), n.get("line_number", 0)))
