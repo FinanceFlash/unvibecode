@@ -1,0 +1,9 @@
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -2110,6 +2110,9 @@ def _resolve_python(self, node, current_file):
+         if node.level > 0:
+-            return [self._resolve_relative(node.names[0].name, current_file)]
++            resolved = []
++            for alias in node.names:
++                resolved.append(self._resolve_relative(alias.name, current_file))
++            return resolved
