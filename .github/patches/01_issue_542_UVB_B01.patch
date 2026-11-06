@@ -1,0 +1,17 @@
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -1045,6 +1045,15 @@ class TreeSitterAstAdapter:
+             child = node.child_by_field_name("type")
+             if child is not None:
+                 return self._go_named_type(child)
++        if node.type in ("slice_type", "array_type"):
++            elem = node.child_by_field_name("element")
++            if elem is not None:
++                return self._go_named_type(elem)
++        if node.type in ("map_type", "channel_type"):
++            val = node.child_by_field_name("value")
++            if val is not None:
++                return self._go_named_type(val)
+         if node.type == "variadic_parameter_declaration":
+             child = node.child_by_field_name("type")
+             if child is not None:
