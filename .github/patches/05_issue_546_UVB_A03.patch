@@ -1,0 +1,8 @@
+--- a/shipreadyv2/customer_runner.py
++++ b/shipreadyv2/customer_runner.py
+@@ -950,6 +950,9 @@ def safe_read_text(path):
+         with open(path, "r", encoding="utf-8", errors="replace") as f:
+             return f.read()
++    except (PermissionError, OSError) as e:
++        logger.warning(f"Unable to read file {path}: {e}")
++        return ""
