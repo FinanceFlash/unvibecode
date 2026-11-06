@@ -1,0 +1,6 @@
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -2420,6 +2420,8 @@ def build(self):
+             if file_size == 0 or is_whitespace_only(content):
++                self.manifest["skipped_files"].append({"path": rel_path, "reason": "zero_byte_or_empty"})
+                 continue
