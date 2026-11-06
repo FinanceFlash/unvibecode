@@ -1,0 +1,6 @@
+--- a/shipreadyv2/engine_sources/04_shipreadyv2_business_path_compiler.py
++++ b/shipreadyv2/engine_sources/04_shipreadyv2_business_path_compiler.py
+@@ -1140,6 +1140,8 @@ def normalize_group(group):
+-        t["resource"] = resources[0]
++        matched = match_resource_for_transition(t, resources)
++        t["resource"] = matched if matched else resources[0]
