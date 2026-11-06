@@ -1,0 +1,10 @@
+--- a/shipreadyv2/cli.py
++++ b/shipreadyv2/cli.py
+@@ -64,7 +64,13 @@ def _ensure_native_dependencies():
+-from . import assets_native
++try:
++    from . import assets_native
++except (ImportError, ModuleNotFoundError):
++    import warnings
++    warnings.warn("assets_native extension not available for this platform; falling back to pure Python implementation.")
++    assets_native = None
