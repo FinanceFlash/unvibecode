@@ -1,0 +1,5 @@
+--- a/shipreadyv2/customer_runner.py
++++ b/shipreadyv2/customer_runner.py
+@@ -1890,6 +1890,7 @@ def _publish_results(run_dir, output_dir, project_name):
+     root_dashboard = output_dir / f"{project_name}-unvibecode-full.html"
++    shutil.copyfile(root_dashboard, output_dir / "00_unvibecode_results.html")
