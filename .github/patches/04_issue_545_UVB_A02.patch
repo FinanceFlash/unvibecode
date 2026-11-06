@@ -1,0 +1,7 @@
+--- a/shipreadyv2/customer_runner.py
++++ b/shipreadyv2/customer_runner.py
+@@ -980,6 +980,12 @@ def walk_source_tree(workspace_root):
++    gitignore_patterns = load_gitignore_patterns(workspace_root)
++    for root, dirs, files in os.walk(workspace_root):
++        dirs[:] = [d for d in dirs if not matches_gitignore(os.path.join(root, d), gitignore_patterns)]
++        files = [f for f in files if not matches_gitignore(os.path.join(root, f), gitignore_patterns)]
