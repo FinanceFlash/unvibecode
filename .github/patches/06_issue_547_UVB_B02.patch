@@ -1,0 +1,6 @@
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -1560,6 +1560,11 @@ def _build_go_catalog(entities):
+     for e in entities:
+         if e["kind"] in ("type", "struct", "interface"):
+             package_types[e["package"]].add(e["name"])
