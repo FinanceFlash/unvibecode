@@ -1,0 +1,7 @@
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -120,6 +120,6 @@
+-DIRECT_CONTEXT_TARGET_TOKENS = 35000
++DIRECT_CONTEXT_TARGET_TOKENS = 45000
+-EXTENDED_CONTEXT_TARGET_TOKENS = 60000
++EXTENDED_CONTEXT_TARGET_TOKENS = 75000
