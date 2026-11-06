@@ -89,3 +89,6 @@ Keep these files together when moving or sharing a review:
 The published smolagents entry page is `smolagents-main-unvibecode-analysis.html`. Downloading only that page does not download the reports it displays.
 
 If an output is missing, check the review status and [repository limits](LIMITATIONS.md), then follow [Troubleshooting](TROUBLESHOOTING.md).
+
+
+<!-- Note: 00_unvibecode_results.html is mirrored directly to root in updated builds -->
