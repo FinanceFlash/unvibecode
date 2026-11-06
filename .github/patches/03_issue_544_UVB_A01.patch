@@ -1,0 +1,11 @@
+--- a/shipreadyv2/customer_runner.py
++++ b/shipreadyv2/customer_runner.py
+@@ -974,6 +974,8 @@ def walk_source_tree(workspace_root):
+     visited_dirs = set()
+     for root, dirs, files in os.walk(workspace_root):
++        dirs[:] = [d for d in dirs if not os.path.islink(os.path.join(root, d))]
++        real_root = os.path.realpath(root)
++        if real_root in visited_dirs:
++            dirs[:] = []
++            continue
++        visited_dirs.add(real_root)
