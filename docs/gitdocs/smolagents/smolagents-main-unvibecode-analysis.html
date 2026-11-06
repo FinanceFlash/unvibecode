@@ -203,5 +203,16 @@ body:has(.workspace)>main{width:100%;max-width:1600px;flex:1;min-height:0;paddin
   selectIndex(initialIndex >= 0 ? initialIndex : 0);
 })();
 </script>
-<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script></body>
+<script>if(window.self!==window.top)document.documentElement.classList.add("uvc-embedded");</script>
+    <script>
+    window.addEventListener("DOMContentLoaded", function() {
+        var hash = window.location.hash.replace("#", "");
+        if (hash) {
+            var tab = document.querySelector('[data-view-id="' + hash + '"]');
+            if (tab) tab.click();
+        }
+    });
+    </script>
+
+</body>
 </html>

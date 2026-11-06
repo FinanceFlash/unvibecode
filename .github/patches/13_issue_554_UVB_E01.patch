@@ -1,0 +1,12 @@
+--- a/docs/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html
++++ b/docs/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html
+@@ -142,6 +142,12 @@
++    <script>
++    window.addEventListener("DOMContentLoaded", function() {
++        var hash = window.location.hash.replace("#", "");
++        if (hash) {
++            var tab = document.querySelector('[data-view-id="' + hash + '"]');
++            if (tab) tab.click();
++        }
++    });
++    </script>
