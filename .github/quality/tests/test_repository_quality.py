@@ -109,8 +109,15 @@ def test_github_automation_files_are_in_discoverable_locations():
 @pytest.mark.parametrize("markdown_file", sorted(ROOT.rglob("*.md")))
 def test_markdown_has_no_common_encoding_corruption(markdown_file):
     content = markdown_file.read_text(encoding="utf-8")
-    corrupt_markers = ("â”", "Ã", "�")
-    assert not any(marker in content for marker in corrupt_markers)
+    corrupt_markers = (
+        "\u00e2\u201d",
+        "\u00c3",
+        "\ufffd",
+        "\u00e2\u20ac\u201d",  # UTF-8 em dash decoded as Windows-1252.
+        "\u00e2\u20ac\u2122",  # UTF-8 right apostrophe decoded as Windows-1252.
+    )
+    found = [marker for marker in corrupt_markers if marker in content]
+    assert not found, f"{markdown_file}: common encoding-corruption markers {found!r}"
 
 
 @pytest.mark.parametrize("markdown_file", sorted(ROOT.rglob("*.md")))
