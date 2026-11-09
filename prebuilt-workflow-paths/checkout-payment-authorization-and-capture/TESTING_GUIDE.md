@@ -181,6 +181,7 @@ Check authoritative records, financial or inventory changes, permissions, extern
 **Must not happen:** Timeout is treated as decline and immediately retried
 
 **Best test levels:** Provider contract and integration.
+**Example test:** Stub the provider so the authorization request receives no reliable outcome. Verify that the payment attempt remains in an uncertain or pending state and that no second authorization is sent until provider status or reconciliation resolves the outcome.
 
 ## 16. Capture succeeds but response is lost
 
