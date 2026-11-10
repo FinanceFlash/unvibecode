@@ -146,6 +146,21 @@ Check authoritative records, financial or inventory changes, permissions, extern
 
 **Best test levels:** Security and integration.
 
+**Example API Test (Python/pytest):**
+```python
+def test_idempotency_rejects_changed_payload(api_client):
+    # Given: An attempt successfully processed with key K and amount 100
+    idempotency_key = "req_8f7b2c9a"
+    res1 = api_client.post("/charge", json={"amount": 100}, headers={"Idempotency-Key": idempotency_key})
+    assert res1.status_code == 200
+
+    # When: A new request arrives with the same key K but amount 500
+    res2 = api_client.post("/charge", json={"amount": 500}, headers={"Idempotency-Key": idempotency_key})
+
+    # Expect: The request is safely rejected to prevent the old key from authorizing a different payment
+    assert res2.status_code == 409
+    assert "idempotency_mismatch" in res2.json()["error"]["code"]
+```
 ## 13. Payment attempts are flooded
 
 **Given:** One source makes repeated payment or card-verification attempts
