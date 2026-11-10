@@ -1,0 +1,90 @@
+diff --git a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+index e2d8de3..f8e780c 100644
+--- a/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
++++ b/shipreadyv2/engine_sources/00a_shipreadyv2_fast_lane_v11_api_context_bundle.py
+@@ -3994,14 +3994,32 @@ class LinkerResolutionModule:
+             # global definition, but record that it was not found in the imported
+             # module itself.
+             if len(candidate_paths) == 1:
+-                return {
+-                    "symbol": symbol,
+-                    "resolved_path": candidate_paths[0],
+-                    "confidence": "medium",
+-                    "strategy": "unique_symbol_via_resolved_module",
+-                    "reason": None,
+-                    "candidates": [],
+-                }
++                candidate = candidate_paths[0]
++                cand_suffix = Path(candidate).suffix.lower()
++                exist_suffix = Path(existing_path).suffix.lower()
++                js_family = {".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"}
++                python_family = {".py", ".pyw"}
++                same_family = (
++                    cand_suffix == exist_suffix
++                    or (cand_suffix in js_family and exist_suffix in js_family)
++                    or (cand_suffix in python_family and exist_suffix in python_family)
++                )
++                if same_family:
++                    existing_node = self._node_by_file.get(existing_path, {})
++                    imports_from_candidate = any(
++                        imp.get("resolved_file") == candidate
++                        for imp in (existing_node.get("imports", []) or [])
++                    )
++                    if imports_from_candidate:
++                        return {
++                            "symbol": symbol,
++                            "resolved_path": candidate,
++                            "confidence": "medium",
++                            "strategy": "unique_symbol_via_resolved_module",
++                            "reason": None,
++                            "candidates": [],
++                        }
++                return self._unresolved_symbol(symbol, "reexport_target_unverified", candidate_paths)
+ 
+         if len(candidate_paths) == 1:
+             candidate = candidate_paths[0]
+diff --git a/shipreadyv2/engine_sources/01_shipreadyv2_merged_graph_pipeline_5chunks.py b/shipreadyv2/engine_sources/01_shipreadyv2_merged_graph_pipeline_5chunks.py
+index 51358f5..fa6b637 100644
+--- a/shipreadyv2/engine_sources/01_shipreadyv2_merged_graph_pipeline_5chunks.py
++++ b/shipreadyv2/engine_sources/01_shipreadyv2_merged_graph_pipeline_5chunks.py
+@@ -3951,14 +3951,32 @@ class LinkerResolutionModule:
+             # global definition, but record that it was not found in the imported
+             # module itself.
+             if len(candidate_paths) == 1:
+-                return {
+-                    "symbol": symbol,
+-                    "resolved_path": candidate_paths[0],
+-                    "confidence": "medium",
+-                    "strategy": "unique_symbol_via_resolved_module",
+-                    "reason": None,
+-                    "candidates": [],
+-                }
++                candidate = candidate_paths[0]
++                cand_suffix = Path(candidate).suffix.lower()
++                exist_suffix = Path(existing_path).suffix.lower()
++                js_family = {".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"}
++                python_family = {".py", ".pyw"}
++                same_family = (
++                    cand_suffix == exist_suffix
++                    or (cand_suffix in js_family and exist_suffix in js_family)
++                    or (cand_suffix in python_family and exist_suffix in python_family)
++                )
++                if same_family:
++                    existing_node = self._node_by_file.get(existing_path, {})
++                    imports_from_candidate = any(
++                        imp.get("resolved_file") == candidate
++                        for imp in (existing_node.get("imports", []) or [])
++                    )
++                    if imports_from_candidate:
++                        return {
++                            "symbol": symbol,
++                            "resolved_path": candidate,
++                            "confidence": "medium",
++                            "strategy": "unique_symbol_via_resolved_module",
++                            "reason": None,
++                            "candidates": [],
++                        }
++                return self._unresolved_symbol(symbol, "reexport_target_unverified", candidate_paths)
+ 
+         if len(candidate_paths) == 1:
+             candidate = candidate_paths[0]
