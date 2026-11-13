@@ -1,0 +1,18 @@
+diff --git a/unvibecode/cli.py b/unvibecode/cli.py
+index fbaf815..d1ac771 100644
+--- a/unvibecode/cli.py
++++ b/unvibecode/cli.py
+@@ -78,6 +78,13 @@ def main(argv=None):
+         else:
+             job = args.job_id
+         if not re.fullmatch(r'[0-9a-f]{32}', job): raise ValueError('Invalid job ID')
++        if args.command == 'review':
++            print(f'Job started: {job} - resume with: unvibecode resume {job}', flush=True)
++            try:
++                output.mkdir(parents=True, exist_ok=True)
++                (output / '.unvibecode-job').write_text(job + '\n')
++            except OSError as exc:
++                print(f'Warning: could not save the job id to {output}/.unvibecode-job ({exc}); note the job id printed above.', flush=True)
+         cursor = 0
+         final_events = []
+         interim_downloaded = False
