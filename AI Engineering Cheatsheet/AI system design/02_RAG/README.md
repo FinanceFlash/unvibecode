@@ -79,7 +79,7 @@ The point is not to add every retrieval mechanism. It is to choose the **smalles
 
 ## What stays in the skill folder
 
-The existing [UnvibeCode RAG Review skill](../../../skills/unvibecode-rag-review/README.md) remains the implementation/review pack.
+The existing [UnvibeCode RAG Review skill](https://github.com/FinanceFlash/ai-systems-in-production/blob/main/skills/unvibecode-rag-review/README.md) remains the implementation/review pack.
 
 It contains:
 

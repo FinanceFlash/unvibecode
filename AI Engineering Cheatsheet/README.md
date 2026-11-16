@@ -6,7 +6,7 @@ Use each series before implementation to surface unclear requirements, missing b
 
 ## Available guides and series
 
-### [Smart Questions Before You Build](./smart_questions_before_you_build/)
+### [Smart Questions Before You Build](https://github.com/FinanceFlash/ai-systems-in-production/tree/main/smart_questions_before_you_build)
 
 Eleven focused guides covering:
 

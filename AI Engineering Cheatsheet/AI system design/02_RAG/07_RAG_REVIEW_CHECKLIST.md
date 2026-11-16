@@ -4,7 +4,7 @@ This checklist is carried forward from the existing UnvibeCode RAG review skill 
 
 The source skill remains unchanged and is the canonical runnable review pack:
 
-[skills/unvibecode-rag-review](../../../skills/unvibecode-rag-review/README.md)
+[skills/unvibecode-rag-review](https://github.com/FinanceFlash/ai-systems-in-production/blob/main/skills/unvibecode-rag-review/README.md)
 
 ---
 

@@ -224,7 +224,7 @@ The verification guide includes stable checklist IDs, evidence requirements, and
 
 The folder:
 
-[Pre-configured guardrail programs](../../../skills/unvibecode_gaurdrails_implemenataion_pack/Pre-configured_gaurdrails_programs/)
+[Pre-configured guardrail programs](https://github.com/FinanceFlash/ai-systems-in-production/tree/main/skills/unvibecode_gaurdrails_implemenataion_pack/Pre-configured_gaurdrails_programs/)
 
 contains working examples and starter configurations for common controls:
 

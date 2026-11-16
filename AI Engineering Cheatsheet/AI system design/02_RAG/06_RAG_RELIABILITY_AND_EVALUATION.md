@@ -131,4 +131,4 @@ Maintain:
 
 This prevents rare adversarial cases from being mistaken for normal prevalence while still ensuring serious failures remain visible.
 
-The existing [RAG Review skill](../../../skills/unvibecode-rag-review/README.md) contains runnable review guidance and a synthetic regression example.
+The existing [RAG Review skill](https://github.com/FinanceFlash/ai-systems-in-production/blob/main/skills/unvibecode-rag-review/README.md) contains runnable review guidance and a synthetic regression example.

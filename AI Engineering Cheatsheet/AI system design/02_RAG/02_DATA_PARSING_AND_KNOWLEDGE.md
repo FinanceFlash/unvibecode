@@ -18,7 +18,7 @@ Do not choose one parser for every document.
 | Code | AST / symbol-aware parser |
 | Database | Keep structured; do not convert to chunks |
 
-The existing [RAG practical guide](../../../skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md) includes concrete parser guidance and a hybrid parser approach.
+The existing [RAG practical guide](https://github.com/FinanceFlash/ai-systems-in-production/blob/main/skills/unvibecode-rag-review/references/RAG_PRACTICAL_GUIDE.md) includes concrete parser guidance and a hybrid parser approach.
 
 ## 2. Preserve structure that changes meaning
 

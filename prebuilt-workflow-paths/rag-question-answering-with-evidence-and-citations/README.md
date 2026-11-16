@@ -28,5 +28,5 @@ The five `*_SKILL.md` files are self-contained.
 
 ## Companion RAG review resources
 
-The [UnvibeCode RAG review skill and practical examples](../../skills/unvibecode-rag-review/README.md) cover parser selection, hybrid parsing, deterministic retrieval, connected evidence, metadata, DB numbers, Python calculations, and RAGChecker. These companion resources include ingestion and evaluation guidance beyond this workflow pack's boundary.
+The [UnvibeCode RAG review skill and practical examples](https://github.com/FinanceFlash/ai-systems-in-production/blob/main/skills/unvibecode-rag-review/README.md) cover parser selection, hybrid parsing, deterministic retrieval, connected evidence, metadata, DB numbers, Python calculations, and RAGChecker. These companion resources include ingestion and evaluation guidance beyond this workflow pack's boundary.
 
