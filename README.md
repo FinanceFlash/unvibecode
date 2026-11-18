@@ -4,7 +4,6 @@
 
 ## Reverse engineer a complex codebase into business workflows, connected code, edge cases, and evidence-backed risks.
 
-**⭐ Hit Star to help increase UnvibeCode's visibility among developers.**
 
 *Unvibe complex code. Trace what the business actually does*
 
