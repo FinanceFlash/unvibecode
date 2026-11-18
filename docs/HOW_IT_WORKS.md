@@ -2,15 +2,19 @@
 
 UnvibeCode connects the business behaviour of a repository to the files and functions that implement it. Use the reports to understand what the product does, follow its implementation, and investigate the consequences of a change.
 
-## 1. Map the repository locally
+## 1. Upload and map the repository
 
-UnvibeCode reads supported source files and maps files, symbols, imports, calls and their static relationships. It divides source code into ordered sections and prepares connected context for analysis.
+The Python package uploads eligible source files to the hosted service, which reads supported source files and maps files, symbols, imports, calls and their static relationships. It divides source code into ordered sections and prepares connected context for analysis.
 
 These relationships help you follow an implementation across files. They describe source-code connections, not a recording of a live application run.
 
 ## 2. Reconstruct business workflows
 
-Structured code context is sent to the hosted UnvibeCode service for workflow and risk analysis. Repository scanning, graph construction and context preparation run locally. No customer OpenAI API key or activation key is required.
+Repository mapping, context preparation, workflow analysis and risk analysis run on the hosted service. Hosted AI analysis uses our OpenAI API credentials. We will introduce bring-your-own-key support shortly, so you can use your own API credentials. No activation key is required.
+
+For local graph-only use, fork this repository and run `src/unvibecode_graph/` without an API key or source upload.
+
+We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
 
 The workflow review connects entry points, decisions, state changes, external effects and outcomes. A workflow can span several files and functions.
 

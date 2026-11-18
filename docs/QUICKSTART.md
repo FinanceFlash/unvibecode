@@ -1,6 +1,8 @@
 # UnvibeCode Quick Start
 
-UnvibeCode reviews a repository from the command line and saves customer-ready results locally.
+The UnvibeCode Python package uploads eligible source files for hosted analysis and downloads the results to your computer. Hosted AI analysis uses our OpenAI API credentials. We will introduce bring-your-own-key support shortly, so you can use your own API credentials.
+
+For a local-only Connected Code Map, fork the repository and use the graph source in `src/unvibecode_graph/`. No API key or source upload is needed for the local graph.
 
 ## Requirements
 
@@ -41,10 +43,14 @@ python3 -m unvibecode review --repository "/path/to/repository"
 UnvibeCode displays live progress in the terminal. Completed HTML reports open automatically and all customer files are saved under:
 
 ```text
-./shipready_results/analysis_<timestamp>/customer_results/
+./unvibecode_results/
 ```
 
-No activation key, customer OpenAI key, or `.env` file is required.
+No activation key, customer OpenAI key, or `.env` file is required. Use `--output` to choose a different results folder.
+
+We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
+
+Full workflow and risk analysis supports up to approximately two million estimated source tokens. Larger repositories receive graph and context outputs only, subject to [upload limits](LIMITATIONS.md).
 
 ## Continue reading
 

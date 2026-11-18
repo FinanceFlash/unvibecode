@@ -30,6 +30,15 @@ Reading files one by one does not show the complete business workflow. Pasting a
 
 ## Try UnvibeCode
 
+Choose how to run UnvibeCode:
+
+- **Local graph:** fork this repository and run the graph source in `src/unvibecode_graph/` locally, without an API key or uploading your code.
+- **Full analysis:** install the Python package using the commands below. It uploads eligible source files to our hosted service and downloads the results.
+
+Hosted AI analysis uses our OpenAI API credentials. We will introduce bring-your-own-key support shortly, so you can use your own API credentials.
+
+Full workflow and risk analysis supports up to approximately **two million estimated source tokens**. Larger repositories receive the Connected Code Map and repository context only, subject to upload limits.
+
 Requires Python 3.11 or newer.
 
 ### Windows
@@ -194,10 +203,11 @@ Connected-code mapping and context preparation recognize:
 Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details, and [Go parsing and connected graphs](docs/GO_SUPPORT.md) for how Go packages, files, and call edges are resolved.
 
 ---
-## Privacy 
-UnvibeCode uses lightweight safeguards to reduce accidental credential sharing and keep AI requests focused on supported analysis tasks.
-Before the official UnvibeCode client sends code for AI analysis, it looks for recognizable credentials—such as API keys, passwords, access tokens and private keys—and replaces detected values with placeholders.
-Deeply encoded or custom secret format files could be skipped by the safeguards 
+## Privacy
+
+We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
+
+The Python package excludes common credential files before upload; it does not redact secrets embedded in source files. Review sensitive content before submitting it. See [Data Processing and Privacy](docs/DATA_PROCESSING.md).
 
 ## Documentation
 
@@ -236,11 +246,7 @@ Please do not disclose security vulnerabilities in public GitHub issues.
 
 ## License
 
-**UnvibeCode uses a mixed licensing model.** Materials published under [Apache License 2.0](LICENSE) retain that license, including commercial-use and redistribution rights. The official Python package may also contain separately licensed, proprietary business-domain definitions, workflow archetypes, and analysis assets.
-
-**Commercial use of the official package is permitted** for internal business activities, subject to the restrictions on extraction and separate redistribution of proprietary assets.
-
-Read the [Licensing Clarification](docs/LICENSE_CLARIFICATION.md) for the specific scope, permissions, restrictions, and package-metadata explanation.
+The public graph code and UnvibeCode Python package are licensed under [Apache-2.0](LICENSE). The hosted analysis service is proprietary and is not included in this repository. See the [licensing summary](docs/LICENSE_CLARIFICATION.md).
 
 ---
 
