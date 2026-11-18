@@ -161,4 +161,4 @@ Use **Ctrl+F / Cmd+F** and search for your name or credential ID.
 
 [**Understand a complex codebase with UnvibeCode**](https://github.com/FinanceFlash/unvibecode) — trace business workflows, business logic, connected code, entry points, edge cases, and evidence-backed risks.
 
-[**AI Engineering Cheatsheet**](https://github.com/FinanceFlash/unvibecode/tree/main/AI%20Engineering%20Cheatsheet) — practical guides for AI Agents, LLMs, RAG, reliability, observability, production failures, and AI deployment.
+[**AI Engineering Cheatsheet**](https://github.com/FinanceFlash/ai-systems-in-production) — practical guides for AI Agents, LLMs, RAG, reliability, observability, production failures, and AI deployment.
