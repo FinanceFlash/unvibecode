@@ -1,5 +1,7 @@
 # Understanding UnvibeCode Outputs
 
+The Python package downloads reports produced by the hosted service. Full analysis provides the four outputs below; above approximately two million estimated source tokens, only graph and context outputs are produced, subject to upload limits. The standalone local graph does not perform business workflow or risk analysis.
+
 Open `00_unvibecode_results.html` in your results folder. Start with **Business Workflows**, then explore **Connected Code**, **Risk Findings** and **LLM Context**.
 
 [Explore the complete smolagents sample report](https://financeflash.github.io/unvibecode/gitdocs/smolagents/smolagents-main-unvibecode-analysis.html#business-workflows): **30 workflows across 15 areas**, with supporting code and downloadable context.
@@ -77,7 +79,7 @@ Use Connected Code for a focused download. Use the complete ZIP for broader repo
 
 ## Keep the report files together
 
-Results are saved under `shipready_results/analysis_<timestamp>/customer_results/` as described in the [quick start](QUICKSTART.md). Open the entry file in that folder.
+Results are saved under `unvibecode_results/` as described in the [quick start](QUICKSTART.md). Open the entry file in that folder.
 
 Keep these files together when moving or sharing a review:
 

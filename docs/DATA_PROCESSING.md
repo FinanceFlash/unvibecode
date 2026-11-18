@@ -1,35 +1,21 @@
 # Data Processing and Privacy
 
-This document explains the product-level data flow. It is not a substitute for contractual privacy or security terms.
+## Local graph
 
-## Processing performed locally
+Fork this repository to run the graph source in `src/unvibecode_graph/` locally. This mode does not upload your source code or require an API key.
 
-The installed Python package performs the following operations on the customer's computer:
+## Hosted analysis through the Python package
 
-- Repository scanning
-- File and language detection
-- Dependency and symbol mapping
-- Connected graph construction
-- Code chunk preparation
-- Context-package assembly
-- HTML and ZIP rendering
+The Python package selects eligible source files, uploads them to our hosted service over HTTPS, and downloads the reports. Repository mapping, context preparation, workflow analysis and risk analysis run on the server. Code context is sent to OpenAI for AI analysis.
 
-## Processing performed through the hosted service
+Hosted AI analysis uses our OpenAI API credentials. We will introduce bring-your-own-key support shortly, so you can use your own API credentials.
 
-Structured code context required for business workflow and risk analysis is securely sent to the hosted UnvibeCode service.
+## Data retention
 
-Customers do not provide an OpenAI API key. Model-provider credentials remain on the hosted service.
-# Privacy Safegaurds 
-UnvibeCode uses lightweight safeguards to reduce accidental credential sharing and keep AI requests focused on supported analysis tasks. Before the official UnvibeCode client sends code for AI analysis, it looks for recognizable credentials—such as API keys, passwords, access tokens and private keys—and replaces detected values with placeholders. Deeply encoded or custom secret format files could be skipped by the safeguards
+We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
 
-## Customer responsibilities
+## Before uploading
 
-- Review only repositories you are authorized to process.
-- Do not include secrets, credentials, private keys, or regulated data that is unnecessary for the review.
-- Remove generated files or local configuration containing sensitive values before analysis.
-- Follow your organization's source-code and third-party-processing policies.
+The package excludes common credential files, private-key files and generated directories. It does not redact secrets embedded in source files. Use `python -m unvibecode review --repository "/path/to/repository" --dry-run` to list the files selected for upload.
 
-## Operational metadata
-
-Before using UnvibeCode for highly sensitive or regulated repositories, obtain any organizational approvals required for hosted code analysis.
-
+Review only repositories you are authorized to process. Remove sensitive information and follow your organization's third-party-processing policies.

@@ -22,7 +22,9 @@ Keep proprietary repositories, credentials, customer data, generated customer re
 
 ## Local quality setup
 
-This public repository currently contains documentation, workflow packs, and their validation tests. Create and activate a Python 3.11-or-newer virtual environment from the repository root:
+The public graph source is in `src/unvibecode_graph/`. Contributions to the graph and documentation are welcome under Apache-2.0. The Python package connects to the proprietary hosted analysis service; the hosted engine is not part of this repository.
+
+For documentation and workflow-pack checks: Create and activate a Python 3.11-or-newer virtual environment from the repository root:
 
 ```bash
 python -m venv .venv
