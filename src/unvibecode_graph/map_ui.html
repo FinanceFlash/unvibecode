@@ -1,0 +1,147 @@
+
+<style>
+#shipready-context-download{display:none;position:fixed;z-index:1200;width:285px;padding:10px 11px;border:1px solid #cbd5e1;border-radius:12px;background:rgba(255,255,255,.98);box-shadow:0 8px 24px rgba(15,23,42,.22);font:12px Segoe UI,Arial,sans-serif;color:#0f172a}
+#shipready-context-download.visible{display:block}#shipready-context-download h2{margin:0 0 6px;font-size:12.5px}
+#shipready-context-download label{display:block;margin-bottom:3px;color:#475569;font-size:9.5px;font-weight:700}
+#shipready-context-size{width:100%;padding:7px 8px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#172033;font:11px Segoe UI,Arial,sans-serif}
+#shipready-file-details{margin-top:7px;padding:7px 8px;border-radius:8px;background:#f8fafc;border:1px solid #e2e8f0;color:#475569;line-height:1.35}
+#shipready-detail-action{display:block;font-size:9.5px}#shipready-detail-file{display:block;margin:2px 0;color:#172033;font-size:10.5px;font-weight:700;overflow-wrap:anywhere}#shipready-detail-meta{display:block;font-size:9.5px}
+#shipready-download-button{width:100%;margin-top:7px;padding:7px 8px;border:0;border-radius:8px;background:#4f46e5;color:white;font:700 10.5px Segoe UI,Arial,sans-serif;cursor:pointer}
+#shipready-context-legend{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px;color:#64748b;font-size:8.8px}#shipready-context-legend i{display:inline-block;width:7px;height:7px;margin-right:3px;border-radius:50%}
+@media(max-width:760px){#shipready-title{left:8px!important;right:8px!important;transform:none!important;width:auto!important;min-width:0!important}#shipready-context-download{width:260px}}
+</style>
+<style>
+#loadingBar{display:none!important}
+#uvc-graph-help{position:absolute;top:10px;left:12px;width:calc(100% - 340px);z-index:1100;font:12px/1.5 Arial,sans-serif;color:#35352e;background:#f7f6f2;padding:6px;box-sizing:border-box}
+#uvc-search-control{position:relative}
+#uvc-file-search{min-width:0;box-sizing:border-box;width:100%;height:32px;padding:5px 35px 5px 8px;font:inherit;border:1px solid #a8adb4;border-radius:3px;background:#fff}
+#uvc-file-toggle{position:absolute;right:1px;top:1px;bottom:1px;width:30px;padding:0;border:0;background:transparent;color:inherit;display:grid;place-items:center}
+#uvc-file-toggle::after{content:'';width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+#uvc-file-results{box-sizing:border-box}
+#uvc-graph-loader{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;background:#f7f6f2;color:#171714;text-align:center;font:13px/1.5 Arial,sans-serif}
+#uvc-graph-loader[hidden]{display:none!important}#uvc-graph-loader strong{display:block;font-size:17px;margin-bottom:6px}#uvc-graph-loader progress{display:block;width:220px;height:5px;margin:16px auto;accent-color:#171714}
+#uvc-map-tools{position:fixed;right:12px;top:12px;width:285px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;z-index:1250;color:#171714;font:12px/1.5 Arial,sans-serif}
+#uvc-map-tools{box-sizing:border-box;background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:12px}
+#shipready-title{left:12px!important;transform:none!important;width:calc(100vw - 345px)!important;box-sizing:border-box}
+#mynetwork{width:calc(100% - 315px)!important}
+#uvc-file-search:focus,#uvc-file-results:focus{outline:2px solid #0f766e;outline-offset:2px}
+@media(max-width:760px){#shipready-title{display:none}#uvc-map-tools{top:8px;width:235px}#mynetwork{width:100%!important}}
+#uvc-map-tools button{cursor:pointer}.uvc-file-symbol{display:inline-block;width:16px;height:10px;border:2px solid #35352e;vertical-align:middle;margin-right:5px}
+#uvc-map-tools #shipready-context-download{display:block;position:static;width:auto;padding:12px 0 0;border:0;border-radius:0;box-shadow:none;background:transparent;color:inherit}
+#uvc-map-tools #shipready-file-details{margin:0 0 10px;padding:0;border:0;background:transparent}
+#shipready-detail-action{margin-top:5px}#shipready-detail-action a{font-weight:700;text-decoration:underline}#uvc-context-close{float:right;background:transparent;border:1px solid #35352e}
+#uvc-map-actions{display:flex;gap:8px;margin-top:10px}#uvc-map-actions button{background:#f7f6f2;border:1px solid #35352e;padding:5px 8px}
+#shipready-download-button:disabled{opacity:.45;cursor:default}
+</style>
+<div id="uvc-graph-loader" role="status" aria-live="polite"><div><strong>Loading Connected Code Map</strong><span>Arranging files and their connections…</span><progress id="uvc-graph-progress" max="100" aria-label="Graph layout progress"></progress></div></div>
+<div id="uvc-graph-help"><span id="uvc-map-instruction">Hover over a rectangular file node to highlight its connected files and symbols.</span> Click to select.</div>
+<div id="uvc-map-tools"><label for="uvc-file-search">Explore files and connections</label>
+<div id="uvc-search-control"><input id="uvc-file-search" type="search" placeholder="Search file path" autocomplete="off" aria-controls="uvc-file-results"><button type="button" id="uvc-file-toggle" aria-label="Show file choices" aria-expanded="true" aria-controls="uvc-file-results"></button></div>
+<select id="uvc-file-results" size="3" aria-label="Indexed files" style="width:100%;margin:5px 0"></select>
+<div style="margin:7px 0">Solid: established · Dotted: uncertain</div>
+<div id="uvc-map-error" role="status"></div>
+<div id="shipready-context-download"><button type="button" id="uvc-context-close" aria-label="Clear selected file">×</button>
+  <div id="shipready-file-details" aria-live="polite"><span>Source file</span><strong id="shipready-detail-file">Hover over a file in the graph</strong><span id="shipready-detail-meta"></span><span id="shipready-detail-action">Click a file to keep its context selected.</span></div>
+  <label for="shipready-context-size">Download size</label>
+  <select id="shipready-context-size">
+    <option value="0">Narrow connection context</option>
+    <option value="1" selected>Optimal connection context</option>
+    <option value="2">Wider connection context</option>
+  </select>
+  <button id="shipready-download-button" type="button" disabled>Download connected code</button>
+  <div id="shipready-context-legend"><span><i style="background:#0f766e"></i>Selected</span><span><i style="background:#7c3aed"></i>Included</span><span><i style="background:#cbd5e1"></i>Outside</span></div>
+</div>
+<div id="uvc-map-actions"><button type="button" id="uvc-fit-all">Fit all</button><button type="button" id="uvc-clear-selection">Clear selection</button></div></div>
+<script src="@@STORE_NAME@@"></script>
+<script>
+(function(){
+  const store=window.SHIPREADY_CONTEXT_STORE,panel=document.getElementById('shipready-context-download'),sizeSelect=document.getElementById('shipready-context-size'),detailAction=document.getElementById('shipready-detail-action'),detailFile=document.getElementById('shipready-detail-file'),detailMeta=document.getElementById('shipready-detail-meta'),downloadButton=document.getElementById('shipready-download-button'),graphElement=document.getElementById('mynetwork'),touchMode=window.matchMedia&&window.matchMedia('(hover: none)').matches;
+  const presentation=@@PRESENTATION_JSON@@;
+  const loader=document.getElementById('uvc-graph-loader');
+  const errorBox=document.getElementById('uvc-map-error');
+  if(typeof network==='undefined'||!network||typeof nodes==='undefined'||typeof edges==='undefined'||typeof nodes.get!=='function'||typeof edges.get!=='function'){
+    loader.querySelector('strong').textContent='Connected Code Map could not load';
+    loader.querySelector('span').textContent='Reopen the report with its supporting files. If this continues, check the technical logs.';
+    loader.querySelector('progress').hidden=true;return;
+  }
+  const fileIds=presentation.file_ids||nodes.get().filter(n=>n.shape==='box').map(n=>String(n.id));
+  const fileSet=new Set(fileIds);
+  if(!fileIds.length){loader.querySelector('strong').textContent='No indexed files to display';loader.querySelector('span').textContent='';loader.querySelector('progress').hidden=true;return}
+  if(!store)errorBox.textContent='Context downloads could not load. Keep the report-support files beside this report and reopen it.';
+  const scopeName={'0':'narrow_connection_context','1':'optimal_connection_context','2':'wider_connection_context'},humanScope={'0':'Narrow connection context','1':'Optimal connection context','2':'Wider connection context'};
+  let activeFile=null,selectedSize='1',hideTimer=null,pinnedFile=null,initialView=null;
+  const baseNodes=new Map(nodes.get().map(item=>[String(item.id),{color:item.color,borderWidth:item.borderWidth,opacity:item.opacity}])),baseEdges=new Map(edges.get().map(item=>[String(item.id),{color:JSON.parse(JSON.stringify(network.body.edges[item.id].options.color)),width:item.width,dashes:item.dashes}]));
+  function safeName(value){return String(value).replace(/[^A-Za-z0-9._-]+/g,'_').replace(/^_+|_+$/g,'').slice(-100)||'source_file'}
+  function selectionFor(filePath){const file=store&&store.files&&store.files[filePath];return file&&file.scopes&&file.scopes[selectedSize]}
+  function restoreGraph(){nodes.update([...baseNodes].map(([id,value])=>({id:id,color:value.color,borderWidth:value.borderWidth,opacity:value.opacity===undefined?1:value.opacity})));edges.update([...baseEdges].map(([id,value])=>({id:id,color:value.color,width:value.width,dashes:value.dashes})))}
+  function updateFileDetails(filePath){
+    detailFile.textContent=filePath;
+    Array.from(sizeSelect.options).forEach(option=>{
+      const f=store&&store.files&&store.files[filePath],scope=f&&f.scopes&&f.scopes[option.value];
+      option.textContent=humanScope[option.value]+(scope&&Number.isFinite(scope.estimated_tokens)?' (~'+Number(scope.estimated_tokens).toLocaleString()+' tokens)':'');
+      option.disabled=!scope;
+    });
+    const selection=selectionFor(filePath);
+    if(!selection){detailMeta.textContent='';detailAction.textContent=store?'No downloadable context is available for this file.':'Context downloads could not load.';downloadButton.disabled=true;return}
+    const count=(selection.included_files||[]).length,tokens=Number(selection.estimated_tokens||0).toLocaleString();
+    detailAction.textContent=pinnedFile?'Selected in graph. Choose a context size, then download.':'Click the file to keep this context selected, or download below.';
+    detailMeta.textContent=count+' file'+(count===1?'':'s')+' · about '+tokens+' tokens';
+  }
+  function preview(filePath){
+    const selection=selectionFor(filePath);clearTimeout(hideTimer);activeFile=filePath;panel.classList.add('visible');updateFileDetails(filePath);downloadButton.disabled=!selection;if(!selection){restoreGraph();network.selectNodes([filePath]);return}
+    const includedFiles=new Set(selection.included_files||[]),highlightNodes=new Set(includedFiles);
+    nodes.get().forEach(node=>{if(node.symbol_target&&includedFiles.has(node.symbol_target))highlightNodes.add(String(node.id))});
+    nodes.update(nodes.get().map(item=>{const id=String(item.id),base=baseNodes.get(id)||{},isCenter=id===filePath,isIncluded=highlightNodes.has(id),originalColor=base.color||item.color||{};let color=originalColor,borderWidth=base.borderWidth||2,opacity=.22;if(isCenter){color=Object.assign({},originalColor,{border:'#0f766e'});borderWidth=5;opacity=1}else if(isIncluded){color=Object.assign({},originalColor,{border:'#7c3aed'});borderWidth=4;opacity=1}return{id:id,color:color,borderWidth:borderWidth,opacity:opacity}}));
+    edges.update(edges.get().map(item=>{const from=String(item.from),to=String(item.to),base=baseEdges.get(String(item.id))||{},active=highlightNodes.has(from)&&highlightNodes.has(to);return{id:item.id,color:active?'#7c3aed':'rgba(148,163,184,.14)',width:active?3:1,dashes:base.dashes}}));
+  }
+  function hidePanel(){panel.classList.remove('visible');activeFile=null;downloadButton.disabled=true;detailFile.textContent='Hover over a file in the graph';detailMeta.textContent='';detailAction.textContent='Click a file to keep its context selected.';restoreGraph()}
+  function scheduleHide(){clearTimeout(hideTimer)}
+  function contextPackage(filePath){const selection=selectionFor(filePath),selected=new Set(selection.chunk_ids||[]),code=(selection.chunk_ids||[]).map(id=>store.chunks[id]).filter(Boolean),links=(store.verified_cross_file_connections||[]).filter(row=>selected.has(row.source_chunk)&&selected.has(row.target_chunk));return{schema_version:'shipreadyv2.connected_code_context.v1',selected_file:filePath,context_scope:{size:selectedSize,name:humanScope[selectedSize],estimated_tokens:selection.estimated_tokens,maximum_tokens:selection.maximum_tokens,included_files:selection.included_files,connected_files_not_included:selection.connected_files_not_included,selected_file_sections_not_included:selection.selected_file_sections_not_included},instructions:['Use the ordered code chunks as one connected context.','Cite original filenames and line numbers.','Treat only verified_cross_file_connections as established links.','If required evidence is absent, identify the missing file or function.'],question:'[PASTE YOUR QUESTION HERE]',included_code_chunks:code,verified_cross_file_connections:links}}
+  function downloadFor(filePath){const selection=selectionFor(filePath);if(!selection)return;const payload=contextPackage(filePath),blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=safeName(filePath)+'_'+scopeName[selectedSize]+'_for_llm.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);updateFileDetails(filePath);detailAction.innerHTML='Downloaded '+humanScope[selectedSize].toLowerCase()+' · <a href="https://github.com/FinanceFlash/unvibecode" target="_blank" rel="noopener noreferrer">⭐ Star UnvibeCode</a>'}
+  panel.addEventListener('mouseenter',()=>clearTimeout(hideTimer));panel.addEventListener('mouseleave',scheduleHide);
+  sizeSelect.addEventListener('focus',()=>clearTimeout(hideTimer));sizeSelect.addEventListener('change',()=>{selectedSize=sizeSelect.value;if(activeFile)preview(activeFile)});downloadButton.addEventListener('click',()=>{if(activeFile)downloadFor(activeFile)});
+  network.on('hoverNode',params=>{const id=String(params.node);if(!pinnedFile&&fileSet.has(id))preview(id)});network.on('blurNode',scheduleHide);
+  network.on('click',params=>{if(!params.nodes||!params.nodes.length)return;const id=String(params.nodes[0]);if(!fileSet.has(id))return;pinnedFile=id;syncPicker(id);preview(id)});
+  function clearSelection(){pinnedFile=null;clearTimeout(hideTimer);hidePanel();network.unselectAll();search.value='';filterFiles();if(initialView)network.moveTo({position:initialView.position,scale:initialView.scale,animation:false});else network.fit({animation:false});network.redraw()}
+  document.getElementById('uvc-clear-selection').addEventListener('click',clearSelection);
+  document.getElementById('uvc-context-close').addEventListener('click',clearSelection);
+  document.getElementById('uvc-fit-all').addEventListener('click',()=>network.fit({animation:false}));
+  if(touchMode&&document.getElementById('uvc-map-instruction'))document.getElementById('uvc-map-instruction').textContent='Tap a rectangular file node to highlight its connected files and symbols.';
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')clearSelection()});
+  const search=document.getElementById('uvc-file-search'),results=document.getElementById('uvc-file-results');
+  const neighbors=new Map(fileIds.map(id=>[id,new Set()]));
+  edges.get().forEach(edge=>{const from=String(edge.from),to=String(edge.to),a=fileSet.has(from)?from:(nodes.get(from)||{}).symbol_target,b=fileSet.has(to)?to:(nodes.get(to)||{}).symbol_target;if(a&&b&&a!==b&&neighbors.has(a)&&neighbors.has(b)){neighbors.get(a).add(b);neighbors.get(b).add(a)}});
+  const orderedFiles=[...fileIds].sort((a,b)=>a.localeCompare(b));
+  const firstFile=orderedFiles.reduce((best,id)=>!best||neighbors.get(id).size>neighbors.get(best).size?id:best,null);
+  if(firstFile&&neighbors.get(firstFile).size>1){orderedFiles.splice(orderedFiles.indexOf(firstFile),1);orderedFiles.unshift(firstFile)}
+  const pickerToggle=document.getElementById('uvc-file-toggle');
+  pickerToggle.addEventListener('click',()=>{results.hidden=!results.hidden;pickerToggle.setAttribute('aria-expanded',String(!results.hidden));if(!results.hidden)filterFiles(true)});
+  function syncPicker(file){search.value=file;filterFiles(true);results.value=file}
+  function filterFiles(showAll=false){
+    const query=showAll?'':search.value.toLocaleLowerCase(),matches=orderedFiles.filter(file=>file.toLocaleLowerCase().includes(query));
+    const fragment=document.createDocumentFragment();
+    matches.forEach(file=>{const option=document.createElement('option');option.value=file;option.textContent=file;fragment.appendChild(option)});
+    results.replaceChildren(fragment);results.selectedIndex=-1;
+    if(pinnedFile&&matches.includes(pinnedFile))results.value=pinnedFile;
+  }
+  function chooseFile(){const file=results.value;if(!fileSet.has(file))return;pinnedFile=file;syncPicker(file);preview(file);network.selectNodes([file])}
+  search.addEventListener('input',()=>{results.hidden=false;pickerToggle.setAttribute('aria-expanded','true');filterFiles()});
+  search.addEventListener('keydown',event=>{if((event.key==='ArrowDown'||event.key==='Enter')&&results.options.length){event.preventDefault();results.selectedIndex=0;results.focus();chooseFile()}});
+  results.addEventListener('change',chooseFile);
+  results.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();chooseFile()}});
+  filterFiles();
+  function fitTools(){const bounds=graphElement.getBoundingClientRect(),tools=document.getElementById('uvc-map-tools');tools.style.top=Math.max(8,bounds.top+8)+'px';tools.style.maxHeight=Math.max(120,Math.min(bounds.bottom,window.innerHeight)-Math.max(8,bounds.top+8)-8)+'px'}
+  fitTools();window.addEventListener('resize',fitTools);
+  let visibilityTimer;
+  const resize=new ResizeObserver(()=>{clearTimeout(visibilityTimer);visibilityTimer=setTimeout(()=>{if(graphElement.clientWidth&&graphElement.clientHeight){fitTools();network.redraw();if(!activeFile){network.fit({animation:false});initialView={position:network.getViewPosition(),scale:network.getScale()}}}},50)});
+  resize.observe(graphElement);
+  let frozen=false;
+  function freezeLayout(){if(frozen)return;frozen=true;network.stopSimulation();const positions=network.getPositions();nodes.update(nodes.get().map(node=>({id:node.id,x:positions[node.id].x,y:positions[node.id].y,fixed:{x:true,y:true}})));network.setOptions({physics:{enabled:false},interaction:{dragNodes:false,dragView:true,zoomView:true,hover:true}});clearSelection();network.fit({animation:false});initialView={position:network.getViewPosition(),scale:network.getScale()};document.getElementById('uvc-graph-loader').hidden=true}
+  network.on('stabilizationProgress',event=>{if(event.total)document.getElementById('uvc-graph-progress').value=Math.round(100*event.iterations/event.total)});
+  network.once('stabilizationIterationsDone',freezeLayout);
+  network.once('stabilized',freezeLayout);
+  if(presentation.static_layout){requestAnimationFrame(freezeLayout)}
+  else{network.stabilize(250);setTimeout(freezeLayout,2500)}
+
+})();
+</script>

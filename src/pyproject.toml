@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unvibecode-graph"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Build a connected code map from a local repository"
+dependencies = ["pyvis==0.3.2", "tinycss2>=1.2", "tiktoken>=0.8", "tree-sitter-language-pack>=0.9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["unvibecode_graph"]
+
+[tool.setuptools.package-data]
+unvibecode_graph = ["map_ui.html"]
