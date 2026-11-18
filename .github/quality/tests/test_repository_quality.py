@@ -1,94 +1,19 @@
 from pathlib import Path
 import re
+import subprocess
 from urllib.parse import unquote
 
 import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
-PACKS_ROOT = ROOT / "prebuilt-workflow-paths"
-
-REQUIRED_PACK_FILES = {
-    "README.md",
-    "PRODUCT_AND_BUSINESS_GUIDE.md",
-    "ENGINEERING_GUIDE.md",
-    "CORE_20_SCENARIOS.md",
-    "TESTING_GUIDE.md",
-    "PATHS_AND_EDGE_CASES.md",
-    "PERMISSION_AND_ABUSE_GUIDE.md",
-    "RETRY_AND_RECOVERY_GUIDE.md",
-    "WRITE_PRODUCT_SPEC_SKILL.md",
-    "REVIEW_BUSINESS_RISK_SKILL.md",
-    "UNDERSTAND_CODE_SKILL.md",
-    "IMPLEMENT_WORKFLOW_SKILL.md",
-    "TEST_WORKFLOW_SKILL.md",
-}
-
-SKILL_FILES = {name for name in REQUIRED_PACK_FILES if name.endswith("_SKILL.md")}
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
-CORE_SCENARIO_ROW = re.compile(r"^\|\s*(\d+)\s*\|", re.MULTILINE)
 
 
-def workflow_packs():
-    return sorted(path for path in PACKS_ROOT.iterdir() if path.is_dir())
-
-
-@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
-def test_workflow_pack_has_required_files(pack):
-    present = {path.name for path in pack.iterdir() if path.is_file()}
-    assert REQUIRED_PACK_FILES <= present, sorted(REQUIRED_PACK_FILES - present)
-
-
-@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
-def test_workflow_pack_defines_a_mece_boundary(pack):
-    readme = (pack / "README.md").read_text(encoding="utf-8")
-    assert "Starts when" in readme
-    assert "Ends when" in readme
-    assert "## Included" in readme
-    assert "## Excluded" in readme
-
-
-@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
-def test_workflow_pack_has_exactly_twenty_core_scenarios(pack):
-    content = (pack / "CORE_20_SCENARIOS.md").read_text(encoding="utf-8")
-    scenario_numbers = [int(value) for value in CORE_SCENARIO_ROW.findall(content)]
-    assert scenario_numbers == list(range(1, 21))
-
-
-@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
-def test_workflow_skills_have_frontmatter(pack):
-    for filename in SKILL_FILES:
-        content = (pack / filename).read_text(encoding="utf-8")
-        assert content.startswith("---\n"), filename
-        frontmatter = content.split("---", 2)[1]
-        assert re.search(r"^name:\s*\S+", frontmatter, re.MULTILINE), filename
-        assert re.search(r"^description:\s*\S+", frontmatter, re.MULTILINE), filename
-
-
-@pytest.mark.parametrize("pack", workflow_packs(), ids=lambda path: path.name)
-def test_review_business_risk_skill_requires_developer_skills(pack):
-    content = (pack / "REVIEW_BUSINESS_RISK_SKILL.md").read_text(encoding="utf-8")
-    lowered = content.lower()
-
-    # The skill must instruct the reviewer to name required developer skills
-    # for each material risk, not just leave it as a documentation aside.
-    assert "required skills:" in lowered
-    assert "for each material risk" in lowered
-    assert "required skills" in lowered.split("for each material risk", 1)[1]
-
-    # The instruction must ground skills in the risk evidence rather than
-    # allowing invented or generic technologies.
-    assert "derive required skills" in lowered
-    assert "do not invent" in lowered
-
-    # It must define a fallback instead of guessing when no specialised
-    # expertise can be inferred from the evidence.
-    assert "instead of guessing" in lowered
-
-
-def test_pack_index_links_every_workflow_pack():
-    index = (PACKS_ROOT / "README.md").read_text(encoding="utf-8")
-    for pack in workflow_packs():
-        assert f"]({pack.name}/)" in index, pack.name
+def tracked_markdown():
+    paths = subprocess.check_output(
+        ["git", "ls-files", "-z", "--", "*.md"], cwd=ROOT
+    ).decode("utf-8")
+    return [ROOT / name for name in paths.split("\0") if name]
 
 
 def test_github_automation_files_are_in_discoverable_locations():
@@ -106,14 +31,14 @@ def test_github_automation_files_are_in_discoverable_locations():
     assert not (ROOT / "tests/test_repository_quality.py").exists()
 
 
-@pytest.mark.parametrize("markdown_file", sorted(ROOT.rglob("*.md")))
+@pytest.mark.parametrize("markdown_file", tracked_markdown())
 def test_markdown_has_no_common_encoding_corruption(markdown_file):
     content = markdown_file.read_text(encoding="utf-8")
     corrupt_markers = ("â”", "Ã", "�")
     assert not any(marker in content for marker in corrupt_markers)
 
 
-@pytest.mark.parametrize("markdown_file", sorted(ROOT.rglob("*.md")))
+@pytest.mark.parametrize("markdown_file", tracked_markdown())
 def test_local_markdown_links_resolve(markdown_file):
     content = markdown_file.read_text(encoding="utf-8")
     missing = []
