@@ -215,7 +215,6 @@ Contributions are welcome in documentation, testing, examples, and supported too
 
 - [Contribution Guidelines](.github/CONTRIBUTING.md)
 - [Good First Issues](https://github.com/FinanceFlash/unvibecode/labels/good%20first%20issue)
-- [Pre-built Workflow Packs](prebuilt-workflow-paths/README.md)
 
 ## Support and feedback
 
