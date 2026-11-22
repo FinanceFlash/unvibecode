@@ -31,10 +31,9 @@ Reading files one by one does not show the complete business workflow. Pasting a
 
 Choose how to run UnvibeCode:
 
-- **Local graph:** fork this repository and run the graph source in `src/unvibecode_graph/` locally, without an API key or uploading your code.
-- **Full analysis:** install the Python package using the commands below. It uploads eligible source files to our hosted service and downloads the results.
+- **Local graph:** fork this repository and run the graph source in `src/unvibecode_graph/` locally
+- **Full analysis:** install the Python package using the commands below. 
 
-Hosted AI analysis uses our OpenAI API credentials. We will introduce bring-your-own-key support shortly, so you can use your own API credentials.
 
 Full workflow and risk analysis supports up to approximately **two million estimated source tokens**. Larger repositories receive the Connected Code Map and repository context only, subject to upload limits.
 
@@ -243,9 +242,6 @@ report it privately using the link below.
 Include the affected version, steps to reproduce, and potential impact.
 Please do not disclose security vulnerabilities in public GitHub issues.
 
-## License
-
-The public graph code and UnvibeCode Python package are licensed under [Apache-2.0](LICENSE). The hosted analysis service is proprietary and is not included in this repository. See the [licensing summary](docs/LICENSE_CLARIFICATION.md).
 
 ---
 
