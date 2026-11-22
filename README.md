@@ -252,4 +252,4 @@ A special thanks to the developers who have helped strengthen UnvibeCode:
 
 We appreciate their thoughtful engineering contributions and their commitment to making UnvibeCode more reliable for developers.
 
-The UnvibeCode Python package is free to use under a proprietary End-User License Agreement (EULA).
+License: [EULA](LICENSE).

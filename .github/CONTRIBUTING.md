@@ -22,7 +22,7 @@ Keep proprietary repositories, credentials, customer data, generated customer re
 
 ## Local quality setup
 
-The public graph source is in `src/unvibecode_graph/`. Contributions to the graph and documentation are welcome under Apache-2.0. The Python package connects to the proprietary hosted analysis service; the hosted engine is not part of this repository.
+The public graph source is in `src/unvibecode_graph/`. Contributions to the graph and documentation are welcome. The Python package connects to the proprietary hosted analysis service; the hosted engine is not part of this repository.
 
 For documentation and workflow-pack checks: Create and activate a Python 3.11-or-newer virtual environment from the repository root:
 
@@ -141,4 +141,4 @@ For development checkouts that include analyzer or CLI source:
 
 A pull request must explain the problem, the chosen scope, the implemented change, verification performed, and any known limitation. Link the issue it addresses and include screenshots only when a rendered report or documentation layout changed.
 
-By contributing, you agree that your contribution is licensed under the repository's Apache License 2.0.
+By contributing, you agree that your contribution is licensed under the repository’s [EULA](../LICENSE).
