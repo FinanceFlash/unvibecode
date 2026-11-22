@@ -251,3 +251,5 @@ A special thanks to the developers who have helped strengthen UnvibeCode:
 - **[Abhay](https://github.com/SinghAstra)** — Improved Go language parsing and symbol resolution, strengthening the accuracy of connected-code analysis for Go repositories.
 
 We appreciate their thoughtful engineering contributions and their commitment to making UnvibeCode more reliable for developers.
+
+The UnvibeCode Python package is free to use under a proprietary End-User License Agreement (EULA).
