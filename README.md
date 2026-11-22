@@ -198,14 +198,14 @@ Connected-code mapping and context preparation recognize:
 | HTML and CSS | `.html`, `.htm`, `.css` |
 | Go | `.go` |
 
-Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details, and [Go parsing and connected graphs](docs/GO_SUPPORT.md) for how Go packages, files, and call edges are resolved.
+Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details.
 
 ---
 ## Privacy
 
 We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
 
-The Python package excludes common credential files before upload; it does not redact secrets embedded in source files. Review sensitive content before submitting it. See [Data Processing and Privacy](docs/DATA_PROCESSING.md).
+The Python package excludes common credential files before upload; it does not redact secrets embedded in source files. Review sensitive content before submitting it.
 
 ## Documentation
 
@@ -213,9 +213,7 @@ The Python package excludes common credential files before upload; it does not r
 - [Understanding the Four Outputs](docs/OUTPUTS.md)
 - [How UnvibeCode Works](docs/HOW_IT_WORKS.md)
 - [Limitations and Responsible Use](docs/LIMITATIONS.md)
-- [Data Processing and Privacy](docs/DATA_PROCESSING.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
-- [Public Repository Reviews](docs/PUBLIC_PREVIEW.md)
 
 ## Contributing
 

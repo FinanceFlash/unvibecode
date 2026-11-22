@@ -49,7 +49,7 @@ Point `--repository` at an existing local repository folder, not a GitHub URL or
 
 Workflow and risk analysis require internet access. Check your connection and whether your network permits HTTPS access to the hosted UnvibeCode service. Follow the terminal's error message; if an organizational restriction is involved, contact your network administrator.
 
-No activation key or customer OpenAI API key is required. See [Data processing and privacy](DATA_PROCESSING.md).
+No activation key or customer OpenAI API key is required.
 
 ## Only Connected Code and LLM Context are available
 

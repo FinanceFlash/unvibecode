@@ -20,8 +20,6 @@ The workflow review connects entry points, decisions, state changes, external ef
 
 The **Business Workflow Map** groups workflows by area. Each workflow explains what it does, its purpose, what it produces, who relies on it and why it matters, with supporting code you can inspect.
 
-See [Data processing and privacy](DATA_PROCESSING.md) for the processing boundary.
-
 ## 3. Review business risks against the code
 
 The risk review examines failures that can affect customers, permissions, data integrity, operations or other business outcomes. Accepted findings connect a trigger and the observed code behaviour to a business downside, supporting evidence, a proposed correction and an acceptance check.
