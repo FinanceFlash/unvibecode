@@ -26,6 +26,8 @@ python -m unvibecode review --repository "D:\path\to\repository"
 
 ## macOS or Linux
 
+On Debian/Ubuntu, install `python3-venv` if needed (`sudo apt update && sudo apt install python3-venv`).
+
 Create a virtual environment and install UnvibeCode in it:
 
 ```bash
@@ -34,10 +36,12 @@ source ~/.venvs/unvibecode/bin/activate
 python3 -m pip install --upgrade unvibecode
 ```
 
-Review a repository:
+Review a repository (reactivate the environment in each new terminal, or invoke its Python directly):
 
 ```bash
 python3 -m unvibecode review --repository "/path/to/repository"
+# Without activation:
+~/.venvs/unvibecode/bin/python -m unvibecode review --repository "/path/to/repository"
 ```
 
 ## What happens next
