@@ -21,6 +21,8 @@ Run these commands in your terminal, replacing the repository path:
 
 ```bash
 python3 --version
+python3 -m venv ~/.venvs/unvibecode
+source ~/.venvs/unvibecode/bin/activate
 python3 -m pip install --upgrade unvibecode
 python3 -m unvibecode --help
 python3 -m unvibecode review --repository "/path/to/repository"
@@ -36,6 +38,18 @@ Check which package that interpreter sees:
 - macOS or Linux: `python3 -m pip show unvibecode`
 
 If you are using a virtual environment, use its Python for both commands. Do not switch interpreters between installing and running.
+
+On macOS or Linux, the virtual environment from the install step is only active in the terminal where you ran `source ~/.venvs/unvibecode/bin/activate`. In a new terminal, run that line again first.
+
+## “externally-managed-environment” on macOS or Linux
+
+Homebrew Python and recent Debian and Ubuntu releases refuse system-wide `pip install` ([PEP 668](https://peps.python.org/pep-0668/)). On Debian/Ubuntu, install `python3-venv` first if it is missing (`sudo apt update && sudo apt install python3-venv`). Then install into a virtual environment:
+
+```bash
+python3 -m venv ~/.venvs/unvibecode
+source ~/.venvs/unvibecode/bin/activate
+python3 -m pip install --upgrade unvibecode
+```
 
 ## “py”, “python” or “python3” is not recognized
 
