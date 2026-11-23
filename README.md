@@ -209,11 +209,19 @@ Connected-code mapping and context preparation recognize:
 Analysis depth varies by language and repository structure. See [limitations](docs/LIMITATIONS.md) for details.
 
 ---
-## Privacy
+## Code Handling 
 
 We do not retain your uploaded source code or analysis results on our server after processing. Results are downloaded to your computer. OpenAI processes the AI requests under its own data policies.
 
-The Python package excludes common credential files before upload; it does not redact secrets embedded in source files. Review sensitive content before submitting it.
+UnvibeCode automatically screens selected source files for recognizable credentials and redacts detected sensitive values before uploading. Files containing credential material that cannot be safely sanitized are excluded.
+
+Preview the selected files and redaction summary without uploading:
+
+unvibecode review --repository "/path/to/repository" --dry-run
+The preview shows included, redacted, and excluded file counts, affected file paths, and exclusion reasons. It does not print source-code contents or detected secret values.
+
+Secret detection is best-effort and may not identify every credential. Review sensitive repositories and remove exposed credentials before uploading.
+
 
 ## Documentation
 
