@@ -26,9 +26,11 @@ python -m unvibecode review --repository "D:\path\to\repository"
 
 ## macOS or Linux
 
-Install UnvibeCode:
+Create a virtual environment and install UnvibeCode in it:
 
 ```bash
+python3 -m venv ~/.venvs/unvibecode
+source ~/.venvs/unvibecode/bin/activate
 python3 -m pip install --upgrade unvibecode
 ```
 

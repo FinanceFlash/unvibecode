@@ -39,6 +39,8 @@ Full workflow and risk analysis supports up to approximately **two million estim
 
 Requires Python 3.11 or newer.
 
+On macOS and Linux the commands below install into a virtual environment, because Homebrew Python and recent Debian and Ubuntu releases refuse system-wide `pip install` with `error: externally-managed-environment` ([PEP 668](https://peps.python.org/pep-0668/)). In a new terminal, run the `source` line again before `python3 -m unvibecode`.
+
 ### Windows
 
 ```powershell
@@ -58,6 +60,8 @@ py -m unvibecode review --repository "D:\Projects\customer-support-agent"
 
 ```bash
 python3 --version
+python3 -m venv ~/.venvs/unvibecode
+source ~/.venvs/unvibecode/bin/activate
 python3 -m pip install --upgrade unvibecode
 python3 -m unvibecode --help
 python3 -m unvibecode review --repository "/path/to/repository"
@@ -73,6 +77,8 @@ python3 -m unvibecode review --repository "/Users/yourname/Projects/customer-sup
 
 ```bash
 python3 --version
+python3 -m venv ~/.venvs/unvibecode
+source ~/.venvs/unvibecode/bin/activate
 python3 -m pip install --upgrade unvibecode
 python3 -m unvibecode --help
 python3 -m unvibecode review --repository "/path/to/repository"
