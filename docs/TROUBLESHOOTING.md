@@ -43,7 +43,7 @@ On macOS or Linux, the virtual environment from the install step is only active 
 
 ## “externally-managed-environment” on macOS or Linux
 
-Homebrew Python and recent Debian and Ubuntu releases refuse system-wide `pip install` ([PEP 668](https://peps.python.org/pep-0668/)). Install into a virtual environment instead:
+Homebrew Python and recent Debian and Ubuntu releases refuse system-wide `pip install` ([PEP 668](https://peps.python.org/pep-0668/)). On Debian/Ubuntu, install `python3-venv` first if it is missing (`sudo apt update && sudo apt install python3-venv`). Then install into a virtual environment:
 
 ```bash
 python3 -m venv ~/.venvs/unvibecode
