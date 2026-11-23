@@ -1,3 +1,13 @@
-UnvibeCode End-User License Agreement (EULA)
+UnvibeCode — License
 
-You may install and use UnvibeCode free of charge. 
+UnvibeCode Python Package (EULA)
+
+You may install and use the UnvibeCode Python package free of charge for personal, educational, research, and commercial purposes. Use of the Python package does not grant ownership of or redistribution rights to the proprietary UnvibeCode analysis engine.
+
+UnvibeCode Graph (MIT License)
+
+UnvibeCode Graph is open source under the MIT License. You may use, fork, modify, and redistribute the graph source code in accordance with the MIT License, including running graph analysis entirely on your local machine.
+
+Private Self-Hosted Deployment
+
+For organizations requiring a fully private, self-hosted deployment of the complete UnvibeCode analysis engine, please contact divya.singaravelu@iiml.org.
