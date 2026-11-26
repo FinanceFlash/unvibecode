@@ -35,7 +35,6 @@ def relationships(edges):
     )
 
 
-@pytest.mark.xfail(strict=True, reason="#498: Go calls become phantom file_import")
 @pytest.mark.parametrize("edge_type", ["calls_symbol", "method_call", "imports_symbol"])
 def test_go_symbol_edge_is_not_a_file_import(edge_type):
     edge = {"source": "a.go", "target": "b.go", "type": edge_type, "line": 3}

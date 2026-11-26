@@ -593,7 +593,8 @@ class ChunkGraphBuilder:
     def _file_import_edges(self) -> list[ChunkEdge]:
         edges: list[ChunkEdge] = []
         for edge in self.graph.get("edges", []) or []:
-            if not isinstance(edge, Mapping):
+            # Go call edges also sit in "edges"; _symbol_edges() already links them.
+            if not isinstance(edge, Mapping) or edge.get("type") != "imports":
                 continue
             source_file = _posix(edge.get("source"))
             target_file = _posix(edge.get("target"))
