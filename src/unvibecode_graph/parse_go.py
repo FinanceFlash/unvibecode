@@ -46,8 +46,22 @@ def go_receiver_type(node: Any, source_bytes: bytes) -> str | None:
     return None
 
 
+COLLECTION_TYPES = {"slice_type", "array_type", "map_type", "channel_type"}
+
+
+def go_is_collection(node: Any) -> bool:
+    if node is not None and node.type == "parameter_list":
+        parameters = [
+            child
+            for child in named_children(node)
+            if child.type in {"parameter_declaration", "variadic_parameter_declaration"}
+        ]
+        node = child_by_field_name(parameters[0], "type") if parameters else None
+    return node is not None and node.type in COLLECTION_TYPES
+
+
 def go_named_type(node: Any, source_bytes: bytes) -> str | None:
-    """Type node -> 'Name' or 'pkg.Name', looking through pointers, generics and parentheses."""
+    """Type node -> 'Name' or 'pkg.Name', looking through pointers, generics, parentheses and collections."""
     if node is None:
         return None
     if node.type == "type_identifier":
@@ -70,6 +84,11 @@ def go_named_type(node: Any, source_bytes: bytes) -> str | None:
         if inner is None:
             children = named_children(node)
             inner = children[0] if children else None
+        return go_named_type(inner, source_bytes)
+    if node.type in COLLECTION_TYPES:
+        inner = child_by_field_name(node, "element")
+        if inner is None:
+            inner = child_by_field_name(node, "value")
         return go_named_type(inner, source_bytes)
     if node.type == "parameter_list":
         parameters = [
@@ -192,11 +211,11 @@ class GoUsageCollector:
         left = child_by_field_name(node, "left")
         if left is None:
             return
-        for child in named_children(left):
-            if child.type == "identifier":
-                name = self._text(child)
-                if name and name != "_":
-                    env[name] = None
+        names = [self._text(child) for child in named_children(left) if child.type == "identifier"]
+        value_hint = self._element_hint(self._expression_type(right, env)) if len(names) > 1 else None
+        for index, name in enumerate(names):
+            if name and name != "_":
+                env[name] = value_hint if index == 1 else None
 
     def _type_switch(self, node: Any, env: Env) -> None:
         """switch v := x.(type): v is local, with an unknown type."""
@@ -320,10 +339,24 @@ class GoUsageCollector:
             return None
         if "." in name:
             qualifier, owner = name.split(".", 1)
-            if qualifier and owner:
-                return {"kind": "named", "name": owner, "qualifier": qualifier}
+            if not (qualifier and owner):
+                return None
+            hint = {"kind": "named", "name": owner, "qualifier": qualifier}
+        else:
+            hint = {"kind": "named", "name": name, "qualifier": None}
+        if go_is_collection(node):
+            hint["collection"] = True
+        return hint
+
+    @staticmethod
+    def _element_hint(hint: Hint) -> Hint:
+        if not hint:
             return None
-        return {"kind": "named", "name": name, "qualifier": None}
+        if hint.get("kind") == "call":
+            return {**hint, "element": True}
+        if hint.get("collection"):
+            return {key: value for key, value in hint.items() if key != "collection"}
+        return None
 
     def _parameter_types(self, parameter_list: Any) -> Env:
         bindings: Env = {}
@@ -333,6 +366,8 @@ class GoUsageCollector:
             if parameter.type not in {"parameter_declaration", "variadic_parameter_declaration"}:
                 continue
             hint = self._type_hint(child_by_field_name(parameter, "type"))
+            if hint and parameter.type == "variadic_parameter_declaration":
+                hint = {**hint, "collection": True}
             for child in parameter.children:
                 if child.type == "identifier":
                     name = self._text(child)

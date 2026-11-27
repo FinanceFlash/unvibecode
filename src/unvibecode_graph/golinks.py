@@ -71,6 +71,7 @@ def build_go_catalog(nodes: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
             }
             if kind == "function":
                 record["returns"] = entity.get("returns")
+                record["returns_collection"] = bool(entity.get("returns_collection"))
                 entry["functions"][name].append(record)
             elif kind == "method":
                 owner = str(entity.get("owner") or "")
@@ -372,7 +373,12 @@ class GoUsageResolver:
             if not self._package_matches(package_dir, target_file, cross_package, qualifier):
                 continue
             filtered.append(record)
-        returns = {str(record.get("returns")) for record in filtered if record.get("returns")}
+        element = bool(hint.get("element"))
+        returns = {
+            str(record.get("returns"))
+            for record in filtered
+            if record.get("returns") and record.get("returns_collection") == element
+        }
         if len(returns) != 1:
             return None, "unknown_constructor_return", filtered[:20]
         return_type = next(iter(returns))

@@ -10,7 +10,9 @@ from pathlib import Path
 from typing import Any
 
 from .config import TREE_SITTER_LANGUAGE_CANDIDATES
-from .parse_go import GoUsageCollector, go_is_exported, go_is_package_level, go_named_type, go_receiver_type
+from .parse_go import (
+    GoUsageCollector, go_is_collection, go_is_exported, go_is_package_level, go_named_type, go_receiver_type,
+)
 from .util import child_by_field_name, clean_string_literal, line_range_from_ts_node, named_children, node_text, walk_ts
 
 
@@ -522,9 +524,12 @@ class TreeSitterAstAdapter:
         if receiver:
             entity["owner"] = receiver
             entity["qualified_name"] = f"{receiver}.{name}"
-        returns = go_named_type(child_by_field_name(node, "result"), source_bytes)
+        result = child_by_field_name(node, "result")
+        returns = go_named_type(result, source_bytes)
         if returns:
             entity["returns"] = returns
+            if go_is_collection(result):
+                entity["returns_collection"] = True
         return [entity]
 
     def _go_type(self, node: Any, source_bytes: bytes) -> list[dict[str, Any]]:
