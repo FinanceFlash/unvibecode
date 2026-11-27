@@ -193,12 +193,18 @@ class BoundaryChunker:
             return [chunk(1, len(lines), "whole_file", None, None)]
 
         chunks: list[CodeChunk] = []
-        for start, end, kind, entity, qualified_name in self._pieces(node, lines, language):
+        pieces = list(self._pieces(node, lines, language))
+        while pieces:
+            start, end, kind, entity, qualified_name = pieces.pop(0)
             raw = "\n".join(lines[start - 1 : end])
             if not raw.strip():
                 continue
             if self.counter.count(raw) <= self.max_entity_tokens:
                 chunks.append(chunk(start, end, kind, entity, qualified_name))
+                continue
+            inner = self._container_pieces(node, lines, language, start, end, kind)
+            if inner:
+                pieces[:0] = inner
                 continue
             parent_id = f"entity_{_stable_id(relative_file, qualified_name or entity or kind, start, end)}"
             chunks.extend(
@@ -207,6 +213,33 @@ class BoundaryChunker:
                 )
             )
         return chunks
+
+    def _container_pieces(
+        self, node: Mapping[str, Any], lines: Sequence[str], language: str, start: int, end: int, kind: str
+    ) -> list[tuple[int, int, str, str | None, str | None]]:
+        if language != "rust" or kind not in {"impl", "trait"}:
+            return []
+        methods = [
+            entity
+            for entity in node.get("entities", []) or []
+            if isinstance(entity, Mapping)
+            and entity.get("kind") == "function"
+            and start < int((entity.get("line_range") or {}).get("start_line") or 0)
+            and int((entity.get("line_range") or {}).get("end_line") or 0) <= end
+        ]
+        pieces: list[tuple[int, int, str, str | None, str | None]] = []
+        cursor = start
+        for method_start, method_end, method_kind, name, qualified_name in self._outermost_entity_intervals(
+            methods, lines, language
+        ):
+            method_start = max(method_start, cursor)
+            if cursor < method_start:
+                pieces.append((cursor, method_start - 1, f"{kind}_context", None, None))
+            pieces.append((method_start, method_end, method_kind, name, qualified_name))
+            cursor = method_end + 1
+        if pieces and cursor <= end:
+            pieces.append((cursor, end, f"{kind}_context", None, None))
+        return pieces
 
     def _read_source(self, relative_file: str) -> str | None:
         """The file's text, or None (recorded in skipped_files) if it cannot be read."""

@@ -35,13 +35,11 @@ def code(chunk):
     return "\n".join(line.split(" | ", 1)[1] for line in chunk.code.splitlines())
 
 
-@pytest.mark.xfail(strict=True, reason="#846: large impl blocks are cut mid-method")
 def test_large_impl_gives_one_chunk_per_method(tmp_path):
     methods = [c for c in chunks(tmp_path) if c.kind == "function"]
     assert [c.entity for c in methods] == [f"method_{i}" for i in range(40)]
 
 
-@pytest.mark.xfail(strict=True, reason="#846: large impl blocks are cut mid-method")
 def test_method_chunks_are_valid_rust_and_do_not_overlap(tmp_path):
     from tree_sitter_language_pack import get_parser
 
