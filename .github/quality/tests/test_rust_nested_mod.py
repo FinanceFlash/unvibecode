@@ -25,7 +25,6 @@ def resolve(tmp_path, source_file, name):
     ]
 
 
-@pytest.mark.xfail(strict=True, reason="#391: nested module resolves to wrong folder")
 @pytest.mark.parametrize(
     ("source_file", "name", "expected"),
     [
