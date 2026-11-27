@@ -7,7 +7,6 @@ from unvibecode_graph.resolve import ImportResolver
 FILES = ["src/lib.rs", "src/config.rs", "src/error.rs", "src/store.rs", "src/x.rs"]
 
 
-@pytest.mark.xfail(strict=True, reason="#611: grouped use keeps only the first path")
 @pytest.mark.parametrize(
     ("text", "paths"),
     [
@@ -33,7 +32,6 @@ def test_use_group_is_expanded_into_paths(text, paths):
     assert rust_use_paths(text) == paths
 
 
-@pytest.mark.xfail(strict=True, reason="#611: grouped use keeps only the first path")
 def test_grouped_use_links_every_module(tmp_path):
     pytest.importorskip("tree_sitter_language_pack")
     from unvibecode_graph.parse_ts import TreeSitterAstAdapter
