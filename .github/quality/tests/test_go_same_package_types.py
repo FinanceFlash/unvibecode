@@ -4,9 +4,6 @@ import pytest
 
 from unvibecode_graph.golinks import build_go_catalog, resolve_go_usages
 
-MODELS = "package store\n\ntype User struct {\n\tName string\n}\n"
-SERVICE = 'package store\n\nfunc CreateUser() User {\n\treturn User{Name: "a"}\n}\n'
-
 
 def node(file, entities, usages=()):
     package = {"kind": "package", "name": "store", "scope": "package"}
@@ -29,7 +26,6 @@ def user_type(file, line):
     }
 
 
-@pytest.mark.xfail(strict=True, reason="#547: same-package type use gives no edge")
 def test_same_package_type_links_to_its_file():
     models = node("store/models.go", [user_type("store/models.go", 3)])
     usage = {"kind": "same_package_type", "name": "User", "line": 3}
@@ -39,7 +35,6 @@ def test_same_package_type_links_to_its_file():
     assert not unresolved
 
 
-@pytest.mark.xfail(strict=True, reason="#547: same-package type use gives no edge")
 def test_same_package_type_declared_twice_is_ambiguous():
     a = node("store/a.go", [user_type("store/a.go", 3)])
     b = node("store/b.go", [user_type("store/b.go", 3)])
@@ -57,7 +52,6 @@ def test_type_declared_in_the_same_file_gives_no_edge():
     assert not edges and not unresolved
 
 
-@pytest.mark.xfail(strict=True, reason="#547: same-package type use gives no edge")
 def test_parser_records_same_package_types_only():
     pytest.importorskip("tree_sitter_language_pack")
     from unvibecode_graph.parse_ts import TreeSitterAstAdapter
