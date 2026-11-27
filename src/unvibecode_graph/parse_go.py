@@ -256,9 +256,30 @@ class GoUsageCollector:
             else:
                 self._package_selector(target, env, "call")
         elif target is not None:
+            if target.type == "selector_expression":
+                self._chained_method_call(target, node, env)
             self.visit(target, env)
         if arguments is not None:
             self.visit(arguments, env)
+
+    def _chained_method_call(self, target: Any, node: Any, env: Env) -> None:
+        operand = child_by_field_name(target, "operand")
+        if self._root_name(operand) not in env:
+            return
+        self.usages.append(
+            {
+                "kind": "method_call",
+                "receiver": self._text(operand),
+                "receiver_type": self._expression_type(operand, env),
+                "symbol": self._text(child_by_field_name(target, "field")),
+                "line": line_range_from_ts_node(node)["start_line"],
+            }
+        )
+
+    def _root_name(self, node: Any) -> str | None:
+        while node is not None and node.type in {"selector_expression", "index_expression"}:
+            node = child_by_field_name(node, "operand")
+        return self._text(node) if node is not None and node.type == "identifier" else None
 
     def _conversion(self, node: Any, env: Env) -> None:
         """Map[int](xs) parses as a conversion: a call to a generic function."""
@@ -352,7 +373,7 @@ class GoUsageCollector:
     def _element_hint(hint: Hint) -> Hint:
         if not hint:
             return None
-        if hint.get("kind") == "call":
+        if hint.get("kind") in {"call", "field"}:
             return {**hint, "element": True}
         if hint.get("collection"):
             return {key: value for key, value in hint.items() if key != "collection"}
@@ -412,6 +433,12 @@ class GoUsageCollector:
             return self._type_hint(base)
         if t == "call_expression":
             return self._call_type(node, env)
+        if t == "selector_expression":
+            base = self._expression_type(child_by_field_name(node, "operand"), env)
+            field = self._text(child_by_field_name(node, "field"))
+            return {"kind": "field", "base": base, "name": field} if base and field else None
+        if t == "index_expression":
+            return self._element_hint(self._expression_type(child_by_field_name(node, "operand"), env))
         return None
 
     def _call_type(self, node: Any, env: Env) -> Hint:

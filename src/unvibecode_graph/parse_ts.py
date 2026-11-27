@@ -544,7 +544,26 @@ class TreeSitterAstAdapter:
                 kind = "interface"
         entity = self._entity(name, kind, node, source_bytes, exported=go_is_exported(name))
         entity["scope"] = "package" if go_is_package_level(node) else "local"
+        fields = self._go_struct_fields(node, source_bytes)
+        if fields:
+            entity["fields"] = fields
         return [entity]
+
+    @staticmethod
+    def _go_struct_fields(node: Any, source_bytes: bytes) -> dict[str, dict[str, Any]]:
+        fields: dict[str, dict[str, Any]] = {}
+        struct = next((child for child in named_children(node) if child.type == "struct_type"), None)
+        for field_list in named_children(struct) if struct is not None else []:
+            for declaration in named_children(field_list):
+                type_node = child_by_field_name(declaration, "type")
+                type_name = go_named_type(type_node, source_bytes)
+                if declaration.type != "field_declaration" or not type_name:
+                    continue
+                for child in named_children(declaration):
+                    if child.type == "field_identifier":
+                        field = node_text(child, source_bytes).strip()
+                        fields[field] = {"type": type_name, "collection": go_is_collection(type_node)}
+        return dict(sorted(fields.items()))
 
     def _go_values(self, node: Any, source_bytes: bytes, kind: str) -> list[dict[str, Any]]:
         entities = []

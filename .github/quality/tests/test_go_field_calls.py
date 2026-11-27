@@ -42,12 +42,10 @@ def resolve(file, source):
     return links, [(u["symbol"], u["reason"]) for u in unresolved]
 
 
-@pytest.mark.xfail(strict=True, reason="#831: calls through a struct field are dropped")
 def test_call_through_a_field_links_to_the_method():
     assert resolve("service.go", SERVICE)[0] == [("store.go", "Insert")]
 
 
-@pytest.mark.xfail(strict=True, reason="#831: calls through a struct field are dropped")
 def test_call_through_two_fields_links_to_the_method():
     handler = (
         "package shop\n\ntype Handler struct {\n\tsvc *OrderService\n}\n\n"
@@ -56,7 +54,6 @@ def test_call_through_two_fields_links_to_the_method():
     assert resolve("handler.go", handler)[0] == [("store.go", "Insert")]
 
 
-@pytest.mark.xfail(strict=True, reason="#831: calls through a struct field are dropped")
 def test_call_on_an_indexed_item_links_to_the_method():
     batch = (
         "package shop\n\nfunc Run(list []*OrderStore, byID map[string]*OrderStore, "
@@ -67,7 +64,6 @@ def test_call_on_an_indexed_item_links_to_the_method():
     assert links == [("store.go", "Insert")] * 3
 
 
-@pytest.mark.xfail(strict=True, reason="#831: calls through a struct field are dropped")
 def test_field_from_another_package_is_listed_as_unresolved():
     other = (
         "package shop\n\nfunc (s *OrderStore) Close() error { return nil }\n\n"
