@@ -18,6 +18,10 @@ from .util import safe_read_text, to_posix_rel
 
 
 
+RUST_ROOT_FILES = {"lib.rs", "main.rs", "mod.rs", "build.rs"}
+RUST_ROOT_DIRS = {"bin", "tests", "examples", "benches"}
+
+
 def _join_relative(source_dir: Path, raw: str) -> str:
     """source_dir/raw as a repository path with '.' and '..' collapsed.
 
@@ -220,15 +224,13 @@ class ImportResolver:
         source_dir = Path(source_file).parent
         candidates: list[str] = []
 
-        if style == "mod":
-            candidates.extend(
-                [
-                    to_posix_rel(source_dir / f"{raw}.rs"),
-                    to_posix_rel(source_dir / raw / "mod.rs"),
-                    to_posix_rel(Path("src") / f"{raw}.rs"),
-                    to_posix_rel(Path("src") / raw / "mod.rs"),
-                ]
-            )
+        if style == "mod_path":
+            candidates.append(_join_relative(source_dir, raw))
+        elif style == "mod":
+            source = Path(source_file)
+            crate_root = source.name in RUST_ROOT_FILES or source.parent.name in RUST_ROOT_DIRS
+            module_dir = source_dir if crate_root else source_dir / source.stem
+            candidates.extend([to_posix_rel(module_dir / f"{raw}.rs"), to_posix_rel(module_dir / raw / "mod.rs")])
         else:
             cleaned = raw
             for prefix in ["crate::", "self::", "super::"]:
