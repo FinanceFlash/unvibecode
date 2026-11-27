@@ -7,7 +7,6 @@ from unvibecode_graph.resolve import ImportResolver
 FILES = ["src/lib.rs", "src/glob.rs", "src/pathutil.rs"]
 
 
-@pytest.mark.xfail(strict=True, reason="#371: pub use keeps the visibility prefix")
 def test_pub_use_links_to_the_reexported_module(tmp_path):
     pytest.importorskip("tree_sitter_language_pack")
     from unvibecode_graph.parse_ts import TreeSitterAstAdapter

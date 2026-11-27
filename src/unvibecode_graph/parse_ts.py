@@ -301,7 +301,9 @@ class TreeSitterAstAdapter:
         for node in walk_ts(root):
             t = node.type
             if t == "use_declaration":
-                raw = node_text(node, source_bytes).strip().removeprefix("use").rstrip(";").strip()
+                argument = child_by_field_name(node, "argument")
+                raw = node_text(argument if argument is not None else node, source_bytes).strip()
+                raw = raw.removeprefix("use").rstrip(";").strip()
                 local = raw.startswith(("crate::", "self::", "super::"))
                 for path in (rust_use_paths(raw) if local else []) or [raw]:
                     imports.append(
