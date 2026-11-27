@@ -399,7 +399,21 @@ class GoUsageResolver:
             if self._package_matches(owner_package_dir, str(record.get("file") or ""), cross_package, qualifier)
         ]
         if any(str(record.get("kind")) == "interface" for record in type_records):
-            return None, None
+            candidates = [
+                {"file": record.get("file"), "line": record.get("line"), "owner": method_owner}
+                for (method_owner, method_name), records in sorted(entry.get("methods", {}).items())
+                if method_name == name
+                for record in records
+            ]
+            return None, {
+                "source": self.source_file,
+                "line": line,
+                "kind": "method_call",
+                "symbol": name,
+                "owner": owner,
+                "reason": "interface_dispatch",
+                "candidates": candidates[:20],
+            }
         all_records = [
             record
             for record in entry.get("methods", {}).get((owner, name), [])
