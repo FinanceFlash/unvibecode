@@ -290,13 +290,14 @@ class TreeSitterAstAdapter:
                 )
             elif t in {"mod_item", "mod_declaration"}:
                 name = self._name_from_node(node, source_bytes)
-                if name:
+                if name and child_by_field_name(node, "body") is None:
+                    path = self._rust_path_attribute(node, source_bytes)
                     imports.append(
                         {
-                            "raw": name,
-                            "module": name,
+                            "raw": path or name,
+                            "module": path or name,
                             "symbols": [],
-                            "import_style": "mod",
+                            "import_style": "mod_path" if path else "mod",
                             "line": line_range_from_ts_node(node)["start_line"],
                         }
                     )
@@ -326,6 +327,18 @@ class TreeSitterAstAdapter:
             "role_hints": sorted(set(role_hints)),
             "parse_errors": [],
         }
+
+    @staticmethod
+    def _rust_path_attribute(node: Any, source_bytes: bytes) -> str | None:
+        sibling = node.prev_named_sibling
+        while sibling is not None and sibling.type == "attribute_item":
+            attribute = next(iter(named_children(sibling)), None)
+            parts = named_children(attribute) if attribute is not None else []
+            value = child_by_field_name(attribute, "value") if attribute is not None else None
+            if parts and value is not None and node_text(parts[0], source_bytes) == "path":
+                return clean_string_literal(node_text(value, source_bytes))
+            sibling = sibling.prev_named_sibling
+        return None
 
     def _rust_is_pub(self, node: Any, source_bytes: bytes) -> bool:
         txt = node_text(node, source_bytes).lstrip()

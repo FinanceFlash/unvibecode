@@ -28,7 +28,6 @@ def mod_imports(source):
     ]
 
 
-@pytest.mark.xfail(strict=True, reason="#663: #[path] modules are not resolved")
 @pytest.mark.parametrize(
     ("source_file", "raw", "expected"),
     [
@@ -44,7 +43,6 @@ def test_path_attribute_resolves_next_to_the_declaring_file(
     assert resolved["resolved_file"] == expected
 
 
-@pytest.mark.xfail(strict=True, reason="#663: #[path] modules are not resolved")
 def test_path_attribute_becomes_a_path_import():
     source = (
         'mod normal;\n\n#[path = "custom/feature_impl.rs"]\n'
@@ -56,7 +54,6 @@ def test_path_attribute_becomes_a_path_import():
     ]
 
 
-@pytest.mark.xfail(strict=True, reason="#663, #390: inline mod becomes a file import")
 def test_inline_module_is_not_a_file_import():
     source = (
         "pub mod feature {\n    pub fn f() {}\n}\n\n"
