@@ -220,7 +220,9 @@ class ImportResolver:
         source_dir = Path(source_file).parent
         candidates: list[str] = []
 
-        if style == "mod":
+        if style == "mod_path":
+            candidates.append(_join_relative(source_dir, raw))
+        elif style == "mod":
             candidates.extend(
                 [
                     to_posix_rel(source_dir / f"{raw}.rs"),
