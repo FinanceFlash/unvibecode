@@ -41,10 +41,8 @@ def test_large_impl_gives_one_chunk_per_method(tmp_path):
 
 
 def test_method_chunks_are_valid_rust_and_do_not_overlap(tmp_path):
-    from tree_sitter_language_pack import get_parser
-
     result = sorted(chunks(tmp_path), key=lambda c: c.start_line)
-    parser = get_parser("rust")
+    parser = pytest.importorskip("tree_sitter_language_pack").get_parser("rust")
     for chunk in result:
         if chunk.kind == "function":
             assert not parser.parse(code(chunk).encode()).root_node.has_error
