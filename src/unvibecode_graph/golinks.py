@@ -149,6 +149,7 @@ class GoUsageResolver:
             "selector": self._selector,
             "qualified_type": self._selector,
             "same_package_call": self._same_package_call,
+            "same_package_type": self._same_package_type,
             "method_call": self._method_call,
         }
         for usage in self.node.get("go_usages") or []:
@@ -204,6 +205,19 @@ class GoUsageResolver:
         if record is None:
             return
         self._edge(str(record.get("file")), "calls_symbol", name, line, "go_same_package_call", None, "same_package_call")
+
+    def _same_package_type(self, usage: dict[str, Any]) -> None:
+        line = usage.get("line")
+        name = str(usage.get("name") or "")
+        if not name:
+            return
+        record, problem = self._same_package_function(name, line, "types", "same_package_type")
+        if problem is not None:
+            self.unresolved.append(problem)
+            return
+        if record is None:
+            return
+        self._edge(str(record.get("file")), "imports_symbol", name, line, "go_same_package_type", None, "same_package_type")
 
     def _method_call(self, usage: dict[str, Any]) -> None:
         line = usage.get("line")
@@ -306,12 +320,12 @@ class GoUsageResolver:
             }
         return None, None
 
-    def _same_package_function(self, name: str, line: int | None):
-        """Name() -> the one other file of this package declaring it. Declared here too -> no edge."""
+    def _same_package_function(self, name: str, line: int | None, table: str = "functions", kind: str = "same_package_call"):
+        """Name -> the one other file of this package declaring it in `table`. Declared here too -> no edge."""
         if not self.source_entry or not self.source_package:
             return None, None
         unique: dict[str, dict[str, Any]] = {}
-        for record in self.source_entry.get("functions", {}).get(name, []):
+        for record in self.source_entry.get(table, {}).get(name, []):
             target_file = str(record.get("file") or "")
             if not target_file:
                 continue
@@ -328,9 +342,9 @@ class GoUsageResolver:
             return None, {
                 "source": self.source_file,
                 "line": line,
-                "kind": "same_package_call",
+                "kind": kind,
                 "symbol": name,
-                "reason": "ambiguous_same_package_call",
+                "reason": f"ambiguous_{kind}",
                 "candidates": [{"file": key, "line": value.get("line")} for key, value in sorted(unique.items())[:20]],
             }
         return None, None

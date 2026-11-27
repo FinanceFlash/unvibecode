@@ -87,6 +87,11 @@ SCOPES = {
     "expression_case", "type_case", "default_case", "communication_case",
 }
 USAGE_KEY = ("kind", "qualifier", "receiver", "name", "symbol", "context", "line")
+PREDECLARED_TYPES = {
+    "any", "bool", "byte", "comparable", "complex64", "complex128", "error", "float32", "float64",
+    "int", "int8", "int16", "int32", "int64", "rune", "string",
+    "uint", "uint8", "uint16", "uint32", "uint64", "uintptr",
+}
 
 
 class GoUsageCollector:
@@ -107,6 +112,7 @@ class GoUsageCollector:
             "type_conversion_expression": self._conversion,
             "selector_expression": self._selector,
             "qualified_type": self._qualified_type,
+            "type_identifier": self._type_identifier,
         }
 
     def collect(self, root: Any) -> list[dict[str, Any]]:
@@ -275,6 +281,13 @@ class GoUsageCollector:
                 )
         for child in named_children(node):
             self.visit(child, env)
+
+    def _type_identifier(self, node: Any, env: Env) -> None:
+        name = self._text(node)
+        parent = getattr(node, "parent", None)
+        if not name or name in PREDECLARED_TYPES or (parent is not None and parent.type == "qualified_type"):
+            return
+        self.usages.append({"kind": "same_package_type", "name": name, "line": line_range_from_ts_node(node)["start_line"]})
 
     # --- recording --------------------------------------------------------
 
