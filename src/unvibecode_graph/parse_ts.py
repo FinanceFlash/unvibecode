@@ -6,12 +6,35 @@ A missing grammar or package degrades to parser_used="tree_sitter_missing"
 with no imports, never an exception."""
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any
 
 from .config import TREE_SITTER_LANGUAGE_CANDIDATES
 from .parse_go import GoUsageCollector, go_is_exported, go_is_package_level, go_named_type, go_receiver_type
 from .util import child_by_field_name, clean_string_literal, line_range_from_ts_node, named_children, node_text, walk_ts
+
+
+def rust_use_paths(text: str) -> list[str]:
+    tree = re.sub(r"\s*(::|\{|\}|,)\s*", r"\1", " ".join(text.split())).rstrip(";")
+    return _expand_use_tree("", tree)
+
+
+def _expand_use_tree(prefix: str, tree: str) -> list[str]:
+    if not tree:
+        return []
+    if "{" not in tree:
+        path = tree.split(" as ")[0]
+        return [prefix[:-2] if path == "self" else prefix + path]
+    head, _, rest = tree.partition("{")
+    parts, depth, start = [], 0, 0
+    inner = rest[: rest.rfind("}")]
+    for index, char in enumerate(inner + ","):
+        depth += {"{": 1, "}": -1}.get(char, 0)
+        if char == "," and depth == 0:
+            parts.append(inner[start:index])
+            start = index + 1
+    return [path for part in parts for path in _expand_use_tree(prefix + head, part)]
 
 
 # -----------------------------------------------------------------------------
@@ -278,16 +301,20 @@ class TreeSitterAstAdapter:
         for node in walk_ts(root):
             t = node.type
             if t == "use_declaration":
-                raw = node_text(node, source_bytes).strip().removeprefix("use").rstrip(";").strip()
-                imports.append(
-                    {
-                        "raw": raw,
-                        "module": raw,
-                        "symbols": [],
-                        "import_style": "use",
-                        "line": line_range_from_ts_node(node)["start_line"],
-                    }
-                )
+                argument = child_by_field_name(node, "argument")
+                raw = node_text(argument if argument is not None else node, source_bytes).strip()
+                raw = raw.removeprefix("use").rstrip(";").strip()
+                local = raw.startswith(("crate::", "self::", "super::"))
+                for path in (rust_use_paths(raw) if local else []) or [raw]:
+                    imports.append(
+                        {
+                            "raw": path,
+                            "module": path,
+                            "symbols": [],
+                            "import_style": "use",
+                            "line": line_range_from_ts_node(node)["start_line"],
+                        }
+                    )
             elif t in {"mod_item", "mod_declaration"}:
                 name = self._name_from_node(node, source_bytes)
                 if name:
