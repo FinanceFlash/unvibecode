@@ -10,7 +10,9 @@ from pathlib import Path
 from typing import Any
 
 from .config import TREE_SITTER_LANGUAGE_CANDIDATES
-from .parse_go import GoUsageCollector, go_is_exported, go_is_package_level, go_named_type, go_receiver_type
+from .parse_go import (
+    GoUsageCollector, go_is_collection, go_is_exported, go_is_package_level, go_named_type, go_receiver_type,
+)
 from .util import child_by_field_name, clean_string_literal, line_range_from_ts_node, named_children, node_text, walk_ts
 
 
@@ -522,9 +524,12 @@ class TreeSitterAstAdapter:
         if receiver:
             entity["owner"] = receiver
             entity["qualified_name"] = f"{receiver}.{name}"
-        returns = go_named_type(child_by_field_name(node, "result"), source_bytes)
+        result = child_by_field_name(node, "result")
+        returns = go_named_type(result, source_bytes)
         if returns:
             entity["returns"] = returns
+            if go_is_collection(result):
+                entity["returns_collection"] = True
         return [entity]
 
     def _go_type(self, node: Any, source_bytes: bytes) -> list[dict[str, Any]]:
@@ -539,7 +544,26 @@ class TreeSitterAstAdapter:
                 kind = "interface"
         entity = self._entity(name, kind, node, source_bytes, exported=go_is_exported(name))
         entity["scope"] = "package" if go_is_package_level(node) else "local"
+        fields = self._go_struct_fields(node, source_bytes)
+        if fields:
+            entity["fields"] = fields
         return [entity]
+
+    @staticmethod
+    def _go_struct_fields(node: Any, source_bytes: bytes) -> dict[str, dict[str, Any]]:
+        fields: dict[str, dict[str, Any]] = {}
+        struct = next((child for child in named_children(node) if child.type == "struct_type"), None)
+        for field_list in named_children(struct) if struct is not None else []:
+            for declaration in named_children(field_list):
+                type_node = child_by_field_name(declaration, "type")
+                type_name = go_named_type(type_node, source_bytes)
+                if declaration.type != "field_declaration" or not type_name:
+                    continue
+                for child in named_children(declaration):
+                    if child.type == "field_identifier":
+                        field = node_text(child, source_bytes).strip()
+                        fields[field] = {"type": type_name, "collection": go_is_collection(type_node)}
+        return dict(sorted(fields.items()))
 
     def _go_values(self, node: Any, source_bytes: bytes, kind: str) -> list[dict[str, Any]]:
         entities = []

@@ -71,6 +71,7 @@ def build_go_catalog(nodes: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
             }
             if kind == "function":
                 record["returns"] = entity.get("returns")
+                record["returns_collection"] = bool(entity.get("returns_collection"))
                 entry["functions"][name].append(record)
             elif kind == "method":
                 owner = str(entity.get("owner") or "")
@@ -78,6 +79,7 @@ def build_go_catalog(nodes: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
                     record["owner"] = owner
                     entry["methods"][(owner, name)].append(record)
             elif kind in {"type", "struct", "interface"}:
+                record["fields"] = entity.get("fields") or {}
                 entry["types"][name].append(record)
             if entity.get("exported") and kind != "method" and not file_path.endswith("_test.go"):
                 entry["symbols"][name].append(record)
@@ -341,6 +343,8 @@ class GoUsageResolver:
         constructor's single declared return type."""
         if not hint:
             return None, "unknown_receiver_type", []
+        if hint.get("kind") == "field":
+            return self._field_type(hint)
         hint_kind = str(hint.get("kind") or "")
         qualifier = hint.get("qualifier")
         name = str(hint.get("name") or "")
@@ -372,7 +376,12 @@ class GoUsageResolver:
             if not self._package_matches(package_dir, target_file, cross_package, qualifier):
                 continue
             filtered.append(record)
-        returns = {str(record.get("returns")) for record in filtered if record.get("returns")}
+        element = bool(hint.get("element"))
+        returns = {
+            str(record.get("returns"))
+            for record in filtered
+            if record.get("returns") and record.get("returns_collection") == element
+        }
         if len(returns) != 1:
             return None, "unknown_constructor_return", filtered[:20]
         return_type = next(iter(returns))
@@ -387,6 +396,27 @@ class GoUsageResolver:
         if mapped is None:
             return None, "external_return_type", []
         return (mapped, return_name, True, return_qualifier), None, []
+
+    def _field_type(self, hint: dict[str, Any]):
+        base, reason, candidates = self._receiver_type(hint.get("base"))
+        if base is None:
+            return None, reason, candidates
+        package_dir, owner, cross_package, qualifier = base
+        name = str(hint.get("name") or "")
+        fields = {
+            (str(field.get("type")), bool(field.get("collection")))
+            for record in (self.catalog.get(package_dir) or {}).get("types", {}).get(owner, [])
+            for field in [(record.get("fields") or {}).get(name)]
+            if field
+        }
+        if len(fields) != 1:
+            return None, "unknown_field_type", []
+        field_type, collection = next(iter(fields))
+        if collection != bool(hint.get("element")):
+            return None, "unknown_field_type", []
+        if "." in field_type:
+            return None, "cross_package_field_type", []
+        return (package_dir, field_type, cross_package, qualifier), None, []
 
     def _method(self, owner_package_dir: str, owner: str, name: str, cross_package: bool, qualifier: str | None, line: int | None):
         """Type.Method -> the one file declaring it. Interfaces and methods in this file -> no edge."""
