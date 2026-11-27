@@ -272,6 +272,7 @@ Do not send this entire ZIP as one LLM request. Process one selected context at 
             archive.writestr("selections.jsonl", selection_lines)
             diagnostics = list(self.graph.get("unresolved_linker_imports", []) or [])
             diagnostics += list(self.graph.get("unresolved_imports", []) or [])
+            diagnostics += list(self.graph.get("unresolved_go_usages", []) or [])
             diagnostics += [edge for edge in self.graph.get("symbol_edges", []) or []
                             if edge.get("is_uncertain") or str(edge.get("confidence", "none")).lower() not in {"high", "medium"}]
             archive.writestr("unresolved_relationships.jsonl", "".join(

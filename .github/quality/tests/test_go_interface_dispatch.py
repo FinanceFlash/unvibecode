@@ -1,8 +1,6 @@
 import json
 import zipfile
 
-import pytest
-
 from unvibecode_graph.context import ContextBuilder
 from unvibecode_graph.golinks import build_go_catalog, resolve_go_usages
 
@@ -31,7 +29,6 @@ def entity(kind, name, line, owner=None):
     return item
 
 
-@pytest.mark.xfail(strict=True, reason="#573: interface dispatch is silently dropped")
 def test_interface_call_is_listed_as_unresolved():
     usage = {
         "kind": "method_call",
@@ -56,7 +53,6 @@ def test_interface_call_is_listed_as_unresolved():
     ]
 
 
-@pytest.mark.xfail(strict=True, reason="#573: Go unresolved usages are not exported")
 def test_go_unresolved_usages_reach_the_context_bundle(tmp_path):
     row = {"source": "service.go", "line": 8, "symbol": "Greet"}
     row["reason"] = "interface_dispatch"
