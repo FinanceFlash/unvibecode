@@ -18,6 +18,9 @@ from .util import safe_read_text, to_posix_rel
 
 
 
+PYTHON_PROJECT_FILES = ("pyproject.toml", "setup.py", "setup.cfg")
+
+
 def _join_relative(source_dir: Path, raw: str) -> str:
     """source_dir/raw as a repository path with '.' and '..' collapsed.
 
@@ -44,6 +47,7 @@ class ImportResolver:
         self.tsconfig_aliases = self._load_tsconfig_aliases()
         self.php_psr4 = self._load_php_psr4()
         self.go_module, self.go_replace = self._load_go_module()
+        self.python_roots = self._load_python_roots()
 
     def resolve(self, source_file: str, language: str, imp: dict[str, Any]) -> dict[str, Any]:
         raw = str(imp.get("raw") or imp.get("module") or "").strip()
@@ -130,10 +134,9 @@ class ImportResolver:
                 for sym in symbols:
                     candidate_modules.append(to_posix_rel(base / sym.replace(".", "/")))
         else:
-            if module:
-                candidate_modules.append(module.replace(".", "/"))
-            if raw and not raw.startswith("."):
-                candidate_modules.append(raw.replace(".", "/"))
+            names = [name.replace(".", "/") for name in dict.fromkeys([module, raw]) if name and not name.startswith(".")]
+            for root in self._python_roots_for(source_file):
+                candidate_modules.extend(to_posix_rel(Path(root) / name) for name in names)
 
         # Also support from package import thing where thing is a submodule.
         expanded: list[str] = []
@@ -149,11 +152,30 @@ class ImportResolver:
                 cand = to_posix_rel(cand).lstrip("/")
                 if cand in self.file_set:
                     return cand, "python_module_resolution"
-
-        # Last resort: basename/stem fallback for internal local module names.
-        if module:
-            return self._resolve_by_basename(module.split(".")[-1])
         return None, None
+
+    def _load_python_roots(self) -> list[str]:
+        roots = {"", "src"}
+        checked: set[PurePosixPath] = set()
+        for rel in self.rel_files:
+            if not rel.endswith(".py"):
+                continue
+            for folder in PurePosixPath(rel).parents:
+                if folder in checked:
+                    break
+                checked.add(folder)
+                if any((self.workspace_root / folder / marker).is_file() for marker in PYTHON_PROJECT_FILES):
+                    root = "" if str(folder) == "." else folder.as_posix()
+                    roots.update({root, to_posix_rel(Path(root) / "src")})
+        return sorted(roots)
+
+    def _python_roots_for(self, source_file: str) -> list[str]:
+        own = sorted((r for r in self.python_roots if r and source_file.startswith(r + "/")), key=len, reverse=True)
+        roots = own + [r for r in ("", "src") if r not in own] + [r for r in self.python_roots if r not in own + ["", "src"]]
+        source_dir = PurePosixPath(source_file).parent.as_posix()
+        if f"{source_dir}/__init__.py" not in self.file_set and source_dir != ".":
+            roots.append(source_dir)
+        return roots
 
     # ---- Node / TypeScript ----
     def _resolve_node_ts(self, source_file: str, raw: str) -> tuple[str | None, str | None]:
